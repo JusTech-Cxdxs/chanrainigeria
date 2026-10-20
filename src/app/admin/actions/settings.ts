@@ -1,0 +1,122 @@
+"use server";
+import { revalidatePath, revalidateTag } from "next/cache";
+import { redirect } from "next/navigation";
+import { db, schema } from "@/db";
+import { audit, requireAdmin } from "@/lib/auth";
+import { clearEnyoCache } from "@/lib/enyo";
+import { saveUpload } from "@/lib/media";
+import { getSettings, settingsSchema, type Settings } from "@/lib/settings";
+
+const s = (f: FormData, k: string) => String(f.get(k) ?? "").trim();
+const IMAGE = ["image/png", "image/svg+xml", "image/webp", "image/jpeg", "image/x-icon", "image/vnd.microsoft.icon"];
+
+/** WCAG contrast of white text on a colour — brand buttons use white text. */
+function contrastWithWhite(hex: string) {
+  const c = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16) / 255).map((v) => (v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4));
+  const L = 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
+  return 1.05 / (L + 0.05);
+}
+
+export async function saveSettings(f: FormData) {
+  const user = await requireAdmin(["ADMIN"]);
+  const cur = await getSettings();
+  const fail = (msg: string) => redirect(`/admin/settings?error=${encodeURIComponent(msg)}`);
+
+  const uploads: Partial<Record<"logoId" | "logoDarkId" | "faviconId", string | null>> = {};
+  for (const key of ["logoId", "logoDarkId", "faviconId"] as const) {
+    const file = f.get(key);
+    if (file instanceof File && file.size) {
+      const r = await saveUpload(file, { allowed: IMAGE, alt: "Logo" });
+      if (!r.ok) fail(r.error);
+      else uploads[key] = r.id;
+    } else if (f.get(`remove_${key}`) === "on") uploads[key] = null;
+  }
+
+  const desks: Settings["desks"] = {};
+  for (const key of Object.keys(cur.desks)) {
+    desks[key] = {
+      label: s(f, `desk_${key}_label`) || cur.desks[key].label,
+      email: s(f, `desk_${key}_email`),
+      phone: s(f, `desk_${key}_phone`),
+      whatsapp: s(f, `desk_${key}_whatsapp`),
+    };
+  }
+
+  const next: Settings = {
+    company: {
+      name: s(f, "company_name"),
+      shortName: s(f, "company_shortName") || s(f, "company_name"),
+      tagline: s(f, "company_tagline"),
+      about: s(f, "company_about"),
+      groupName: s(f, "company_groupName"),
+      groupUrl: s(f, "company_groupUrl"),
+      heritage: s(f, "company_heritage"),
+    },
+    contact: { phone: s(f, "contact_phone"), whatsapp: s(f, "contact_whatsapp"), email: s(f, "contact_email"), hours: s(f, "contact_hours") },
+    desks,
+    social: {
+      linkedin: s(f, "social_linkedin"),
+      facebook: s(f, "social_facebook"),
+      instagram: s(f, "social_instagram"),
+      x: s(f, "social_x"),
+      youtube: s(f, "social_youtube"),
+    },
+    branding: {
+      logoId: uploads.logoId !== undefined ? uploads.logoId : cur.branding.logoId,
+      logoDarkId: uploads.logoDarkId !== undefined ? uploads.logoDarkId : cur.branding.logoDarkId,
+      faviconId: uploads.faviconId !== undefined ? uploads.faviconId : cur.branding.faviconId,
+      primary: s(f, "branding_primary") || cur.branding.primary,
+      accent: s(f, "branding_accent") || cur.branding.accent,
+      showLoader: f.get("branding_showLoader") === "on",
+    },
+    home: {
+      heroTitle: s(f, "home_heroTitle"),
+      heroText: s(f, "home_heroText"),
+      fieldServiceTitle: s(f, "home_fieldServiceTitle"),
+      fieldServiceText: s(f, "home_fieldServiceText"),
+    },
+    seo: { title: s(f, "seo_title"), description: s(f, "seo_description") },
+    email: { fromName: s(f, "email_fromName"), fromAddress: s(f, "email_fromAddress"), replyTo: s(f, "email_replyTo"), footerNote: s(f, "email_footerNote") },
+    enyo: {
+      enabled: f.get("enyo_enabled") === "on",
+      name: s(f, "enyo_name") || "Enyo",
+      greeting: s(f, "enyo_greeting"),
+      tone: s(f, "enyo_tone"),
+      model: s(f, "enyo_model") || cur.enyo.model,
+      extraKnowledge: String(f.get("enyo_extraKnowledge") ?? "").trim().slice(0, 6000),
+    },
+    privacy: {
+      controllerName: s(f, "privacy_controllerName"),
+      dpoName: s(f, "privacy_dpoName"),
+      dpoEmail: s(f, "privacy_dpoEmail"),
+      lastUpdated: s(f, "privacy_lastUpdated") || cur.privacy.lastUpdated,
+    },
+  };
+
+  const parsed = settingsSchema.safeParse(next);
+  if (!parsed.success) fail(parsed.error.issues.map((i) => `${i.path.join(" ")}: ${i.message}`).join("; "));
+  if (contrastWithWhite(next.branding.primary) < 4.5)
+    fail("That brand colour is too light for white button text to be readable. Choose a darker shade.");
+
+  await db
+    .insert(schema.siteSettings)
+    .values({ id: 1, data: next })
+    .onConflictDoUpdate({ target: schema.siteSettings.id, set: { data: next } });
+
+  const changed = (Object.keys(next) as (keyof Settings)[]).filter((k) => JSON.stringify(next[k]) !== JSON.stringify(cur[k]));
+  await audit(user.id, "update", "settings", changed.length ? `Changed settings: ${changed.join(", ")}` : "Saved settings (no changes)");
+  revalidateTag("settings");
+  revalidatePath("/", "layout");
+  clearEnyoCache();
+  redirect("/admin/settings?saved=Settings%20saved.%20The%20website%20is%20updated.");
+}
+
+/** Clears every cached page and query, e.g. after loading data straight into the database. */
+export async function refreshSiteCache() {
+  const user = await requireAdmin(["ADMIN"]);
+  for (const tag of ["settings", "catalogue", "posts", "branches"]) revalidateTag(tag);
+  revalidatePath("/", "layout");
+  clearEnyoCache();
+  await audit(user.id, "refresh", "cache", "Refreshed the website cache");
+  redirect("/admin/settings?saved=The%20website%20now%20shows%20the%20latest%20data.");
+}

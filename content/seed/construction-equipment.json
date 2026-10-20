@@ -1,0 +1,1458 @@
+{
+  "category": {
+    "slug": "construction-equipment",
+    "name": "Construction Equipment",
+    "tagline": "LiuGong earthmoving, roadbuilding and quarry machines, supported where they work",
+    "intro": "Excavators, wheel loaders, dozers, graders, compactors and compact machines for Nigerian road, building, quarry, port and farm projects. Chanrai Nigeria supplies LiuGong equipment from its base in Isolo, Lagos, and sends its technicians to the machine, so most service work is done on the customer's own site.",
+    "salesBlurb": "Sales helps you match a machine to the job. We look at material, haul distances, the ground and your daily output, then quote a LiuGong model and configuration that fits, along with the attachments and support plan it needs.",
+    "serviceBlurb": "Field technicians travel to your site with diagnostic tools and service kits. They carry out scheduled maintenance, fault-finding and repairs where the machine is working, so you are not paying to move it to a workshop.",
+    "partsBlurb": "Parts supplies genuine LiuGong filters, wear parts, undercarriage, ground-engaging tools and major components. Quote your model and serial number to get the correct part the first time."
+  },
+  "brand": {
+    "slug": "liugong",
+    "name": "LiuGong",
+    "website": "https://www.liugong.com",
+    "about": "LiuGong is a Chinese maker of construction machinery. It was founded in 1958 in Liuzhou, in Guangxi, where it still has its headquarters, and it is listed on the Shenzhen Stock Exchange. The company is best known for wheel loaders and now builds a full range: excavators, dozers, graders, rollers, skid steers, backhoe loaders and mining trucks, among others. In Africa it supports dealers through a Middle East and Africa regional organisation that also handles parts and training.",
+    "highlights": [
+      "Founded in 1958 in Liuzhou, China; listed on the Shenzhen Stock Exchange (000528)",
+      "Often described as the world's largest wheel loader manufacturer",
+      "Offers 19 product lines across earthmoving, roadbuilding, lifting and material handling",
+      "Owns Dressta (Poland), a dozer maker, and runs driveline and engine joint ventures with ZF and Cummins",
+      "Its wheel loaders and excavators rank among the best-selling machines of their kind in sub-Saharan Africa",
+      "The Middle East and Africa range covers wheel loaders, excavators, rollers, motor graders, bulldozers, skid steer loaders, backhoe loaders, mining trucks and cranes"
+    ],
+    "sources": [
+      "https://en.wikipedia.org/wiki/LiuGong",
+      "https://africanreview.com/mining/machinery/liugong-plans-further-expansion-in-africa-looks-for-exclusive-distributors",
+      "https://mea.liugong.com/"
+    ]
+  },
+  "services": [
+    {
+      "slug": "on-site-field-service",
+      "name": "On-site Field Service & Breakdown Response",
+      "summary": "When a machine stops on site, we send a technician to it. They diagnose the fault and repair it where the machine stands whenever that is practical, so it goes back to work without being transported.",
+      "includes": [
+        "Remote triage by phone or WhatsApp before dispatch, using fault codes, photos and hour-meter readings",
+        "Field technicians in service vehicles with diagnostic laptops, hand and hydraulic tooling and common consumables",
+        "Hydraulic, engine, electrical and driveline fault-finding",
+        "In-field component replacement: pumps, cylinders, hoses, starters, alternators and sensors",
+        "A written job report covering findings, parts used and recommended follow-up"
+      ]
+    },
+    {
+      "slug": "preventive-maintenance-contracts",
+      "name": "Preventive Maintenance Contracts",
+      "summary": "Planned servicing at your site on a schedule set by machine hours and operating conditions. Most breakdowns start as something a routine inspection would have caught early.",
+      "includes": [
+        "Service plans built around the hour intervals in the LiuGong operation and maintenance manual",
+        "Filter, fluid and lubrication services carried out on site",
+        "Inspection checklists covering undercarriage, ground-engaging tools, hoses, structures and safety devices",
+        "Optional oil sampling to watch engine, hydraulic and transmission wear",
+        "Fleet service records and reminders for upcoming intervals"
+      ]
+    },
+    {
+      "slug": "genuine-parts-supply",
+      "name": "Genuine Parts Supply",
+      "summary": "We supply genuine LiuGong parts identified from your machine's model and serial number, from routine filter kits to major components.",
+      "includes": [
+        "Service kits (filters, seals and gaskets) for scheduled maintenance",
+        "Wear parts: bucket teeth, adapters, cutting edges, end bits and grader blades",
+        "Undercarriage: track chains, shoes, rollers, idlers and sprockets",
+        "Hydraulic, electrical and powertrain components",
+        "Parts lookup by part number, model or serial number"
+      ]
+    },
+    {
+      "slug": "operator-training",
+      "name": "Operator Training",
+      "summary": "Practical training on the customer's own machine and site that covers safe operation, correct technique and the daily checks that keep a machine reliable.",
+      "includes": [
+        "Walk-around inspection and daily maintenance routine",
+        "Controls, operating modes and efficient working technique for each machine type",
+        "Site safety: blind spots, exclusion zones, slopes, working near excavations and overhead lines",
+        "Recognising warning signs early: gauges, alarms, unusual noise, leaks and overheating",
+        "Refresher sessions for new or rotating operators"
+      ]
+    },
+    {
+      "slug": "commissioning-and-handover",
+      "name": "Commissioning & Handover",
+      "summary": "A structured start-up for every new machine. It is checked, set up for its application and handed to your team with the knowledge they need on day one.",
+      "includes": [
+        "Pre-delivery inspection and fluid-level, torque and function checks",
+        "Fitting and set-up of buckets, blades, hammers and other attachments",
+        "Delivery on site and a first-run check under working conditions",
+        "Operator and supervisor orientation covering controls, daily checks and maintenance points",
+        "Registration of the machine's serial number for service and parts history"
+      ]
+    }
+  ],
+  "families": [
+    {
+      "slug": "excavators",
+      "name": "Excavators",
+      "summary": "Tracked hydraulic excavators from 14 to 93 tonnes for digging, trenching, loading trucks and quarry work.",
+      "howItWorks": "A crawler excavator has two main parts: a **lower undercarriage** of steel tracks driven by hydraulic travel motors, and an **upper structure** that turns a full 360° on a large slewing bearing. The upper structure carries the cab, the engine, the hydraulic pumps and the digging equipment.\n\nThe diesel engine does not drive the tracks or the bucket directly. It turns **variable-displacement hydraulic pumps**, which turn engine power into a flow of oil under pressure. A **main control valve** sends that oil to whichever function the operator selects: boom, arm (stick) and bucket cylinders, the swing motor or the travel motors. The joysticks are low-pressure **pilot controls**. They move spools in the main valve, so the operator can meter flow smoothly and run several functions together, such as swinging while raising the boom.\n\nDigging force comes from hydraulic pressure acting on cylinder area. The bucket cylinder curls the bucket into the material, and the arm cylinder pulls it towards the machine. Spec sheets quote both as separate ISO **bucket** and **arm digging forces**. Many machines have a short-term **power boost**, which raises relief pressure for hard digging. **Working modes** match engine speed and pump output to the task. A power mode suits heavy production, an economy mode suits general digging, and a fine mode gives slow, precise moves for lifting or trimming.\n\nThe **counterweight** at the rear balances the load in the bucket. **Track width and length** spread the machine's weight, so an excavator can work on soft or uneven ground where a wheeled machine would sink.",
+      "keyComponents": [
+        { "name": "Boom", "role": "The main lifting arm, pinned to the upper structure and raised and lowered by one or two hydraulic cylinders." },
+        { "name": "Arm (stick)", "role": "Links the boom to the bucket and sets digging depth and reach; its cylinder supplies the arm digging force." },
+        { "name": "Bucket and ground-engaging tools", "role": "Does the cutting and carrying; its teeth and adapters are wear parts that need replacing regularly." },
+        { "name": "Main hydraulic pumps", "role": "Engine-driven pumps that supply pressurised oil to every function on the machine." },
+        { "name": "Main control valve", "role": "Sends oil to cylinders and motors according to the operator's pilot joystick inputs." },
+        { "name": "Swing bearing and swing motor", "role": "Let the upper structure rotate 360° and hold it steady during digging." },
+        { "name": "Undercarriage", "role": "Tracks, rollers, idlers, sprockets and travel motors that carry and move the machine; it accounts for a large share of the machine's lifetime running costs." },
+        { "name": "Counterweight", "role": "Balances the load and the digging forces so the machine stays stable." }
+      ],
+      "applications": [
+        "Bulk excavation for real-estate foundations and basements in Lagos, Abuja and Port Harcourt",
+        "Drainage, canal and culvert work on road projects",
+        "Trenching for pipelines, water mains and telecoms ducts",
+        "Loading dump trucks in quarries and borrow pits",
+        "Breaking rock and concrete with a hydraulic hammer",
+        "Land clearing and site preparation for estates and agriculture",
+        "Primary loading in mining operations (large-class machines)"
+      ],
+      "choosingTips": [
+        "Size the machine to the trucks it will load. Three to five bucket passes per truck is a common target for efficient loading.",
+        "For tight urban sites, a 13–15 t machine is easier to transport and manoeuvre. For mass excavation and quarry loading, look at 30 t and above.",
+        "Ask about bucket options. A general-purpose bucket suits soil, while a heavy-duty or rock bucket is needed for blasted rock and laterite.",
+        "If you plan to run a hammer, shear or other attachment, confirm the machine has auxiliary hydraulic piping and the right flow settings.",
+        "Choose track shoe width for the ground. Wider shoes float better on swampy Niger Delta soils, while narrower shoes last longer on rock.",
+        "Factor in transport: the shipping width and weight decide what low-bed trailer and permits you need."
+      ],
+      "maintenance": {
+        "dailyChecks": [
+          "Walk around and look for hydraulic leaks, damaged hoses and loose or cracked parts",
+          "Check engine oil, coolant and hydraulic oil levels",
+          "Drain water from the fuel water separator; this matters where diesel quality varies",
+          "Check the air filter restriction indicator and clean the pre-cleaner on dusty sites",
+          "Grease the boom, arm and bucket pins, more often in wet, muddy or dusty work",
+          "Check track tension and look for damaged shoes, rollers or idlers",
+          "Inspect bucket teeth and side cutters for wear or loss",
+          "Test the horn, lights, travel alarm and seat belt"
+        ],
+        "intervals": [
+          { "hours": 50, "tasks": ["Grease the swing bearing and swing gear", "Check the swing-drive and final-drive oil levels", "Clean the radiator and oil-cooler fins"] },
+          { "hours": 250, "tasks": ["Check battery terminals and electrolyte", "Check fan and alternator belt condition and tension", "Inspect the undercarriage in detail"] },
+          { "hours": 500, "tasks": ["Change engine oil and filter (interval depends on oil grade and fuel quality)", "Replace fuel filters", "Replace the hydraulic pilot and return filters as specified"] },
+          { "hours": 1000, "tasks": ["Change swing-drive gear oil", "Replace the hydraulic return filter and breather", "Check and adjust engine valve clearance if the manual requires it"] },
+          { "hours": 2000, "tasks": ["Change final-drive (travel) oil", "Replace hydraulic oil and clean the suction strainer", "Flush and replace engine coolant"] }
+        ],
+        "note": "These intervals reflect general industry practice and are a guide only. Always follow the LiuGong operation and maintenance manual for your model and serial number. Shorten intervals for severe duty such as quarry work, extreme dust or heavy hammer use."
+      },
+      "safety": [
+        "Keep everyone out of the swing radius and check that the area is clear before slewing",
+        "Locate underground services before digging and keep to safe distances from overhead power lines",
+        "Never lift loads over people. For lifting duties, use rated lifting points and stay within the machine's load chart",
+        "Work up and down slopes rather than across them, and keep the bucket low when travelling",
+        "Keep the machine back from trench and excavation edges so the walls do not collapse",
+        "Before leaving the seat, lower the bucket to the ground and engage the hydraulic lock lever",
+        "Use three points of contact when climbing on or off the machine"
+      ],
+      "specFields": [
+        { "key": "operatingWeight", "label": "Operating weight", "unit": "kg" },
+        { "key": "enginePower", "label": "Engine power (rated)", "unit": "kW" },
+        { "key": "engineModel", "label": "Engine model", "unit": "" },
+        { "key": "emissions", "label": "Emission standard", "unit": "" },
+        { "key": "bucketCapacity", "label": "Standard bucket capacity", "unit": "m³" },
+        { "key": "maxDigDepth", "label": "Max. digging depth", "unit": "mm" },
+        { "key": "maxReach", "label": "Max. digging reach", "unit": "mm" },
+        { "key": "maxDumpHeight", "label": "Max. dumping height", "unit": "mm" },
+        { "key": "bucketDiggingForce", "label": "Bucket digging force (ISO)", "unit": "kN" },
+        { "key": "armDiggingForce", "label": "Arm digging force (ISO)", "unit": "kN" },
+        { "key": "mainPumpFlow", "label": "Main pump flow", "unit": "L/min" },
+        { "key": "mainReliefPressure", "label": "Main relief pressure", "unit": "bar" },
+        { "key": "boostPressure", "label": "Power-boost pressure", "unit": "bar" },
+        { "key": "swingSpeed", "label": "Swing speed", "unit": "rpm" },
+        { "key": "maxTravelSpeed", "label": "Max. travel speed", "unit": "km/h" },
+        { "key": "trackShoeWidth", "label": "Standard track shoe width", "unit": "mm" },
+        { "key": "fuelTank", "label": "Fuel tank capacity", "unit": "L" }
+      ],
+      "faq": [
+        { "q": "What size excavator do I need?", "a": "It depends on the material, how deep you need to dig, and what the machine will load. A 13–15 t machine handles trenching and urban work well. Machines of 20–25 t are the general-purpose workhorses for roads and building sites. 35 t and larger suit quarry loading and mass excavation. Tell us about the job and we will recommend a size." },
+        { "q": "What is the difference between bucket and arm digging force?", "a": "Bucket digging force comes from the bucket cylinder curling the bucket into the material. Arm digging force comes from the arm cylinder pulling the bucket towards the machine. Both are measured to an ISO standard, so you can compare figures across brands." },
+        { "q": "Can an excavator run a hydraulic hammer?", "a": "Yes, as long as it has auxiliary hydraulic piping and the flow and pressure are set to suit the hammer. We can check compatibility and set the machine up during commissioning." },
+        { "q": "How often should the undercarriage be inspected?", "a": "Check track tension and look for visible damage every day. Carry out a detailed undercarriage inspection at regular intervals, often around every 250 hours. Tension that is too tight or too loose speeds up wear, especially in abrasive laterite and sand." },
+        { "q": "Do you service excavators on site?", "a": "Yes. Our model is built around field service. Technicians travel to the machine for scheduled maintenance, diagnosis and repairs, so it does not need to come to a workshop." }
+      ],
+      "models": [
+        {
+          "slug": "liugong-915e",
+          "name": "915E",
+          "brand": "liugong",
+          "summary": "A 14-tonne-class crawler excavator with a Cummins engine, sized for trenching, utilities and urban sites.",
+          "highlights": [
+            "13.8 t operating weight; easy to move on a standard low-bed",
+            "Cummins B3.9 engine rated at 85.4 kW",
+            "Dual main pumps at 2 × 120 L/min",
+            "Digs to about 5.5 m deep"
+          ],
+          "specs": {
+            "operatingWeight": 13800,
+            "enginePower": 85.4,
+            "engineModel": "Cummins B3.9",
+            "emissions": "Tier 2 / Stage II",
+            "bucketCapacity": 0.6,
+            "maxDigDepth": 5470,
+            "maxReach": 8170,
+            "maxDumpHeight": 6310,
+            "bucketDiggingForce": 96.9,
+            "armDiggingForce": 70,
+            "mainPumpFlow": "2 × 120",
+            "mainReliefPressure": 343,
+            "boostPressure": 370,
+            "swingSpeed": 12.94,
+            "maxTravelSpeed": 5.1,
+            "trackShoeWidth": 500,
+            "fuelTank": 245
+          },
+          "specsVerified": true,
+          "sources": [
+            "http://mea.liugong.com/product/915e/",
+            "https://osmedia.liugong.com/wp-content/blogs.dir/4/files/2021/11/915E-Tier-2_Cummins.pdf"
+          ]
+        },
+        {
+          "slug": "liugong-922e",
+          "name": "922E",
+          "brand": "liugong",
+          "summary": "A 22-tonne general-purpose excavator, the most common size class on Nigerian road and building sites.",
+          "highlights": [
+            "22 t operating weight with a 1.0 m³ standard bucket",
+            "Cummins 6BTA5.9 engine rated at 112 kW",
+            "152.5 kN bucket digging force",
+            "420 L fuel tank for long shifts between refuels"
+          ],
+          "specs": {
+            "operatingWeight": 22000,
+            "enginePower": 112,
+            "engineModel": "Cummins 6BTA5.9-C",
+            "emissions": "Tier 2 / Stage II",
+            "bucketCapacity": 1.0,
+            "maxDigDepth": 6562,
+            "maxReach": 9870,
+            "maxDumpHeight": 7170,
+            "bucketDiggingForce": 152.5,
+            "armDiggingForce": 105,
+            "mainPumpFlow": 448,
+            "mainReliefPressure": 343,
+            "boostPressure": 373,
+            "swingSpeed": 12.5,
+            "maxTravelSpeed": 5.7,
+            "trackShoeWidth": 600,
+            "fuelTank": 420
+          },
+          "specsVerified": true,
+          "sources": [
+            "http://mea.liugong.com/product/922e/",
+            "https://osmedia.liugong.com/wp-content/blogs.dir/4/files/2021/11/922E-Tier-2_Cummins.pdf"
+          ]
+        },
+        {
+          "slug": "liugong-936e",
+          "name": "936E",
+          "brand": "liugong",
+          "summary": "A 35-tonne production excavator for mass excavation, truck loading and quarry work.",
+          "highlights": [
+            "35 t operating weight with a 1.6 m³ standard bucket",
+            "Cummins 6C-8.3 engine rated at 186 kW",
+            "252 kN bucket digging force",
+            "Over 11 m digging reach"
+          ],
+          "specs": {
+            "operatingWeight": 35000,
+            "enginePower": 186,
+            "engineModel": "Cummins 6C-8.3",
+            "emissions": "Tier 2 / Stage II",
+            "bucketCapacity": 1.6,
+            "maxDigDepth": 7340,
+            "maxReach": 11100,
+            "maxDumpHeight": 7160,
+            "bucketDiggingForce": 252,
+            "armDiggingForce": 185,
+            "mainPumpFlow": 600,
+            "mainReliefPressure": 343,
+            "swingSpeed": 10,
+            "maxTravelSpeed": 5.5,
+            "trackShoeWidth": 600,
+            "fuelTank": 620
+          },
+          "specsVerified": true,
+          "sources": [
+            "http://mea.liugong.com/product/936e/",
+            "https://osmedia.liugong.com/wp-content/blogs.dir/4/files/2021/11/936E-Tier-2_Cummins.pdf"
+          ]
+        },
+        {
+          "slug": "liugong-950e",
+          "name": "950E",
+          "brand": "liugong",
+          "summary": "A 48-tonne heavy excavator built for quarry face loading and high-volume earthmoving.",
+          "highlights": [
+            "48 t operating weight",
+            "Cummins QSM11 engine rated at 298 kW",
+            "288 kN bucket digging force",
+            "Digs to about 8.4 m deep with a 12.5 m reach"
+          ],
+          "specs": {
+            "operatingWeight": 48000,
+            "enginePower": 298,
+            "engineModel": "Cummins QSM11",
+            "emissions": "Tier 3 / Stage IIIA",
+            "bucketCapacity": 2.2,
+            "maxDigDepth": 8378,
+            "maxReach": 12480,
+            "maxDumpHeight": 7990,
+            "bucketDiggingForce": 288,
+            "armDiggingForce": 204,
+            "mainPumpFlow": "2 × 380",
+            "mainReliefPressure": 323,
+            "boostPressure": 353,
+            "swingSpeed": 8.5,
+            "maxTravelSpeed": 5.5,
+            "trackShoeWidth": 900,
+            "fuelTank": 650
+          },
+          "specsVerified": true,
+          "sources": [
+            "http://mea.liugong.com/product/950e/",
+            "https://osmedia.liugong.com/wp-content/blogs.dir/4/files/2021/11/950E-NEW.pdf"
+          ]
+        },
+        {
+          "slug": "liugong-990f",
+          "name": "990F",
+          "brand": "liugong",
+          "summary": "A 93-tonne mining-class excavator for loading large haul trucks in quarries and mines.",
+          "highlights": [
+            "93 t operating weight with a 5.6 m³ standard bucket",
+            "Perkins 2806D engine rated at 447.5 kW",
+            "472 kN bucket digging force",
+            "1,240 L fuel tank"
+          ],
+          "specs": {
+            "operatingWeight": 93000,
+            "enginePower": 447.5,
+            "engineModel": "Perkins 2806D",
+            "emissions": "Tier 3 / Stage IIIA",
+            "bucketCapacity": 5.6,
+            "maxDigDepth": 7185,
+            "maxReach": 12448,
+            "maxDumpHeight": 7979,
+            "bucketDiggingForce": 472,
+            "armDiggingForce": 392,
+            "mainPumpFlow": 1008,
+            "mainReliefPressure": 350,
+            "boostPressure": 373,
+            "swingSpeed": 6.5,
+            "maxTravelSpeed": 4.2,
+            "trackShoeWidth": 650,
+            "fuelTank": 1240
+          },
+          "specsVerified": true,
+          "sources": [
+            "http://mea.liugong.com/product/990f/",
+            "https://osmedia.liugong.com/wp-content/blogs.dir/4/files/2021/11/990F-Stage-IIIA_Perkins_EN.pdf"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "wheel-loaders",
+      "name": "Wheel Loaders",
+      "summary": "Articulated wheel loaders from 10 to 31 tonnes for loading, stockpiling and moving material around quarries, ports, plants and sites.",
+      "howItWorks": "A wheel loader is a four-wheel-drive machine with a hydraulic bucket at the front. Its job is to scoop loose material, carry it and dump it into a truck, hopper or stockpile.\n\nMost loaders are **articulated**. The chassis is split into front and rear frames joined by a central hinge, and two steering cylinders fold the machine at that hinge, typically about 35–40° each way. The rear wheels follow the front wheels, so the loader turns tightly for its size and the bucket always faces where the machine is heading.\n\nPower travels from the diesel engine through a **torque converter**, a fluid coupling that multiplies torque when the wheels meet resistance. When the bucket is driven into a pile, the converter lets the engine keep its speed while the wheels slow down and push harder. This is why loaders dig so well without stalling. A **powershift transmission** then changes gears under load, with no clutch pedal. Drive goes to **heavy-duty axles** front and rear, and some machines add limited-slip or locking differentials for traction in mud.\n\nThe loading equipment is a **lift arm** (boom) with lift cylinders and a **tilt linkage** that curls and dumps the bucket. A common design is the Z-bar linkage, which gives strong breakout force. An engine-driven pump powers both these functions and the steering. On spec sheets, **breakout force** tells you how hard the bucket can tear into a pile. **Tipping load** is the weight at which the machine would tip forward, and safe working loads are set well below it. **Dump clearance** tells you which truck heights you can load over.",
+      "keyComponents": [
+        { "name": "Articulation joint", "role": "The centre hinge between the front and rear frames, which lets the loader steer by folding in the middle." },
+        { "name": "Torque converter", "role": "A fluid coupling between the engine and the transmission that multiplies torque when the bucket pushes into a pile." },
+        { "name": "Powershift transmission", "role": "Changes gear and direction under load without a foot clutch." },
+        { "name": "Axles and differentials", "role": "Carry the machine's weight and send drive to all four wheels." },
+        { "name": "Lift arm and tilt linkage", "role": "Raise, curl and dump the bucket; the geometry sets breakout force and dump reach." },
+        { "name": "Bucket and cutting edge", "role": "Chosen to suit the material; the bolt-on edges and teeth are wear parts." },
+        { "name": "Hydraulic pump and control valve", "role": "Supply oil to the lift, tilt and steering circuits." },
+        { "name": "Tyres", "role": "A major operating cost; the tread pattern and ply rating should match the ground conditions." }
+      ],
+      "applications": [
+        "Loading trucks with aggregate and blasted rock at quarries",
+        "Stockpile management at block, asphalt and concrete batching plants",
+        "Handling bulk cargo (clinker, fertiliser, grains) at Apapa, Tin Can and Onne ports",
+        "Backfilling and material handling on road and estate projects",
+        "Sand dredging and sand-mining yards",
+        "Feeding processing lines at agro-industrial and solid-minerals sites",
+        "Waste transfer and landfill work"
+      ],
+      "choosingTips": [
+        "Match the bucket size to the material density. Light materials such as sand and grain take a bigger bucket than heavy blasted rock.",
+        "Check that dump clearance is enough to load over the side boards of your tipper trucks.",
+        "Size the loader to the truck. Three to four passes per truck usually keeps both machines working efficiently.",
+        "For quarry and rock work, specify rock buckets, protective guards and rock-pattern tyres.",
+        "Short-cycle yard loading favours a smaller, nimbler loader. Load-and-carry over longer distances favours a larger machine with higher travel speed.",
+        "Ask about attachment options: quick couplers, pallet forks, log grapples and high-tip buckets."
+      ],
+      "maintenance": {
+        "dailyChecks": [
+          "Check engine oil, coolant, hydraulic oil and transmission oil levels",
+          "Drain the fuel water separator",
+          "Check the air filter restriction indicator and clean the pre-cleaner",
+          "Grease the bucket, lift arm, linkage and articulation pins",
+          "Check tyre pressure and look for cuts or embedded rock",
+          "Check the bucket cutting edge and teeth for wear",
+          "Look for hydraulic leaks and damaged hoses",
+          "Test the brakes, steering, lights, horn and reversing alarm"
+        ],
+        "intervals": [
+          { "hours": 50, "tasks": ["Grease the drive-shaft universal joints", "Clean the radiator and cooler cores", "Check the wheel nut torque on new machines or after tyre changes"] },
+          { "hours": 250, "tasks": ["Check axle and differential oil levels", "Check belt tension and condition", "Check the battery and electrical connections"] },
+          { "hours": 500, "tasks": ["Change engine oil and filter (interval depends on oil grade and fuel quality)", "Replace fuel filters", "Replace the transmission oil filter"] },
+          { "hours": 1000, "tasks": ["Change transmission oil and clean the strainer", "Change axle and differential oil", "Replace the hydraulic return filter and breather"] },
+          { "hours": 2000, "tasks": ["Replace hydraulic oil", "Flush and replace coolant", "Inspect the articulation-joint bearings"] }
+        ],
+        "note": "These intervals reflect general industry practice and are a guide only. Always follow the LiuGong operation and maintenance manual for your model and serial number. Severe duty such as rock loading, salt-laden port air or extreme dust calls for shorter intervals."
+      },
+      "safety": [
+        "Fit the articulation lock bar before working in the pinch zone between the frames, and before transport",
+        "Travel with the bucket low. A raised bucket makes the machine much less stable",
+        "Keep pedestrians out of the turning area. The rear frame swings out when the loader steers",
+        "Never exceed the rated operating load, and check that the bucket matches the material density",
+        "Use the reversing alarm and camera where fitted. Reversing is the main cause of loader accidents on yards",
+        "Lower the bucket to the ground, apply the parking brake and stop the engine before leaving the cab"
+      ],
+      "specFields": [
+        { "key": "operatingWeight", "label": "Operating weight", "unit": "kg" },
+        { "key": "enginePower", "label": "Gross engine power", "unit": "kW" },
+        { "key": "netPower", "label": "Net engine power", "unit": "kW" },
+        { "key": "engineModel", "label": "Engine model", "unit": "" },
+        { "key": "emissions", "label": "Emission standard", "unit": "" },
+        { "key": "bucketCapacity", "label": "Standard bucket capacity", "unit": "m³" },
+        { "key": "tippingLoadFullTurn", "label": "Tipping load, full turn (ISO 14397-1)", "unit": "kg" },
+        { "key": "breakoutForce", "label": "Bucket breakout force", "unit": "kN" },
+        { "key": "dumpClearance", "label": "Dump clearance at full height", "unit": "mm" },
+        { "key": "dumpReach", "label": "Dump reach at full height", "unit": "mm" },
+        { "key": "totalCycleTime", "label": "Total hydraulic cycle time", "unit": "s" },
+        { "key": "transmission", "label": "Transmission", "unit": "" },
+        { "key": "torqueConverter", "label": "Torque converter", "unit": "" },
+        { "key": "maxTravelSpeedForward", "label": "Max. travel speed, forward", "unit": "km/h" },
+        { "key": "articulationAngle", "label": "Articulation angle (each side)", "unit": "°" },
+        { "key": "tyres", "label": "Tyre size", "unit": "" },
+        { "key": "fuelTank", "label": "Fuel tank capacity", "unit": "L" }
+      ],
+      "faq": [
+        { "q": "What does the model number of a LiuGong wheel loader tell me?", "a": "Higher numbers mean larger machines in the range. For example, the 835H is a 10-tonne-class loader and the 890H is a 30-tonne-class loader. Always compare the actual operating weight, bucket size and tipping load rather than relying on the model number alone." },
+        { "q": "What is the difference between tipping load and rated load?", "a": "Tipping load is the weight in the bucket at which the machine would start to tip forward. The safe rated operating load is set well below that figure to leave a stability margin, so never plan work around the tipping load." },
+        { "q": "Which bucket should I use for sand versus rock?", "a": "Use a larger general-purpose or light-material bucket for sand and other loose, light materials. For blasted rock, use a smaller, reinforced rock bucket with teeth and a protected edge, which limits stress and wear on the machine." },
+        { "q": "How can I reduce tyre costs?", "a": "Keep the correct inflation pressure, clear rock spillage from loading areas, avoid wheel spin when entering the pile, and choose a tread pattern that suits the ground. Tyres are often one of the biggest running costs on a loader." },
+        { "q": "Can you service a loader at our quarry or port?", "a": "Yes. Scheduled services and most repairs are done on site by our field technicians, so the machine stays close to where it works." }
+      ],
+      "models": [
+        {
+          "slug": "liugong-835h",
+          "name": "835H",
+          "brand": "liugong",
+          "summary": "A compact 10-tonne-class loader with a 2.0 m³ bucket, suited to yards, block plants and general site work.",
+          "highlights": [
+            "Cummins 6BTAA5.9 engine, 97 kW gross",
+            "2.0 m³ standard bucket",
+            "40° articulation each way for tight yards",
+            "Planetary powershift transmission"
+          ],
+          "specs": {
+            "operatingWeight": 10454,
+            "enginePower": 97,
+            "netPower": 89,
+            "engineModel": "Cummins 6BTAA5.9-C130",
+            "emissions": "EPA Tier 2 / EU Stage II",
+            "bucketCapacity": 2.0,
+            "tippingLoadFullTurn": 6640,
+            "breakoutForce": 87,
+            "dumpClearance": 2855,
+            "dumpReach": 1109,
+            "totalCycleTime": 9.3,
+            "transmission": "Planetary powershift, 2F/1R",
+            "torqueConverter": "Double-stage, four-element",
+            "maxTravelSpeedForward": 40,
+            "articulationAngle": 40,
+            "tyres": "17.5-25",
+            "fuelTank": 140
+          },
+          "specsVerified": true,
+          "sources": [
+            "http://mea.liugong.com/product/835h/",
+            "https://osmedia.liugong.com/wp-content/blogs.dir/4/files/2021/11/LiuGong-835H-Tier2-EN-1.pdf"
+          ]
+        },
+        {
+          "slug": "liugong-842h",
+          "name": "842H",
+          "brand": "liugong",
+          "summary": "A 13-tonne loader with a 2.3 m³ bucket that sits between the compact and 5-tonne-class machines.",
+          "highlights": [
+            "Cummins 6BTAA5.9 engine, 125 kW gross",
+            "124 kN breakout force",
+            "9.0 s total hydraulic cycle",
+            "Dump clearance of nearly 2.9 m"
+          ],
+          "specs": {
+            "operatingWeight": 13000,
+            "enginePower": 125,
+            "netPower": 115,
+            "engineModel": "Cummins 6BTAA5.9-C170",
+            "emissions": "EPA Tier 2 / EU Stage II",
+            "bucketCapacity": 2.3,
+            "tippingLoadFullTurn": 8400,
+            "breakoutForce": 124,
+            "dumpClearance": 2889,
+            "dumpReach": 1110,
+            "totalCycleTime": 9.0
+          },
+          "specsVerified": true,
+          "sources": [
+            "http://mea.liugong.com/product/842h/"
+          ]
+        },
+        {
+          "slug": "liugong-856h",
+          "name": "856H",
+          "brand": "liugong",
+          "summary": "LiuGong's 17-tonne flagship loader in the popular 5-tonne class, the standard machine for quarries, plants and ports.",
+          "highlights": [
+            "Cummins 6LTAA9.3 engine, 162 kW gross",
+            "172 kN breakout force with a 3.0 m³ standard bucket",
+            "3.1 m dump clearance",
+            "Countershaft powershift, 4 forward and 3 reverse gears"
+          ],
+          "specs": {
+            "operatingWeight": 17000,
+            "enginePower": 162,
+            "netPower": 149,
+            "engineModel": "Cummins 6LTAA9.3",
+            "emissions": "EPA Tier 2 / EU Stage II",
+            "bucketCapacity": 3.0,
+            "tippingLoadFullTurn": 10800,
+            "breakoutForce": 172,
+            "dumpClearance": 3100,
+            "dumpReach": 1126,
+            "totalCycleTime": 10,
+            "transmission": "Countershaft powershift, 4F/3R",
+            "torqueConverter": "Single-stage, three-element",
+            "maxTravelSpeedForward": 40,
+            "articulationAngle": 38,
+            "tyres": "23.5-25",
+            "fuelTank": 300
+          },
+          "specsVerified": true,
+          "sources": [
+            "http://mea.liugong.com/product/856h/",
+            "https://osmedia.liugong.com/wp-content/blogs.dir/4/files/2021/11/LiuGong-856H-Tier2-EN.pdf"
+          ]
+        },
+        {
+          "slug": "liugong-862h",
+          "name": "862H",
+          "brand": "liugong",
+          "summary": "A 20-tonne loader with a 4.0 m³ bucket for high-volume aggregate and bulk handling.",
+          "highlights": [
+            "Cummins 6LTAA8.9 engine, 179 kW gross",
+            "4.0 m³ standard bucket",
+            "180 kN breakout force",
+            "3.4 m dump clearance for loading high-sided trucks"
+          ],
+          "specs": {
+            "operatingWeight": 20000,
+            "enginePower": 179,
+            "netPower": 168,
+            "engineModel": "Cummins 6LTAA8.9",
+            "emissions": "EPA Tier 2 / EU Stage II",
+            "bucketCapacity": 4.0,
+            "tippingLoadFullTurn": 14200,
+            "breakoutForce": 180,
+            "dumpClearance": 3402,
+            "dumpReach": 1052,
+            "totalCycleTime": 9.3
+          },
+          "specsVerified": true,
+          "sources": [
+            "http://mea.liugong.com/product/862h/"
+          ]
+        },
+        {
+          "slug": "liugong-890h",
+          "name": "890H",
+          "brand": "liugong",
+          "summary": "A 30-tonne large loader for quarry face loading and mining support.",
+          "highlights": [
+            "Cummins QSM11 engine, 287 kW gross",
+            "5.4 m³ standard bucket",
+            "245 kN breakout force",
+            "20.6 t full-turn tipping load"
+          ],
+          "specs": {
+            "operatingWeight": 30600,
+            "enginePower": 287,
+            "netPower": 273,
+            "engineModel": "Cummins QSM11",
+            "emissions": "EPA Tier 2 / EU Stage II",
+            "bucketCapacity": 5.4,
+            "tippingLoadFullTurn": 20600,
+            "breakoutForce": 245,
+            "dumpClearance": 3330,
+            "dumpReach": 1479,
+            "totalCycleTime": 11
+          },
+          "specsVerified": true,
+          "sources": [
+            "http://mea.liugong.com/product/890h/"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "bulldozers",
+      "name": "Bulldozers",
+      "summary": "Crawler dozers for pushing, spreading and ripping, used for land clearing, road formation and quarry overburden.",
+      "howItWorks": "A bulldozer (crawler tractor) is built to push. It has a heavy steel frame on long tracks, a wide **blade** at the front and, in most cases, a **ripper** at the rear. Its tracks spread a large weight over a big ground area, so it gets the grip it needs to shove soil, rock and vegetation.\n\nThe diesel engine drives through a **torque converter** and a **powershift transmission**, much as a wheel loader does. When the blade meets heavy resistance, the converter multiplies torque so the engine keeps running instead of stalling. From the transmission, power goes to **steering clutches and brakes**, or to a differential steering unit on some designs, and then through **final drives** to the sprockets that turn each track. To turn, the machine slows or stops one track and keeps driving the other.\n\nThe blade is raised, lowered and tilted by hydraulic cylinders. Blade shape decides the job. A **straight blade** cuts and grades well. A **semi-U blade** has curved wings that hold more material for pushing. A **full-U blade** carries the largest load over longer distances in loose material. **Blade capacity** (m³) on the spec sheet tells you roughly how much one pass can move.\n\nThe **ripper** is one or more hardened shanks that the operator drives into the ground to break up compacted laterite, soft rock or old pavement so the blade can move it. A single-shank ripper reaches deeper, and a multi-shank ripper breaks a wider strip. **Ground pressure** (kPa) shows how well the dozer will float on soft ground. Lower is better in swamp and wet clay.",
+      "keyComponents": [
+        { "name": "Blade", "role": "Cuts, pushes and spreads material; its shape (straight, semi-U or full-U) sets capacity and grading ability." },
+        { "name": "Ripper", "role": "Rear shank or shanks that break up hard ground, soft rock and old pavement ahead of dozing." },
+        { "name": "Torque converter and powershift transmission", "role": "Multiply torque under heavy load and give clutchless gear and direction changes." },
+        { "name": "Steering clutches and brakes", "role": "Slow or stop one track so the dozer turns." },
+        { "name": "Final drives and sprockets", "role": "Reduce speed and multiply torque at each track." },
+        { "name": "Undercarriage", "role": "Track chains, shoes, rollers and idlers; the largest wear-cost item on a dozer." },
+        { "name": "Blade lift and tilt cylinders", "role": "Raise, lower and tilt the blade for cutting, spreading and side-slope work." }
+      ],
+      "applications": [
+        "Land clearing and stumping for farms and estates",
+        "Road formation: cutting, filling and spreading laterite",
+        "Stripping overburden in quarries and solid-minerals sites",
+        "Ripping hard laterite and soft rock ahead of excavation",
+        "Building embankments, dams and drainage channels",
+        "Pushing material and spreading cover at landfill sites"
+      ],
+      "choosingTips": [
+        "Choose blade type for the work. Straight blades suit cutting and grading, while semi-U and full-U blades carry more material over longer pushes.",
+        "Add a ripper if you will meet hard laterite, weathered rock or old asphalt. A single shank penetrates deepest.",
+        "On swampy or wet clay sites, look for lower ground pressure or wider track shoes.",
+        "Larger dozers move material faster but cost more to transport. Check low-bed availability and road permits.",
+        "Remember that undercarriage wear in abrasive sand and laterite drives running costs, so plan undercarriage inspections from day one."
+      ],
+      "maintenance": {
+        "dailyChecks": [
+          "Check engine oil, coolant, hydraulic oil and transmission/torque converter oil levels",
+          "Drain the fuel water separator",
+          "Check the air filter restriction indicator and clean the pre-cleaner",
+          "Grease the blade, push-arm, ripper and equaliser bar pins",
+          "Check track tension and look for loose shoe bolts and damaged rollers",
+          "Inspect blade cutting edges, end bits and ripper tips",
+          "Clear packed mud and debris from the track frames and belly guards"
+        ],
+        "intervals": [
+          { "hours": 50, "tasks": ["Check the final-drive oil levels", "Check the steering clutch and brake case oil level", "Clean the radiator and cooler cores"] },
+          { "hours": 250, "tasks": ["Inspect the undercarriage in detail and measure wear", "Check belt tension", "Check the battery and electrical connections"] },
+          { "hours": 500, "tasks": ["Change engine oil and filter (interval depends on oil grade and fuel quality)", "Replace fuel filters", "Replace the transmission and hydraulic filters as specified"] },
+          { "hours": 1000, "tasks": ["Change transmission and torque converter oil", "Change final-drive oil", "Check engine valve clearance if specified"] },
+          { "hours": 2000, "tasks": ["Replace hydraulic oil", "Flush and replace coolant", "Inspect the equaliser bar and pivot shaft bearings"] }
+        ],
+        "note": "These intervals reflect general industry practice and are a guide only. Always follow the LiuGong operation and maintenance manual for your model and serial number. Heavy ripping and abrasive soils call for shorter intervals."
+      },
+      "safety": [
+        "Walk the area before clearing to find hidden ditches, soft spots, stumps and buried services",
+        "Watch for falling trees and branches during land clearing, and make sure the cab protective structure (ROPS/FOPS) is in place",
+        "Do not work along the edge of a fill or bank without a safe margin",
+        "On steep slopes, travel straight up or down rather than across",
+        "Lower the blade and ripper to the ground before leaving the machine",
+        "Keep everyone clear of the rear when ripping or reversing"
+      ],
+      "specFields": [
+        { "key": "operatingWeight", "label": "Operating weight", "unit": "kg" },
+        { "key": "enginePower", "label": "Gross engine power", "unit": "kW" },
+        { "key": "netPower", "label": "Net engine power", "unit": "kW" },
+        { "key": "engineModel", "label": "Engine model", "unit": "" },
+        { "key": "emissions", "label": "Emission standard", "unit": "" },
+        { "key": "bladeCapacity", "label": "Standard blade capacity", "unit": "m³" },
+        { "key": "bladeWidth", "label": "Straight blade width", "unit": "mm" },
+        { "key": "bladeHeight", "label": "Straight blade height", "unit": "mm" },
+        { "key": "bladeOptions", "label": "Blade options", "unit": "" },
+        { "key": "ripperOptions", "label": "Ripper options", "unit": "" },
+        { "key": "groundPressure", "label": "Ground pressure", "unit": "kPa" },
+        { "key": "trackShoeWidth", "label": "Track shoe width", "unit": "mm" },
+        { "key": "maxTravelSpeedForward", "label": "Max. travel speed, forward", "unit": "km/h" },
+        { "key": "maxTravelSpeedReverse", "label": "Max. travel speed, reverse", "unit": "km/h" },
+        { "key": "fuelTank", "label": "Fuel tank capacity", "unit": "L" }
+      ],
+      "faq": [
+        { "q": "What is the difference between a straight blade and a U-blade?", "a": "A straight blade cuts, levels and grades well. A U-blade has curved side wings that keep material from spilling off the ends, so it carries more per pass over longer pushes but is less suited to fine grading." },
+        { "q": "Do I need a ripper?", "a": "Fit one if your sites have hard laterite, weathered rock, old pavement or compacted fill. Ripping first lets the blade move material faster and lowers stress on the machine." },
+        { "q": "Why does a dozer need so much undercarriage maintenance?", "a": "The tracks carry the whole machine and grind against abrasive soil all day. Correct track tension, regular cleaning and measuring wear help the undercarriage reach its full life, and that is where much of a dozer's running cost is decided." },
+        { "q": "Can a dozer work in swampy ground?", "a": "Yes, within limits. Lower ground pressure and wider track shoes help a dozer float on soft soil. Tell us about your site conditions and we will advise on the right configuration." }
+      ],
+      "models": [
+        {
+          "slug": "liugong-b230",
+          "name": "B230",
+          "brand": "liugong",
+          "summary": "A 24.5-tonne crawler dozer for land clearing, road formation and general earthmoving.",
+          "highlights": [
+            "Chongqing Cummins NT855 engine, 179 kW gross",
+            "7.8 m³ straight blade",
+            "76 kPa ground pressure",
+            "Choice of straight, semi-U and full-U blades, plus single- or three-shank rippers"
+          ],
+          "specs": {
+            "operatingWeight": 24500,
+            "enginePower": 179,
+            "netPower": 169,
+            "engineModel": "Chongqing Cummins NT855C280S10",
+            "emissions": "Stage I",
+            "bladeCapacity": 7.8,
+            "bladeWidth": 3725,
+            "bladeHeight": 1395,
+            "bladeOptions": "Straight, semi-U, full-U, wetland/landfill",
+            "ripperOptions": "Single-shank or triple-shank",
+            "groundPressure": 76,
+            "trackShoeWidth": 560,
+            "maxTravelSpeedForward": 12,
+            "maxTravelSpeedReverse": 13.8,
+            "fuelTank": 480
+          },
+          "specsVerified": true,
+          "sources": [
+            "http://mea.liugong.com/product/b230/",
+            "https://osmedia.liugong.com/wp-content/blogs.dir/4/files/2021/11/B230-China-I-Chongkang.pdf"
+          ]
+        },
+        {
+          "slug": "liugong-b230s",
+          "name": "B230S",
+          "brand": "liugong",
+          "summary": "A heavier 26.4-tonne version of the B230 with a larger 8.4 m³ blade for higher-volume pushing.",
+          "highlights": [
+            "Cummins NT855 engine, 179 kW",
+            "8.4 m³ straight blade",
+            "Single- or triple-shank ripper options"
+          ],
+          "specs": {
+            "operatingWeight": 26400,
+            "enginePower": 179,
+            "engineModel": "Cummins NT855C280",
+            "emissions": "Stage I",
+            "bladeCapacity": 8.4,
+            "bladeOptions": "Straight, semi-U, full-U, wetland/landfill",
+            "ripperOptions": "Single-shank or triple-shank"
+          },
+          "specsVerified": true,
+          "sources": [
+            "http://mea.liugong.com/product/b230s/"
+          ]
+        },
+        {
+          "slug": "liugong-b320",
+          "name": "B320",
+          "brand": "liugong",
+          "summary": "A 34-tonne heavy dozer for quarry overburden, large earthworks and hard ripping.",
+          "highlights": [
+            "Chongqing Cummins NT855 engine, 257 kW gross",
+            "10.4 m³ straight blade",
+            "4.1 m wide blade",
+            "610 L fuel tank"
+          ],
+          "specs": {
+            "operatingWeight": 34015,
+            "enginePower": 257,
+            "netPower": 235,
+            "engineModel": "Chongqing Cummins NT855C360S20",
+            "emissions": "Stage II",
+            "bladeCapacity": 10.4,
+            "bladeWidth": 4130,
+            "bladeHeight": 1530,
+            "bladeOptions": "Straight, semi-U, full-U, wetland/landfill",
+            "ripperOptions": "Single-shank or triple-shank",
+            "groundPressure": 94,
+            "trackShoeWidth": 560,
+            "maxTravelSpeedForward": 11.8,
+            "maxTravelSpeedReverse": 13.7,
+            "fuelTank": 610
+          },
+          "specsVerified": true,
+          "sources": [
+            "http://mea.liugong.com/product/b320/",
+            "https://osmedia.liugong.com/wp-content/blogs.dir/4/files/2021/11/B320-Tier-II.pdf"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "motor-graders",
+      "name": "Motor Graders",
+      "summary": "Motor graders that shape, level and finish road formations, shoulders, drains and site platforms to accurate grade.",
+      "howItWorks": "A motor grader is a precision levelling machine. A long front frame carries a **moldboard** (blade) mounted under the middle of the machine on a rotating **circle**. The cab, the engine and a set of **tandem drive wheels** sit at the rear.\n\nThe operator can position the blade in almost any direction. **Lift cylinders** on each side raise or lower each end on its own, which sets the crossfall or camber. The **circle** turns the blade to an angle, so the material it cuts rolls off to one side and forms a windrow. **Side-shift** slides the blade out past the wheels to cut ditches and shoulders. The blade can also be tilted to change how it cuts. Together these controls let a skilled operator cut, spread and fine-trim to tolerances of a few centimetres.\n\nThe engine drives the rear tandem wheels through a **torque converter** and a **powershift transmission**, which has several forward gears for slow, high-force cutting and faster gears for travel between sites. The tandems are mounted in **oscillating boxes**, so all four rear wheels stay on the ground over uneven surfaces. A long wheelbase helps too, because the machine averages out bumps instead of copying them into the surface.\n\nMany graders are **articulated** between the front frame and the rear unit, and the front wheels can **lean**. Both help the machine turn tightly and hold a straight line against the side load the angled blade creates. Optional **rear rippers** or **front scarifiers** break up hard surfaces before shaping, and a **front dozer blade** can be fitted for spreading.",
+      "keyComponents": [
+        { "name": "Moldboard (blade)", "role": "Cuts, moves and finishes material to the required grade and shape." },
+        { "name": "Circle and drawbar", "role": "Carry the blade and rotate it to angle material off to one side." },
+        { "name": "Blade lift and side-shift cylinders", "role": "Set the height, crossfall and lateral position of the blade." },
+        { "name": "Tandem drive", "role": "Oscillating rear wheel pairs that keep traction and stability on uneven ground." },
+        { "name": "Torque converter and powershift transmission", "role": "Give smooth power for cutting and a wide spread of gears for working and travel." },
+        { "name": "Articulation joint and front wheel lean", "role": "Allow tight turns and offset the side load from the angled blade." },
+        { "name": "Rear ripper or front scarifier (optional)", "role": "Loosen compacted or hard surfaces before shaping." }
+      ],
+      "applications": [
+        "Shaping road subgrade and base layers on federal, state and rural roads",
+        "Maintaining laterite (earth) roads to quarries, farms and plantations",
+        "Cutting side drains and shaping shoulders",
+        "Preparing building platforms and estate roads to accurate levels",
+        "Spreading and levelling base material ahead of compaction",
+        "Building and maintaining haul roads at mines and quarries"
+      ],
+      "choosingTips": [
+        "Pick blade width for the work. Wider blades cover more ground on highway work, while shorter blades suit estate roads and tighter sites.",
+        "Higher power and weight matter for heavy cutting and ripping. Lighter machines are enough for maintenance grading.",
+        "Specify a rear ripper if you regularly rework old laterite or compacted surfaces.",
+        "If the grader will move between sites by road, check its maximum travel speed.",
+        "Ask about readiness for GPS or laser grade control if your contracts demand tight tolerances."
+      ],
+      "maintenance": {
+        "dailyChecks": [
+          "Check engine oil, coolant, hydraulic oil and transmission oil levels",
+          "Drain the fuel water separator",
+          "Check the air filter indicator and clean the pre-cleaner",
+          "Grease the circle, drawbar ball, blade-lift and articulation pins",
+          "Inspect the blade cutting edges and end bits",
+          "Check tyre pressure and look for damage",
+          "Test the brakes, steering, lights and reversing alarm"
+        ],
+        "intervals": [
+          { "hours": 50, "tasks": ["Check the tandem case oil level", "Check and adjust circle drive wear strips", "Clean the cooling cores"] },
+          { "hours": 250, "tasks": ["Check the circle drive gearbox oil", "Check belts and the battery", "Check the wheel nut torque"] },
+          { "hours": 500, "tasks": ["Change engine oil and filter (interval depends on oil grade and fuel quality)", "Replace fuel filters", "Replace transmission and hydraulic filters as specified"] },
+          { "hours": 1000, "tasks": ["Change transmission oil", "Change tandem and axle oil", "Inspect the circle teeth and pinion"] },
+          { "hours": 2000, "tasks": ["Replace hydraulic oil", "Flush and replace coolant"] }
+        ],
+        "note": "These intervals reflect general industry practice and are a guide only. Always follow the LiuGong operation and maintenance manual for your model and serial number."
+      },
+      "safety": [
+        "Watch both ends of the blade. With side-shift or a steep angle it can reach well beyond the wheels",
+        "Use traffic management (signs, flaggers and cones) when grading live roads",
+        "Keep people clear of the articulation zone and the rear of the machine",
+        "Take care cutting ditches next to soft edges, which can collapse under the wheels",
+        "Lower the blade to the ground before leaving the cab"
+      ],
+      "specFields": [
+        { "key": "operatingWeight", "label": "Operating weight", "unit": "kg" },
+        { "key": "enginePower", "label": "Rated engine power", "unit": "kW" },
+        { "key": "engineModel", "label": "Engine model", "unit": "" },
+        { "key": "emissions", "label": "Emission standard", "unit": "" },
+        { "key": "bladeWidth", "label": "Moldboard width", "unit": "mm" },
+        { "key": "bladeHeight", "label": "Moldboard height", "unit": "mm" },
+        { "key": "bladePull", "label": "Blade pull", "unit": "kN" },
+        { "key": "transmission", "label": "Transmission", "unit": "" },
+        { "key": "maxTravelSpeedForward", "label": "Max. travel speed, forward", "unit": "km/h" },
+        { "key": "tyres", "label": "Tyre size", "unit": "" },
+        { "key": "minTurningRadius", "label": "Min. turning radius", "unit": "mm" },
+        { "key": "articulationAngle", "label": "Frame articulation angle (each side)", "unit": "°" },
+        { "key": "fuelTank", "label": "Fuel tank capacity", "unit": "L" }
+      ],
+      "faq": [
+        { "q": "Why can't a dozer do a grader's job?", "a": "A dozer is built for force. A grader is built for accuracy: its long wheelbase and adjustable blade let it trim to a precise level and camber, which road specifications require." },
+        { "q": "What does blade pull mean?", "a": "Blade pull is the pulling force the grader can produce at the blade, and it shows how much cutting work the machine can handle. Heavier, more powerful graders produce more of it." },
+        { "q": "Do I need a ripper on my grader?", "a": "It helps if you regularly break up hard, compacted laterite or old road surfaces before reshaping them. For maintenance grading on loose surfaces it is often unnecessary." },
+        { "q": "Can a grader be fitted with automatic grade control?", "a": "Many graders can be fitted with GPS or laser grade-control systems. Ask us about compatibility for the model you are considering." }
+      ],
+      "models": [
+        {
+          "slug": "liugong-4180d",
+          "name": "4180D",
+          "brand": "liugong",
+          "summary": "A 15.5-tonne grader with a 3.96 m blade for road maintenance, estate roads and general levelling.",
+          "highlights": [
+            "Cummins 6BTAA5.9 engine, 142 kW",
+            "3,960 mm moldboard",
+            "Powershift transmission, 6 forward and 3 reverse gears",
+            "Front dozer blade and rear ripper available as options"
+          ],
+          "specs": {
+            "operatingWeight": 15500,
+            "enginePower": 142,
+            "engineModel": "Cummins 6BTAA5.9-C190",
+            "emissions": "Tier 2 / Stage II",
+            "bladeWidth": 3960,
+            "bladeHeight": 610,
+            "bladePull": 80,
+            "transmission": "Powershift, 6F/3R",
+            "tyres": "17.5-25",
+            "minTurningRadius": 7200,
+            "articulationAngle": 27,
+            "fuelTank": 348
+          },
+          "specsVerified": true,
+          "sources": [
+            "http://mea.liugong.com/product/4180d/",
+            "https://osmedia.liugong.com/wp-content/blogs.dir/4/files/2021/11/4180D-Tier-2-DCEC-DozerRipper-1.pdf"
+          ]
+        },
+        {
+          "slug": "liugong-4215d",
+          "name": "4215D",
+          "brand": "liugong",
+          "summary": "A 16.5-tonne grader with a 4.27 m blade, built for highway construction and heavier cutting.",
+          "highlights": [
+            "Cummins 6LTAA9.3 engine, 162 kW",
+            "4,270 mm moldboard",
+            "Wet axle with a no-spin differential",
+            "Top forward speed of 42 km/h"
+          ],
+          "specs": {
+            "operatingWeight": 16500,
+            "enginePower": 162,
+            "engineModel": "Cummins 6LTAA9.3",
+            "emissions": "Tier 2 / Stage II",
+            "bladeWidth": 4270,
+            "bladeHeight": 645,
+            "bladePull": 85,
+            "transmission": "Powershift, 6F/3R",
+            "maxTravelSpeedForward": 42,
+            "tyres": "17.5-25",
+            "minTurningRadius": 7200,
+            "articulationAngle": 27,
+            "fuelTank": 348
+          },
+          "specsVerified": true,
+          "sources": [
+            "http://mea.liugong.com/product/4215d/",
+            "https://osmedia.liugong.com/wp-content/blogs.dir/4/files/2021/11/4215D-Tier2-GCIC.pdf"
+          ]
+        },
+        {
+          "slug": "liugong-425",
+          "name": "425",
+          "brand": "liugong",
+          "summary": "A 19.5-tonne heavy grader with a 4.57 m blade for major road projects and mine haul roads.",
+          "highlights": [
+            "Cummins 6LTAA8.9 engine, 179 kW",
+            "4,572 mm moldboard",
+            "100 kN blade pull",
+            "Powershift transmission, 6 forward and 3 reverse gears"
+          ],
+          "specs": {
+            "operatingWeight": 19500,
+            "enginePower": 179,
+            "engineModel": "Cummins 6LTAA8.9",
+            "emissions": "Tier 2 / Stage II",
+            "bladeWidth": 4572,
+            "bladePull": 100,
+            "transmission": "Powershift, 6F/3R",
+            "maxTravelSpeedForward": 36.6
+          },
+          "specsVerified": true,
+          "sources": [
+            "http://mea.liugong.com/product/425/"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "skid-steer-loaders",
+      "name": "Skid Steer Loaders",
+      "summary": "Compact, highly manoeuvrable loaders that take a wide range of attachments for tight sites, yards and farms.",
+      "howItWorks": "A skid steer loader is a small, rigid-frame loader with **no steering axle**. Each side of the machine has its own drive. On many machines a **hydrostatic pump** drives a hydraulic motor on each side, and the motor turns both wheels on that side through chains or gears. To turn, the operator runs one side faster than the other, or in reverse, and the machine **skids** around. It can spin on the spot, which makes it ideal for cramped spaces.\n\nThe operator sits between two **lift arms** that pivot behind the cab. Joysticks or levers control drive speed and direction plus the lift and tilt functions. A **universal quick-attach plate** at the front accepts buckets, pallet forks, augers, sweepers, breakers, trenchers and grapples, so one machine can take on many jobs on the same day. **Auxiliary hydraulics** supply oil to attachments with their own motors or cylinders. High-flow circuits run demanding tools such as cold planers and mulchers.\n\nThe key rating is **rated operating capacity (ROC)**, set at 50% of the static **tipping load**. Because the machine is short and light, staying within ROC is essential for stability. Lift-arm geometry is either **radial**, where the arms swing in an arc, or **vertical**, where they travel nearly straight up. Vertical lift gives more reach at full height for loading trucks.",
+      "keyComponents": [
+        { "name": "Hydrostatic drive", "role": "A hydraulic pump and motors drive each side independently, giving skid steering and smooth speed control." },
+        { "name": "Chain cases or final drives", "role": "Carry drive from each motor to the wheels on that side." },
+        { "name": "Lift arms", "role": "Raise and lower the attachment; their geometry sets reach and lift height." },
+        { "name": "Quick-attach plate", "role": "Lets the operator change attachments quickly." },
+        { "name": "Auxiliary hydraulics", "role": "Supply oil to powered attachments such as augers, breakers and sweepers." },
+        { "name": "ROPS/FOPS cab", "role": "Protects the operator from rollover and falling objects." }
+      ],
+      "applications": [
+        "Site clean-up and material handling in tight urban building sites",
+        "Loading and moving blocks, sand and aggregate at block yards",
+        "Farm and poultry-house cleaning, feed handling and manure removal",
+        "Warehouse, port-yard and factory housekeeping",
+        "Landscaping, auger drilling for fence posts and light trenching",
+        "Breaking small concrete slabs with a hydraulic breaker attachment"
+      ],
+      "choosingTips": [
+        "Choose by rated operating capacity. The heaviest load you will regularly lift should sit comfortably below it.",
+        "If you will run powered attachments such as augers or breakers, check the auxiliary hydraulic flow.",
+        "Choose vertical lift for regular truck loading and radial lift for digging and general work.",
+        "On soft or muddy ground, consider tracked compact loaders. Wheeled skid steers suit hard surfaces.",
+        "Budget for tyre wear. Skid steering scrubs the tyres, especially on concrete."
+      ],
+      "maintenance": {
+        "dailyChecks": [
+          "Check engine oil, coolant and hydraulic oil levels",
+          "Check the air filter indicator; dusty yards need frequent cleaning",
+          "Grease the lift arm, cylinder and quick-attach pins",
+          "Check tyre pressure and wheel nuts",
+          "Check that the seat bar and safety interlocks work",
+          "Look for hydraulic leaks at the attachment couplers"
+        ],
+        "intervals": [
+          { "hours": 50, "tasks": ["Check the chain case oil level", "Clean the radiator and oil cooler"] },
+          { "hours": 250, "tasks": ["Change engine oil and filter (shorter intervals are common on compact machines)", "Check belt tension", "Inspect the drive chains or final drives"] },
+          { "hours": 500, "tasks": ["Replace fuel filters", "Replace the hydraulic filter"] },
+          { "hours": 1000, "tasks": ["Change hydraulic oil", "Change chain case oil", "Flush and replace coolant if the manual requires it"] }
+        ],
+        "note": "These intervals reflect general industry practice and are a guide only. Always follow the LiuGong operation and maintenance manual for your model and serial number."
+      },
+      "safety": [
+        "Always enter and exit over the lowered attachment with the arms down. Never climb under raised arms",
+        "Keep the seat belt and seat bar engaged. Interlocks are there to prevent crushing injuries",
+        "Carry loads low, and never exceed the rated operating capacity",
+        "Keep pedestrians away. The machine can turn suddenly in its own length",
+        "Drive straight up and down slopes with the heavy end uphill"
+      ],
+      "specFields": [
+        { "key": "ratedOperatingCapacity", "label": "Rated operating capacity", "unit": "kg" },
+        { "key": "tippingLoad", "label": "Static tipping load", "unit": "kg" },
+        { "key": "operatingWeight", "label": "Operating weight", "unit": "kg" },
+        { "key": "enginePower", "label": "Gross engine power", "unit": "kW" },
+        { "key": "engineModel", "label": "Engine model", "unit": "" },
+        { "key": "emissions", "label": "Emission standard", "unit": "" },
+        { "key": "bucketCapacity", "label": "Standard bucket capacity", "unit": "m³" },
+        { "key": "breakoutForce", "label": "Bucket breakout force", "unit": "kN" },
+        { "key": "dumpReach", "label": "Dump reach at full height", "unit": "mm" },
+        { "key": "hingePinHeight", "label": "Max. hinge pin height", "unit": "mm" },
+        { "key": "fuelTank", "label": "Fuel tank capacity", "unit": "L" }
+      ],
+      "faq": [
+        { "q": "What is rated operating capacity?", "a": "It is the load the machine is rated to carry safely, calculated as half of its static tipping load. Plan your work around this figure, not the tipping load." },
+        { "q": "What attachments can a skid steer use?", "a": "Common ones are general-purpose and 4-in-1 buckets, pallet forks, augers, sweepers, hydraulic breakers, grapples and trenchers. Powered attachments need auxiliary hydraulics with enough flow." },
+        { "q": "Is a skid steer suitable for farm work?", "a": "Yes. Its small size and fast attachment changes make it well suited to poultry and livestock housing, feed handling and general yard work." },
+        { "q": "Why do skid steer tyres wear quickly?", "a": "The machine turns by skidding its tyres sideways, which scrubs the tread, particularly on concrete and asphalt. Smooth, gradual turns and correct pressure reduce the wear." }
+      ],
+      "models": [
+        {
+          "slug": "liugong-365a",
+          "name": "365A",
+          "brand": "liugong",
+          "summary": "A compact skid steer with a 795 kg rated operating capacity for yards, farms and tight sites.",
+          "highlights": [
+            "795 kg rated operating capacity",
+            "48 kW engine",
+            "0.4 m³ standard bucket",
+            "Under 3 t operating weight for easy transport"
+          ],
+          "specs": {
+            "ratedOperatingCapacity": 795,
+            "tippingLoad": 1590,
+            "operatingWeight": 2950,
+            "enginePower": 48,
+            "emissions": "Tier 2 / Stage II",
+            "bucketCapacity": 0.4,
+            "breakoutForce": 20.8,
+            "dumpReach": 540
+          },
+          "specsVerified": true,
+          "sources": [
+            "http://mea.liugong.com/product/365a/"
+          ]
+        },
+        {
+          "slug": "liugong-375a",
+          "name": "375A",
+          "brand": "liugong",
+          "summary": "A larger skid steer with a 955 kg rated operating capacity and a Yanmar engine, for heavier loading and attachment work.",
+          "highlights": [
+            "955 kg rated operating capacity",
+            "Yanmar 4TNV98T engine, 61.6 kW",
+            "Hinge pin height above 3.1 m",
+            "0.5 m³ standard bucket"
+          ],
+          "specs": {
+            "ratedOperatingCapacity": 955,
+            "tippingLoad": 1910,
+            "operatingWeight": 3420,
+            "enginePower": 61.6,
+            "engineModel": "Yanmar 4TNV98T",
+            "emissions": "EPA Tier 3 / EU Stage IIIA",
+            "bucketCapacity": 0.5,
+            "breakoutForce": 25,
+            "dumpReach": 560,
+            "hingePinHeight": 3105,
+            "fuelTank": 80
+          },
+          "specsVerified": true,
+          "sources": [
+            "http://mea.liugong.com/product/375a/",
+            "https://osmedia.liugong.com/wp-content/blogs.dir/4/files/2021/11/375A-NEW.pdf"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "backhoe-loaders",
+      "name": "Backhoe Loaders",
+      "summary": "Wheeled machines with a loader at the front and a digging backhoe at the rear: two machines in one for municipal, utility and small-contractor work.",
+      "howItWorks": "A backhoe loader combines a **front loader** and a **rear excavator arm** (the backhoe) on a tractor-style wheeled chassis. The operator's seat swivels to face whichever end is in use.\n\nAt the front, a **loader bucket** on two lift arms scoops, carries and loads material much as a small wheel loader does. At the rear, the **backhoe** has a boom, a dipper (stick) and a small bucket on a **swing frame** that pivots side to side. The backhoe digs trenches, foundations and pits, and lifts pipes into place. Before digging, the operator lowers two hydraulic **stabiliser legs** at the rear and rests the front bucket on the ground. This lifts weight off the tyres and gives a stable, three-point base for digging.\n\nA single engine-driven **hydraulic pump** powers both ends through separate control valves. Unlike an excavator, the backhoe does not rotate a full 360°. Its swing is limited to an arc behind the machine. For travel, power goes from the engine through a **torque converter** and a **shuttle transmission**, which reverses direction quickly for loader work. Drive goes to the rear wheels, or to all four on 4WD versions. With road-legal speeds, a backhoe can drive between jobs without a low-bed, which is why it suits contractors with many small, scattered sites.",
+      "keyComponents": [
+        { "name": "Front loader and bucket", "role": "Scoops, carries and loads material, and acts as a front anchor when digging." },
+        { "name": "Backhoe boom, dipper and bucket", "role": "The rear digging arm, used for trenches, pits and lifting." },
+        { "name": "Swing frame", "role": "Lets the backhoe arm pivot sideways across the rear of the machine." },
+        { "name": "Stabiliser legs", "role": "Hydraulic outriggers that lift and steady the machine while it digs." },
+        { "name": "Torque converter and shuttle transmission", "role": "Give smooth starts and quick forward-reverse changes for loader work." },
+        { "name": "Axles", "role": "Rear drive with optional four-wheel drive for traction on soft ground." }
+      ],
+      "applications": [
+        "Water, sewer and telecoms trenching in towns and estates",
+        "Municipal works: drain clearing, road patching and small excavations",
+        "Foundation digging for residential buildings",
+        "Loading tippers with sand and gravel on smaller sites",
+        "Farm drainage, feed handling and general estate maintenance",
+        "Pipe laying and backfilling on the same visit"
+      ],
+      "choosingTips": [
+        "Choose 4WD if you work on soft, wet or sandy ground, where it makes a large difference to traction.",
+        "Check backhoe dig depth against your deepest regular trench.",
+        "An extending dipper adds reach and depth for utility work. Ask about availability for the model you want.",
+        "Consider auxiliary hydraulics if you want to run a breaker on the backhoe.",
+        "If you have several small sites, a backhoe that can drive itself between them saves transport costs."
+      ],
+      "maintenance": {
+        "dailyChecks": [
+          "Check engine oil, coolant, hydraulic oil and transmission oil levels",
+          "Drain the fuel water separator",
+          "Check the air filter indicator",
+          "Grease the loader, backhoe, swing and stabiliser pins",
+          "Check tyre pressure and wheel nuts",
+          "Inspect the bucket teeth on both buckets",
+          "Look for hydraulic hose damage, especially at the swing frame"
+        ],
+        "intervals": [
+          { "hours": 50, "tasks": ["Grease the drive-shaft joints", "Check the axle oil levels"] },
+          { "hours": 250, "tasks": ["Change engine oil and filter (interval depends on oil grade and fuel quality)", "Check belt tension and the battery"] },
+          { "hours": 500, "tasks": ["Replace fuel filters", "Replace the hydraulic and transmission filters"] },
+          { "hours": 1000, "tasks": ["Change transmission oil", "Change axle and hub oil", "Change hydraulic oil if the manual specifies it"] }
+        ],
+        "note": "These intervals reflect general industry practice and are a guide only. Always follow the LiuGong operation and maintenance manual for your model and serial number."
+      },
+      "safety": [
+        "Deploy the stabilisers and lower the front bucket before digging",
+        "Locate buried cables and pipes before trenching. Utility strikes are a major hazard in urban work",
+        "Keep people out of the backhoe's swing arc",
+        "Lock the backhoe in its transport position before travelling on roads, and follow traffic rules",
+        "Never use the backhoe to lift people"
+      ],
+      "specFields": [
+        { "key": "operatingWeight", "label": "Operating weight", "unit": "kg" },
+        { "key": "enginePower", "label": "Gross engine power", "unit": "kW" },
+        { "key": "engineModel", "label": "Engine model", "unit": "" },
+        { "key": "emissions", "label": "Emission standard", "unit": "" },
+        { "key": "loaderBucketCapacity", "label": "Loader bucket capacity", "unit": "m³" },
+        { "key": "loaderBreakoutForce", "label": "Loader bucket breakout force", "unit": "kN" },
+        { "key": "backhoeBucketCapacity", "label": "Backhoe bucket capacity", "unit": "m³" },
+        { "key": "maxDigDepth", "label": "Backhoe max. digging depth", "unit": "mm" },
+        { "key": "backhoeBucketDiggingForce", "label": "Backhoe bucket digging force", "unit": "kN" },
+        { "key": "dipperDiggingForce", "label": "Dipper digging force", "unit": "kN" },
+        { "key": "transmission", "label": "Transmission", "unit": "" },
+        { "key": "driveOptions", "label": "Drive", "unit": "" },
+        { "key": "maxTravelSpeed", "label": "Max. travel speed", "unit": "km/h" },
+        { "key": "fuelTank", "label": "Fuel tank capacity", "unit": "L" }
+      ],
+      "faq": [
+        { "q": "Backhoe loader or mini excavator: which should I choose?", "a": "A backhoe loader can load as well as dig and can drive between sites, which suits varied municipal and utility work. A mini excavator digs more efficiently, rotates a full 360° and fits tighter spaces, but it needs a trailer between sites." },
+        { "q": "Why use the stabilisers?", "a": "They take load off the tyres and form a firm base, so the machine does not bounce or slide while digging. That improves both safety and digging accuracy." },
+        { "q": "Is 4WD necessary?", "a": "On paved or dry, firm ground 2WD is often enough. On wet, sandy or uneven sites, which are common in the rainy season, 4WD gives much better traction for loading." },
+        { "q": "Can a backhoe loader run a hydraulic breaker?", "a": "Yes, if the backhoe has auxiliary hydraulic piping and the breaker is matched to the machine's flow and weight. It is a common setup for road repair and small demolition jobs." }
+      ],
+      "models": [
+        {
+          "slug": "liugong-777a",
+          "name": "777A",
+          "brand": "liugong",
+          "summary": "An 8.4-tonne backhoe loader with a 1.0 m³ front bucket and a 4.4 m backhoe dig depth, for utility, municipal and small-site work.",
+          "highlights": [
+            "Weichai engine, 70 kW gross",
+            "1.0 m³ loader bucket and 0.2 m³ backhoe bucket",
+            "Carraro transmission and axles; 4x4 optional",
+            "Top travel speed of 36 km/h for driving between sites"
+          ],
+          "specs": {
+            "operatingWeight": 8400,
+            "enginePower": 70,
+            "engineModel": "Weichai WP4G95E221",
+            "emissions": "Tier 2 / Stage II",
+            "loaderBucketCapacity": 1.0,
+            "loaderBreakoutForce": 59.3,
+            "backhoeBucketCapacity": 0.2,
+            "maxDigDepth": 4440,
+            "backhoeBucketDiggingForce": 58.2,
+            "dipperDiggingForce": 37.5,
+            "transmission": "Carraro, 4F/4R",
+            "driveOptions": "4x2 standard; 4x4 optional",
+            "maxTravelSpeed": 36,
+            "fuelTank": 130
+          },
+          "specsVerified": true,
+          "sources": [
+            "http://mea.liugong.com/product/777a/",
+            "https://osmedia.liugong.com/wp-content/blogs.dir/4/files/2021/11/777A-Tier-2-Weichai.pdf"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "rollers",
+      "name": "Rollers & Compactors",
+      "summary": "Vibratory rollers that compact soil, sub-base and asphalt to the density road and building specifications require.",
+      "howItWorks": "Compaction squeezes the air out of soil, aggregate or asphalt so the layer becomes dense, strong and resistant to water and settlement. A roller does this with a combination of **static weight** and **vibration**.\n\nInside each vibrating drum is an **eccentric weight** on a shaft spun by a hydraulic motor. As it spins, it makes the drum hammer the ground many times a second. Two numbers describe that action. **Frequency** (Hz) is how many impacts per second. **Amplitude** (mm) is how far the drum moves up and down. **Centrifugal force** (kN) is the impact force. Many rollers offer two settings: **high amplitude / low frequency** pushes energy deep into thick soil lifts, and **low amplitude / high frequency** compacts thinner layers without crushing aggregate or cracking asphalt.\n\n**Single-drum soil rollers** have one heavy smooth or padfoot drum at the front and rubber-tyred drive wheels at the rear, joined by an articulation joint. They suit earthworks, subgrade and granular base. A **padfoot** drum kneads cohesive soils such as clay. **Tandem (double-drum) rollers** have two steel drums, usually both vibrating, and finish asphalt and thin base layers. They carry **water spray systems** that wet the drums so hot asphalt does not stick. **Pneumatic-tyred rollers** use a row of rubber tyres to knead and seal asphalt surfaces.\n\nMost modern rollers use **hydrostatic drive**. A hydraulic pump feeds motors in the drum and the axle, giving smooth starts and stops, which matters because a jerky stop can leave marks in fresh asphalt.",
+      "keyComponents": [
+        { "name": "Drum", "role": "Smooth or padfoot steel cylinder that applies weight and vibration to the surface." },
+        { "name": "Eccentric vibration system", "role": "A spinning off-centre mass inside the drum that creates the vibratory impacts." },
+        { "name": "Hydrostatic drive", "role": "A hydraulic pump and motors give smooth, variable-speed travel without gear changes." },
+        { "name": "Articulation joint", "role": "Steers the machine and keeps the drum tracking evenly over the surface." },
+        { "name": "Water spray system (tandem rollers)", "role": "Keeps the drums wet so asphalt does not stick." },
+        { "name": "Scrapers", "role": "Clean the drum surface to keep compaction even." }
+      ],
+      "applications": [
+        "Compacting embankments, subgrade and laterite base on road projects",
+        "Asphalt finishing on highways, estate roads and car parks",
+        "Building-platform and foundation compaction on estates",
+        "Airport, port-yard and industrial-floor base preparation",
+        "Dam embankments and canal banks",
+        "Haul road construction at quarries and mines"
+      ],
+      "choosingTips": [
+        "Use a single-drum soil roller for earthworks and base, and a tandem roller for asphalt.",
+        "For cohesive clay soils, consider a padfoot drum or padfoot shell kit.",
+        "Heavier drums and higher amplitude compact thicker lifts. Match the roller to the lift thickness in your specification.",
+        "Check that drum width suits your lane widths and the paver's output.",
+        "For asphalt work, check water tank capacity and spray coverage."
+      ],
+      "maintenance": {
+        "dailyChecks": [
+          "Check engine oil, coolant and hydraulic oil levels",
+          "Drain the fuel water separator",
+          "Check the air filter indicator",
+          "Inspect and adjust the drum scrapers",
+          "Grease the articulation and steering cylinder pins",
+          "On tandem rollers, fill the water tank and check the spray nozzles",
+          "Check tyre pressure on single-drum rollers"
+        ],
+        "intervals": [
+          { "hours": 50, "tasks": ["Check the vibration bearing (exciter) oil level", "Clean the radiator and oil cooler"] },
+          { "hours": 250, "tasks": ["Change engine oil and filter (interval depends on oil grade and fuel quality)", "Check drum drive gearbox oil", "Check belts and the battery"] },
+          { "hours": 500, "tasks": ["Replace fuel filters", "Replace the hydraulic filter", "Check rubber drum mounts (buffers) for cracking"] },
+          { "hours": 1000, "tasks": ["Change exciter (vibration) oil", "Change axle and drum gearbox oil"] },
+          { "hours": 2000, "tasks": ["Replace hydraulic oil", "Flush and replace coolant"] }
+        ],
+        "note": "These intervals reflect general industry practice and are a guide only. Always follow the LiuGong operation and maintenance manual for your model and serial number."
+      },
+      "safety": [
+        "Turn vibration off when stopping, reversing and working near buildings, buried services or soft edges",
+        "Do not run close to unsupported embankment edges, where the roller can slide or roll over",
+        "Always wear the seat belt. Rollers fitted with ROPS rely on it",
+        "Keep other workers clear. Rollers reverse frequently and the operator has limited rear visibility",
+        "Follow traffic management when working on live roads"
+      ],
+      "specFields": [
+        { "key": "operatingWeight", "label": "Operating weight", "unit": "kg" },
+        { "key": "enginePower", "label": "Rated engine power", "unit": "kW" },
+        { "key": "engineModel", "label": "Engine model", "unit": "" },
+        { "key": "emissions", "label": "Emission standard", "unit": "" },
+        { "key": "drumWidth", "label": "Drum width", "unit": "mm" },
+        { "key": "drumDiameter", "label": "Drum diameter", "unit": "mm" },
+        { "key": "vibrationFrequency", "label": "Vibration frequency (high/low amplitude)", "unit": "Hz" },
+        { "key": "amplitude", "label": "Nominal amplitude (high/low)", "unit": "mm" },
+        { "key": "centrifugalForce", "label": "Centrifugal force (high/low)", "unit": "kN" },
+        { "key": "gradeability", "label": "Theoretical gradeability", "unit": "%" },
+        { "key": "maxTravelSpeed", "label": "Max. travel speed", "unit": "km/h" },
+        { "key": "fuelTank", "label": "Fuel tank capacity", "unit": "L" }
+      ],
+      "faq": [
+        { "q": "When should I use high or low amplitude?", "a": "High amplitude drives energy deep into thick soil lifts. Low amplitude, at higher frequency, suits thinner layers and asphalt, where too much force can crush aggregate or crack the mat." },
+        { "q": "Smooth drum or padfoot?", "a": "Smooth drums suit granular soils, sand, gravel and laterite base. Padfoot drums knead cohesive soils such as clay, which a smooth drum tends to bridge over without compacting fully." },
+        { "q": "Why do asphalt rollers spray water?", "a": "Hot asphalt sticks to a dry steel drum and tears the surface. A thin film of water on the drum prevents this." },
+        { "q": "How many passes does compaction need?", "a": "It depends on the material, the lift thickness, the moisture and the specification. Contractors usually set the number with a trial section and check density with field tests." }
+      ],
+      "models": [
+        {
+          "slug": "liugong-6114e",
+          "name": "6114E",
+          "brand": "liugong",
+          "summary": "A 14-tonne vibratory roller for soil, laterite and granular base compaction.",
+          "highlights": [
+            "14 t operating weight",
+            "Dual amplitude: 2.0 / 1.2 mm",
+            "Up to 280 kN centrifugal force",
+            "Shangchai engine, 103 kW"
+          ],
+          "specs": {
+            "operatingWeight": 14000,
+            "enginePower": 103,
+            "engineModel": "Shangchai SC4H140.2G2",
+            "emissions": "Stage II",
+            "drumDiameter": 1555,
+            "vibrationFrequency": "30",
+            "amplitude": "2.0 / 1.2",
+            "centrifugalForce": "280 / 170",
+            "gradeability": 30
+          },
+          "specsVerified": true,
+          "sources": [
+            "http://mea.liugong.com/product/6114e/"
+          ]
+        },
+        {
+          "slug": "liugong-6120e",
+          "name": "6120E",
+          "brand": "liugong",
+          "summary": "A 20-tonne heavy vibratory roller for thick earthwork lifts on major road and dam projects.",
+          "highlights": [
+            "20 t operating weight",
+            "Up to 380 kN centrifugal force",
+            "Dual frequency of 28 / 32 Hz",
+            "Shangchai engine, 155 kW"
+          ],
+          "specs": {
+            "operatingWeight": 20000,
+            "enginePower": 155,
+            "engineModel": "Shangchai SC7H210.1G2",
+            "emissions": "Stage II",
+            "drumDiameter": 1600,
+            "vibrationFrequency": "28 / 32",
+            "amplitude": "2.0 / 1.3",
+            "centrifugalForce": "380 / 320",
+            "gradeability": 30
+          },
+          "specsVerified": true,
+          "sources": [
+            "http://mea.liugong.com/product/6120e/"
+          ]
+        },
+        {
+          "slug": "liugong-6212e",
+          "name": "6212E",
+          "brand": "liugong",
+          "summary": "A 12.5-tonne double-drum vibratory roller for asphalt and thin base layers.",
+          "highlights": [
+            "Two vibrating 2,130 mm drums",
+            "High-frequency 45 / 50 Hz vibration for asphalt",
+            "Cummins QSB4.5 engine, 113 kW",
+            "40% theoretical gradeability"
+          ],
+          "specs": {
+            "operatingWeight": 12500,
+            "enginePower": 113,
+            "engineModel": "Cummins QSB4.5",
+            "emissions": "Stage III",
+            "drumWidth": 2130,
+            "drumDiameter": 1300,
+            "vibrationFrequency": "45 / 50",
+            "amplitude": "0.75 / 0.4",
+            "centrifugalForce": "140 / 85",
+            "gradeability": 40,
+            "maxTravelSpeed": 12,
+            "fuelTank": 220
+          },
+          "specsVerified": true,
+          "sources": [
+            "http://mea.liugong.com/product/6212e/",
+            "https://osmedia.liugong.com/wp-content/blogs.dir/4/files/2021/11/6212E-NEW.pdf"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "mining-trucks",
+      "name": "Mining Trucks",
+      "summary": "Off-highway dump trucks for hauling rock, ore and overburden in quarries and mines.",
+      "howItWorks": "An off-highway mining truck is a heavy hauler built for short, repeated trips between a loading face and a crusher, stockpile or waste dump. These routes are often steep and rough. Its frame, axles and suspension are far heavier than a road tipper's, and it is sized to be filled in a few passes by a large excavator or wheel loader.\n\nThe diesel engine drives through an **automatic or powershift transmission** with a torque converter, so the truck can climb loaded up ramps and start smoothly on grades. Power goes through a drive shaft to **rear drive axles**, which use heavy reduction gearing to turn high engine speed into strong wheel torque. A **6x4** layout, with three axles of which two are driven, spreads the load over more tyres.\n\nThe **body** is a thick steel box, usually with a sloped floor and no tailgate, so blasted rock slides out cleanly. Large **hoist cylinders** tip it. Spec sheets give two capacities: **struck** (level full) and **heaped** (with a natural mound on top). Along with **rated payload**, these tell you how many loader or excavator passes fill the truck.\n\nSlowing a loaded truck on a downhill ramp is as important as climbing it. Mining trucks use heavy-duty service brakes and often an engine or exhaust brake or a retarder to control speed without overheating the brakes.",
+      "keyComponents": [
+        { "name": "Dump body", "role": "Thick steel box that carries rock and ore and tips it out at the dump point." },
+        { "name": "Hoist cylinders", "role": "Raise the body to dump the load." },
+        { "name": "Transmission", "role": "Gives smooth, automatic or powershift gear changes for loaded climbs and descents." },
+        { "name": "Drive axles", "role": "Heavy-duty reduction axles that carry the load and deliver torque to the wheels." },
+        { "name": "Braking and retarding system", "role": "Controls speed on loaded downhill hauls." },
+        { "name": "Frame and suspension", "role": "Carry heavy payloads over rough haul roads." }
+      ],
+      "applications": [
+        "Hauling blasted rock from the face to the crusher at granite quarries",
+        "Moving overburden at limestone, coal and solid-minerals mines",
+        "Hauling bulk material on large dam and port reclamation projects",
+        "Moving material around cement and aggregate plants"
+      ],
+      "choosingTips": [
+        "Match truck payload to the loading tool. Three to five passes per truck keeps both machines working efficiently.",
+        "Check haul road grades and lengths, which decide the power and retarding capacity you need.",
+        "Tyre costs dominate running costs, so invest in well-maintained haul roads.",
+        "Choose a rock-lined body for abrasive or heavy blasted material."
+      ],
+      "maintenance": {
+        "dailyChecks": [
+          "Check engine oil, coolant, transmission oil and hydraulic oil levels",
+          "Drain the fuel water separator",
+          "Check tyre pressure, cuts and embedded rock",
+          "Test the brakes and retarder",
+          "Inspect the body, hoist cylinders and pivot pins",
+          "Grease the suspension, steering and body pivot points"
+        ],
+        "intervals": [
+          { "hours": 250, "tasks": ["Change engine oil and filter (interval depends on oil grade and fuel quality)", "Check the axle and hub oil levels", "Check brake wear"] },
+          { "hours": 500, "tasks": ["Replace fuel filters", "Replace transmission and hydraulic filters"] },
+          { "hours": 1000, "tasks": ["Change transmission oil", "Change axle and hub reduction oil"] },
+          { "hours": 2000, "tasks": ["Replace hydraulic oil", "Flush and replace coolant"] }
+        ],
+        "note": "These intervals reflect general industry practice and are a guide only. Always follow the LiuGong operation and maintenance manual for your model and serial number."
+      },
+      "safety": [
+        "Large trucks have big blind spots, so use site traffic rules, berms and radio communication",
+        "Never raise the body under power lines, and dump only on level, stable ground",
+        "Keep loaded descents within the retarding capacity of the truck",
+        "Never stand beside or behind a truck while it is dumping",
+        "Use the body prop or safety pin before working under a raised body"
+      ],
+      "specFields": [
+        { "key": "ratedPayload", "label": "Rated payload", "unit": "kg" },
+        { "key": "heapedCapacity", "label": "Heaped body capacity", "unit": "m³" },
+        { "key": "struckCapacity", "label": "Struck body capacity", "unit": "m³" },
+        { "key": "enginePower", "label": "Rated engine power", "unit": "kW" },
+        { "key": "engineModel", "label": "Engine model", "unit": "" },
+        { "key": "emissions", "label": "Emission standard", "unit": "" },
+        { "key": "transmission", "label": "Transmission model", "unit": "" },
+        { "key": "maxTravelSpeed", "label": "Max. travel speed", "unit": "km/h" },
+        { "key": "emptyWeight", "label": "Truck (empty) weight", "unit": "kg" },
+        { "key": "maxOperatingWeight", "label": "Max. operating weight", "unit": "kg" },
+        { "key": "driveConfiguration", "label": "Drive configuration", "unit": "" },
+        { "key": "tyres", "label": "Tyre size", "unit": "" }
+      ],
+      "faq": [
+        { "q": "What is the difference between struck and heaped capacity?", "a": "Struck capacity is the body filled level to the top. Heaped capacity adds the natural mound that forms above the sides. Payload in kg is the limit that matters for dense rock." },
+        { "q": "How do I match a truck to my excavator or loader?", "a": "Divide the truck's payload by the weight of material the loading machine carries per bucket. Three to five passes is usually efficient. Too many passes leaves the truck waiting, and too few overloads the loading tool." },
+        { "q": "Can a mining truck be driven on public roads?", "a": "Generally not. Off-highway trucks are built wider and heavier than road limits allow and are meant for haul roads inside the site. They are moved between sites on low-bed trailers." },
+        { "q": "What drives tyre wear on haul trucks?", "a": "The main causes are under-inflation, overloading, sharp rock spillage, poorly drained haul roads and tight, fast turns. Graded, well-drained haul roads with spillage cleared regularly are the best way to extend tyre life." }
+      ],
+      "models": [
+        {
+          "slug": "liugong-dw90a",
+          "name": "DW90A",
+          "brand": "liugong",
+          "summary": "A 6x4 off-highway dump truck with a 59-tonne rated payload for quarry and mine haulage.",
+          "highlights": [
+            "59,000 kg rated payload",
+            "36 m³ heaped body",
+            "Cummins QSM11 engine, 306 kW",
+            "Top speed of 40 km/h"
+          ],
+          "specs": {
+            "ratedPayload": 59000,
+            "heapedCapacity": 36,
+            "struckCapacity": 30,
+            "enginePower": 306,
+            "engineModel": "Cummins QSM11",
+            "emissions": "Tier 3 / Stage III",
+            "transmission": "7DS220",
+            "maxTravelSpeed": 40,
+            "emptyWeight": 31000,
+            "maxOperatingWeight": 90000,
+            "driveConfiguration": "6x4",
+            "tyres": "14.00R25"
+          },
+          "specsVerified": true,
+          "sources": [
+            "http://mea.liugong.com/product/dw90a/"
+          ]
+        }
+      ]
+    }
+  ]
+}
