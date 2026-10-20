@@ -1,0 +1,43 @@
+name: CI
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: chanrai
+          POSTGRES_PASSWORD: chanrai
+          POSTGRES_DB: chanrai
+        ports: ["5432:5432"]
+        options: --health-cmd "pg_isready -U chanrai" --health-interval 5s --health-retries 10
+    env:
+      DATABASE_URL: postgresql://chanrai:chanrai@localhost:5432/chanrai
+      DIRECT_URL: postgresql://chanrai:chanrai@localhost:5432/chanrai
+      AUTH_SECRET: ci-only-secret-0123456789abcdef0123456789abcdef
+      SITE_URL: http://localhost:3000
+      NEXT_TELEMETRY_DISABLED: 1
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20, cache: npm }
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run lint
+      - name: Migrations and seed (twice, to prove they are safe to repeat)
+        run: npm run db:setup && npm run db:setup
+      - name: Schema matches migrations
+        run: npx drizzle-kit check
+      - run: npm run build
+      - name: Smoke test
+        run: |
+          npm start &
+          npx --yes wait-on@8 -t 60000 http://localhost:3000/api/health
+          for p in / /products /products/construction-equipment/excavators /book-service /contact /admin/setup; do
+            code=$(curl -s -o /dev/null -w '%{http_code}' "http://localhost:3000$p"); echo "$p $code"; [ "$code" = 200 ]
+          done

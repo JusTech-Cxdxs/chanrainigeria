@@ -8,3 +8,6 @@ out/
 coverage/
 uploads/
 .DS_Store
+backups/
+tsconfig.tsbuildinfo
+next-env.d.ts
