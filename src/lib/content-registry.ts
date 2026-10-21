@@ -409,7 +409,7 @@ const enyo: PageDef = {
         text("inputPlaceholder", "Text inside the message box", "Type your question"),
         text("inputLabel", "Message box, read aloud", "Message {enyo}"),
         text("send", "Send button, read aloud", "Send"),
-        text("typing", "While it is typing, read aloud", "{enyo} is typing"),
+        text("typing", "While it is thinking", "{enyo} is thinking…"),
         text("errorNetwork", "When the connection fails", "I couldn't reach the server. Check your connection and try again."),
       ],
     },
