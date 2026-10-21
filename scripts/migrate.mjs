@@ -19,6 +19,9 @@ if (!url) {
   console.error("DATABASE_URL is not set");
   process.exit(1);
 }
+try {
+  console.log(`Migrating database at ${new URL(url).host}`);
+} catch {}
 const pool = new pg.Pool({
   connectionString: url,
   ssl: /sslmode=require|supabase|neon\.tech/.test(url) ? { rejectUnauthorized: false } : undefined,
