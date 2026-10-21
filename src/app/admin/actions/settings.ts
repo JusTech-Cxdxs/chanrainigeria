@@ -30,7 +30,7 @@ export async function saveSettings(f: FormData) {
   for (const key of ["logoId", "logoDarkId", "faviconId"] as const) {
     const file = f.get(key);
     if (file instanceof File && file.size) {
-      const r = await saveUpload(file, { allowed: IMAGE, alt: "Logo" });
+      const r = await saveUpload(file, { allowed: IMAGE, alt: key === "faviconId" ? "Browser icon" : "Logo", folder: "Brands and logos", logo: key !== "faviconId" });
       if (!r.ok) fail(r.error);
       else uploads[key] = r.id;
     } else if (f.get(`remove_${key}`) === "on") uploads[key] = null;

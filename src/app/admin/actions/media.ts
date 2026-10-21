@@ -99,7 +99,7 @@ export async function replaceMedia(id: string, f: FormData): Promise<{ ok: true 
   const file = f.get("file");
   if (!(file instanceof File) || !file.size) return { ok: false, error: "Choose the new file first." };
   const isPdf = cur.mimeType === "application/pdf";
-  const r = await prepareUpload(file, isPdf ? ["application/pdf"] : [...IMAGE_TYPES, "image/heic"]);
+  const r = await prepareUpload(file, isPdf ? ["application/pdf"] : [...IMAGE_TYPES, "image/heic"], { logo: cur.folder === "Brands and logos" });
   if (!r.ok) return { ok: false, error: isPdf ? `${r.error} A PDF can only be replaced with another PDF.` : r.error };
   await snapshotMediaBytes(id, cur.filename, "update", user.id);
   const { filename, mimeType, data, size, width, height } = r.file;
