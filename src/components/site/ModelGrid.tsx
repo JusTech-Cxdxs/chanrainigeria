@@ -5,7 +5,10 @@ import { useRef, useState } from "react";
 import { Machine } from "@/components/Machine";
 import type { SpecField } from "@/db/schema";
 import { specValue } from "@/lib/format";
+import { Icon } from "@/components/ui/Icon";
 import { askEnyo } from "./enyo-events";
+import { Framed } from "./FamilyPicture";
+import { fill, type Labels } from "./fill";
 
 export type ModelCard = {
   id: string;
@@ -26,11 +29,14 @@ export function ModelGrid({
   fields,
   illustration,
   familyName,
+  labels: L,
 }: {
   models: ModelCard[];
   fields: SpecField[];
   illustration: string;
   familyName: string;
+  /** The "machine-type" page text */
+  labels: Labels;
 }) {
   const dialog = useRef<HTMLDialogElement>(null);
   const [active, setActive] = useState<ModelCard | null>(null);
@@ -50,17 +56,12 @@ export function ModelGrid({
             <button
               type="button"
               onClick={() => open(m)}
-              className="group grid h-full w-full gap-3 rounded-lg border border-line bg-surface p-5 text-left transition-colors hover:border-brand"
+              className="card card-hover group grid h-full w-full gap-3 p-5 text-left"
               aria-haspopup="dialog"
             >
-              {m.images[0] ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img src={m.images[0]} alt="" className="aspect-[12/7] w-full object-contain" />
-              ) : (
-                <Machine kind={illustration} className="w-full opacity-80" dimensions={false} />
-              )}
+              <Framed src={m.images[0]} fallback={<Machine kind={illustration} className="w-full opacity-80" dimensions={false} />} />
               <span className="flex items-baseline justify-between gap-2">
-                <span className="display text-2xl group-hover:text-brand">{m.name}</span>
+                <span className="display text-2xl group-hover:text-brand-ink">{m.name}</span>
                 {m.brand ? <span className="text-sm text-ink-soft">{m.brand}</span> : null}
               </span>
               {headline(m).length ? (
@@ -77,7 +78,10 @@ export function ModelGrid({
               ) : (
                 <span className="text-sm text-ink-soft">{m.summary}</span>
               )}
-              <span className="text-sm font-semibold text-brand">View details</span>
+              <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-ink">
+                {L.cardView}
+                <Icon name="arrow" size={15} className="transition-transform group-hover:translate-x-1" />
+              </span>
             </button>
           </li>
         ))}
@@ -102,7 +106,8 @@ export function ModelGrid({
                 </h2>
               </div>
               <button type="button" className="btn btn-outline" onClick={() => dialog.current?.close()}>
-                Close
+                <Icon name="x" />
+                {L.qvClose}
               </button>
             </div>
 
@@ -125,7 +130,7 @@ export function ModelGrid({
             ) : null}
 
             <div>
-              <h3 className="heading text-lg">Specifications</h3>
+              <h3 className="heading text-lg">{L.qvSpecs}</h3>
               <table className="mt-2 w-full border-collapse text-[0.95rem]">
                 <tbody>
                   {fields
@@ -143,33 +148,35 @@ export function ModelGrid({
                 </tbody>
               </table>
               {!active.specsVerified ? (
-                <p className="mt-2 text-sm text-ink-soft">
-                  Figures are indicative and can vary by configuration. We confirm them with your quote.
-                </p>
+                <p className="mt-2 text-sm text-ink-soft">{L.qvIndicative}</p>
               ) : null}
             </div>
 
             <div className="flex flex-wrap gap-3 border-t border-line pt-5">
               <Link href={`/contact?type=QUOTE&product=${active.slug}`} className="btn btn-primary">
-                Ask for a quote
+                <Icon name="file" />
+                {L.qvQuote}
               </Link>
               <button
                 type="button"
                 className="btn btn-outline"
                 onClick={() => {
                   dialog.current?.close();
-                  askEnyo(`I'd like to know more about the ${[active.brand, active.name].filter(Boolean).join(" ")}.`);
+                  askEnyo(fill(L.qvAskPrompt, { model: [active.brand, active.name].filter(Boolean).join(" ") }));
                 }}
               >
-                Ask Enyo about it
+                <Icon name="bot" />
+                {L.qvAsk}
               </button>
               {active.brochure ? (
                 <a href={active.brochure} className="btn btn-outline" target="_blank" rel="noopener">
-                  Download brochure
+                  <Icon name="download" />
+                  {L.qvBrochure}
                 </a>
               ) : null}
               <Link href={active.href} className="btn btn-quiet">
-                Open full page
+                {L.qvOpen}
+                <Icon name="arrow" size={16} />
               </Link>
             </div>
           </div>

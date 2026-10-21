@@ -8,11 +8,21 @@ import { Footer } from "@/components/site/Footer";
 import { Header } from "@/components/site/Header";
 import { Reveal } from "@/components/site/Reveal";
 import { SearchDialog } from "@/components/site/SearchDialog";
+import { siteContent } from "@/components/site/site-content";
 import { getBranches, getBrands, getCategories } from "@/lib/catalogue";
 import { getSettings, mediaUrl } from "@/lib/settings";
 
 export default async function SiteLayout({ children }: { children: React.ReactNode }) {
-  const [s, categories, branches, brands] = await Promise.all([getSettings(), getCategories(), getBranches(), getBrands()]);
+  const [s, categories, branches, brands, nav, cookie, enyo] = await Promise.all([
+    getSettings(),
+    getCategories(),
+    getBranches(),
+    getBrands(),
+    siteContent("header"),
+    siteContent("cookie-banner"),
+    siteContent("enyo"),
+  ]);
+  const navLabels = nav.labels();
   return (
     <>
       {/* Without JavaScript, nothing waits for the scroll animation. */}
@@ -30,17 +40,21 @@ export default async function SiteLayout({ children }: { children: React.ReactNo
         categories={categories.map((c) => ({ id: c.id, slug: c.slug, name: c.name, families: c.families.map((f) => ({ id: f.id, slug: f.slug, name: f.name })) }))}
         languages={s.translate.languages}
         translate={s.translate.enabled}
+        labels={navLabels}
+        links={nav.list("links").map((l) => ({ label: l.label, href: l.href }))}
       />
       <main id="main">{children}</main>
       <Footer settings={s} categories={categories} branches={branches} brands={brands.filter((b) => b.showOnHome)} />
-      <SearchDialog />
+      <SearchDialog labels={navLabels} suggestions={nav.list("searchSuggestions").map((x) => x.text).filter(Boolean)} />
       <Reveal />
-      <CookieBanner />
+      <CookieBanner labels={cookie.labels()} />
       <Analytics />
       {s.enyo.enabled ? (
         <Enyo
           name={s.enyo.name}
           greeting={s.enyo.greeting}
+          labels={enyo.labels()}
+          suggestions={enyo.list("suggestions").map((x) => x.text).filter(Boolean)}
           contact={{
             legalName: s.company.name,
             phone: s.contact.phone,

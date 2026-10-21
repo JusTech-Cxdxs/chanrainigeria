@@ -1,33 +1,24 @@
-import type { Metadata } from "next";
 import { EnquiryForm } from "@/components/site/EnquiryForm";
 import { PageHead } from "@/components/site/PageHead";
+import { pageMetadata, siteContent } from "@/components/site/site-content";
 import { getCategories } from "@/lib/catalogue";
-import { getSettings, imageUrl } from "@/lib/settings";
 
-export const metadata: Metadata = {
-  title: "Parts",
-  description: "Request genuine parts for construction equipment, CNG equipment and forklifts.",
-};
+export const generateMetadata = () => pageMetadata("parts");
 export const dynamic = "force-dynamic";
 
 type P = { searchParams: Promise<Record<string, string | undefined>> };
 
 export default async function Parts({ searchParams }: P) {
   const q = await searchParams;
-  const [s, categories] = await Promise.all([getSettings(), getCategories()]);
+  const [c, forms, nav, categories] = await Promise.all([siteContent("parts"), siteContent("forms"), siteContent("header"), getCategories()]);
   return (
     <>
-      <PageHead
-        image={imageUrl(s, "page-parts")}
-        crumbs={[{ href: "/", label: "Home" }, { label: "Parts" }]}
-        title="Parts"
-        lead="Filters, wear parts, hydraulic components, batteries and station spares. Send the machine's serial number and the part numbers if you have them, and we'll confirm availability."
-      />
+      <PageHead image={c.img("image")} crumbs={[{ href: "/", label: nav.t("crumbHome") }, { label: c.t("crumb") }]} title={c.t("title")} lead={c.t("lead")} />
       <div className="wrap max-w-4xl py-14">
         <EnquiryForm
           mode="parts"
-          companyName={s.company.shortName}
-          categories={categories.map((c) => ({ slug: c.slug, name: c.name }))}
+          labels={forms.labels()}
+          categories={categories.map((x) => ({ slug: x.slug, name: x.name }))}
           defaults={{ category: q.category, machine: q.machine }}
         />
       </div>

@@ -2,6 +2,7 @@
 // Whole-page translation through Google Translate. Nothing is loaded from Google until a visitor
 // picks a language, so English visitors make no third-party requests.
 import { useEffect, useRef, useState } from "react";
+import { Icon } from "@/components/ui/Icon";
 
 const NAMES: Record<string, string> = {
   en: "English",
@@ -40,7 +41,7 @@ function setLang(code: string) {
   location.reload();
 }
 
-export function LanguagePicker({ languages }: { languages: string[] }) {
+export function LanguagePicker({ languages, note = "Translated by Google. Some terms may be imperfect." }: { languages: string[]; note?: string }) {
   const [open, setOpen] = useState(false);
   const [lang, setLangState] = useState("en");
   const box = useRef<HTMLDivElement>(null);
@@ -91,14 +92,14 @@ export function LanguagePicker({ languages }: { languages: string[] }) {
                 role="option"
                 aria-selected={code === lang}
                 onClick={() => setLang(code)}
-                className={`flex w-full items-center justify-between px-4 py-2.5 text-left text-[0.95rem] hover:bg-concrete ${code === lang ? "font-semibold text-brand" : ""}`}
+                className={`flex w-full items-center justify-between px-4 py-2.5 text-left text-[0.95rem] hover:bg-concrete hover:text-brand-ink ${code === lang ? "font-semibold text-brand-ink" : ""}`}
               >
                 {NAMES[code]}
-                {code === lang ? <span aria-hidden>✓</span> : null}
+                {code === lang ? <Icon name="check" size={16} /> : null}
               </button>
             </li>
           ))}
-          <li className="border-t border-line-soft px-4 pb-1 pt-2 text-xs text-ink-soft">Translated by Google. Some terms may be imperfect.</li>
+          <li className="border-t border-line-soft px-4 pb-1 pt-2 text-xs text-ink-soft">{note}</li>
         </ul>
       ) : null}
       <div id="gt-el" className="hidden" />

@@ -5,16 +5,22 @@ export function SpecTable({
   fields,
   specs,
   verified,
+  empty,
+  indicative,
 }: {
   fields: SpecField[];
   specs: Record<string, string | number>;
   verified: boolean;
+  /** Shown when there are no figures (from the "model" page text) */
+  empty: string;
+  /** Note when figures are not confirmed */
+  indicative: string;
 }) {
   const rows = fields.filter((f) => specs[f.key] !== undefined && specs[f.key] !== "");
   // Specs not described by the family's field list still show, labelled by key.
   const extra = Object.keys(specs).filter((k) => !fields.some((f) => f.key === k));
   if (!rows.length && !extra.length) {
-    return <p className="text-ink-soft">Specifications are available on request from our sales team.</p>;
+    return <p className="text-ink-soft">{empty}</p>;
   }
   return (
     <div>
@@ -41,9 +47,7 @@ export function SpecTable({
         </tbody>
       </table>
       {!verified ? (
-        <p className="mt-3 text-sm text-ink-soft">
-          Figures are indicative and can vary by configuration. Our sales team will confirm them for your quote.
-        </p>
+        <p className="mt-3 text-sm text-ink-soft">{indicative}</p>
       ) : null}
     </div>
   );
