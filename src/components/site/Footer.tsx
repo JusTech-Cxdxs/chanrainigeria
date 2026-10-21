@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { brandLogo, logoAspect } from "@/lib/brand-logos";
+import { brandLogo } from "@/lib/brand-logos";
 import { Wordmark } from "@/components/brand/Wordmark";
 import type { CategoryWithFamilies } from "@/lib/catalogue";
 import { telHref, waHref } from "@/lib/format";
@@ -137,21 +137,24 @@ export async function Footer({
         <div className="border-t border-white/10">
           <div className="wrap flex flex-col gap-3 py-6 sm:flex-row sm:items-center sm:gap-6">
             <span className="shrink-0 text-xs font-semibold uppercase tracking-[0.14em] text-white/60">{ft.t("brandsLabel")}</span>
-            {/* One row on every screen. Each box is shaped like its logo, so the logo fills it edge to edge. */}
-            <ul className="flex flex-1 items-center gap-2 sm:max-w-2xl sm:gap-3">
+            {/* One row on every screen: identical white tiles, each logo centred inside its tile. */}
+            <ul className="grid flex-1 gap-2 sm:max-w-2xl sm:gap-3" style={{ gridTemplateColumns: `repeat(${Math.min(brands.length, 4)}, minmax(0, 1fr))` }}>
               {brands.slice(0, 4).map((b) => {
                 const logo = brandLogo(b);
-                const a = logoAspect(b);
-                const tile = logo ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img src={logo} alt={b.name} className="block h-full w-full rounded-[3px] bg-white object-cover transition-transform hover:-translate-y-0.5" loading="lazy" />
-                ) : (
-                  <span className="flex h-full w-full items-center justify-center rounded-[3px] bg-white text-sm font-extrabold tracking-wide text-[#1e293b]">{b.name}</span>
+                const tile = (
+                  <span className="flex h-14 w-full items-center justify-center overflow-hidden rounded-md bg-white px-2 py-1.5 transition-transform hover:-translate-y-0.5 sm:h-16 sm:px-3 sm:py-2">
+                    {logo ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img src={logo} alt={b.name} className="block h-full w-full object-contain" loading="lazy" />
+                    ) : (
+                      <span className="text-sm font-extrabold tracking-wide text-[#1e293b]">{b.name}</span>
+                    )}
+                  </span>
                 );
                 return (
-                  <li key={b.id} className="min-w-0" style={{ flex: `${a} 1 0%`, aspectRatio: String(a) }}>
+                  <li key={b.id} className="min-w-0">
                     {b.website ? (
-                      <a href={b.website} target="_blank" rel="noopener noreferrer" aria-label={b.name} className="block h-full">
+                      <a href={b.website} target="_blank" rel="noopener noreferrer" aria-label={b.name} className="block">
                         {tile}
                       </a>
                     ) : (

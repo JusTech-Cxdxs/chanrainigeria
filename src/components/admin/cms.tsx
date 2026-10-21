@@ -65,11 +65,13 @@ export function Section({
 
 /** Save bar that stays in view at the bottom of long forms (above the phone tab bar). */
 export function SaveBar({ children, note }: { children: React.ReactNode; note?: React.ReactNode }) {
+  // Phones: docked edge to edge just above the tab bar, the note on one line and the button full width
+  // underneath, so nothing floats over the form. Wide screens: a card pinned to the bottom of the content.
   return (
-    <div className="sticky bottom-[calc(4.5rem+env(safe-area-inset-bottom))] z-30 mt-6 mr-[4.5rem] lg:bottom-4 lg:mr-20">
-      <div className="flex flex-wrap items-center gap-3 rounded-2xl border border-line bg-surface/95 px-4 py-3 shadow-[0_12px_32px_-12px_rgb(6_18_10/0.35)] backdrop-blur">
-        <div className="min-w-0 flex-1 text-sm text-ink-soft">{note}</div>
-        <div className="flex flex-wrap items-center gap-2">{children}</div>
+    <div className="cn-savebar sticky bottom-[calc(env(safe-area-inset-bottom)-2.0625rem)] z-30 -mx-4 mt-6 border-t border-line bg-surface/95 px-4 py-3 shadow-[0_-10px_24px_-18px_rgb(6_18_10/0.45)] backdrop-blur sm:-mx-8 sm:px-8 lg:bottom-4 lg:mx-0 lg:mr-20 lg:rounded-2xl lg:border lg:px-5 lg:shadow-[0_12px_32px_-12px_rgb(6_18_10/0.35)]">
+      <div className="flex flex-col gap-2.5 sm:flex-row sm:items-center sm:gap-4">
+        {note ? <div className="min-w-0 text-xs text-ink-soft sm:flex-1 sm:text-sm">{note}</div> : <div className="hidden sm:block sm:flex-1" />}
+        <div className="flex flex-wrap items-center gap-2 *:flex-1 sm:*:flex-none">{children}</div>
       </div>
     </div>
   );
