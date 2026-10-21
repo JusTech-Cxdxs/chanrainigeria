@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { brandLogo, logoScale } from "@/lib/brand-logos";
+import { brandLogo, logoAspect } from "@/lib/brand-logos";
 import { Wordmark } from "@/components/brand/Wordmark";
 import type { CategoryWithFamilies } from "@/lib/catalogue";
 import { telHref, waHref } from "@/lib/format";
@@ -137,30 +137,21 @@ export async function Footer({
         <div className="border-t border-white/10">
           <div className="wrap flex flex-col gap-3 py-6 sm:flex-row sm:items-center sm:gap-6">
             <span className="shrink-0 text-xs font-semibold uppercase tracking-[0.14em] text-white/60">{ft.t("brandsLabel")}</span>
-            {/* One row on every screen: equal white tiles, each logo in its own colours. */}
-            <ul className="grid flex-1 gap-2 sm:max-w-xl sm:gap-3" style={{ gridTemplateColumns: `repeat(${Math.min(brands.length, 4)}, minmax(0, 1fr))` }}>
+            {/* One row on every screen. Each box is shaped like its logo, so the logo fills it edge to edge. */}
+            <ul className="flex flex-1 items-center gap-2 sm:max-w-2xl sm:gap-3">
               {brands.slice(0, 4).map((b) => {
                 const logo = brandLogo(b);
-                const tile = (
-                  <span className="flex h-12 items-center justify-center rounded-lg bg-white px-2.5 shadow-[0_1px_0_rgba(0,0,0,0.08)] ring-1 ring-black/5 transition-transform hover:-translate-y-0.5 sm:h-14 sm:px-4">
-                    {logo ? (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img
-                        src={logo}
-                        alt={b.name}
-                        className="max-h-[calc(1.75rem*var(--s))] w-auto max-w-full object-contain sm:max-h-[calc(2.25rem*var(--s))]"
-                        style={{ ["--s" as string]: logoScale(b) }}
-                        loading="lazy"
-                      />
-                    ) : (
-                      <span className="truncate text-sm font-extrabold tracking-wide text-[#1e293b]">{b.name}</span>
-                    )}
-                  </span>
+                const a = logoAspect(b);
+                const tile = logo ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img src={logo} alt={b.name} className="block h-full w-full rounded-[3px] bg-white object-cover transition-transform hover:-translate-y-0.5" loading="lazy" />
+                ) : (
+                  <span className="flex h-full w-full items-center justify-center rounded-[3px] bg-white text-sm font-extrabold tracking-wide text-[#1e293b]">{b.name}</span>
                 );
                 return (
-                  <li key={b.id} className="min-w-0">
+                  <li key={b.id} className="min-w-0" style={{ flex: `${a} 1 0%`, aspectRatio: String(a) }}>
                     {b.website ? (
-                      <a href={b.website} target="_blank" rel="noopener noreferrer" aria-label={b.name}>
+                      <a href={b.website} target="_blank" rel="noopener noreferrer" aria-label={b.name} className="block h-full">
                         {tile}
                       </a>
                     ) : (

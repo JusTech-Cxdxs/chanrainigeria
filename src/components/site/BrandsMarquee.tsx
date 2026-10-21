@@ -14,7 +14,7 @@ export function BrandsMarquee({ title, brands }: { title: string; brands: { name
         <h2 className="text-xs font-bold uppercase tracking-[0.16em] text-[#475569] sm:text-sm">{title}</h2>
         <span className="h-px flex-1 bg-[#e2e8f0]" aria-hidden />
       </div>
-      <div className="marquee relative w-full py-7 sm:py-9">
+      <div className="marquee relative w-full py-5 sm:py-7">
         <ul className="marquee-track flex w-max items-center" style={{ ["--marquee-speed" as string]: `${Math.max(30, track.length * 4)}s` }}>
           {track.map((b, k) => (
             <li key={k} aria-hidden={k >= base.length} className="flex h-16 shrink-0 items-center px-8 sm:h-24 sm:px-14">
@@ -23,7 +23,7 @@ export function BrandsMarquee({ title, brands }: { title: string; brands: { name
                 <img
                   src={b.logo}
                   alt={k < base.length ? b.name : ""}
-                  className="h-[calc(2.75rem*var(--s))] w-auto max-w-[220px] object-contain sm:h-[calc(4rem*var(--s))] sm:max-w-[300px]"
+                  className="h-[calc(3.25rem*var(--s))] w-auto max-w-[260px] object-contain sm:h-[calc(4.75rem*var(--s))] sm:max-w-[380px]"
                   style={{ ["--s" as string]: b.scale ?? 1 }}
                   loading="lazy"
                   draggable={false}

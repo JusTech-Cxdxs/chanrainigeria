@@ -10,7 +10,7 @@ export function brandLogo(b: { slug?: string | null; logoId?: string | null }) {
 }
 
 /** Width ÷ height of the bundled files, so compact logos (BYD) can be drawn a little taller than wide ones. */
-const ASPECT: Record<string, number> = { liugong: 867 / 240, sopan: 736 / 240, byd: 412 / 240 };
+const ASPECT: Record<string, number> = { liugong: 784 / 200, sopan: 661 / 200, byd: 359 / 200 };
 
 /**
  * A height multiplier that gives logos of different shapes a similar visual weight (1 for wide
@@ -20,4 +20,9 @@ export function logoScale(b: { slug?: string | null; logoId?: string | null }, a
   const a = aspect ?? (!b.logoId && b.slug ? ASPECT[b.slug] : undefined);
   if (!a) return 1;
   return Math.min(1.35, Math.max(1, Math.sqrt(3.2 / a)));
+}
+
+/** Width ÷ height used to size a logo's box so the logo fills it edge to edge (3 when unknown). */
+export function logoAspect(b: { slug?: string | null; logoId?: string | null }, aspect?: number | null) {
+  return aspect ?? (!b.logoId && b.slug ? ASPECT[b.slug] : undefined) ?? 3;
 }
