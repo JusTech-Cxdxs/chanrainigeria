@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import { logout } from "@/app/admin/actions/auth";
 import { AdminShell, type NavGroup } from "@/components/admin/AdminShell";
+import { NotificationProvider } from "@/components/admin/Notifications";
 import { AssistantMount } from "@/components/admin/AssistantMount";
 import { NavProgress } from "@/components/ejo/NavProgress";
 import { db, schema } from "@/db";
@@ -73,6 +74,7 @@ export default async function PanelLayout({ children }: { children: React.ReactN
         <NavProgress />
       </Suspense>
       <AssistantMount />
+      <NotificationProvider userId={user.id}>
       <AdminShell
         groups={groups}
         user={{ name: user.name, email: user.email, role: user.roleName }}
@@ -82,6 +84,7 @@ export default async function PanelLayout({ children }: { children: React.ReactN
       >
         {children}
       </AdminShell>
+      </NotificationProvider>
     </>
   );
 }

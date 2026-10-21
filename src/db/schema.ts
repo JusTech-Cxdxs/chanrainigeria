@@ -10,6 +10,7 @@ import {
   pgEnum,
   pgSequence,
   pgTable,
+  primaryKey,
   text,
   timestamp,
 } from "drizzle-orm/pg-core";
@@ -357,6 +358,20 @@ export const testimonials = pgTable(
   (t) => [index("testimonials_status").on(t.status, t.createdAt)],
 );
 
+// ---------- Dashboard notifications ----------
+/** Items a person has opened or dismissed in the bell (key like "enq:<id>"). Older than 30 days are pruned. */
+export const notificationReads = pgTable(
+  "notification_reads",
+  {
+    userId: text("user_id")
+      .notNull()
+      .references(() => adminUsers.id, { onDelete: "cascade" }),
+    key: text("key").notNull(),
+    createdAt: createdAt(),
+  },
+  (t) => [primaryKey({ columns: [t.userId, t.key] })],
+);
+
 // ---------- Rate limiting (shared by every server instance) ----------
 export const rateLimits = pgTable("rate_limits", {
   key: text("key").primaryKey(),
@@ -394,6 +409,9 @@ export const adminUsers = pgTable("admin_users", {
   /** Receives new-enquiry and reminder emails for the desks they cover (empty = all desks). */
   notify: boolean("notify").notNull().default(false),
   notifyDesks: json<string[]>("notify_desks", "[]"),
+  /** Dashboard bell: sounds off, and everything before this time counts as read. */
+  notificationsMuted: boolean("notifications_muted").notNull().default(false),
+  notificationsReadAt: timestamp("notifications_read_at", { withTimezone: true }),
   active: boolean("active").notNull().default(true),
   lastLoginAt: timestamp("last_login_at", { withTimezone: true }),
   /** Bumped on password change or deactivation so every existing session stops working. */
