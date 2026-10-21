@@ -1,10 +1,11 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Fragment, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { EnyoAvatar } from "@/components/ejo/EnyoAvatar";
 import { Icon } from "@/components/ui/Icon";
 import { ENYO_ASK } from "./enyo-events";
+import { EnyoText, Thinking, TypedReply } from "./EnyoText";
 import { withNode, type Labels } from "./fill";
 
 type Msg = { role: "user" | "assistant"; content: string };
@@ -15,36 +16,6 @@ const tel = (p: string) => `tel:${p.replace(/[^\d+]/g, "").replace(/^0/, "+234")
 const wa = (p: string) => `https://wa.me/${p.replace(/\D/g, "").replace(/^0/, "234")}`;
 
 /** Turns site paths (/book-service) and emails in replies into links. */
-function Rich({ text }: { text: string }) {
-  const parts = text.split(/(\s\/[a-z0-9\-/#?=&]+|[\w.+-]+@[\w-]+\.[\w.]+)/gi);
-  return (
-    <>
-      {parts.map((p, i) => {
-        const t = p.trim();
-        if (/^\/[a-z0-9]/i.test(t)) {
-          const clean = t.replace(/[.,]$/, "");
-          return (
-            <Fragment key={i}>
-              {" "}
-              <Link href={clean} className="font-semibold text-brand underline underline-offset-2">
-                {clean}
-              </Link>
-              {/[.,]$/.test(t) ? t.slice(-1) : ""}
-            </Fragment>
-          );
-        }
-        if (/^[\w.+-]+@/.test(t))
-          return (
-            <a key={i} href={`mailto:${t}`} className="text-brand underline">
-              {t}
-            </a>
-          );
-        return <Fragment key={i}>{p}</Fragment>;
-      })}
-    </>
-  );
-}
-
 export function Enyo({
   name,
   greeting,
@@ -71,6 +42,9 @@ export function Enyo({
   const [error, setError] = useState<string>();
   const [nudge, setNudge] = useState(false);
   const list = useRef<HTMLDivElement>(null);
+  /** Index of the reply that just arrived, which is written out word by word. */
+  const fresh = useRef(-1);
+  const scrollDown = () => list.current?.scrollTo({ top: list.current.scrollHeight });
   const inputRef = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {
@@ -134,7 +108,10 @@ export function Enyo({
     const { ok, data } = await post({ action: "message", message: t }).catch(() => ({ ok: false, data: {} as Record<string, string> }));
     setBusy(false);
     if (!ok) return setError(data.error || L.errorNetwork);
-    setMsgs((m) => [...m, { role: "assistant", content: data.reply }]);
+    setMsgs((m) => {
+      fresh.current = m.length;
+      return [...m, { role: "assistant", content: data.reply }];
+    });
   }
 
   async function submitHandoff(form: HTMLFormElement) {
@@ -155,7 +132,10 @@ export function Enyo({
       return setError(errs || L.handoffError);
     }
     setHandoff(false);
-    setMsgs((m) => [...m, { role: "assistant", content: data.reply }]);
+    setMsgs((m) => {
+      fresh.current = m.length;
+      return [...m, { role: "assistant", content: data.reply }];
+    });
   }
 
   const mood = busy ? "thinking" : msgs.at(-1)?.role === "assistant" ? "happy" : "idle";
@@ -306,22 +286,24 @@ export function Enyo({
               <div ref={list} className="scroll-thin flex-1 space-y-3 overflow-y-auto p-4" aria-live="polite">
                 <p className="max-w-[85%] rounded-2xl rounded-bl-md bg-concrete px-3.5 py-2.5 text-[0.95rem]">{greeting}</p>
                 {msgs.map((m, i) => (
-                  <p
+                  <div
                     key={i}
-                    className={`max-w-[85%] whitespace-pre-wrap rounded-2xl px-3.5 py-2.5 text-[0.95rem] ${
-                      m.role === "user" ? "ml-auto rounded-br-md bg-brand text-on-brand" : "rounded-bl-md bg-concrete"
+                    className={`max-w-[85%] rounded-2xl px-3.5 py-2.5 text-[0.95rem] [animation:rise_.25s_ease-out] ${
+                      m.role === "user" ? "ml-auto whitespace-pre-wrap rounded-br-md bg-brand text-on-brand" : "rounded-bl-md bg-concrete"
                     }`}
                   >
-                    {m.role === "assistant" ? <Rich text={m.content} /> : m.content}
-                  </p>
+                    {m.role === "assistant" ? (
+                      i === msgs.length - 1 && fresh.current === i ? (
+                        <TypedReply text={m.content} onStep={scrollDown} />
+                      ) : (
+                        <EnyoText text={m.content} />
+                      )
+                    ) : (
+                      m.content
+                    )}
+                  </div>
                 ))}
-                {busy ? (
-                  <p className="inline-flex gap-1 rounded-2xl bg-concrete px-4 py-3" aria-label={L.typing}>
-                    {[0, 1, 2].map((k) => (
-                      <span key={k} className="h-2 w-2 animate-bounce rounded-full bg-ink-soft" style={{ animationDelay: `${k * 120}ms` }} />
-                    ))}
-                  </p>
-                ) : null}
+                {busy ? <Thinking label={L.typing} /> : null}
                 {error ? (
                   <p role="alert" className="text-sm text-danger">
                     {error}
