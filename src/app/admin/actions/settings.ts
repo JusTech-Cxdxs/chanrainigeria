@@ -3,6 +3,7 @@ import { revalidatePath, revalidateTag } from "next/cache";
 import { redirect } from "next/navigation";
 import { db, schema } from "@/db";
 import { audit, requireAdmin } from "@/lib/auth";
+import { snapshot } from "@/lib/history";
 import { clearEnyoCache } from "@/lib/enyo";
 import { saveUpload } from "@/lib/media";
 import { getSettings, settingsSchema, type Settings } from "@/lib/settings";
@@ -20,7 +21,7 @@ function contrastWithWhite(hex: string) {
 }
 
 export async function saveSettings(f: FormData) {
-  const user = await requireAdmin(["ADMIN"]);
+  const user = await requireAdmin("settings");
   const cur = await getSettings();
   const fail = (msg: string) => redirect(`/admin/settings?error=${encodeURIComponent(msg)}`);
 
@@ -96,7 +97,9 @@ export async function saveSettings(f: FormData) {
       enabled: f.get("translate_enabled") === "on",
       languages: f.getAll("translate_languages").map(String).filter((l) => /^[a-z]{2}(-[A-Z]{2})?$/.test(l)),
     },
-    email: { fromName: s(f, "email_fromName"), fromAddress: s(f, "email_fromAddress"), replyTo: s(f, "email_replyTo"), footerNote: s(f, "email_footerNote") },
+    // Email and alerts have their own page (Email and alerts), so they are kept as they are here.
+    email: cur.email,
+    alerts: cur.alerts,
     enyo: {
       enabled: f.get("enyo_enabled") === "on",
       name: s(f, "enyo_name") || "Enyo",
@@ -118,6 +121,7 @@ export async function saveSettings(f: FormData) {
   if (contrastWithWhite(next.branding.primary) < 4.5)
     fail("That brand colour is too light for white button text to be readable. Choose a darker shade.");
 
+  await snapshot("settings", "1", "Company settings", "update", user.id);
   await db
     .insert(schema.siteSettings)
     .values({ id: 1, data: next })
@@ -133,7 +137,7 @@ export async function saveSettings(f: FormData) {
 
 /** Clears every cached page and query, e.g. after loading data straight into the database. */
 export async function refreshSiteCache() {
-  const user = await requireAdmin(["ADMIN"]);
+  const user = await requireAdmin("settings");
   for (const tag of ["settings", "catalogue", "posts", "branches"]) revalidateTag(tag);
   revalidatePath("/", "layout");
   clearEnyoCache();

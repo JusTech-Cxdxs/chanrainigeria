@@ -3,12 +3,11 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { AdminHead, Badge, Empty, Flash } from "@/components/admin/ui";
 import { db, schema } from "@/db";
-import { can, requireAdmin } from "@/lib/auth";
+import { requireAdmin } from "@/lib/auth";
 import { formatDate } from "@/lib/format";
 
 export default async function NewsAdmin({ searchParams }: { searchParams: Promise<Record<string, string>> }) {
-  const user = await requireAdmin();
-  if (!can.content(user.role)) redirect("/admin?denied=1");
+  const user = await requireAdmin("news");
   const posts = await db.query.posts.findMany({ orderBy: [desc(schema.posts.createdAt)], columns: { body: false } });
   return (
     <>

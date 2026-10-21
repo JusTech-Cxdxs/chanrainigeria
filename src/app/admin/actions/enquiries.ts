@@ -3,7 +3,7 @@ import { eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { db, schema } from "@/db";
-import { audit, can, requireAdmin } from "@/lib/auth";
+import { audit, requireAdmin } from "@/lib/auth";
 import { staffReply } from "@/lib/email-templates";
 import { STATUS_LABEL } from "@/lib/labels";
 import { emailContext, sendMail } from "@/lib/mail";
@@ -12,8 +12,7 @@ import { getSettings } from "@/lib/settings";
 const STATUSES = ["NEW", "IN_PROGRESS", "RESOLVED", "CLOSED"] as const;
 
 async function load(id: string) {
-  const user = await requireAdmin();
-  if (!can.enquiries(user.role)) redirect("/admin?denied=1");
+  const user = await requireAdmin("enquiries");
   const e = await db.query.enquiries.findFirst({ where: eq(schema.enquiries.id, id) });
   if (!e) redirect("/admin/enquiries?error=" + encodeURIComponent("That enquiry no longer exists."));
   return { user, e: e! };

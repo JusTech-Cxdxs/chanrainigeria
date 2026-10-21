@@ -2,7 +2,7 @@ import { and, count, desc, eq, ilike, inArray, or, sql, type SQL } from "drizzle
 import Link from "next/link";
 import { AdminHead, Badge, Empty, Flash, Pager } from "@/components/admin/ui";
 import { db, schema } from "@/db";
-import { can, requireAdmin } from "@/lib/auth";
+import { requireAdmin } from "@/lib/auth";
 import { formatDate } from "@/lib/format";
 import { SOURCE_LABEL, STATUS_LABEL, TYPE_LABEL, statusTone } from "@/lib/labels";
 import { getSettings } from "@/lib/settings";
@@ -12,8 +12,7 @@ const PER = 25;
 type SP = Record<string, string | undefined>;
 
 export default async function Enquiries({ searchParams }: { searchParams: Promise<SP> }) {
-  const user = await requireAdmin();
-  if (!can.enquiries(user.role)) redirect("/admin?denied=1");
+  const user = await requireAdmin("enquiries");
   const sp = await searchParams;
   const settings = await getSettings();
   const E = schema.enquiries;

@@ -3,12 +3,11 @@ import { redirect } from "next/navigation";
 import { saveService } from "@/app/admin/actions/catalogue";
 import { AdminHead, Check, Field, Flash, Panel, SubmitButton } from "@/components/admin/ui";
 import { db, schema } from "@/db";
-import { can, requireAdmin } from "@/lib/auth";
+import { requireAdmin } from "@/lib/auth";
 import { toLines } from "@/lib/lines";
 
 export default async function Services({ searchParams }: { searchParams: Promise<Record<string, string>> }) {
-  const user = await requireAdmin();
-  if (!can.catalogue(user.role)) redirect("/admin?denied=1");
+  const user = await requireAdmin("services");
   const [services, lines] = await Promise.all([
     db.query.services.findMany({ orderBy: [asc(schema.services.categoryId), asc(schema.services.order)] }),
     db.query.categories.findMany({ orderBy: [asc(schema.categories.order)], columns: { id: true, name: true } }),

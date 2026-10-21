@@ -3,7 +3,8 @@ import { and, eq, ne } from "drizzle-orm";
 import { revalidatePath, revalidateTag } from "next/cache";
 import { redirect } from "next/navigation";
 import { db, schema } from "@/db";
-import { audit, can, requireAdmin } from "@/lib/auth";
+import { audit, requireAdmin } from "@/lib/auth";
+import type { Permission } from "@/lib/permissions";
 import { clearEnyoCache } from "@/lib/enyo";
 import { slugify } from "@/lib/format";
 import { saveUpload } from "@/lib/media";
@@ -12,15 +13,13 @@ const s = (f: FormData, k: string) => String(f.get(k) ?? "").trim();
 const on = (f: FormData, k: string) => f.get(k) === "on";
 const IMAGE = ["image/jpeg", "image/png", "image/webp", "image/avif", "image/svg+xml"];
 
-async function editor() {
-  const user = await requireAdmin();
-  if (!can.content(user.role)) redirect("/admin?denied=1");
-  return user;
+async function editor(perm: Permission) {
+  return requireAdmin(perm);
 }
 
 // ---------- News ----------
 export async function savePost(id: string, f: FormData) {
-  const user = await editor();
+  const user = await editor("news");
   const title = s(f, "title");
   const path = `/admin/news/${id}`;
   if (!title) redirect(`${path}?error=Give%20the%20post%20a%20title`);
@@ -64,7 +63,7 @@ export async function savePost(id: string, f: FormData) {
 }
 
 export async function deletePost(id: string) {
-  const user = await editor();
+  const user = await editor("news");
   const p = await db.query.posts.findFirst({ where: eq(schema.posts.id, id) });
   if (p) {
     await db.delete(schema.posts).where(eq(schema.posts.id, id));
@@ -76,7 +75,7 @@ export async function deletePost(id: string) {
 
 // ---------- Locations ----------
 export async function saveBranch(id: string, f: FormData) {
-  const user = await editor();
+  const user = await editor("locations");
   const vals = {
     name: s(f, "name"),
     address: s(f, "address"),
@@ -107,7 +106,7 @@ export async function saveBranch(id: string, f: FormData) {
 
 // ---------- Media ----------
 export async function uploadMedia(f: FormData) {
-  const user = await editor();
+  const user = await editor("media");
   let n = 0;
   for (const file of f.getAll("files")) {
     if (!(file instanceof File) || !file.size) continue;

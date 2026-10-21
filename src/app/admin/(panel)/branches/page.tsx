@@ -4,11 +4,10 @@ import { saveBranch } from "@/app/admin/actions/content";
 import { AdminHead, Check, Field, Flash, Panel, SubmitButton } from "@/components/admin/ui";
 import { NG_STATES } from "@/lib/ng-states";
 import { db, schema } from "@/db";
-import { can, requireAdmin } from "@/lib/auth";
+import { requireAdmin } from "@/lib/auth";
 
 export default async function Branches({ searchParams }: { searchParams: Promise<Record<string, string>> }) {
-  const user = await requireAdmin();
-  if (!can.content(user.role)) redirect("/admin?denied=1");
+  const user = await requireAdmin("locations");
   const rows = await db.query.branches.findMany({ orderBy: [asc(schema.branches.order)] });
   const blank = { id: "new", name: "", address: "", city: "", state: "Lagos", phone: "", email: "", mapUrl: "", hours: "", isHeadOffice: false, active: true, order: 9 };
   return (

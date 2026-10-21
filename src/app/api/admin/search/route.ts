@@ -1,6 +1,6 @@
 import { and, desc, ilike, ne, or } from "drizzle-orm";
 import { db, schema } from "@/db";
-import { can, currentAdmin } from "@/lib/auth";
+import { currentAdmin, has } from "@/lib/auth";
 import { rateLimit } from "@/lib/guard";
 import { TYPE_LABEL } from "@/lib/labels";
 
@@ -40,7 +40,7 @@ export async function GET(req: Request) {
   const E = schema.enquiries;
 
   const [enq, chats, tms, models, news, team] = await Promise.all([
-    can.enquiries(r)
+    has(user, "enquiries")
       ? db.query.enquiries.findMany({
           where: or(ilike(E.ref, like), ilike(E.name, like), ilike(E.email, like), ilike(E.company, like), ilike(E.phone, like), ilike(E.message, like)),
           orderBy: [desc(E.createdAt)],
@@ -48,7 +48,7 @@ export async function GET(req: Request) {
           columns: { id: true, ref: true, name: true, company: true, type: true },
         })
       : [],
-    can.enquiries(r)
+    has(user, "chats")
       ? db
           .selectDistinctOn([schema.chatMessages.sessionId], { id: schema.chatMessages.sessionId, content: schema.chatMessages.content })
           .from(schema.chatMessages)
@@ -60,11 +60,11 @@ export async function GET(req: Request) {
       limit: 5,
       columns: { id: true, name: true, quote: true, status: true },
     }),
-    can.catalogue(r)
+    has(user, "products")
       ? db.query.products.findMany({ where: ilike(schema.products.name, like), limit: 6, columns: { id: true, name: true, summary: true } })
       : [],
-    can.content(r) ? db.query.posts.findMany({ where: ilike(schema.posts.title, like), limit: 5, columns: { id: true, title: true } }) : [],
-    can.team(r)
+    has(user, "news") ? db.query.posts.findMany({ where: ilike(schema.posts.title, like), limit: 5, columns: { id: true, title: true } }) : [],
+    has(user, "team")
       ? db.query.adminUsers.findMany({
           where: and(or(ilike(schema.adminUsers.name, like), ilike(schema.adminUsers.email, like)), r === "MASTER" ? undefined : ne(schema.adminUsers.role, "MASTER")),
           limit: 5,

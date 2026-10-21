@@ -4,12 +4,11 @@ import { redirect } from "next/navigation";
 import { createCategory } from "@/app/admin/actions/catalogue";
 import { AdminHead, Badge, Empty, Flash, Panel, SubmitButton } from "@/components/admin/ui";
 import { db, schema } from "@/db";
-import { can, requireAdmin } from "@/lib/auth";
+import { requireAdmin } from "@/lib/auth";
 import { plural } from "@/lib/format";
 
 export default async function Catalogue({ searchParams }: { searchParams: Promise<Record<string, string>> }) {
-  const user = await requireAdmin();
-  if (!can.catalogue(user.role)) redirect("/admin?denied=1");
+  const user = await requireAdmin("products");
   const sp = await searchParams;
 
   if (sp.unverified) {

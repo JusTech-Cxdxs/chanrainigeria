@@ -2,7 +2,7 @@
 import { revalidatePath, revalidateTag } from "next/cache";
 import { redirect } from "next/navigation";
 import { db, schema } from "@/db";
-import { audit, can, requireAdmin } from "@/lib/auth";
+import { audit, requireAdmin } from "@/lib/auth";
 import { IMAGE_SLOTS } from "@/lib/image-slots";
 import { saveUpload } from "@/lib/media";
 import { getSettings, type Settings } from "@/lib/settings";
@@ -11,8 +11,7 @@ const IMAGES = ["image/jpeg", "image/png", "image/webp", "image/avif"];
 const s = (f: FormData, k: string) => String(f.get(k) ?? "").trim();
 
 async function editor() {
-  const user = await requireAdmin();
-  if (!can.content(user.role)) redirect("/admin?denied=1");
+  const user = await requireAdmin("pages");
   return user;
 }
 

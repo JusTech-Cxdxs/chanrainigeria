@@ -3,7 +3,7 @@ import { notFound, redirect } from "next/navigation";
 import { addNote, replyToCustomer, updateEnquiry } from "@/app/admin/actions/enquiries";
 import { AdminHead, Badge, Flash, Panel, SubmitButton } from "@/components/admin/ui";
 import { db, schema } from "@/db";
-import { can, requireAdmin } from "@/lib/auth";
+import { requireAdmin } from "@/lib/auth";
 import { formatDate, telHref, waHref } from "@/lib/format";
 import { SOURCE_LABEL, STATUS_LABEL, TYPE_LABEL, URGENCY_LABEL, statusTone } from "@/lib/labels";
 import { mailConfigured } from "@/lib/mail";
@@ -23,8 +23,7 @@ const DETAIL: Record<string, string> = {
 };
 
 export default async function EnquiryDetail({ params, searchParams }: { params: Promise<{ id: string }>; searchParams: Promise<Record<string, string>> }) {
-  const user = await requireAdmin();
-  if (!can.enquiries(user.role)) redirect("/admin?denied=1");
+  const user = await requireAdmin("enquiries");
   const { id } = await params;
   const e = await db.query.enquiries.findFirst({
     where: eq(schema.enquiries.id, id),

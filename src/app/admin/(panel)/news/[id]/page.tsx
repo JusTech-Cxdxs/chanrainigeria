@@ -3,12 +3,11 @@ import { notFound, redirect } from "next/navigation";
 import { deletePost, savePost } from "@/app/admin/actions/content";
 import { AdminHead, Check, Field, Flash, Panel, SubmitButton } from "@/components/admin/ui";
 import { db, schema } from "@/db";
-import { can, requireAdmin } from "@/lib/auth";
+import { requireAdmin } from "@/lib/auth";
 import { mediaUrl } from "@/lib/settings";
 
 export default async function EditPost({ params, searchParams }: { params: Promise<{ id: string }>; searchParams: Promise<Record<string, string>> }) {
-  const user = await requireAdmin();
-  if (!can.content(user.role)) redirect("/admin?denied=1");
+  const user = await requireAdmin("news");
   const { id } = await params;
   const p = id === "new" ? null : await db.query.posts.findFirst({ where: eq(schema.posts.id, id) });
   if (id !== "new" && !p) notFound();

@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 import { db, schema } from "@/db";
-import { can, currentAdmin } from "@/lib/auth";
+import { currentAdmin, has } from "@/lib/auth";
 
 // Serves uploaded files from the database with long-lived caching (ids never change).
 export async function GET(_: Request, { params }: { params: Promise<{ id: string }> }) {
@@ -11,7 +11,7 @@ export async function GET(_: Request, { params }: { params: Promise<{ id: string
   if (row.isPrivate) {
     // Customer attachments: only staff who handle enquiries.
     const u = await currentAdmin();
-    if (!u || !can.enquiries(u.role)) return new Response("Not found", { status: 404 });
+    if (!u || !has(u, "enquiries")) return new Response("Not found", { status: 404 });
   }
   const inline = row.mimeType.startsWith("image/") || row.mimeType === "application/pdf";
   return new Response(new Uint8Array(row.data), {

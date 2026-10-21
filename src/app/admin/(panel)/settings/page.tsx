@@ -6,7 +6,7 @@ import { mailConfigured } from "@/lib/mail";
 import { getSettings, mediaUrl } from "@/lib/settings";
 
 export default async function SettingsPage({ searchParams }: { searchParams: Promise<Record<string, string>> }) {
-  await requireAdmin(["ADMIN"]);
+  await requireAdmin("settings");
   const sp = await searchParams;
   const s = await getSettings();
 

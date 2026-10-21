@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { AdminHead, Badge, Empty, Flash, Panel } from "@/components/admin/ui";
 import { overview } from "@/lib/admin-queries";
-import { can, requireAdmin } from "@/lib/auth";
+import { has, requireAdmin } from "@/lib/auth";
 import { enyoAiConfigured } from "@/lib/enyo";
 import { formatDate } from "@/lib/format";
 import { TYPE_LABEL, SOURCE_LABEL, STATUS_LABEL, statusTone } from "@/lib/labels";
@@ -37,7 +37,7 @@ export default async function Overview({ searchParams }: { searchParams: Promise
         </Panel>
       ) : null}
 
-      {can.enquiries(user.role) && o.overdue.length ? (
+      {has(user, "enquiries") && o.overdue.length ? (
         <Panel title="Needs attention now" className="mb-6 !border-accent" aside={<Link href="/admin/enquiries?status=open" className="text-sm font-semibold text-brand">All open</Link>}>
           <ul className="divide-y divide-line-soft">
             {o.overdue.map((e) => {
@@ -121,7 +121,7 @@ export default async function Overview({ searchParams }: { searchParams: Promise
         </Panel>
       </div>
 
-      {can.enquiries(user.role) ? (
+      {has(user, "enquiries") ? (
         <Panel title="Latest enquiries" className="mt-6" aside={<Link href="/admin/enquiries" className="text-sm font-semibold text-brand">All enquiries</Link>}>
           {o.recent.length ? (
             <ul className="divide-y divide-line-soft">
@@ -163,7 +163,7 @@ export default async function Overview({ searchParams }: { searchParams: Promise
             <p className="text-ink-soft">Visits are counted only for people who accept statistics cookies.</p>
           )}
         </Panel>
-        {can.catalogue(user.role) ? (
+        {has(user, "products") ? (
           <Panel title="Catalogue checks">
             <p>
               <span className="display num text-3xl">{o.unverified}</span>{" "}

@@ -4,14 +4,13 @@ import { uploadMedia } from "@/app/admin/actions/content";
 import { CopyLink } from "@/components/admin/CopyLink";
 import { AdminHead, Empty, Flash, Pager, Panel, SubmitButton } from "@/components/admin/ui";
 import { db, schema } from "@/db";
-import { can, requireAdmin } from "@/lib/auth";
+import { requireAdmin } from "@/lib/auth";
 import { formatDate } from "@/lib/format";
 
 const PER = 48;
 
 export default async function MediaLibrary({ searchParams }: { searchParams: Promise<Record<string, string>> }) {
-  const user = await requireAdmin();
-  if (!can.content(user.role)) redirect("/admin?denied=1");
+  const user = await requireAdmin("media");
   const sp = await searchParams;
   const page = Math.max(1, Number(sp.page) || 1);
   const M = schema.media;

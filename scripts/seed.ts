@@ -6,10 +6,11 @@ import "./load-env";
 import { readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import bcrypt from "bcryptjs";
-import { eq } from "drizzle-orm";
+import { and, eq, isNull } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/node-postgres";
 import { Pool } from "pg";
 import * as schema from "../src/db/schema";
+import { SYSTEM_ROLES } from "../src/lib/permissions";
 
 type SeedFile = {
   order?: number;
@@ -162,6 +163,24 @@ async function main() {
     ];
     await db.insert(schema.testimonials).values(examples.map((e, i) => ({ ...e, status: "APPROVED" as const, isExample: true, source: "staff", order: i })));
     console.log("testimonials: added 4 examples");
+  }
+
+  // Built-in roles, and a role for anyone who signed up before roles existed.
+  for (const [i, r] of SYSTEM_ROLES.entries()) {
+    const existing = await db.query.roles.findFirst({ where: eq(schema.roles.name, r.name) });
+    if (!existing) {
+      await db.insert(schema.roles).values({ name: r.name, description: r.description, permissions: [...r.permissions], isSystem: true, order: i });
+      console.log(`roles: added ${r.name}`);
+    }
+  }
+  const allRoles = await db.query.roles.findMany();
+  for (const r of SYSTEM_ROLES.filter((x) => x.legacy)) {
+    const target = allRoles.find((x) => x.name === r.name);
+    if (!target) continue;
+    await db
+      .update(schema.adminUsers)
+      .set({ roleId: target.id })
+      .where(and(isNull(schema.adminUsers.roleId), eq(schema.adminUsers.role, r.legacy as "ADMIN" | "EDITOR" | "COORDINATOR")));
   }
 
   // Optional first admin from the environment (otherwise use /admin/setup in the browser).

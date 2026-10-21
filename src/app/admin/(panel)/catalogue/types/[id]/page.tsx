@@ -4,7 +4,7 @@ import { notFound, redirect } from "next/navigation";
 import { saveFamily, toggleProduct } from "@/app/admin/actions/catalogue";
 import { AdminHead, Badge, Check, Field, Flash, Panel, SubmitButton } from "@/components/admin/ui";
 import { db, schema } from "@/db";
-import { can, requireAdmin } from "@/lib/auth";
+import { requireAdmin } from "@/lib/auth";
 import { toFaq, toFields, toIntervals, toLines, toPairs } from "@/lib/lines";
 import { mediaUrl } from "@/lib/settings";
 
@@ -17,8 +17,7 @@ export default async function EditType({
   params: Promise<{ id: string }>;
   searchParams: Promise<Record<string, string>>;
 }) {
-  const user = await requireAdmin();
-  if (!can.catalogue(user.role)) redirect("/admin?denied=1");
+  const user = await requireAdmin("products");
   const { id } = await params;
   const sp = await searchParams;
   const lines = await db.query.categories.findMany({ orderBy: [asc(schema.categories.order)], columns: { id: true, name: true, slug: true } });

@@ -3,7 +3,8 @@ import { and, eq, ne } from "drizzle-orm";
 import { revalidatePath, revalidateTag } from "next/cache";
 import { redirect } from "next/navigation";
 import { db, schema } from "@/db";
-import { audit, can, requireAdmin } from "@/lib/auth";
+import { audit, requireAdmin } from "@/lib/auth";
+import type { Permission } from "@/lib/permissions";
 import { clearEnyoCache } from "@/lib/enyo";
 import { slugify } from "@/lib/format";
 import { fromFaq, fromFields, fromIntervals, fromLines, fromPairs, fromSpecs } from "@/lib/lines";
@@ -14,10 +15,8 @@ const s = (f: FormData, k: string) => String(f.get(k) ?? "").trim();
 const on = (f: FormData, k: string) => f.get(k) === "on";
 const num = (f: FormData, k: string) => Number(f.get(k) ?? 0) || 0;
 
-async function editor() {
-  const user = await requireAdmin();
-  if (!can.catalogue(user.role)) redirect("/admin?denied=1");
-  return user;
+async function editor(perm: Permission) {
+  return requireAdmin(perm);
 }
 
 function refresh() {
@@ -48,7 +47,7 @@ const fail = (path: string, e: unknown) => redirect(`${path}?error=${encodeURICo
 
 // ---------- Categories ----------
 export async function saveCategory(id: string, f: FormData) {
-  const user = await editor();
+  const user = await editor("products");
   const path = `/admin/catalogue/lines/${id}`;
   let imageId: string | undefined;
   try {
@@ -79,7 +78,7 @@ export async function saveCategory(id: string, f: FormData) {
 }
 
 export async function createCategory(f: FormData) {
-  const user = await editor();
+  const user = await editor("products");
   const name = s(f, "name");
   if (!name) redirect("/admin/catalogue?error=Give%20the%20line%20a%20name");
   const [row] = await db
@@ -93,7 +92,7 @@ export async function createCategory(f: FormData) {
 
 // ---------- Brands ----------
 export async function saveBrand(id: string, f: FormData) {
-  const user = await editor();
+  const user = await editor("brands");
   let logoId: string | undefined;
   try {
     logoId = await upload(f, "logo");
@@ -123,7 +122,7 @@ export async function saveBrand(id: string, f: FormData) {
 
 // ---------- Families (machine types) ----------
 export async function saveFamily(id: string, f: FormData) {
-  const user = await editor();
+  const user = await editor("products");
   const name = s(f, "name");
   const path = id === "new" ? "/admin/catalogue" : `/admin/catalogue/types/${id}`;
   if (!name) fail(path, new Error("Give the machine type a name."));
@@ -167,7 +166,7 @@ export async function saveFamily(id: string, f: FormData) {
 
 // ---------- Products (models) ----------
 export async function saveProduct(id: string, f: FormData) {
-  const user = await editor();
+  const user = await editor("products");
   const name = s(f, "name");
   const familyId = s(f, "familyId");
   const path = id === "new" ? `/admin/catalogue/types/${familyId}` : `/admin/catalogue/models/${id}`;
@@ -225,7 +224,7 @@ export async function saveProduct(id: string, f: FormData) {
 
 /** Models are hidden rather than deleted, so enquiries that mention them keep their link. */
 export async function toggleProduct(id: string) {
-  const user = await editor();
+  const user = await editor("products");
   const p = await db.query.products.findFirst({ where: eq(schema.products.id, id) });
   if (!p) redirect("/admin/catalogue");
   await db.update(schema.products).set({ published: !p!.published }).where(eq(schema.products.id, id));
@@ -236,7 +235,7 @@ export async function toggleProduct(id: string) {
 
 // ---------- Services ----------
 export async function saveService(id: string, f: FormData) {
-  const user = await editor();
+  const user = await editor("services");
   const name = s(f, "name");
   if (!name) redirect("/admin/services?error=Enter%20a%20name");
   const vals = {

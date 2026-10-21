@@ -7,7 +7,7 @@ import { requireAdmin } from "@/lib/auth";
 const RANGES = { "7": "7 days", "30": "30 days", "90": "90 days" } as const;
 
 export default async function Visitors({ searchParams }: { searchParams: Promise<Record<string, string>> }) {
-  await requireAdmin();
+  await requireAdmin("visitors");
   const sp = await searchParams;
   const days = (sp.days && sp.days in RANGES ? sp.days : "30") as keyof typeof RANGES;
   const since = new Date(Date.now() - Number(days) * 86_400_000);

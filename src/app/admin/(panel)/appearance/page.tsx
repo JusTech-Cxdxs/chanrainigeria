@@ -1,15 +1,14 @@
 import { redirect } from "next/navigation";
 import { replaceSlotImage, resetSlotImage, saveSlides } from "@/app/admin/actions/appearance";
 import { AdminHead, Check, Flash, Panel, SubmitButton } from "@/components/admin/ui";
-import { can, requireAdmin } from "@/lib/auth";
+import { requireAdmin } from "@/lib/auth";
 import { IMAGE_SLOTS } from "@/lib/image-slots";
 import { getSettings, imageUrl } from "@/lib/settings";
 
 export const dynamic = "force-dynamic";
 
 export default async function Appearance({ searchParams }: { searchParams: Promise<Record<string, string>> }) {
-  const user = await requireAdmin();
-  if (!can.content(user.role)) redirect("/admin?denied=1");
+  const user = await requireAdmin("pages");
   const s = await getSettings();
   const slides = [...s.home.slides];
   while (slides.length < Math.min(6, s.home.slides.length + 1)) slides.push({ title: "", text: "", image: `hero-${(slides.length % 3) + 1}`, ctaLabel: "", ctaHref: "" });

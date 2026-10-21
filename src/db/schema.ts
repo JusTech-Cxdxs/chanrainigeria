@@ -74,6 +74,10 @@ export const brands = pgTable("brands", {
   highlights: json<string[]>("highlights", "[]"),
   logoId: text("logo_id"),
   showOnHome: boolean("show_on_home").notNull().default(true),
+  /** Shown in the "Authorised dealer for" strip at the foot of every email. */
+  showInEmail: boolean("show_in_email").notNull().default(true),
+  /** e.g. "Authorised dealer", "Distributor". Shown under the logo where space allows. */
+  relationship: text("relationship").notNull().default(""),
   order: integer("order").notNull().default(0),
 });
 
@@ -155,6 +159,8 @@ export const posts = pgTable("posts", {
   id: id(),
   slug: text("slug").notNull().unique(),
   title: text("title").notNull(),
+  /** News, Projects, Events, Announcements... free text so staff can add their own. */
+  category: text("category").notNull().default("News"),
   excerpt: text("excerpt").notNull().default(""),
   body: text("body").notNull().default(""),
   coverId: text("cover_id"),
@@ -174,8 +180,45 @@ export const media = pgTable("media", {
   /** Customer uploads (fault photos, data plates) are only served to signed-in staff. */
   isPrivate: boolean("is_private").notNull().default(false),
   data: bytea("data").notNull(),
+  /** Library folder, e.g. "Home slider", "Products", "Logos". Empty = Unsorted. */
+  folder: text("folder").notNull().default(""),
+  width: integer("width"),
+  height: integer("height"),
+  uploadedById: text("uploaded_by_id"),
+  /** Soft delete: kept for 30 days so it can be restored from History. */
+  deletedAt: timestamp("deleted_at", { withTimezone: true }),
   createdAt: createdAt(),
+  updatedAt: updatedAt(),
 });
+
+// ---------- Page content (every editable word and picture on the public pages) ----------
+/** One row per page key from src/lib/content.ts; data holds only the fields staff have changed. */
+export const pageContent = pgTable("page_content", {
+  page: text("page").primaryKey(),
+  data: jsonb("data").$type<Record<string, unknown>>().notNull().default({}),
+  updatedById: text("updated_by_id"),
+  updatedAt: updatedAt(),
+});
+
+// ---------- History (undo) ----------
+/**
+ * A copy of a record as it was just before each change or delete, so any edit can be reverted.
+ * entity is a key from src/lib/history.ts; data is the full row (or settings / page JSON).
+ */
+export const revisions = pgTable(
+  "revisions",
+  {
+    id: id(),
+    entity: text("entity").notNull(),
+    entityId: text("entity_id").notNull(),
+    label: text("label").notNull(),
+    action: text("action").notNull(),
+    data: jsonb("data").notNull(),
+    actorId: text("actor_id"),
+    createdAt: createdAt(),
+  },
+  (t) => [index("revisions_entity").on(t.entity, t.entityId, t.createdAt), index("revisions_created").on(t.createdAt)],
+);
 
 // ---------- Enquiries (the form and Enyo share this) ----------
 /** Running number behind enquiry references (CN-2026-000123). */
@@ -325,12 +368,32 @@ export const rateLimits = pgTable("rate_limits", {
 /** MASTER is the platform owner (JusTech support). It is never shown to the organisation's staff. */
 export const role = pgEnum("role", ["MASTER", "ADMIN", "EDITOR", "COORDINATOR"]);
 
+/**
+ * Roles the organisation defines. Each lists the dashboard sections it can open; the sidebar shows
+ * only those. System roles can be edited but not deleted. The platform (MASTER) account sits above all.
+ */
+export const roles = pgTable("roles", {
+  id: id(),
+  name: text("name").notNull().unique(),
+  description: text("description").notNull().default(""),
+  permissions: json<string[]>("permissions", "[]"),
+  isSystem: boolean("is_system").notNull().default(false),
+  order: integer("order").notNull().default(0),
+  createdAt: createdAt(),
+});
+
 export const adminUsers = pgTable("admin_users", {
   id: id(),
   email: text("email").notNull().unique(),
   name: text("name").notNull(),
   passwordHash: text("password_hash").notNull(),
+  /** MASTER marks the platform account. Everyone else's access comes from roleId. */
   role: role("role").notNull().default("EDITOR"),
+  roleId: text("role_id").references(() => roles.id, { onDelete: "set null" }),
+  jobTitle: text("job_title").notNull().default(""),
+  /** Receives new-enquiry and reminder emails for the desks they cover (empty = all desks). */
+  notify: boolean("notify").notNull().default(false),
+  notifyDesks: json<string[]>("notify_desks", "[]"),
   active: boolean("active").notNull().default(true),
   lastLoginAt: timestamp("last_login_at", { withTimezone: true }),
   /** Bumped on password change or deactivation so every existing session stops working. */
@@ -385,6 +448,12 @@ export const chatSessionsRelations = relations(chatSessions, ({ many }) => ({
 }));
 export const chatMessagesRelations = relations(chatMessages, ({ one }) => ({
   session: one(chatSessions, { fields: [chatMessages.sessionId], references: [chatSessions.id] }),
+}));
+export const adminUsersRelations = relations(adminUsers, ({ one }) => ({
+  roleRef: one(roles, { fields: [adminUsers.roleId], references: [roles.id] }),
+}));
+export const revisionsRelations = relations(revisions, ({ one }) => ({
+  actor: one(adminUsers, { fields: [revisions.actorId], references: [adminUsers.id] }),
 }));
 export const auditLogsRelations = relations(auditLogs, ({ one }) => ({
   actor: one(adminUsers, { fields: [auditLogs.actorId], references: [adminUsers.id] }),

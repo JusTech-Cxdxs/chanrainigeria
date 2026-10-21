@@ -3,13 +3,12 @@ import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { AdminHead, Panel } from "@/components/admin/ui";
 import { db, schema } from "@/db";
-import { can, requireAdmin } from "@/lib/auth";
+import { requireAdmin } from "@/lib/auth";
 import { formatDate } from "@/lib/format";
 import { getSettings } from "@/lib/settings";
 
 export default async function Chat({ params }: { params: Promise<{ id: string }> }) {
-  const user = await requireAdmin();
-  if (!can.enquiries(user.role)) redirect("/admin?denied=1");
+  const user = await requireAdmin("chats");
   const { id } = await params;
   const [c, settings] = await Promise.all([
     db.query.chatSessions.findFirst({
