@@ -66,7 +66,7 @@ export function Section({
 /** Save bar that stays in view at the bottom of long forms (above the phone tab bar). */
 export function SaveBar({ children, note }: { children: React.ReactNode; note?: React.ReactNode }) {
   return (
-    <div className="sticky bottom-[calc(4.5rem+env(safe-area-inset-bottom))] z-30 mt-6 lg:bottom-4">
+    <div className="sticky bottom-[calc(4.5rem+env(safe-area-inset-bottom))] z-30 mt-6 mr-[4.5rem] lg:bottom-4 lg:mr-20">
       <div className="flex flex-wrap items-center gap-3 rounded-2xl border border-line bg-surface/95 px-4 py-3 shadow-[0_12px_32px_-12px_rgb(6_18_10/0.35)] backdrop-blur">
         <div className="min-w-0 flex-1 text-sm text-ink-soft">{note}</div>
         <div className="flex flex-wrap items-center gap-2">{children}</div>

@@ -341,7 +341,7 @@ export function PageEditor({
               {unsaved} unsaved change{unsaved === 1 ? "" : "s"}
             </span>
           ) : changedFromOriginal ? (
-            `All saved. ${changedFromOriginal} field${changedFromOriginal === 1 ? "" : "s"} differ from the original.`
+            `All saved. ${changedFromOriginal} ${changedFromOriginal === 1 ? "field differs" : "fields differ"} from the original.`
           ) : (
             "All saved. Every field shows the original wording."
           )
