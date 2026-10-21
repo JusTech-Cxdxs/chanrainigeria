@@ -1,0 +1,4 @@
+Contact: mailto:cng@chanrainigeria.com
+Preferred-Languages: en
+Policy: Please report security issues privately by email. Do not test against customers' data.
+Expires: 2027-10-31T00:00:00.000Z

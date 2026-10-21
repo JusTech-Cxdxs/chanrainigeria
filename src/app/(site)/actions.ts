@@ -1,7 +1,7 @@
 "use server";
 import { z } from "zod";
 import { createEnquiry, enquiryInput } from "@/lib/enquiries";
-import { ALLOWED_UPLOADS, clientKey, looksLikeBot, rateLimit } from "@/lib/guard";
+import { ALLOWED_UPLOADS, clientKey, looksLikeBot, looksLikeSpam, rateLimit } from "@/lib/guard";
 import { saveUpload } from "@/lib/media";
 
 export type FormState =
@@ -23,7 +23,7 @@ function echo(form: FormData) {
 
 export async function submitEnquiry(_: FormState, form: FormData): Promise<FormState> {
   if (looksLikeBot(form)) return { status: "sent", ref: "—", desk: "" };
-  if (!rateLimit(`enq:${await clientKey()}`, 6, 10 * 60_000)) {
+  if (!(await rateLimit(`enq:${await clientKey()}`, 6, 10 * 60_000))) {
     return { status: "error", message: "Too many requests from this connection. Please wait a few minutes and try again.", values: echo(form), at: Date.now() };
   }
 
@@ -62,7 +62,18 @@ export async function submitEnquiry(_: FormState, form: FormData): Promise<FormS
     };
   }
 
+  if (looksLikeSpam(payload.message)) {
+    return { status: "error", message: "Please remove web links and code from your message, then send it again.", errors: { message: ["Please remove links from your message."] }, values: echo(form), at: Date.now() };
+  }
+
   const files = form.getAll("photos").filter((f): f is File => f instanceof File && f.size > 0).slice(0, 4);
+  const total = files.reduce((n, f) => n + f.size, 0);
+  if (total > 12 * 1024 * 1024) {
+    return { status: "error", message: "The photos add up to more than 12 MB. Please send fewer or smaller photos.", errors: { photos: ["Too large in total."] }, values: echo(form), at: Date.now() };
+  }
+  if (files.length && !(await rateLimit(`uploads:${await clientKey()}`, 20, 24 * 3600_000))) {
+    return { status: "error", message: "You've sent a lot of photos today. Please send this request without photos, or call us.", values: echo(form), at: Date.now() };
+  }
   const attachmentIds: string[] = [];
   for (const f of files) {
     const r = await saveUpload(f, { allowed: ALLOWED_UPLOADS, isPrivate: true });

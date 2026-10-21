@@ -6,7 +6,7 @@ import { db, schema } from "@/db";
 import { audit, can, requireAdmin } from "@/lib/auth";
 import { staffReply } from "@/lib/email-templates";
 import { STATUS_LABEL } from "@/lib/labels";
-import { sendMail } from "@/lib/mail";
+import { emailContext, sendMail } from "@/lib/mail";
 import { getSettings } from "@/lib/settings";
 
 const STATUSES = ["NEW", "IN_PROGRESS", "RESOLVED", "CLOSED"] as const;
@@ -53,7 +53,7 @@ export async function replyToCustomer(id: string, form: FormData) {
   if (message.length < 2) redirect(`/admin/enquiries/${id}?error=${encodeURIComponent("Write a reply first.")}`);
   const settings = await getSettings();
   const desk = settings.desks[e.desk];
-  const sent = await sendMail(settings, { to: e.email, ...staffReply(settings, e.ref, e.name, message), replyTo: desk?.email || undefined });
+  const sent = await sendMail(settings, { to: e.email, ...staffReply(await emailContext(), e.ref, e.name, message), replyTo: desk?.email || undefined });
   if (!sent) redirect(`/admin/enquiries/${id}?error=${encodeURIComponent("The email could not be sent. Check the email connection, or reply from your own mailbox.")}`);
   await db.insert(schema.enquiryNotes).values({ enquiryId: id, authorId: user.id, body: `Emailed the customer:\n\n${message}` });
   if (e.status === "NEW") await db.update(schema.enquiries).set({ status: "IN_PROGRESS" }).where(eq(schema.enquiries.id, id));

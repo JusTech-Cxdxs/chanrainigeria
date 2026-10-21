@@ -3,16 +3,16 @@ import Link from "next/link";
 import { PageHead } from "@/components/site/PageHead";
 import { getPosts } from "@/lib/catalogue";
 import { formatDate } from "@/lib/format";
-import { mediaUrl } from "@/lib/settings";
+import { getSettings, imageUrl, mediaUrl } from "@/lib/settings";
 
 export const metadata: Metadata = { title: "News" };
 export const dynamic = "force-dynamic";
 
 export default async function News() {
-  const posts = await getPosts(100);
+  const [s, posts] = await Promise.all([getSettings(), getPosts(100)]);
   return (
     <>
-      <PageHead crumbs={[{ href: "/", label: "Home" }, { label: "News" }]} title="News" lead="Deliveries, projects and updates from our teams." />
+      <PageHead crumbs={[{ href: "/", label: "Home" }, { label: "News" }]} title="News" lead="Deliveries, projects and updates from our teams." image={imageUrl(s, "page-news")} />
       <div className="wrap py-14">
         {posts.length === 0 ? (
           <p className="text-ink-soft">No news yet. Check back soon.</p>

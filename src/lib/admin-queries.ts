@@ -1,11 +1,11 @@
 import "server-only";
-import { and, count, countDistinct, desc, eq, gte, inArray, sql } from "drizzle-orm";
+import { and, asc, count, countDistinct, desc, eq, gte, inArray, lt, or, sql } from "drizzle-orm";
 import { db, schema } from "@/db";
 
 const { enquiries: E, pageViews: V, products: P, chatSessions: C } = schema;
 const daysAgo = (n: number) => new Date(Date.now() - n * 86_400_000);
 
-export async function overview() {
+export async function overview(overdueHours: number) {
   const since7 = daysAgo(7);
   const since30 = daysAgo(30);
   const open = inArray(E.status, ["NEW", "IN_PROGRESS"]);
@@ -24,6 +24,8 @@ export async function overview() {
     [{ n: chats7 }],
     recent,
     daily,
+    overdue,
+    [{ n: pendingTestimonials }],
   ] = await Promise.all([
     db.select({ n: count() }).from(E).where(eq(E.status, "NEW")),
     db.select({ n: count() }).from(E).where(open),
@@ -49,6 +51,13 @@ export async function overview() {
         (select count(*)::int from ${E} e where (e.created_at at time zone 'Africa/Lagos')::date = d.day) as enquiries,
         (select count(distinct v.visitor_id)::int from ${V} v where (v.created_at at time zone 'Africa/Lagos')::date = d.day) as visitors
       from d order by d.day`),
+    db.query.enquiries.findMany({
+      where: and(open, or(lt(E.createdAt, new Date(Date.now() - overdueHours * 3600_000)), sql`${E.details}->>'urgency' = 'machine_down'`)),
+      orderBy: [asc(E.createdAt)],
+      limit: 8,
+      columns: { id: true, ref: true, name: true, type: true, createdAt: true, details: true, status: true },
+    }),
+    db.select({ n: count() }).from(schema.testimonials).where(eq(schema.testimonials.status, "PENDING")),
   ]);
 
   return {
@@ -66,5 +75,7 @@ export async function overview() {
     chats7,
     recent,
     daily: daily.rows,
+    overdue,
+    pendingTestimonials,
   };
 }

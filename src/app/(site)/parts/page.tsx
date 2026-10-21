@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { EnquiryForm } from "@/components/site/EnquiryForm";
 import { PageHead } from "@/components/site/PageHead";
 import { getCategories } from "@/lib/catalogue";
-import { getSettings } from "@/lib/settings";
+import { getSettings, imageUrl } from "@/lib/settings";
 
 export const metadata: Metadata = {
   title: "Parts",
@@ -18,6 +18,7 @@ export default async function Parts({ searchParams }: P) {
   return (
     <>
       <PageHead
+        image={imageUrl(s, "page-parts")}
         crumbs={[{ href: "/", label: "Home" }, { label: "Parts" }]}
         title="Parts"
         lead="Filters, wear parts, hydraulic components, batteries and station spares. Send the machine's serial number and the part numbers if you have them, and we'll confirm availability."

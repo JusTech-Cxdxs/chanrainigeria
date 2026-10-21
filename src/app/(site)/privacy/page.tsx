@@ -46,9 +46,9 @@ export default async function Privacy() {
 
           <h2>Why we use it, and on what basis</h2>
           <ul>
-            <li>To answer your enquiry, prepare quotes, schedule technicians and supply parts — necessary to take steps at your request before or under a contract.</li>
-            <li>To keep a record of service requests and the advice we gave — our legitimate interest in running a reliable service.</li>
-            <li>To understand how the website is used so we can improve it — your consent, which you can withdraw at any time from Cookie settings.</li>
+            <li>To answer your enquiry, prepare quotes, schedule technicians and supply parts. This is necessary to take steps at your request before or under a contract.</li>
+            <li>To keep a record of service requests and the advice we gave. This is our legitimate interest in running a reliable service.</li>
+            <li>To understand how the website is used so we can improve it. This is based on your consent, which you can withdraw at any time from Cookie settings.</li>
           </ul>
           <p>We do not sell your information and we do not use it for advertising.</p>
 

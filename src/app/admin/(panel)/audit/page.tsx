@@ -7,7 +7,7 @@ import { formatDate } from "@/lib/format";
 const PER = 50;
 
 export default async function Audit({ searchParams }: { searchParams: Promise<Record<string, string>> }) {
-  await requireAdmin(["ADMIN"]);
+  const me = await requireAdmin(["ADMIN"]);
   const page = Math.max(1, Number((await searchParams).page) || 1);
   const [[{ n }], rows] = await Promise.all([
     db.select({ n: count() }).from(schema.auditLogs),
@@ -15,7 +15,7 @@ export default async function Audit({ searchParams }: { searchParams: Promise<Re
       orderBy: [desc(schema.auditLogs.createdAt)],
       limit: PER,
       offset: (page - 1) * PER,
-      with: { actor: { columns: { name: true } } },
+      with: { actor: { columns: { name: true, role: true } } },
     }),
   ]);
   return (
@@ -26,7 +26,7 @@ export default async function Audit({ searchParams }: { searchParams: Promise<Re
           {rows.map((r) => (
             <li key={r.id} className="grid gap-1 px-4 py-3 sm:grid-cols-[11rem_10rem_1fr] sm:gap-4">
               <span className="text-sm text-ink-soft num">{formatDate(r.createdAt, true)}</span>
-              <span className="font-semibold">{r.actor?.name ?? "System"}</span>
+              <span className="font-semibold">{!r.actor || (r.actor.role === "MASTER" && me.role !== "MASTER") ? "System" : r.actor.name}</span>
               <span>{r.summary}</span>
             </li>
           ))}

@@ -4,7 +4,7 @@ import { PageHead } from "@/components/site/PageHead";
 import { getPost } from "@/lib/catalogue";
 import { formatDate } from "@/lib/format";
 import { renderMarkdown } from "@/lib/markdown";
-import { mediaUrl } from "@/lib/settings";
+import { getSettings, imageUrl, mediaUrl } from "@/lib/settings";
 
 type P = { params: Promise<{ slug: string }> };
 export const dynamic = "force-dynamic";
@@ -19,7 +19,7 @@ export default async function Post({ params }: P) {
   if (!p) notFound();
   return (
     <>
-      <PageHead crumbs={[{ href: "/", label: "Home" }, { href: "/news", label: "News" }, { label: p.title }]} title={p.title}>
+      <PageHead crumbs={[{ href: "/", label: "Home" }, { href: "/news", label: "News" }, { label: p.title }]} title={p.title} image={p.coverId ? mediaUrl(p.coverId) : imageUrl(await getSettings(), "page-news")}>
         <p className="mt-4 text-ink-soft">{formatDate(p.publishedAt)}</p>
       </PageHead>
       <article className="wrap py-12">

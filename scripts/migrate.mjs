@@ -13,7 +13,8 @@ for (const file of [".env.local", ".env"]) {
   }
 }
 
-const url = process.env.DIRECT_URL || process.env.DATABASE_URL;
+const url =
+  process.env.DIRECT_URL || process.env.DATABASE_URL_UNPOOLED || process.env.POSTGRES_URL_NON_POOLING || process.env.DATABASE_URL || process.env.POSTGRES_URL;
 if (!url) {
   console.error("DATABASE_URL is not set");
   process.exit(1);

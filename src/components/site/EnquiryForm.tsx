@@ -58,7 +58,7 @@ export function EnquiryForm({
   }
 
   const grouped = products.reduce<Record<string, ProductOption[]>>((acc, p) => {
-    (acc[`${p.category} — ${p.family}`] ??= []).push(p);
+    (acc[`${p.category}: ${p.family}`] ??= []).push(p);
     return acc;
   }, {});
 

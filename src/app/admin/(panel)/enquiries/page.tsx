@@ -21,14 +21,14 @@ export default async function Enquiries({ searchParams }: { searchParams: Promis
 
   const where: SQL[] = [];
   if (sp.status === "open") where.push(inArray(E.status, ["NEW", "IN_PROGRESS"]));
-  else if (sp.status && sp.status in STATUS_LABEL) where.push(eq(E.status, sp.status as "NEW"));
-  if (sp.type && sp.type in TYPE_LABEL) where.push(eq(E.type, sp.type as "QUOTE"));
+  else if (sp.status && Object.hasOwn(STATUS_LABEL, sp.status)) where.push(eq(E.status, sp.status as "NEW"));
+  if (sp.type && Object.hasOwn(TYPE_LABEL, sp.type)) where.push(eq(E.type, sp.type as "QUOTE"));
   if (sp.desk) where.push(eq(E.desk, sp.desk));
   if (sp.source === "FORM" || sp.source === "ENYO") where.push(eq(E.source, sp.source));
   if (sp.urgency === "machine_down") where.push(sql`${E.details}->>'urgency' = 'machine_down'`, inArray(E.status, ["NEW", "IN_PROGRESS"]));
   if (sp.mine) where.push(eq(E.assigneeId, user.id));
   if (sp.q) {
-    const q = `%${sp.q.trim()}%`;
+    const q = `%${sp.q.trim().slice(0, 80).replace(/[%_\\]/g, (m) => `\\${m}`)}%`;
     where.push(or(ilike(E.ref, q), ilike(E.name, q), ilike(E.email, q), ilike(E.company, q), ilike(E.phone, q), ilike(E.message, q))!);
   }
   const cond = where.length ? and(...where) : undefined;

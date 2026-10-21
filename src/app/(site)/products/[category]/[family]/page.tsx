@@ -6,7 +6,7 @@ import { ModelGrid, type ModelCard } from "@/components/site/ModelGrid";
 import { PageHead } from "@/components/site/PageHead";
 import { getFamily } from "@/lib/catalogue";
 import { renderMarkdown } from "@/lib/markdown";
-import { mediaUrl } from "@/lib/settings";
+import { getSettings, imageUrl, mediaUrl } from "@/lib/settings";
 
 type P = { params: Promise<{ category: string; family: string }> };
 export const dynamic = "force-dynamic";
@@ -58,6 +58,7 @@ export default async function FamilyPage({ params }: P) {
         ]}
         title={f.name}
         lead={f.summary}
+        image={c.imageId ? mediaUrl(c.imageId) : imageUrl(await getSettings(), `category-${c.slug}`)}
       >
         <div className="mt-8 flex flex-wrap gap-3">
           <Link href={`/contact?type=QUOTE&category=${c.slug}&family=${f.slug}`} className="btn btn-primary">
@@ -69,7 +70,7 @@ export default async function FamilyPage({ params }: P) {
         </div>
       </PageHead>
 
-      <nav aria-label="On this page" className="sticky top-16 z-30 border-b border-line bg-concrete/95 backdrop-blur">
+      <nav aria-label="On this page" className="sticky top-[var(--header-h)] z-30 border-b border-line bg-concrete/95 backdrop-blur">
         <ul className="wrap flex gap-1 overflow-x-auto py-2 text-sm">
           {sections.map((s) => (
             <li key={s.id}>
@@ -83,7 +84,7 @@ export default async function FamilyPage({ params }: P) {
 
       <div className="wrap py-14">
         {f.howItWorks ? (
-          <section id="how" className="scroll-mt-32 grid gap-10 lg:grid-cols-[1.25fr_1fr]">
+          <section id="how" className="scroll-mt-36 grid gap-10 lg:grid-cols-[1.25fr_1fr]">
             <div>
               <h2 className="heading text-3xl">How it works</h2>
               <div className="prose-site mt-5" dangerouslySetInnerHTML={{ __html: renderMarkdown(f.howItWorks) }} />
@@ -124,7 +125,7 @@ export default async function FamilyPage({ params }: P) {
           </section>
         ) : null}
 
-        <section id="models" className="mt-16 scroll-mt-32">
+        <section id="models" className="mt-16 scroll-mt-36">
           <h2 className="heading text-3xl">Models</h2>
           {models.length ? (
             <div className="mt-6">
@@ -141,7 +142,7 @@ export default async function FamilyPage({ params }: P) {
         </section>
 
         {f.choosingTips.length ? (
-          <section id="choosing" className="mt-16 scroll-mt-32 max-w-3xl">
+          <section id="choosing" className="mt-16 scroll-mt-36 max-w-3xl">
             <h2 className="heading text-3xl">Choosing the right one</h2>
             <ul className="mt-5 space-y-3">
               {f.choosingTips.map((t) => (
@@ -154,7 +155,7 @@ export default async function FamilyPage({ params }: P) {
         ) : null}
 
         {m.dailyChecks?.length || m.intervals?.length ? (
-          <section id="care" className="mt-16 scroll-mt-32">
+          <section id="care" className="mt-16 scroll-mt-36">
             <h2 className="heading text-3xl">Keeping it running</h2>
             <div className="mt-6 grid gap-8 lg:grid-cols-[1fr_1.4fr]">
               {m.dailyChecks?.length ? (
@@ -193,7 +194,7 @@ export default async function FamilyPage({ params }: P) {
         ) : null}
 
         {f.safety.length ? (
-          <section id="safety" className="mt-16 scroll-mt-32 max-w-3xl">
+          <section id="safety" className="mt-16 scroll-mt-36 max-w-3xl">
             <h2 className="heading text-3xl">Safety</h2>
             <ul className="mt-5 space-y-3">
               {f.safety.map((t) => (
@@ -206,7 +207,7 @@ export default async function FamilyPage({ params }: P) {
         ) : null}
 
         {f.faq.length ? (
-          <section id="faq" className="mt-16 scroll-mt-32 max-w-3xl">
+          <section id="faq" className="mt-16 scroll-mt-36 max-w-3xl">
             <h2 className="heading text-3xl">Questions people ask</h2>
             <div className="mt-5 divide-y divide-line border-y border-line">
               {f.faq.map((q) => (

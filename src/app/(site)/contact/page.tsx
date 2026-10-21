@@ -3,7 +3,7 @@ import { EnquiryForm } from "@/components/site/EnquiryForm";
 import { PageHead } from "@/components/site/PageHead";
 import { getBranches, getProductIndex } from "@/lib/catalogue";
 import { telHref, waHref } from "@/lib/format";
-import { getSettings } from "@/lib/settings";
+import { getSettings, imageUrl } from "@/lib/settings";
 
 export const metadata: Metadata = { title: "Contact", description: "Talk to Chanrai Nigeria's sales, service, parts or CNG desk." };
 export const dynamic = "force-dynamic";
@@ -18,6 +18,7 @@ export default async function Contact({ searchParams }: P) {
   return (
     <>
       <PageHead
+        image={imageUrl(s, "page-contact")}
         crumbs={[{ href: "/", label: "Home" }, { label: "Contact" }]}
         title="Talk to us"
         lead="Send a message and it goes straight to the right desk. You'll get a reference number by email."

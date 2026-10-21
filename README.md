@@ -66,13 +66,20 @@ npm run dev                   # http://localhost:3000, then /admin/setup
 
 Pick whichever matches the hosting the company has. Full steps are in [`docs/RUNBOOK.md`](docs/RUNBOOK.md).
 
+**Just want a preview link?** Follow [`docs/PREVIEW.md`](docs/PREVIEW.md): Vercel plus a free Neon database,
+about 15 minutes, no Docker and nothing to install.
+
+**What Docker is, in one line:** a way to pack the site and its database into one bundle that runs the same on
+any server. You only need it if the company hosts the site on its own machine (option A below).
+
 **A. Their own server (VPS or cloud VM) with Docker.** This is the recommended route for full ownership.
 ```bash
 cp .env.example .env          # set POSTGRES_PASSWORD, AUTH_SECRET, SITE_URL, SMTP_*
 docker compose up -d --build
 docker compose run --rm setup # first time only: loads the catalogue
 ```
-Put a reverse proxy (Caddy or Nginx) in front for HTTPS on `chanrainigeria.com`.
+Put a reverse proxy (Caddy or Nginx) in front for HTTPS on `chanrainigeria.com`, and set `TRUSTED_IP_HEADER`
+to the header it sets (`x-real-ip` for Caddy/Nginx as configured in the runbook) so rate limits see real visitors.
 
 **B. Managed hosting**: Vercel (or any Node host) for the app, plus Supabase or Neon for PostgreSQL. Set the
 environment variables, run `npm run db:setup` once against the database, and point the domain's DNS at the host.

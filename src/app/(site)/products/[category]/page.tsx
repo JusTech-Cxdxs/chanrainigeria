@@ -5,7 +5,7 @@ import { Machine, machineForSlug } from "@/components/Machine";
 import { PageHead } from "@/components/site/PageHead";
 import { getCategory } from "@/lib/catalogue";
 import { plural } from "@/lib/format";
-import { mediaUrl } from "@/lib/settings";
+import { getSettings, imageUrl, mediaUrl } from "@/lib/settings";
 
 type P = { params: Promise<{ category: string }> };
 export const dynamic = "force-dynamic";
@@ -25,6 +25,7 @@ export default async function CategoryPage({ params }: P) {
         crumbs={[{ href: "/", label: "Home" }, { href: "/products", label: "Products" }, { label: c.name }]}
         title={c.name}
         lead={c.intro}
+        image={c.imageId ? mediaUrl(c.imageId) : imageUrl(await getSettings(), `category-${c.slug}`)}
       >
         <div className="mt-8 flex flex-wrap gap-3">
           <Link href={`/contact?type=QUOTE&category=${c.slug}`} className="btn btn-primary">
