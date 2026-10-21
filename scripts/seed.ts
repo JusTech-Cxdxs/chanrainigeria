@@ -6,7 +6,7 @@ import "./load-env";
 import { readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import bcrypt from "bcryptjs";
-import { and, eq, isNull } from "drizzle-orm";
+import { and, eq, inArray, isNull } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/node-postgres";
 import { Pool } from "pg";
 import * as schema from "../src/db/schema";
@@ -150,6 +150,15 @@ async function main() {
     }
     console.log(`${c.name}: ${fCount} new types, ${pCount} new models${update ? " (existing refreshed)" : ""}`);
   }
+
+  // The three manufacturers Chanrai represents are authorised dealerships. Fill the relationship only
+  // where staff haven't set one, so re-running never overwrites their wording.
+  const dealer = await db
+    .update(schema.brands)
+    .set({ relationship: "Authorised dealer" })
+    .where(and(eq(schema.brands.relationship, ""), inArray(schema.brands.slug, ["liugong", "sopan", "byd"])))
+    .returning({ name: schema.brands.name });
+  if (dealer.length) console.log(`brands: relationship set for ${dealer.map((b) => b.name).join(", ")}`);
 
   // Example testimonials for the preview. They show an "Example" label on the site until the
   // company replaces them with real ones (Dashboard → Testimonials).
