@@ -6,7 +6,7 @@ import { and, eq, inArray } from "drizzle-orm";
 import nodemailer, { type Transporter } from "nodemailer";
 import { db, schema } from "@/db";
 import { type Permission, SYSTEM_ROLES } from "./permissions";
-import { brandLogo } from "./brand-logos";
+import { brandLogo, logoAspect } from "./brand-logos";
 import { open } from "./secret-box";
 import { deskFor, type Settings } from "./settings";
 
@@ -171,13 +171,17 @@ export async function emailContext() {
   const brands = all.filter((b) => b.showInEmail);
   const ids = [s.branding.logoId, ...brands.map((b) => b.logoId)].filter((x): x is string => !!x);
   const usable = new Set<string>();
+  const shapes = new Map<string, number>();
   if (ids.length) {
     const rows = await db
-      .select({ id: schema.media.id, mime: schema.media.mimeType, deletedAt: schema.media.deletedAt })
+      .select({ id: schema.media.id, mime: schema.media.mimeType, deletedAt: schema.media.deletedAt, width: schema.media.width, height: schema.media.height })
       .from(schema.media)
       .where(inArray(schema.media.id, ids))
       .catch(() => []);
-    for (const r of rows) if (!r.deletedAt && /^image\/(png|jpe?g|gif|webp)$/.test(r.mime)) usable.add(r.id);
+    for (const r of rows) {
+      if (!r.deletedAt && /^image\/(png|jpe?g|gif|webp)$/.test(r.mime)) usable.add(r.id);
+      if (r.width && r.height) shapes.set(r.id, r.width / r.height);
+    }
   }
   const ok = (id: string | null) => (id && usable.has(id) ? id : null);
   return {
@@ -185,7 +189,8 @@ export async function emailContext() {
     logoUrl: ok(s.branding.logoId) ? `${siteUrl()}/media/${s.branding.logoId}` : null,
     brands: brands.map((b) => {
       const url = brandLogo({ slug: b.slug, logoId: ok(b.logoId) });
-      return { name: b.name, logoUrl: url ? `${siteUrl()}${url}` : null, relationship: b.relationship ?? "" };
+      const id = ok(b.logoId);
+      return { name: b.name, logoUrl: url ? `${siteUrl()}${url}` : null, aspect: logoAspect({ slug: b.slug, logoId: id }, id ? shapes.get(id) : null), relationship: b.relationship ?? "" };
     }),
   };
 }
