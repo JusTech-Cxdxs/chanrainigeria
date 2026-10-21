@@ -1,5 +1,4 @@
 import { count, desc, eq } from "drizzle-orm";
-import { redirect } from "next/navigation";
 import { uploadMedia } from "@/app/admin/actions/content";
 import { CopyLink } from "@/components/admin/CopyLink";
 import { AdminHead, Empty, Flash, Pager, Panel, SubmitButton } from "@/components/admin/ui";
@@ -10,7 +9,7 @@ import { formatDate } from "@/lib/format";
 const PER = 48;
 
 export default async function MediaLibrary({ searchParams }: { searchParams: Promise<Record<string, string>> }) {
-  const user = await requireAdmin("media");
+  await requireAdmin("media");
   const sp = await searchParams;
   const page = Math.max(1, Number(sp.page) || 1);
   const M = schema.media;

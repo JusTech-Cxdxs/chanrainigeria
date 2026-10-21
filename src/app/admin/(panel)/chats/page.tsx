@@ -1,6 +1,5 @@
 import { count, desc, eq, sql } from "drizzle-orm";
 import Link from "next/link";
-import { redirect } from "next/navigation";
 import { AdminHead, Badge, Empty, Pager } from "@/components/admin/ui";
 import { db, schema } from "@/db";
 import { requireAdmin } from "@/lib/auth";
@@ -9,7 +8,7 @@ import { formatDate } from "@/lib/format";
 const PER = 30;
 
 export default async function Chats({ searchParams }: { searchParams: Promise<Record<string, string>> }) {
-  const user = await requireAdmin("chats");
+  await requireAdmin("chats");
   const page = Math.max(1, Number((await searchParams).page) || 1);
   const C = schema.chatSessions;
   const M = schema.chatMessages;

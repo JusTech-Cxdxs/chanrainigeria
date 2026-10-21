@@ -6,7 +6,6 @@ import { requireAdmin } from "@/lib/auth";
 import { formatDate } from "@/lib/format";
 import { SOURCE_LABEL, STATUS_LABEL, TYPE_LABEL, statusTone } from "@/lib/labels";
 import { getSettings } from "@/lib/settings";
-import { redirect } from "next/navigation";
 
 const PER = 25;
 type SP = Record<string, string | undefined>;

@@ -14,7 +14,7 @@ export default async function EditModel({
   params: Promise<{ id: string }>;
   searchParams: Promise<Record<string, string>>;
 }) {
-  const user = await requireAdmin("products");
+  await requireAdmin("products");
   const { id } = await params;
   const sp = await searchParams;
   const p =

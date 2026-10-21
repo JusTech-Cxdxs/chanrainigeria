@@ -1,6 +1,6 @@
 import { asc, eq } from "drizzle-orm";
 import Link from "next/link";
-import { notFound, redirect } from "next/navigation";
+import { notFound } from "next/navigation";
 import { saveFamily, toggleProduct } from "@/app/admin/actions/catalogue";
 import { AdminHead, Badge, Check, Field, Flash, Panel, SubmitButton } from "@/components/admin/ui";
 import { db, schema } from "@/db";
@@ -17,7 +17,7 @@ export default async function EditType({
   params: Promise<{ id: string }>;
   searchParams: Promise<Record<string, string>>;
 }) {
-  const user = await requireAdmin("products");
+  await requireAdmin("products");
   const { id } = await params;
   const sp = await searchParams;
   const lines = await db.query.categories.findMany({ orderBy: [asc(schema.categories.order)], columns: { id: true, name: true, slug: true } });

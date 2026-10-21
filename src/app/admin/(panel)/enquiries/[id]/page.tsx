@@ -1,5 +1,5 @@
 import { asc, eq, inArray } from "drizzle-orm";
-import { notFound, redirect } from "next/navigation";
+import { notFound } from "next/navigation";
 import { addNote, replyToCustomer, updateEnquiry } from "@/app/admin/actions/enquiries";
 import { AdminHead, Badge, Flash, Panel, SubmitButton } from "@/components/admin/ui";
 import { db, schema } from "@/db";

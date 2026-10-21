@@ -1,5 +1,5 @@
 import { asc, eq } from "drizzle-orm";
-import { notFound, redirect } from "next/navigation";
+import { notFound } from "next/navigation";
 import { saveCategory } from "@/app/admin/actions/catalogue";
 import { AdminHead, Check, Field, Flash, Panel, SubmitButton } from "@/components/admin/ui";
 import { db, schema } from "@/db";
@@ -9,7 +9,7 @@ import { getSettings, mediaUrl } from "@/lib/settings";
 const DRAWINGS = ["excavator", "loader", "dozer", "grader", "roller", "forklift", "pallet", "stacker", "compressor", "dispenser", "cascade", "skid", "station"];
 
 export default async function EditLine({ params, searchParams }: { params: Promise<{ id: string }>; searchParams: Promise<Record<string, string>> }) {
-  const user = await requireAdmin("products");
+  await requireAdmin("products");
   const { id } = await params;
   const [c, brands, settings] = await Promise.all([
     db.query.categories.findFirst({ where: eq(schema.categories.id, id) }),

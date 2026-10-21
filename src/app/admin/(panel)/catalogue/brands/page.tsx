@@ -1,5 +1,4 @@
 import { asc } from "drizzle-orm";
-import { redirect } from "next/navigation";
 import { saveBrand } from "@/app/admin/actions/catalogue";
 import { AdminHead, Check, Field, Flash, Panel, SubmitButton } from "@/components/admin/ui";
 import { db, schema } from "@/db";
@@ -8,7 +7,7 @@ import { toLines } from "@/lib/lines";
 import { mediaUrl } from "@/lib/settings";
 
 export default async function Brands({ searchParams }: { searchParams: Promise<Record<string, string>> }) {
-  const user = await requireAdmin("brands");
+  await requireAdmin("brands");
   const brands = await db.query.brands.findMany({ orderBy: [asc(schema.brands.order)] });
   const blank = { id: "new", name: "", website: "", about: "", highlights: [] as string[], showOnHome: true, order: 9, logoId: null as string | null };
   return (
