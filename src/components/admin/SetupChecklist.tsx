@@ -4,6 +4,7 @@ import { Icon } from "@/components/ui/Icon";
 import { db, schema } from "@/db";
 import { has, type StaffUser } from "@/lib/auth";
 import type { Permission } from "@/lib/permissions";
+import { mailConfigured } from "@/lib/mail";
 import { getSettings } from "@/lib/settings";
 
 type Step = { done: boolean; title: string; text: string; href: string; perm: Permission };
@@ -17,7 +18,7 @@ export async function SetupChecklist({ user }: { user: StaffUser }) {
     db.select({ uploads: count() }).from(schema.media).where(and(eq(schema.media.isPrivate, false), isNull(schema.media.deletedAt))),
     db.select({ examples: count() }).from(schema.testimonials).where(and(eq(schema.testimonials.isExample, true), eq(schema.testimonials.status, "APPROVED"))),
   ]);
-  const mailReady = !!(s.email.smtp.host || process.env.SMTP_HOST);
+  const mailReady = mailConfigured(s);
   const aiReady = !!process.env.ENYO_API_KEY;
 
   const all: Step[] = [

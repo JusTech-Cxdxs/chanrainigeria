@@ -114,7 +114,7 @@ export default async function EnquiryDetail({ params, searchParams }: { params: 
                 Sent from {settings.email.fromName || settings.company.shortName}, with replies going to the {settings.desks[e.desk]?.label.toLowerCase() ?? "desk"} address. Your name isn&apos;t shown to the customer; the reply is saved below.
               </p>
               <div>
-                <SubmitButton pendingText="Sending…">{mailConfigured() ? "Send reply" : "Send reply (email not connected)"}</SubmitButton>
+                <SubmitButton pendingText="Sending…">{mailConfigured(settings) ? "Send reply" : "Send reply (email not connected)"}</SubmitButton>
               </div>
             </form>
           </Panel>
