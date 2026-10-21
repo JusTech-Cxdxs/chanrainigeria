@@ -43,6 +43,7 @@ function hostLabel(baseUrl: string) {
     if (host.includes("groq")) return "Groq";
     if (host.includes("openrouter")) return "OpenRouter";
     if (host.includes("googleapis")) return "Google";
+    if (host.includes("anthropic")) return "Anthropic";
     if (host.includes("openai")) return "OpenAI";
     if (host === "localhost" || host === "127.0.0.1") return "Local model server";
     return "Model server";
@@ -214,7 +215,8 @@ function payload(model: string, req: { messages: WireMessage[]; tools?: WireTool
     model,
     messages: req.messages,
     ...(req.tools?.length ? { tools: req.tools.map((t) => ({ type: "function", function: t })), tool_choice: "auto" } : {}),
-    temperature: req.temperature ?? 0.3,
+    // Claude models (Anthropic's OpenAI-compatible endpoint) refuse any temperature below 1, so none is sent.
+    ...(/^claude-/i.test(model) ? {} : { temperature: req.temperature ?? 0.3 }),
     ...(req.maxTokens ? { max_tokens: reasoning ? req.maxTokens + 1024 : req.maxTokens } : {}),
     ...(reasoning ? { reasoning_effort: (req.maxTokens ?? 2000) <= 1200 ? "low" : "medium", include_reasoning: false } : {}),
   };
