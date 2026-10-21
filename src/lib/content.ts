@@ -69,8 +69,11 @@ export function contentAccessor(def: PageDef, stored: ContentValues, settings: S
       return typeof v === "string" && v ? imageUrl(settings, v) : imageUrl(settings, slot);
     },
     list: (k) => {
-      const v = get(k);
-      return Array.isArray(v) && v.length ? v : ((defaults[k] as Record<string, string>[]) ?? []);
+      // A saved empty list is respected when the field allows zero entries (min unset or 0).
+      const saved = stored[k];
+      const f = field(k);
+      if (Array.isArray(saved) && (saved.length || (f?.type === "list" && !f.min))) return saved;
+      return (defaults[k] as Record<string, string>[]) ?? [];
     },
     on: (k) => {
       const v = get(k);
