@@ -1,3 +1,4 @@
+import { SaveBar } from "@/components/admin/cms";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { saveEmailSettings, sendTestEmail } from "@/app/admin/actions/email";
@@ -275,10 +276,15 @@ export default async function EmailPage({ searchParams }: { searchParams: Promis
               </div>
             </Section>
 
-            <div className="sticky bottom-[calc(env(safe-area-inset-bottom)-2.0625rem)] z-10 -mx-4 flex flex-wrap items-center gap-3 border-t border-line bg-concrete/95 px-4 py-4 backdrop-blur sm:-mx-8 sm:px-8 lg:bottom-0 lg:mx-0 lg:rounded-2xl lg:border lg:px-5">
-              <SubmitButton>Save email settings</SubmitButton>
-              <span className="text-sm text-ink-soft">The test email and preview below use the saved settings.</span>
-            </div>
+            <SaveBar note="The test email and preview below use the saved settings.">
+
+              <SubmitButton>
+
+                <Icon name="save" size={17} /> Save email settings
+
+              </SubmitButton>
+
+            </SaveBar>
           </form>
 
           <Section id="test" icon="send" title="Send a test email" lead="Check the mail server works before you rely on it.">

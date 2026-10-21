@@ -1,3 +1,4 @@
+import { SaveBar } from "@/components/admin/cms";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { refreshSiteCache, saveSettings } from "@/app/admin/actions/settings";
@@ -292,10 +293,15 @@ export default async function SettingsPage({ searchParams }: { searchParams: Pro
             </div>
           </Section>
 
-          <div className="sticky bottom-[calc(env(safe-area-inset-bottom)-2.0625rem)] z-10 -mx-4 flex flex-wrap items-center gap-3 border-t border-line bg-concrete/95 px-4 py-4 backdrop-blur sm:-mx-8 sm:px-8 lg:bottom-0 lg:mx-0 lg:rounded-2xl lg:border lg:px-5">
-            <SubmitButton>Save settings</SubmitButton>
-            <span className="text-sm text-ink-soft">Saves every section. A copy of the old settings is kept under History.</span>
-          </div>
+          <SaveBar note="Saves every section. A copy of the old settings is kept under History.">
+
+            <SubmitButton>
+
+              <Icon name="save" size={17} /> Save settings
+
+            </SubmitButton>
+
+          </SaveBar>
         </form>
 
         <section className="mt-6 rounded-2xl border border-line bg-surface px-5 py-5 sm:px-6">

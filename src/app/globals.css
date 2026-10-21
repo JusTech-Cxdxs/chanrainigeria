@@ -679,3 +679,10 @@ dialog::backdrop {
 @media (prefers-reduced-motion: reduce) {
   .enyo-shimmer { animation: none; color: var(--ink-soft); background: none; }
 }
+
+/* Phones: when a page has a docked save bar, the assistant button moves up so it never covers the bar. */
+@media (max-width: 1023.98px) {
+  body:has(.cn-savebar) {
+    --cna-bottom: 11.75rem;
+  }
+}
