@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { Wordmark } from "@/components/brand/Wordmark";
 import { PoweredByEjo } from "@/components/ejo/PoweredByEjo";
 import { ThemeToggle } from "@/components/site/ThemeToggle";
+import { PLATFORM } from "@/lib/platform";
 
 const MODULES: { title: string; text: string; d: string }[] = [
   { title: "Enquiries and bookings", text: "Quotes, field-service visits and parts requests, each with a reference.", d: "M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" },
@@ -99,6 +100,29 @@ export function AuthShell({ company, title, subtitle, children, footer }: { comp
             </svg>
             Staff only. Access follows your role and every action is recorded.
           </p>
+          {PLATFORM.supportEmail || PLATFORM.supportPhone ? (
+            <p className="text-xs text-ink-soft">
+              Can&apos;t sign in? Ask your administrator, or contact {PLATFORM.name} support
+              {PLATFORM.supportEmail ? (
+                <>
+                  {" "}
+                  at{" "}
+                  <a href={`mailto:${PLATFORM.supportEmail}`} className="font-semibold text-brand hover:underline">
+                    {PLATFORM.supportEmail}
+                  </a>
+                </>
+              ) : null}
+              {PLATFORM.supportPhone ? (
+                <>
+                  {PLATFORM.supportEmail ? " or " : " on "}
+                  <a href={`tel:${PLATFORM.supportPhone.replace(/[^\d+]/g, "")}`} className="font-semibold text-brand hover:underline">
+                    {PLATFORM.supportPhone}
+                  </a>
+                </>
+              ) : null}
+              .
+            </p>
+          ) : null}
           <div className="lg:hidden">
             <PoweredByEjo />
           </div>

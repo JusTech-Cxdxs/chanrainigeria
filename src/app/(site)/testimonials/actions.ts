@@ -4,7 +4,7 @@ import { z } from "zod";
 import { db, schema } from "@/db";
 import { clientKey, looksLikeBot, looksLikeSpam, rateLimit } from "@/lib/guard";
 import { testimonialNotice } from "@/lib/email-templates";
-import { emailContext, sendMail } from "@/lib/mail";
+import { emailContext, sendMail, testimonialRecipients } from "@/lib/mail";
 
 export type ShareState = { status: "idle" } | { status: "error"; message: string; values: Record<string, string>; at: number } | { status: "sent" };
 
@@ -44,7 +44,9 @@ export async function shareTestimonial(_: ShareState, form: FormData): Promise<S
 
   const ctx = await emailContext();
   const base = siteUrl();
-  await sendMail(ctx.s, { to: ctx.s.contact.email, ...testimonialNotice(ctx, d, `${base}/admin/testimonials`) });
+  // Email and alerts decides who hears about it (set addresses, else staff with alerts on, else the main email).
+  const { to, bcc } = await testimonialRecipients(ctx.s);
+  await sendMail(ctx.s, { to, bcc, ...testimonialNotice(ctx, d, `${base}/admin/testimonials`) });
   return { status: "sent" };
 }
 
