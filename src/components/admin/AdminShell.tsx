@@ -16,7 +16,13 @@ export { Icon };
 
 function Nav({ groups, onPick }: { groups: NavGroup[]; onPick?: () => void }) {
   const path = usePathname();
-  const active = (href: string) => (href === "/admin" ? path === "/admin" : path === href || path.startsWith(`${href}/`));
+  // The longest matching link wins, so /admin/catalogue/brands marks Brands and not Products too.
+  const matches = (href: string) => (href === "/admin" ? path === "/admin" : path === href || path.startsWith(`${href}/`));
+  const best = groups
+    .flatMap((g) => g.items.map((i) => i.href))
+    .filter(matches)
+    .sort((a, b) => b.length - a.length)[0];
+  const active = (href: string) => href === best;
   return (
     <nav aria-label="Dashboard" className="space-y-6 px-3">
       {groups.map((g) => (

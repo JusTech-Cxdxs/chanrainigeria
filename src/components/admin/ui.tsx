@@ -39,7 +39,7 @@ export function AdminHead({ title, lead, actions, back }: { title: string; lead?
 
 export function Panel({ title, children, className = "", aside }: { title?: string; children: React.ReactNode; className?: string; aside?: React.ReactNode }) {
   return (
-    <section className={`rounded-lg border border-line bg-surface p-5 sm:p-6 ${className}`}>
+    <section className={`rounded-2xl border border-line bg-surface p-5 sm:p-6 ${className}`}>
       {title ? (
         <div className="mb-4 flex items-baseline justify-between gap-3">
           <h2 className="heading text-lg">{title}</h2>
