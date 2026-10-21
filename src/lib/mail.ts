@@ -1,5 +1,7 @@
 import "server-only";
 import { createHash } from "node:crypto";
+import { lookup } from "node:dns/promises";
+import { isIP } from "node:net";
 import { and, eq, inArray } from "drizzle-orm";
 import nodemailer, { type Transporter } from "nodemailer";
 import { db, schema } from "@/db";
@@ -54,6 +56,35 @@ function resolveSmtp(s: Settings): { ok: true; config: SmtpConfig } | { ok: fals
   return { ok: false, error: "No mail server is set up. Add one under Email and alerts." };
 }
 
+// ---------- Safety checks for a mail server typed into the dashboard ----------
+// A mail server set in the dashboard must be a public address on a mail port, so the setting can't be
+// used to probe the hosting network. Set ALLOW_PRIVATE_SMTP=1 when the company's mail server is on its
+// own internal network (e.g. an on-premises Exchange next to the website).
+const MAIL_PORTS = new Set([25, 465, 587, 2525]);
+
+function privateAddress(ip: string): boolean {
+  if (isIP(ip) === 6) {
+    const x = ip.toLowerCase();
+    if (x === "::1" || x === "::" || x.startsWith("fe80") || x.startsWith("fc") || x.startsWith("fd")) return true;
+    const v4 = x.match(/::ffff:(\d+\.\d+\.\d+\.\d+)$/);
+    return v4 ? privateAddress(v4[1]) : false;
+  }
+  const [a, b] = ip.split(".").map(Number);
+  return a === 10 || a === 127 || a === 0 || (a === 169 && b === 254) || (a === 172 && b >= 16 && b <= 31) || (a === 192 && b === 168) || (a === 100 && b >= 64 && b <= 127) || a >= 224;
+}
+
+async function checkDashboardServer(c: SmtpConfig): Promise<string | null> {
+  if (process.env.ALLOW_PRIVATE_SMTP === "1") return null;
+  if (!MAIL_PORTS.has(c.port)) return "Use a mail port: 587 (most providers), 465, 25 or 2525.";
+  try {
+    const found = await lookup(c.host, { all: true });
+    if (!found.length || found.some((f) => privateAddress(f.address))) return "That mail server is on a private network address. Use your provider's public mail server name.";
+  } catch {
+    return "That mail server name couldn't be found. Check the spelling, e.g. smtp.office365.com.";
+  }
+  return null;
+}
+
 /** One transport per distinct server set-up, so changing the settings takes effect at once. */
 const transports = new Map<string, Transporter>();
 
@@ -69,6 +100,8 @@ function transportFor(c: SmtpConfig) {
       host: c.host,
       port: c.port,
       secure: c.secure,
+      // On 587/25 the password is only sent after the connection is encrypted.
+      requireTLS: !c.secure && !/^(localhost|127\.0\.0\.1|::1)$/.test(c.host),
       auth: c.user ? { user: c.user, pass: c.pass } : undefined,
       connectionTimeout: 15_000,
       greetingTimeout: 10_000,
@@ -96,6 +129,10 @@ export async function deliver(s: Settings, msg: MailMessage): Promise<{ ok: true
   if (!to.length) return { ok: false, error: "There is no one to send this to." };
   const r = resolveSmtp(s);
   if (!r.ok) return r;
+  if (mailSource(s) === "dashboard") {
+    const problem = await checkDashboardServer(r.config);
+    if (problem) return { ok: false, error: problem };
+  }
   const from = fromAddress(s);
   if (!from) return { ok: false, error: "There is no sender address. Fill in the sender address under Email and alerts." };
   try {

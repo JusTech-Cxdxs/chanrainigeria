@@ -1,5 +1,5 @@
 "use server";
-import { eq, inArray } from "drizzle-orm";
+import { and, eq, inArray, isNull } from "drizzle-orm";
 import { revalidatePath, revalidateTag } from "next/cache";
 import { db, schema } from "@/db";
 import { audit, requireAdmin } from "@/lib/auth";
@@ -35,8 +35,8 @@ const PERM: Record<ImageTarget["kind"], Permission> = {
 async function fileExists(id: string) {
   if (!id) return true;
   if (!UUID.test(id)) return false;
-  const m = await db.query.media.findFirst({ where: eq(schema.media.id, id), columns: { id: true, deletedAt: true } });
-  return !!m && !m.deletedAt;
+  const m = await db.query.media.findFirst({ where: eq(schema.media.id, id), columns: { id: true, deletedAt: true, isPrivate: true } });
+  return !!m && !m.deletedAt && !m.isPrivate;
 }
 
 async function storeSettings(next: Settings, actorId: string, label: string) {
@@ -123,7 +123,10 @@ export async function setGallery(productId: string, ids: string[]): Promise<Imag
   const user = await requireAdmin("products");
   const list = [...new Set((ids ?? []).map(String).filter((x) => UUID.test(x)))].slice(0, 20);
   if (list.length) {
-    const found = await db.select({ id: schema.media.id }).from(schema.media).where(inArray(schema.media.id, list));
+    const found = await db
+      .select({ id: schema.media.id })
+      .from(schema.media)
+      .where(and(inArray(schema.media.id, list), eq(schema.media.isPrivate, false), isNull(schema.media.deletedAt)));
     if (found.length !== list.length) return { ok: false, message: "One of those photos couldn't be found. Refresh and try again." };
   }
   const p = await db.query.products.findFirst({ where: eq(schema.products.id, productId) });

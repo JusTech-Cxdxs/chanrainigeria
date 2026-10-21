@@ -48,13 +48,14 @@ export async function clientKey() {
  * Fails open if the database is unreachable, so an outage never blocks visitors; sign-in and setup
  * pass failClosed so they refuse instead.
  */
-export async function rateLimit(key: string, limit: number, windowMs: number, opts: { failClosed?: boolean } = {}): Promise<boolean> {
+export async function rateLimit(key: string, limit: number, windowMs: number, opts: { failClosed?: boolean; cost?: number } = {}): Promise<boolean> {
   try {
     const seconds = Math.max(1, Math.round(windowMs / 1000));
+    const cost = Math.max(1, Math.floor(opts.cost ?? 1));
     const r = await db.execute<{ count: number }>(sql`
-      insert into ${schema.rateLimits} (key, count, window_start) values (${key}, 1, now())
+      insert into ${schema.rateLimits} (key, count, window_start) values (${key}, ${cost}, now())
       on conflict (key) do update set
-        count = case when ${schema.rateLimits.windowStart} < now() - make_interval(secs => ${seconds}) then 1 else ${schema.rateLimits.count} + 1 end,
+        count = case when ${schema.rateLimits.windowStart} < now() - make_interval(secs => ${seconds}) then ${cost} else ${schema.rateLimits.count} + ${cost} end,
         window_start = case when ${schema.rateLimits.windowStart} < now() - make_interval(secs => ${seconds}) then now() else ${schema.rateLimits.windowStart} end
       returning count`);
     if (Math.random() < 0.01) {

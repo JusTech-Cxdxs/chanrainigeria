@@ -77,7 +77,7 @@ export async function uploadOne(f: FormData): Promise<{ ok: true; item: MediaIte
 export async function updateMedia(id: string, f: FormData) {
   const user = await requireAdmin("media");
   const back = `/admin/media?file=${id}`;
-  const cur = await db.query.media.findFirst({ where: eq(M.id, id), columns: { data: false } });
+  const cur = await db.query.media.findFirst({ where: and(eq(M.id, id), eq(M.isPrivate, false)), columns: { data: false } });
   if (!cur) redirect("/admin/media?error=That%20file%20no%20longer%20exists.");
   const ext = cur!.filename.match(/\.[a-z0-9]{2,5}$/i)?.[0] ?? "";
   let filename = s(f, "filename").replace(/[^\w.\- ]+/g, "_").slice(0, 200);
@@ -85,7 +85,7 @@ export async function updateMedia(id: string, f: FormData) {
   if (ext && !filename.toLowerCase().endsWith(ext.toLowerCase())) filename += ext;
   const vals = { filename, alt: s(f, "alt").slice(0, 200), folder: cleanFolder(s(f, "folder") === "__new" ? s(f, "newFolder") : s(f, "folder")) };
   await snapshot("media", id, cur!.filename, "update", user.id);
-  await db.update(M).set(vals).where(eq(M.id, id));
+  await db.update(M).set(vals).where(and(eq(M.id, id), eq(M.isPrivate, false)));
   await audit(user.id, "update", "media", `Updated file details for ${filename}`, id);
   refresh();
   redirect(`${back}&saved=${encodeURIComponent("File details saved.")}`);
@@ -94,7 +94,7 @@ export async function updateMedia(id: string, f: FormData) {
 /** New bytes under the same id, so every page using the file shows the new one. The old bytes are kept. */
 export async function replaceMedia(id: string, f: FormData): Promise<{ ok: true } | { ok: false; error: string }> {
   const user = await requireAdmin("media");
-  const cur = await db.query.media.findFirst({ where: eq(M.id, id), columns: { data: false } });
+  const cur = await db.query.media.findFirst({ where: and(eq(M.id, id), eq(M.isPrivate, false)), columns: { data: false } });
   if (!cur || cur.deletedAt) return { ok: false, error: "That file no longer exists." };
   const file = f.get("file");
   if (!(file instanceof File) || !file.size) return { ok: false, error: "Choose the new file first." };
@@ -112,7 +112,7 @@ export async function replaceMedia(id: string, f: FormData): Promise<{ ok: true 
 /** Removed files are hidden, not destroyed: they can be brought back for 30 days. */
 export async function deleteMedia(id: string, back?: string) {
   const user = await requireAdmin("media");
-  const cur = await db.query.media.findFirst({ where: eq(M.id, id), columns: { data: false } });
+  const cur = await db.query.media.findFirst({ where: and(eq(M.id, id), eq(M.isPrivate, false)), columns: { data: false } });
   if (cur && !cur.deletedAt) {
     const used = await usageOf(id);
     await snapshot("media", id, cur.filename, "delete", user.id);
@@ -126,7 +126,7 @@ export async function deleteMedia(id: string, back?: string) {
 
 export async function undeleteMedia(id: string) {
   const user = await requireAdmin("media");
-  const cur = await db.query.media.findFirst({ where: eq(M.id, id), columns: { data: false } });
+  const cur = await db.query.media.findFirst({ where: and(eq(M.id, id), eq(M.isPrivate, false)), columns: { data: false } });
   if (!cur || cur.folder === HISTORY_FOLDER) redirect("/admin/media?error=That%20file%20can%27t%20be%20brought%20back.");
   await snapshot("media", id, cur!.filename, "update", user.id);
   await db.update(M).set({ deletedAt: null }).where(eq(M.id, id));
@@ -141,7 +141,7 @@ export async function moveMedia(f: FormData) {
   const ids = f.getAll("ids").map(String).filter((x) => /^[0-9a-f-]{36}$/i.test(x)).slice(0, 200);
   const folder = cleanFolder(s(f, "folder") === "__new" ? s(f, "newFolder") : s(f, "folder"));
   for (const id of ids) await snapshot("media", id, "Moved file", "update", user.id);
-  if (ids.length) await db.update(M).set({ folder }).where(and(sql`${M.id} in (${sql.join(ids.map((i) => sql`${i}`), sql`, `)})`, isNull(M.deletedAt)));
+  if (ids.length) await db.update(M).set({ folder }).where(and(sql`${M.id} in (${sql.join(ids.map((i) => sql`${i}`), sql`, `)})`, isNull(M.deletedAt), eq(M.isPrivate, false)));
   await audit(user.id, "update", "media", `Moved ${ids.length} file${ids.length === 1 ? "" : "s"} to ${folder || "Unsorted"}`);
   revalidatePath("/admin/media");
   redirect(`/admin/media?folder=${encodeURIComponent(folder || "Unsorted")}&saved=${encodeURIComponent("Files moved.")}`);
@@ -160,7 +160,7 @@ export async function mediaInfo(ids: string[]) {
   const rows = await db
     .select(listCols)
     .from(M)
-    .where(sql`${M.id} in (${sql.join(clean.map((i) => sql`${i}`), sql`, `)})`)
+    .where(and(sql`${M.id} in (${sql.join(clean.map((i) => sql`${i}`), sql`, `)})`, eq(M.isPrivate, false)))
     .orderBy(asc(M.filename));
   return rows.map(toItem);
 }

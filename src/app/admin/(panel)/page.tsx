@@ -12,13 +12,18 @@ export default async function Overview({ searchParams }: { searchParams: Promise
   const s = await getSettings();
   const o = await overview(s.enquiries.overdueHours);
   const maxDay = Math.max(1, ...o.daily.map((d) => Math.max(d.enquiries, d.visitors)));
+  // Each figure only for people whose role includes that section.
   const stats = [
-    { label: "New enquiries", value: o.newCount, href: "/admin/enquiries?status=NEW" },
-    { label: "Machines down, still open", value: o.downCount, href: "/admin/enquiries?urgency=machine_down", warn: o.downCount > 0 },
-    { label: "Open (new + in progress)", value: o.openCount, href: "/admin/enquiries?status=open" },
-    { label: "Enquiries this week", value: o.week, href: "/admin/enquiries" },
-    { label: "Visitors this week", value: o.visitors, href: "/admin/visitors" },
-    { label: "Testimonials to approve", value: o.pendingTestimonials, href: "/admin/testimonials", warn: o.pendingTestimonials > 0 },
+    ...(has(user, "enquiries")
+      ? [
+          { label: "New enquiries", value: o.newCount, href: "/admin/enquiries?status=NEW" },
+          { label: "Machines down, still open", value: o.downCount, href: "/admin/enquiries?urgency=machine_down", warn: o.downCount > 0 },
+          { label: "Open (new + in progress)", value: o.openCount, href: "/admin/enquiries?status=open" },
+          { label: "Enquiries this week", value: o.week, href: "/admin/enquiries" },
+        ]
+      : []),
+    ...(has(user, "visitors") ? [{ label: "Visitors this week", value: o.visitors, href: "/admin/visitors" }] : []),
+    ...(has(user, "testimonials") ? [{ label: "Testimonials to approve", value: o.pendingTestimonials, href: "/admin/testimonials", warn: o.pendingTestimonials > 0 }] : []),
   ];
 
   return (
@@ -66,6 +71,7 @@ export default async function Overview({ searchParams }: { searchParams: Promise
       </ul>
 
       <div className="mt-6 grid gap-6 lg:grid-cols-[1.4fr_1fr]">
+        {has(user, "enquiries") && has(user, "visitors") ? (
         <Panel title="Last 14 days" aside={<span className="text-sm text-ink-soft">Enquiries and visitors per day</span>}>
           <div className="flex h-40 items-end gap-1.5" role="img" aria-label="Daily enquiries and visitors for the last 14 days">
             {o.daily.map((d) => (
@@ -88,7 +94,9 @@ export default async function Overview({ searchParams }: { searchParams: Promise
             <span>Today</span>
           </div>
         </Panel>
+        ) : null}
 
+        {has(user, "enquiries") ? (
         <Panel title="Enquiries, last 30 days">
           {o.byType.length ? (
             <dl className="space-y-2">
@@ -110,6 +118,7 @@ export default async function Overview({ searchParams }: { searchParams: Promise
             <p className="text-ink-soft">No enquiries yet.</p>
           )}
         </Panel>
+        ) : null}
       </div>
 
       {has(user, "enquiries") ? (
@@ -138,6 +147,7 @@ export default async function Overview({ searchParams }: { searchParams: Promise
       ) : null}
 
       <div className="mt-6 grid gap-6 md:grid-cols-2">
+        {has(user, "visitors") ? (
         <Panel title="Most viewed pages, 30 days">
           {o.topPages.length ? (
             <ol className="space-y-1.5">
@@ -154,6 +164,7 @@ export default async function Overview({ searchParams }: { searchParams: Promise
             <p className="text-ink-soft">Visits are counted only for people who accept statistics cookies.</p>
           )}
         </Panel>
+        ) : null}
         {has(user, "products") ? (
           <Panel title="Catalogue checks">
             <p>

@@ -98,7 +98,7 @@ export async function submitEnquiry(_: FormState, form: FormData): Promise<FormS
   const files = form.getAll("photos").filter((f): f is File => f instanceof File && f.size > 0).slice(0, 4);
   const total = files.reduce((n, f) => n + f.size, 0);
   if (total > 12 * 1024 * 1024) return fail(L.t("errorPhotosSize"), { photos: [L.t("errorPhotosField")] });
-  if (files.length && !(await rateLimit(`uploads:${await clientKey()}`, 20, 24 * 3600_000))) return fail(L.t("errorPhotosDaily"));
+  if (files.length && !(await rateLimit(`uploads:${await clientKey()}`, 20, 24 * 3600_000, { cost: files.length }))) return fail(L.t("errorPhotosDaily"));
   const attachmentIds: string[] = [];
   for (const f of files) {
     const r = await saveUpload(f, { allowed: ALLOWED_UPLOADS, isPrivate: true });

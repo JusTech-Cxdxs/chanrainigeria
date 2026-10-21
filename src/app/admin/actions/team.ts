@@ -20,7 +20,8 @@ async function otherTeamManagers(exceptId: string) {
   const r = await db.execute<{ n: number }>(sql`
     select count(*)::int as n from ${schema.adminUsers} u
     left join ${schema.roles} r on r.id = u.role_id
-    where u.active and u.id <> ${exceptId} and u.role <> 'MASTER' and r.permissions ? 'team'`);
+    where u.active and u.id <> ${exceptId} and u.role <> 'MASTER'
+      and (r.permissions ? 'team' or (u.role_id is null and u.role = 'ADMIN'))`);
   return Number(r.rows[0]?.n ?? 0);
 }
 
@@ -59,6 +60,8 @@ export async function updateMember(id: string, f: FormData) {
   if (!isMasterAcct && !role) fail("Choose a role.");
   const active = f.get("active") === "on";
   if (u!.id === me.id && !active) fail("You can't deactivate your own account.");
+  // Nobody changes their own role; another person with Team and roles does it.
+  if (u!.id === me.id && !isMasterAcct && role!.id !== u!.roleId) fail("You can't change your own role. Ask another administrator.");
   const managedTeam = !isMasterAcct && !!u!.roleRef?.permissions.includes("team");
   const stillManages = !!role?.permissions.includes("team") && active;
   if (managedTeam && !stillManages && (await otherTeamManagers(id)) === 0) fail("At least one active person must be able to manage the team.");
@@ -120,6 +123,7 @@ export async function saveRole(id: string, f: FormData) {
     const r = await db.execute<{ n: number }>(sql`
       select count(*)::int as n from ${schema.adminUsers} u join ${schema.roles} r on r.id = u.role_id
       where u.active and u.role <> 'MASTER' and r.permissions ? 'team' and r.id <> ${id}`);
+    // (Accounts from before roles existed, with no role set, are counted by the seed's role assignment.)
     if (Number(r.rows[0]?.n ?? 0) === 0) fail("This is the only role that can manage the team. Give another role that permission first.", ROLES_PAGE);
   }
   await recordRevision("role", id, cur!.name, "update", cur, me.id);

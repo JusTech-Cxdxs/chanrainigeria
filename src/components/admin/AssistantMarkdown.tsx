@@ -58,7 +58,7 @@ export function parseBlocks(src: string): Block[] {
 }
 
 function safeLink(href: string): { href: string; internal: boolean } | null {
-  if (/^\/(?!\/)[^\s]*$/.test(href)) return { href, internal: true };
+  if (/^\/(?![/\\])[^\s\\]*$/.test(href)) return { href, internal: true };
   if (/^https:\/\/[^\s"'<>]+$/i.test(href)) return { href, internal: false };
   if (/^mailto:[^\s"'<>]+$/i.test(href)) return { href, internal: false };
   return null;

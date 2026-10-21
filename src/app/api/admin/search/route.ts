@@ -56,11 +56,13 @@ export async function GET(req: Request) {
           .where(ilike(schema.chatMessages.content, like))
           .limit(5)
       : [],
-    db.query.testimonials.findMany({
-      where: or(ilike(schema.testimonials.name, like), ilike(schema.testimonials.quote, like), ilike(schema.testimonials.company, like)),
-      limit: 5,
-      columns: { id: true, name: true, quote: true, status: true },
-    }),
+    has(user, "testimonials")
+      ? db.query.testimonials.findMany({
+          where: or(ilike(schema.testimonials.name, like), ilike(schema.testimonials.quote, like), ilike(schema.testimonials.company, like)),
+          limit: 5,
+          columns: { id: true, name: true, quote: true, status: true },
+        })
+      : [],
     has(user, "products")
       ? db.query.products.findMany({ where: ilike(schema.products.name, like), limit: 6, columns: { id: true, name: true, summary: true } })
       : [],

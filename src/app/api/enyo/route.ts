@@ -4,7 +4,7 @@ import { db, schema } from "@/db";
 import { createEnquiry } from "@/lib/enquiries";
 import { enyoReply } from "@/lib/enyo";
 import { cookies } from "next/headers";
-import { clientKey, rateLimit, sameOriginJson } from "@/lib/guard";
+import { clientKey, looksLikeSpam, rateLimit, sameOriginJson } from "@/lib/guard";
 import { getSettings } from "@/lib/settings";
 import { siteUrl } from "@/lib/site-url";
 
@@ -53,6 +53,11 @@ export async function POST(req: Request) {
   const handoff = handoffBody.safeParse(json);
   if (handoff.success) {
     const h = handoff.data;
+    // The same limits as the enquiry form: 6 per 10 minutes per connection, and no link-stuffed messages.
+    if (!(await rateLimit(`enq:${await clientKey()}`, 6, 10 * 60_000))) {
+      return Response.json({ error: "Too many requests from this connection. Please wait a few minutes or call us." }, { status: 429 });
+    }
+    if (looksLikeSpam(h.message) || looksLikeSpam(h.name)) return Response.json({ errors: { message: ["Please remove web links and code from your message."] } }, { status: 422 });
     const sessionId = await ensureSession();
     const transcript = (
       await db.query.chatMessages.findMany({ where: eq(schema.chatMessages.sessionId, sessionId), orderBy: [asc(schema.chatMessages.createdAt)], limit: 30 })

@@ -34,13 +34,15 @@ export async function GET(req: Request, { params }: { params: Promise<{ id: stri
   const url = new URL(req.url);
   const meta = await db.query.media.findFirst({
     where: eq(M.id, id),
-    columns: { id: true, filename: true, mimeType: true, size: true, isPrivate: true, deletedAt: true, updatedAt: true },
+    columns: { id: true, filename: true, mimeType: true, size: true, isPrivate: true, deletedAt: true, updatedAt: true, folder: true },
   });
   if (!meta) return notFound();
   if (meta.deletedAt) {
     // Removed files and earlier versions are gone from the site; staff can still preview them to restore.
     const u = await currentAdmin();
     if (!u || !(has(u, "media") || has(u, "history"))) return notFound();
+    // A removed customer attachment stays an enquiries-only file.
+    if (meta.isPrivate && meta.folder !== "__history" && !has(u, "enquiries")) return notFound();
     meta.isPrivate = true;
   } else if (meta.isPrivate) {
     // Customer attachments: only staff who handle enquiries.

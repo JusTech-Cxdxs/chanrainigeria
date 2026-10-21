@@ -1,5 +1,6 @@
 import "server-only";
 import { aiConfig, aiReady, complete, pickModel, type WireMessage } from "./ai";
+import { clientKey, looksLikeSpam, rateLimit } from "./guard";
 import { asc, eq } from "drizzle-orm";
 import { db, schema } from "@/db";
 import type { Faq, SpecField } from "@/db/schema";
@@ -242,7 +243,8 @@ export async function enyoReply(
     .join(" ");
 
   const latest = history.filter((m) => m.role === "user").at(-1)?.content ?? "";
-  if (!enyoAiConfigured(settings)) return fallbackReply(settings, k, latest);
+  // A daily ceiling on AI answers for the whole site, so the AI bill can never be run up by a flood.
+  if (!enyoAiConfigured(settings) || !(await rateLimit("enyo:ai-daily", Number(process.env.ENYO_DAILY_AI_LIMIT ?? 3000), 86_400_000))) return fallbackReply(settings, k, latest);
 
   const messages: Msg[] = [
     { role: "system", content: systemPrompt(settings, k.core, relevant(k.families, recentUser), opts.page) },
@@ -259,6 +261,10 @@ export async function enyoReply(
         let result: unknown;
         if (call.function.name === "create_enquiry" && !enquiryRef) {
           const a = JSON.parse(call.function.arguments || "{}") as Record<string, string>;
+          if (!(await rateLimit(`enq:${await clientKey()}`, 6, 10 * 60_000)) || looksLikeSpam(String(a.message ?? ""))) {
+            messages.push({ role: "tool", tool_call_id: call.id, content: JSON.stringify({ ok: false, note: "Too many requests or the message contains links. Ask the customer to call the desk instead." }) });
+            continue;
+          }
           const r = await createEnquiry(
             {
               type: a.type,
