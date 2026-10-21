@@ -1,42 +1,50 @@
+type Brand = { name: string; logo: string | null; website: string | null; scale?: number };
+
 /**
- * "Equipment we supply": the manufacturers' logos in their own colours, drifting across a full-width
- * white band (white in both themes, so every logo sits on the background it was designed for).
- * A brand without a logo shows its name.
+ * The brands Chanrai supplies, as a full-width light band in both themes (the logos are in the brands' own
+ * colours, so a dark band would hide the navy and black ones). No boxes or backgrounds behind the logos:
+ * they sit straight on the band, centred title above, gliding slowly and pausing on hover.
  */
-export function BrandsMarquee({ title, brands }: { title: string; brands: { name: string; logo: string | null; website: string | null; scale?: number }[] }) {
+export function BrandsMarquee({ title, brands }: { title: string; brands: Brand[] }) {
   if (!brands.length) return null;
-  // Repeat short lists so the band is always full, then double it for a seamless loop.
-  const base = Array.from({ length: Math.max(1, Math.ceil(10 / brands.length)) }, () => brands).flat();
+  // Enough copies that one half of the track is always wider than the screen, so the loop never shows a gap.
+  const base = Array.from({ length: Math.max(2, Math.ceil(12 / brands.length)) }, () => brands).flat();
   const track = [...base, ...base];
   return (
-    <section aria-label={title} className="w-full overflow-hidden border-y border-[#e2e8f0] bg-white text-[#0f172a]" style={{ colorScheme: "light" }}>
-      <div className="wrap flex items-center gap-4 pt-8 sm:pt-10">
-        <h2 className="text-xs font-bold uppercase tracking-[0.16em] text-[#475569] sm:text-sm">{title}</h2>
-        <span className="h-px flex-1 bg-[#e2e8f0]" aria-hidden />
+    <section aria-label={title} className="w-full overflow-hidden bg-white py-10 text-[#0f172a] sm:py-14" style={{ colorScheme: "light" }} data-testid="brands-band">
+      <p className="mb-7 px-6 text-center text-sm font-semibold text-[#334155] sm:mb-10 sm:text-base">{title}</p>
+      <div className="marquee relative">
+        <div
+          className="marquee-track flex w-max items-center gap-12 sm:gap-20"
+          style={{ ["--marquee-speed" as string]: `${Math.max(36, base.length * 4)}s` }}
+          aria-hidden="true"
+        >
+          {track.map((b, i) =>
+            b.logo ? (
+              // eslint-disable-next-line @next/next/no-img-element -- many small logos, fixed height, no layout shift
+              <img
+                key={i}
+                src={b.logo}
+                alt=""
+                loading={i < 6 ? "eager" : "lazy"}
+                decoding="async"
+                draggable={false}
+                className="h-[calc(3rem*var(--s))] w-auto max-w-[11rem] shrink-0 bg-transparent object-contain sm:h-[calc(4rem*var(--s))] sm:max-w-[16rem] lg:h-[calc(5rem*var(--s))] lg:max-w-[20rem]"
+                style={{ ["--s" as string]: b.scale ?? 1 }}
+              />
+            ) : (
+              <span key={i} className="shrink-0 whitespace-nowrap text-2xl font-extrabold tracking-tight text-[#334155] sm:text-3xl">
+                {b.name}
+              </span>
+            ),
+          )}
+        </div>
       </div>
-      <div className="marquee relative w-full py-5 sm:py-7">
-        <ul className="marquee-track flex w-max items-center" style={{ ["--marquee-speed" as string]: `${Math.max(30, track.length * 4)}s` }}>
-          {track.map((b, k) => (
-            <li key={k} aria-hidden={k >= base.length} className="flex h-16 shrink-0 items-center px-8 sm:h-24 sm:px-14">
-              {b.logo ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  src={b.logo}
-                  alt={k < base.length ? b.name : ""}
-                  className="h-[calc(3.25rem*var(--s))] w-auto max-w-[260px] object-contain sm:h-[calc(4.75rem*var(--s))] sm:max-w-[380px]"
-                  style={{ ["--s" as string]: b.scale ?? 1 }}
-                  loading="lazy"
-                  draggable={false}
-                />
-              ) : (
-                <span className="text-2xl font-extrabold tracking-wide text-[#334155] sm:text-3xl" style={{ fontStretch: "118%" }}>
-                  {b.name}
-                </span>
-              )}
-            </li>
-          ))}
-        </ul>
-      </div>
+      <ul className="sr-only">
+        {brands.map((b) => (
+          <li key={b.name}>{b.name}</li>
+        ))}
+      </ul>
     </section>
   );
 }

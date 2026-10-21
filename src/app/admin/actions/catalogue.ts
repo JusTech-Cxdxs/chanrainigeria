@@ -7,6 +7,7 @@ import { audit, requireAdmin } from "@/lib/auth";
 import { clearEnyoCache } from "@/lib/enyo";
 import { slugify } from "@/lib/format";
 import { snapshot } from "@/lib/history";
+import { seeThroughLogo } from "@/lib/media";
 import { fromFaq, fromFields, fromIntervals, fromLines, fromPairs, fromSpecs } from "@/lib/lines";
 import type { Permission } from "@/lib/permissions";
 
@@ -144,6 +145,7 @@ export async function saveBrand(id: string, f: FormData) {
     logoId: mediaId(f, "logoId"),
   };
   if (!vals.name) fail(path, "Enter the brand's name.");
+  vals.logoId = await seeThroughLogo(vals.logoId, user.id);
   if (vals.website && !/^https?:\/\/[^\s.]+\.[^\s]+$/i.test(vals.website)) fail(path, "The website doesn't look right. Use the full address, e.g. https://www.liugong.com");
   if (id === "new") {
     const [row] = await db

@@ -6,6 +6,7 @@ import { audit, requireAdmin } from "@/lib/auth";
 import { pageDef } from "@/lib/content-registry";
 import { snapshot } from "@/lib/history";
 import type { Permission } from "@/lib/permissions";
+import { seeThroughLogo } from "@/lib/media";
 import { getSettings, type Settings } from "@/lib/settings";
 
 /**
@@ -47,8 +48,10 @@ async function storeSettings(next: Settings, actorId: string, label: string) {
 
 export async function setImage(target: ImageTarget, value: string): Promise<ImageResult> {
   const user = await requireAdmin(PERM[target.kind] ?? "pages");
-  const v = String(value ?? "").trim();
+  let v = String(value ?? "").trim();
   if (!(await fileExists(v))) return { ok: false, message: "That picture couldn't be found in the library. Choose it again." };
+  // Brand and company logos sit straight on the page, so a plain square behind them is made see-through.
+  if (v && (target.kind === "brand" || (target.kind === "company" && target.key !== "faviconId"))) v = (await seeThroughLogo(v, user.id)) ?? v;
   const label = v ? "Picture changed" : "Back to the original picture";
 
   switch (target.kind) {

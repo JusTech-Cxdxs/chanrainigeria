@@ -101,7 +101,7 @@ const home: PageDef = {
     {
       label: "Brands strip",
       hint: "Logos are managed under Brands.",
-      fields: [{ key: "brandsTitle", label: "Heading", type: "text", default: "Equipment we supply" }],
+      fields: [{ key: "brandsTitle", label: "Heading", type: "text", default: "Trusted by Leading Brands" }],
     },
     {
       label: "Testimonials",

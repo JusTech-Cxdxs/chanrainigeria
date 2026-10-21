@@ -1,5 +1,5 @@
 import "server-only";
-import { and, isNotNull, isNull, lt, ne, sql } from "drizzle-orm";
+import { and, eq, isNotNull, isNull, lt, ne, sql } from "drizzle-orm";
 import sharp from "sharp";
 import { db, schema } from "@/db";
 import { pageDef } from "./content-registry";
@@ -67,9 +67,59 @@ const MAX_PIXELS = 40_000_000;
 sharp.concurrency(1);
 sharp.cache(false);
 
-async function processImage(data: Buffer, type: string) {
+/**
+ * Logos often arrive as a JPG or screenshot on a plain black or white square. When the picture's edge is one
+ * flat colour, that colour is made see-through (with soft edges, so lettering stays smooth) and the empty
+ * margin is trimmed, so the logo sits straight on whatever is behind it. Photos have busy edges and are left
+ * alone, as are logos that already have a transparent background.
+ */
+export async function cutOutBackground(input: Buffer): Promise<Buffer | null> {
+  const { data, info } = await sharp(input, { limitInputPixels: MAX_PIXELS }).rotate().ensureAlpha().raw().toBuffer({ resolveWithObject: true });
+  const { width: w, height: h } = info;
+  if (w < 8 || h < 8) return null;
+  const at = (x: number, y: number) => (y * w + x) * 4;
+  // The outer two-pixel ring.
+  const ring: number[] = [];
+  for (let x = 0; x < w; x++) for (const y of [0, 1, h - 2, h - 1]) ring.push(at(x, y));
+  for (let y = 2; y < h - 2; y++) for (const x of [0, 1, w - 2, w - 1]) ring.push(at(x, y));
+  if (ring.some((i) => data[i + 3] < 250)) return null; // already see-through
+  const med = [0, 1, 2].map((c) => ring.map((i) => data[i + c]).sort((a, b) => a - b)[ring.length >> 1]);
+  const dist = (i: number) => Math.max(Math.abs(data[i] - med[0]), Math.abs(data[i + 1] - med[1]), Math.abs(data[i + 2] - med[2]));
+  const ds = ring.map(dist);
+  if (ds.filter((d) => d <= 24).length < ds.length * 0.92) return null; // a busy edge: a photo, not a logo
+  const near = ds.filter((d) => d <= 24);
+  const noise = Math.sqrt(near.reduce((a, d) => a + d * d, 0) / near.length);
+  const lo = Math.max(5, Math.ceil(noise * 3));
+  const hi = lo + 12;
+  for (let i = 0; i < data.length; i += 4) {
+    const d = dist(i);
+    if (d <= lo) {
+      data[i + 3] = 0;
+    } else if (d < hi) {
+      const a = (d - lo) / (hi - lo);
+      for (let c = 0; c < 3; c++) data[i + c] = Math.max(0, Math.min(255, Math.round((data[i + c] - med[c] * (1 - a)) / a)));
+      data[i + 3] = Math.round(a * 255);
+    }
+  }
+  const cut = sharp(data, { raw: { width: w, height: h, channels: 4 } });
+  const { data: trimmed } = await cut.png().toBuffer({ resolveWithObject: true });
+  try {
+    return await sharp(trimmed).trim({ threshold: 1 }).png().toBuffer();
+  } catch {
+    return trimmed; // nothing left to trim
+  }
+}
+
+async function processImage(data: Buffer, type: string, opts: { logo?: boolean } = {}) {
   const head = await sharp(data, { limitInputPixels: false }).metadata();
   if ((head.width ?? 0) * (head.height ?? 0) > MAX_PIXELS) throw new Error("TOO_MANY_PIXELS");
+  if (opts.logo) {
+    const cut = await cutOutBackground(data).catch(() => null);
+    if (cut) {
+      data = cut;
+      type = "image/png";
+    }
+  }
   const img = sharp(data, { failOn: "error", limitInputPixels: MAX_PIXELS, sequentialRead: true }).rotate();
   const meta = await img.metadata();
   const resize = (meta.width ?? 0) > MAX_IMAGE_WIDTH || (meta.height ?? 0) > MAX_IMAGE_WIDTH * 2;
@@ -86,7 +136,7 @@ async function processImage(data: Buffer, type: string) {
 }
 
 /** Checks a file and prepares the bytes to store. Never trusts the file name or the browser's type. */
-export async function prepareUpload(file: File, allowed: string[]): Promise<{ ok: true; file: Prepared } | { ok: false; error: string }> {
+export async function prepareUpload(file: File, allowed: string[], opts: { logo?: boolean } = {}): Promise<{ ok: true; file: Prepared } | { ok: false; error: string }> {
   if (!file || file.size === 0) return { ok: false, error: "The file is empty." };
   if (file.size > MAX_UPLOAD_BYTES) return { ok: false, error: `${file.name} is larger than ${MAX_UPLOAD_BYTES / 1024 / 1024} MB. Please use a smaller file.` };
   const raw = Buffer.from(await file.arrayBuffer());
@@ -100,7 +150,7 @@ export async function prepareUpload(file: File, allowed: string[]): Promise<{ ok
   if (type === "image/svg+xml") return { ok: true, file: { filename: name, mimeType: type, data: raw, size: raw.length, ...svgSize(raw) } };
   if (type === "application/pdf" || type === "image/x-icon") return { ok: true, file: { filename: name, mimeType: type, data: raw, size: raw.length, width: null, height: null } };
   try {
-    const p = await processImage(raw, type);
+    const p = await processImage(raw, type, opts);
     return { ok: true, file: { filename: rename(name, p.mime), mimeType: p.mime, data: p.data, size: p.data.length, width: p.width, height: p.height } };
   } catch (e) {
     if (e instanceof Error && e.message === "TOO_MANY_PIXELS") return { ok: false, error: `${file.name}: this picture is too large (over 40 megapixels). Resize it to about 3000 pixels wide and try again.` };
@@ -112,9 +162,9 @@ export async function prepareUpload(file: File, allowed: string[]): Promise<{ ok
 
 export async function saveUpload(
   file: File,
-  opts: { allowed: string[]; alt?: string; isPrivate?: boolean; folder?: string; uploadedById?: string | null },
+  opts: { allowed: string[]; alt?: string; isPrivate?: boolean; folder?: string; uploadedById?: string | null; logo?: boolean },
 ) {
-  const r = await prepareUpload(file, opts.allowed);
+  const r = await prepareUpload(file, opts.allowed, { logo: opts.logo ?? cleanFolder(opts.folder ?? "") === LOGO_FOLDER });
   if (!r.ok) return r;
   const [row] = await db
     .insert(schema.media)
@@ -128,6 +178,38 @@ export async function saveUpload(
     .returning({ id: schema.media.id });
   if (Math.random() < 0.05) void purgeDeleted();
   return { ok: true as const, id: row.id };
+}
+
+export const LOGO_FOLDER = "Brands and logos";
+
+/**
+ * A logo chosen from the library that still has a plain black or white square behind it gets a see-through
+ * copy (saved next to it in Brands and logos) and the copy is used. The original file is left as it was.
+ * Returns the id to use: the copy's, or the same id when nothing needed changing.
+ */
+export async function seeThroughLogo(id: string | null, uploadedById?: string | null): Promise<string | null> {
+  if (!id) return id;
+  const m = await db.query.media.findFirst({ where: eq(schema.media.id, id) });
+  if (!m || m.deletedAt || m.isPrivate || !/^image\/(png|jpeg|webp|avif)$/.test(m.mimeType)) return id;
+  const cut = await cutOutBackground(Buffer.from(m.data)).catch(() => null);
+  if (!cut) return id;
+  const meta = await sharp(cut).metadata();
+  const [row] = await db
+    .insert(schema.media)
+    .values({
+      filename: m.filename.replace(/\.[a-z0-9]{2,5}$/i, "") + " (see-through).png",
+      mimeType: "image/png",
+      data: cut,
+      size: cut.length,
+      width: meta.width ?? null,
+      height: meta.height ?? null,
+      alt: m.alt,
+      isPrivate: false,
+      folder: LOGO_FOLDER,
+      uploadedById: uploadedById ?? null,
+    })
+    .returning({ id: schema.media.id });
+  return row.id;
 }
 
 /** Removed files stay restorable for 30 days; earlier versions of replaced files for a year. */
