@@ -7,6 +7,7 @@ import { MediaPicker } from "@/components/admin/MediaPicker";
 import { AdminHead, Check, Field, Flash, SubmitButton } from "@/components/admin/ui";
 import { Icon } from "@/components/ui/Icon";
 import { db, schema } from "@/db";
+import { brandLogo } from "@/lib/brand-logos";
 import { requireAdmin } from "@/lib/auth";
 import { toLines } from "@/lib/lines";
 
@@ -46,7 +47,7 @@ export default async function EditBrand({ params, searchParams }: { params: Prom
           </div>
         </Section>
         <Section title="Logo" icon="image" hint="Use the official logo, ideally an SVG or a PNG with a transparent background. It is shown at about 40 pixels high, on light and dark backgrounds.">
-          <MediaPicker name="logoId" defaultValue={b?.logoId ?? ""} folder="Brands and logos" />
+          <MediaPicker name="logoId" defaultValue={b?.logoId ?? ""} folder="Brands and logos" originalUrl={b ? (brandLogo({ slug: b.slug }) ?? undefined) : undefined} />
         </Section>
         <Section title="Where it appears" icon="eye">
           <div className="grid gap-4">

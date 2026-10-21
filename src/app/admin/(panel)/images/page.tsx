@@ -8,6 +8,7 @@ import { AdminHead, Flash } from "@/components/admin/ui";
 import { Icon } from "@/components/ui/Icon";
 import { db, schema } from "@/db";
 import { has, requireAdmin } from "@/lib/auth";
+import { brandLogo } from "@/lib/brand-logos";
 import { PAGES } from "@/lib/content-registry";
 import { IMAGE_SLOTS } from "@/lib/image-slots";
 import { getSettings, imageUrl } from "@/lib/settings";
@@ -210,6 +211,7 @@ export default async function Images({ searchParams }: { searchParams: Promise<R
                     where={b.relationship || "Brand"}
                     size="600 × 240"
                     value={b.logoId ?? ""}
+                    originalUrl={brandLogo({ slug: b.slug }) ?? undefined}
                     folder="Brands and logos"
                   />
                 ))}

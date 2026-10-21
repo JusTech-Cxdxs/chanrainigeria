@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { brandLogo, logoScale } from "@/lib/brand-logos";
 import { Wordmark } from "@/components/brand/Wordmark";
 import type { CategoryWithFamilies } from "@/lib/catalogue";
 import { telHref, waHref } from "@/lib/format";
@@ -9,7 +10,7 @@ import { CookieSettingsLink } from "./CookieBanner";
 import { siteContent } from "./site-content";
 
 type BranchLite = { id: string; name: string; address: string; city: string; state: string; phone: string | null };
-type BrandLite = { id: string; name: string; logoId: string | null; website: string | null };
+type BrandLite = { id: string; slug: string; name: string; logoId: string | null; website: string | null };
 
 const SOCIAL_ICONS: Record<string, string> = {
   linkedin: "M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3zM9 9h3.8v1.7h.1c.5-1 1.8-2 3.7-2 4 0 4.7 2.6 4.7 6V21h-4v-5.6c0-1.3 0-3-1.9-3s-2.1 1.4-2.1 2.9V21H9z",
@@ -134,18 +135,41 @@ export async function Footer({
 
       {brands.length ? (
         <div className="border-t border-white/10">
-          <div className="wrap flex flex-wrap items-center gap-x-8 gap-y-3 py-6">
-            <span className="text-sm text-white/60">{ft.t("brandsLabel")}</span>
-            {brands.map((b) =>
-              b.logoId ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img key={b.id} src={mediaUrl(b.logoId)!} alt={b.name} className="h-7 w-auto rounded bg-white px-2 py-1" />
-              ) : (
-                <span key={b.id} className="text-lg font-extrabold tracking-wide text-white/85" style={{ fontStretch: "115%" }}>
-                  {b.name}
-                </span>
-              ),
-            )}
+          <div className="wrap flex flex-col gap-3 py-6 sm:flex-row sm:items-center sm:gap-6">
+            <span className="shrink-0 text-xs font-semibold uppercase tracking-[0.14em] text-white/60">{ft.t("brandsLabel")}</span>
+            {/* One row on every screen: equal white tiles, each logo in its own colours. */}
+            <ul className="grid flex-1 gap-2 sm:max-w-xl sm:gap-3" style={{ gridTemplateColumns: `repeat(${Math.min(brands.length, 4)}, minmax(0, 1fr))` }}>
+              {brands.slice(0, 4).map((b) => {
+                const logo = brandLogo(b);
+                const tile = (
+                  <span className="flex h-12 items-center justify-center rounded-lg bg-white px-2.5 shadow-[0_1px_0_rgba(0,0,0,0.08)] ring-1 ring-black/5 transition-transform hover:-translate-y-0.5 sm:h-14 sm:px-4">
+                    {logo ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        src={logo}
+                        alt={b.name}
+                        className="max-h-[calc(1.75rem*var(--s))] w-auto max-w-full object-contain sm:max-h-[calc(2.25rem*var(--s))]"
+                        style={{ ["--s" as string]: logoScale(b) }}
+                        loading="lazy"
+                      />
+                    ) : (
+                      <span className="truncate text-sm font-extrabold tracking-wide text-[#1e293b]">{b.name}</span>
+                    )}
+                  </span>
+                );
+                return (
+                  <li key={b.id} className="min-w-0">
+                    {b.website ? (
+                      <a href={b.website} target="_blank" rel="noopener noreferrer" aria-label={b.name}>
+                        {tile}
+                      </a>
+                    ) : (
+                      tile
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
           </div>
         </div>
       ) : null}

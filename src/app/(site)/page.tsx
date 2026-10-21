@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Leaf } from "@/components/brand/Leaf";
 import { BrandsMarquee } from "@/components/site/BrandsMarquee";
+import { brandLogo, logoScale } from "@/lib/brand-logos";
 import { Framed } from "@/components/site/FamilyPicture";
 import { HeroSlider } from "@/components/site/HeroSlider";
 import { TestimonialsMarquee } from "@/components/site/Testimonials";
@@ -172,7 +173,7 @@ export default async function Home() {
 
       <BrandsMarquee
         title={c.t("brandsTitle")}
-        brands={brands.filter((b) => b.showOnHome).map((b) => ({ name: b.name, logo: mediaUrl(b.logoId), website: b.website }))}
+        brands={brands.filter((b) => b.showOnHome).map((b) => ({ name: b.name, logo: brandLogo(b), website: b.website, scale: logoScale(b) }))}
       />
 
       {c.on("showTestimonials") && s.home.showTestimonials && testimonials.length ? (

@@ -8,7 +8,8 @@
 import { siteUrl } from "./site-url";
 import type { Settings } from "./settings";
 
-export type EmailBrand = { name: string; logoId: string | null; relationship?: string };
+/** logoUrl is absolute (emails need full addresses); null shows the brand name instead. */
+export type EmailBrand = { name: string; logoUrl: string | null; relationship?: string };
 /** logoUrl: the company logo for the letterhead (null = the lockup); left out, it is worked out from the settings. */
 export type EmailCtx = { s: Settings; brands: EmailBrand[]; logoUrl?: string | null };
 
@@ -148,20 +149,22 @@ ${
 
 function brandStrip({ s, brands }: EmailCtx) {
   if (!brands.length) return raw("");
-  const base = siteUrl();
-  const cells = brands.slice(0, 6).map(
-    (b) => html`<td class="em-stack-brand" align="center" valign="top" style="padding:0 6px 8px 6px;">
-<table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr><td align="center" valign="middle" height="48" style="height:48px;padding:6px 14px;background-color:#ffffff;border:1px solid ${raw(C.border)};border-radius:8px;">${
-      b.logoId
-        ? html`<img src="${base}/media/${b.logoId}" alt="${b.name}" height="26" style="display:block;height:26px;width:auto;max-width:120px;border:0;outline:none;font-family:${raw(FONT)};font-size:13px;font-weight:800;color:${raw(C.ink)};">`
-        : html`<span style="font-family:${raw(FONT)};font-size:14px;line-height:26px;font-weight:800;letter-spacing:0.08em;color:#1e293b;white-space:nowrap;">${b.name.toUpperCase()}</span>`
+  // One row on every screen: equal white tiles, logos scaled to fit, never stacked.
+  const list = brands.slice(0, 4);
+  const pct = Math.floor(100 / list.length);
+  const cells = list.map(
+    (b) => html`<td align="center" valign="middle" width="${pct}%" style="width:${pct}%;padding:0 4px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td align="center" valign="middle" height="52" style="height:52px;padding:6px 8px;background-color:#ffffff;border:1px solid ${raw(C.border)};border-radius:8px;">${
+      b.logoUrl
+        ? html`<img src="${b.logoUrl}" alt="${b.name}" height="30" style="display:block;margin:0 auto;height:30px;width:auto;max-width:100%;border:0;outline:none;font-family:${raw(FONT)};font-size:13px;font-weight:800;color:${raw(C.ink)};">`
+        : html`<span style="font-family:${raw(FONT)};font-size:13px;line-height:30px;font-weight:800;letter-spacing:0.06em;color:#1e293b;white-space:nowrap;">${b.name.toUpperCase()}</span>`
     }</td></tr></table>
-${b.relationship ? html`<p class="em-muted" style="margin:6px 0 0 0;font-family:${raw(FONT)};font-size:11px;line-height:1.3;color:${raw(C.muted)};">${b.relationship}</p>` : ""}
+${b.relationship ? html`<p class="em-muted" style="margin:6px 0 0 0;font-family:${raw(FONT)};font-size:10.5px;line-height:1.3;color:${raw(C.muted)};">${b.relationship}</p>` : ""}
 </td>`,
   );
-  return html`<tr><td class="em-strip em-px" align="center" style="padding:22px 32px 14px 32px;background-color:${raw(C.surface)};border-top:1px solid ${raw(C.border)};">
+  return html`<tr><td class="em-strip em-px" align="center" style="padding:22px 28px 14px 28px;background-color:${raw(C.surface)};border-top:1px solid ${raw(C.border)};">
 <p class="em-muted" style="margin:0 0 14px 0;font-family:${raw(FONT)};font-size:10.5px;line-height:1.4;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:${raw(C.muted)};">${s.email.brandsLabel || "Authorised dealer for"}</p>
-<table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center"><tr>${cells}</tr></table>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:520px;"><tr>${cells}</tr></table>
 </td></tr>`;
 }
 

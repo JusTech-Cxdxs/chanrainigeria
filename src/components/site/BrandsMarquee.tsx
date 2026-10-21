@@ -1,28 +1,35 @@
 /**
- * "Equipment we supply": the manufacturers' logos drifting slowly across a white band
- * (white in both themes so brand logos always sit on the background they were designed for).
- * Until a logo file is uploaded, the brand name is shown as plain text.
+ * "Equipment we supply": the manufacturers' logos in their own colours, drifting across a full-width
+ * white band (white in both themes, so every logo sits on the background it was designed for).
+ * A brand without a logo shows its name.
  */
-export function BrandsMarquee({ title, brands }: { title: string; brands: { name: string; logo: string | null; website: string | null }[] }) {
+export function BrandsMarquee({ title, brands }: { title: string; brands: { name: string; logo: string | null; website: string | null; scale?: number }[] }) {
   if (!brands.length) return null;
   // Repeat short lists so the band is always full, then double it for a seamless loop.
-  const base = Array.from({ length: Math.max(1, Math.ceil(8 / brands.length)) }, () => brands).flat();
+  const base = Array.from({ length: Math.max(1, Math.ceil(10 / brands.length)) }, () => brands).flat();
   const track = [...base, ...base];
   return (
-    <section aria-label={title} className="border-y border-line bg-white py-10 text-[#0f172a]" style={{ colorScheme: "light" }}>
-      <div className="wrap mb-6 flex items-center gap-4">
-        <h2 className="text-sm font-semibold text-[#475569]">{title}</h2>
+    <section aria-label={title} className="w-full overflow-hidden border-y border-[#e2e8f0] bg-white text-[#0f172a]" style={{ colorScheme: "light" }}>
+      <div className="wrap flex items-center gap-4 pt-8 sm:pt-10">
+        <h2 className="text-xs font-bold uppercase tracking-[0.16em] text-[#475569] sm:text-sm">{title}</h2>
         <span className="h-px flex-1 bg-[#e2e8f0]" aria-hidden />
       </div>
-      <div className="marquee relative overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_8%,black_92%,transparent)]">
-        <ul className="marquee-track flex w-max items-center gap-16 sm:gap-24" style={{ ["--marquee-speed" as string]: `${Math.max(30, track.length * 4)}s` }}>
+      <div className="marquee relative w-full py-7 sm:py-9">
+        <ul className="marquee-track flex w-max items-center" style={{ ["--marquee-speed" as string]: `${Math.max(30, track.length * 4)}s` }}>
           {track.map((b, k) => (
-            <li key={k} aria-hidden={k >= base.length} className="shrink-0">
+            <li key={k} aria-hidden={k >= base.length} className="flex h-16 shrink-0 items-center px-8 sm:h-24 sm:px-14">
               {b.logo ? (
                 // eslint-disable-next-line @next/next/no-img-element
-                <img src={b.logo} alt={b.name} className="h-10 w-auto object-contain opacity-80 grayscale transition hover:opacity-100 hover:grayscale-0 sm:h-14" loading="lazy" />
+                <img
+                  src={b.logo}
+                  alt={k < base.length ? b.name : ""}
+                  className="h-[calc(2.75rem*var(--s))] w-auto max-w-[220px] object-contain sm:h-[calc(4rem*var(--s))] sm:max-w-[300px]"
+                  style={{ ["--s" as string]: b.scale ?? 1 }}
+                  loading="lazy"
+                  draggable={false}
+                />
               ) : (
-                <span className="text-2xl font-extrabold tracking-wide text-[#334155] opacity-80 sm:text-3xl" style={{ fontStretch: "118%" }}>
+                <span className="text-2xl font-extrabold tracking-wide text-[#334155] sm:text-3xl" style={{ fontStretch: "118%" }}>
                   {b.name}
                 </span>
               )}

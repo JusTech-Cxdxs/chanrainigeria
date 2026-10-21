@@ -1,8 +1,9 @@
-import { and, count, eq, isNotNull, isNull, ne } from "drizzle-orm";
+import { and, count, eq, inArray, isNotNull, isNull, ne, or } from "drizzle-orm";
 import Link from "next/link";
 import { Icon } from "@/components/ui/Icon";
 import { db, schema } from "@/db";
 import { has, type StaffUser } from "@/lib/auth";
+import { BUNDLED_LOGOS } from "@/lib/brand-logos";
 import type { Permission } from "@/lib/permissions";
 import { aiReady as aiReadyFor } from "@/lib/ai";
 import { mailConfigured } from "@/lib/mail";
@@ -15,7 +16,10 @@ export async function SetupChecklist({ user }: { user: StaffUser }) {
   const s = await getSettings();
   const [[{ staff }], [{ logos }], [{ uploads }], [{ examples }]] = await Promise.all([
     db.select({ staff: count() }).from(schema.adminUsers).where(and(ne(schema.adminUsers.role, "MASTER"), eq(schema.adminUsers.active, true))),
-    db.select({ logos: count() }).from(schema.brands).where(isNotNull(schema.brands.logoId)),
+    db
+      .select({ logos: count() })
+      .from(schema.brands)
+      .where(or(isNotNull(schema.brands.logoId), inArray(schema.brands.slug, [...BUNDLED_LOGOS]))),
     db.select({ uploads: count() }).from(schema.media).where(and(eq(schema.media.isPrivate, false), isNull(schema.media.deletedAt))),
     db.select({ examples: count() }).from(schema.testimonials).where(and(eq(schema.testimonials.isExample, true), eq(schema.testimonials.status, "APPROVED"))),
   ]);
