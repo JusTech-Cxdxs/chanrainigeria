@@ -33,7 +33,13 @@ const update = process.argv.includes("--update");
 async function main() {
   const url =
     process.env.DIRECT_URL || process.env.DATABASE_URL_UNPOOLED || process.env.POSTGRES_URL_NON_POOLING || process.env.DATABASE_URL || process.env.POSTGRES_URL;
-  if (!url) throw new Error("DATABASE_URL is not set");
+  if (!url) {
+    if (process.env.VERCEL_ENV === "preview") {
+      console.warn("No database for this preview build. Skipping the seed.");
+      return;
+    }
+    throw new Error("DATABASE_URL is not set. On Vercel: Storage > connect the Neon database to this environment, then redeploy.");
+  }
   const pool = new Pool({ connectionString: url, ssl: /sslmode=require|supabase|neon\.tech/.test(url) ? { rejectUnauthorized: false } : undefined });
   const db = drizzle(pool, { schema });
 
