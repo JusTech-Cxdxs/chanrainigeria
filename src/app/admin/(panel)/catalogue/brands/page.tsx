@@ -6,6 +6,7 @@ import { CHECKER } from "@/components/admin/MediaDialog";
 import { AdminHead, Flash } from "@/components/admin/ui";
 import { Icon } from "@/components/ui/Icon";
 import { db, schema } from "@/db";
+import { brandLogo } from "@/lib/brand-logos";
 import { requireAdmin } from "@/lib/auth";
 
 export const dynamic = "force-dynamic";
@@ -34,9 +35,9 @@ export default async function Brands({ searchParams }: { searchParams: Promise<R
             <li key={b.id} className="flex flex-col overflow-hidden rounded-2xl border border-line bg-surface transition-colors hover:border-brand">
               <Link href={`/admin/catalogue/brands/${b.id}`} className="flex flex-1 flex-col">
                 <div className={`grid h-28 place-items-center border-b border-line-soft p-4 ${CHECKER}`}>
-                  {b.logoId ? (
+                  {brandLogo(b) ? (
                     // eslint-disable-next-line @next/next/no-img-element
-                    <img src={`/media/${b.logoId}?w=480`} alt={`${b.name} logo`} className="max-h-16 max-w-[80%] object-contain" />
+                    <img src={b.logoId ? `/media/${b.logoId}?w=480` : brandLogo(b)!} alt={`${b.name} logo`} className="max-h-16 max-w-[80%] object-contain" />
                   ) : (
                     <span className="grid place-items-center gap-1 text-center text-xs text-ink-soft">
                       <Icon name="image-plus" size={24} />

@@ -6,6 +6,7 @@ import { and, eq, inArray } from "drizzle-orm";
 import nodemailer, { type Transporter } from "nodemailer";
 import { db, schema } from "@/db";
 import { type Permission, SYSTEM_ROLES } from "./permissions";
+import { brandLogo } from "./brand-logos";
 import { open } from "./secret-box";
 import { deskFor, type Settings } from "./settings";
 
@@ -182,7 +183,10 @@ export async function emailContext() {
   return {
     s,
     logoUrl: ok(s.branding.logoId) ? `${siteUrl()}/media/${s.branding.logoId}` : null,
-    brands: brands.map((b) => ({ name: b.name, logoId: ok(b.logoId), relationship: b.relationship ?? "" })),
+    brands: brands.map((b) => {
+      const url = brandLogo({ slug: b.slug, logoId: ok(b.logoId) });
+      return { name: b.name, logoUrl: url ? `${siteUrl()}${url}` : null, relationship: b.relationship ?? "" };
+    }),
   };
 }
 
