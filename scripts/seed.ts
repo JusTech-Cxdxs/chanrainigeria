@@ -31,8 +31,15 @@ const LINE: Record<string, { order: number; desk: string; illustration: string }
 const update = process.argv.includes("--update");
 
 async function main() {
-  const url = process.env.DIRECT_URL || process.env.DATABASE_URL;
-  if (!url) throw new Error("DATABASE_URL is not set");
+  const url =
+    process.env.DIRECT_URL || process.env.DATABASE_URL_UNPOOLED || process.env.POSTGRES_URL_NON_POOLING || process.env.DATABASE_URL || process.env.POSTGRES_URL;
+  if (!url) {
+    if (process.env.VERCEL_ENV === "preview") {
+      console.warn("No database for this preview build. Skipping the seed.");
+      return;
+    }
+    throw new Error("DATABASE_URL is not set. On Vercel: Storage > connect the Neon database to this environment, then redeploy.");
+  }
   const pool = new Pool({ connectionString: url, ssl: /sslmode=require|supabase|neon\.tech/.test(url) ? { rejectUnauthorized: false } : undefined });
   const db = drizzle(pool, { schema });
 
@@ -143,13 +150,30 @@ async function main() {
     console.log(`${c.name}: ${fCount} new types, ${pCount} new models${update ? " (existing refreshed)" : ""}`);
   }
 
+  // Example testimonials for the preview. They show an "Example" label on the site until the
+  // company replaces them with real ones (Dashboard → Testimonials).
+  const anyTestimonial = await db.query.testimonials.findFirst();
+  if (!anyTestimonial) {
+    const examples = [
+      { name: "Site manager", company: "Road construction contractor, Ogun", rating: 5, quote: "The technician came to our site the day after we called, found the hydraulic fault and had the loader working again before evening. That is the kind of support we need." },
+      { name: "Operations lead", company: "CNG station operator, Lagos", rating: 5, quote: "From the first site survey to commissioning, the team explained every step. Our booster compressor has run smoothly since handover." },
+      { name: "Warehouse supervisor", company: "FMCG distributor, Lagos", rating: 4, quote: "Moving to electric forklifts cut our noise and fumes inside the warehouse. Planned maintenance visits are on time and well recorded." },
+      { name: "Fleet engineer", company: "Quarry operator, Abeokuta", rating: 5, quote: "Genuine parts arrived quickly and the advice on service intervals has already reduced our downtime." },
+    ];
+    await db.insert(schema.testimonials).values(examples.map((e, i) => ({ ...e, status: "APPROVED" as const, isExample: true, source: "staff", order: i })));
+    console.log("testimonials: added 4 examples");
+  }
+
   // Optional first admin from the environment (otherwise use /admin/setup in the browser).
   const email = process.env.ADMIN_EMAIL?.toLowerCase();
   const password = process.env.ADMIN_PASSWORD;
   if (email && password) {
     const admin = await db.query.adminUsers.findFirst({ where: eq(schema.adminUsers.email, email) });
-    if (!admin) {
-      await db.insert(schema.adminUsers).values({ email, name: process.env.ADMIN_NAME || "Administrator", role: "ADMIN", passwordHash: await bcrypt.hash(password, 12) });
+    const weak = password.length < 10 || !/[a-zA-Z]/.test(password) || !/\d/.test(password) || /^(password|qwerty|123456|chanrai|admin)/i.test(password);
+    if (!admin && weak) {
+      console.warn("admin: ADMIN_PASSWORD is too weak (10+ characters, letters and numbers). Account not created.");
+    } else if (!admin) {
+      await db.insert(schema.adminUsers).values({ email, name: process.env.ADMIN_NAME || "Platform support", role: "MASTER", passwordHash: await bcrypt.hash(password, 12) });
       console.log(`admin: created ${email}`);
     }
   }

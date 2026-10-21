@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 import { db, schema } from "@/db";
-import { currentAdmin } from "@/lib/auth";
+import { can, currentAdmin } from "@/lib/auth";
 
 // Serves uploaded files from the database with long-lived caching (ids never change).
 export async function GET(_: Request, { params }: { params: Promise<{ id: string }> }) {
@@ -8,7 +8,11 @@ export async function GET(_: Request, { params }: { params: Promise<{ id: string
   if (!/^[0-9a-f-]{36}$/i.test(id)) return new Response("Not found", { status: 404 });
   const row = await db.query.media.findFirst({ where: eq(schema.media.id, id) });
   if (!row) return new Response("Not found", { status: 404 });
-  if (row.isPrivate && !(await currentAdmin())) return new Response("Not found", { status: 404 });
+  if (row.isPrivate) {
+    // Customer attachments: only staff who handle enquiries.
+    const u = await currentAdmin();
+    if (!u || !can.enquiries(u.role)) return new Response("Not found", { status: 404 });
+  }
   const inline = row.mimeType.startsWith("image/") || row.mimeType === "application/pdf";
   return new Response(new Uint8Array(row.data), {
     headers: {

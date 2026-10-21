@@ -313,7 +313,7 @@ function fallbackReply(settings: Settings, k: { families: FamilyDoc[] }, q: stri
     return { reply: `Our sales team prepares quotes for each request. You can ask for one at /contact${desk("sales") ? ` or reach sales on ${desk("sales")}` : ""}. Or use "Leave a request" below and I'll pass it on.` };
   if (/book|service|repair|broke|down|fault|technician|maintenance/.test(lower))
     return { reply: `Our technicians come to your site. Book a visit at /book-service with the machine, serial number, hour meter and location${desk("service") ? `, or call the service desk on ${desk("service")}` : ""}.` };
-  if (/part|filter|spare/.test(lower)) return { reply: `Send a parts request at /parts — the serial number and part numbers help us confirm quickly.` };
+  if (/part|filter|spare/.test(lower)) return { reply: `Send a parts request at /parts. The serial number and part numbers help us confirm quickly.` };
   if (/where|address|branch|office|location|located/.test(lower)) return { reply: `Our locations and desks are listed at /contact#branches.` };
   if (/cng|gas|compressor|dispenser|station|cascade/.test(lower) && desk("cng"))
     return { reply: `For CNG and gas equipment, contact our CNG desk on ${desk("cng")}, or browse the range at /products.` };

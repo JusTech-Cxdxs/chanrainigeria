@@ -45,6 +45,7 @@ export default async function SettingsPage({ searchParams }: { searchParams: Pro
             <Field label="Group name" name="company_groupName" defaultValue={s.company.groupName} />
             <Field label="Group website" name="company_groupUrl" defaultValue={s.company.groupUrl} type="url" />
             <Field label="Heritage line" name="company_heritage" defaultValue={s.company.heritage} className="sm:col-span-2" />
+            <Field label="Group line" name="company_groupLine" defaultValue={s.company.groupLine} className="sm:col-span-2" hint="Shown on the home page slider and in the footer, e.g. A business of the Kewalram Chanrai Group." />
           </div>
         </Panel>
 
@@ -70,6 +71,7 @@ export default async function SettingsPage({ searchParams }: { searchParams: Pro
             <Field label="Main phone" name="contact_phone" defaultValue={s.contact.phone} />
             <Field label="Main WhatsApp" name="contact_whatsapp" defaultValue={s.contact.whatsapp} />
             <Field label="Opening hours" name="contact_hours" defaultValue={s.contact.hours} />
+            <Field label="Address" name="contact_address" defaultValue={s.contact.address} className="sm:col-span-2" hint="Shown in the footer, in Enyo's Contact us card and in every email." />
           </div>
         </Panel>
 
@@ -94,10 +96,9 @@ export default async function SettingsPage({ searchParams }: { searchParams: Pro
           </div>
         </Panel>
 
-        <Panel title="Home page">
+        <Panel title="Home page" aside={<a href="/admin/appearance" className="text-sm font-semibold text-brand">Edit the slider and pictures</a>}>
           <div className="grid gap-4">
-            <Field label="Headline" name="home_heroTitle" defaultValue={s.home.heroTitle} />
-            <Field label="Intro" name="home_heroText" defaultValue={s.home.heroText} textarea rows={2} />
+            <Check label="Show testimonials on the home page" name="home_showTestimonials" defaultChecked={s.home.showTestimonials} />
             <Field label="Field service headline" name="home_fieldServiceTitle" defaultValue={s.home.fieldServiceTitle} />
             <Field label="Field service text" name="home_fieldServiceText" defaultValue={s.home.fieldServiceText} textarea rows={3} />
           </div>
@@ -136,6 +137,47 @@ export default async function SettingsPage({ searchParams }: { searchParams: Pro
               className="sm:col-span-2"
               hint="Facts not elsewhere on the site, e.g. which states you cover, public holidays, demo days. Enyo already knows the products, services, desks and locations. Never put prices or anything confidential here."
             />
+          </div>
+        </Panel>
+
+        <Panel title="Enquiry reminders">
+          <div className="grid gap-4 sm:grid-cols-2">
+            <Field
+              label="Overdue after (hours)"
+              name="enquiries_overdueHours"
+              type="number"
+              defaultValue={s.enquiries.overdueHours}
+              hint="An open enquiry with no progress after this long is marked overdue. Machines-down are always flagged."
+            />
+            <Check
+              label="Email each desk a daily list of overdue enquiries"
+              name="enquiries_sendDailyReminder"
+              defaultChecked={s.enquiries.sendDailyReminder}
+              hint="Sent once a day at 8:00 Lagos time to each desk's email address."
+            />
+          </div>
+        </Panel>
+
+        <Panel title="Languages">
+          <Check label="Offer the website in other languages" name="translate_enabled" defaultChecked={s.translate.enabled} hint="Uses Google Translate, loaded only when a visitor picks a language." />
+          <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2">
+            {[
+              ["fr", "French"],
+              ["zh-CN", "Chinese"],
+              ["hi", "Hindi"],
+              ["ar", "Arabic"],
+              ["pt", "Portuguese"],
+              ["es", "Spanish"],
+              ["de", "German"],
+              ["ha", "Hausa"],
+              ["yo", "Yoruba"],
+              ["ig", "Igbo"],
+            ].map(([code, label]) => (
+              <label key={code} className="flex items-center gap-2">
+                <input type="checkbox" name="translate_languages" value={code} defaultChecked={s.translate.languages.includes(code)} className="h-4 w-4 accent-[var(--brand)]" />
+                {label}
+              </label>
+            ))}
           </div>
         </Panel>
 

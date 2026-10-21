@@ -87,7 +87,7 @@ export default async function EditModel({
             defaultValue={toSpecs(p?.specs ?? {})}
             textarea
             rows={10}
-            hint={`One per line, as  key: value. Write plain numbers without units — the unit comes from the machine type. Keys for this type: ${fieldHint || "none set yet"}.`}
+            hint={`One per line, as  key: value. Write plain numbers without units; the unit comes from the machine type. Keys for this type: ${fieldHint || "none set yet"}.`}
           />
           <div className="mt-4 grid gap-4 sm:grid-cols-2">
             <Field label="Sources" name="sources" defaultValue={toLines(p?.sources)} textarea rows={3} hint="Links to the official spec sheets, one per line. Staff only." />

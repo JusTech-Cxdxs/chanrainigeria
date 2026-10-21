@@ -52,3 +52,10 @@ export async function sendMail(
     return false;
   }
 }
+
+/** Settings and manufacturers for the email letterhead and footer. */
+export async function emailContext() {
+  const [{ getSettings }, { getBrands }] = await Promise.all([import("./settings"), import("./catalogue")]);
+  const [s, brands] = await Promise.all([getSettings(), getBrands()]);
+  return { s, brands: brands.filter((b) => b.showOnHome).map((b) => ({ name: b.name, logoId: b.logoId })) };
+}

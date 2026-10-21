@@ -1,9 +1,12 @@
 import "server-only";
+import { createHash } from "node:crypto";
+import { rateLimit } from "@/lib/guard";
+import { siteUrl } from "@/lib/site-url";
 import { eq, sql } from "drizzle-orm";
 import { z } from "zod";
 import { db, schema } from "@/db";
 import { customerAck, teamNotice, type EnquiryForMail } from "./email-templates";
-import { sendMail } from "./mail";
+import { emailContext, sendMail } from "./mail";
 import { deskFor, getSettings } from "./settings";
 
 export const TYPE_LABELS = {
@@ -147,11 +150,15 @@ export async function createEnquiry(
     attachments: opts.attachmentIds?.length ?? 0,
   };
 
-  const base = (process.env.SITE_URL || "http://localhost:3000").replace(/\/$/, "");
+  const base = siteUrl();
   const teamTo = desk.email || settings.contact.email;
+  const ctx = await emailContext();
+  // At most three acknowledgements a day to any one address, so the form can't be used to flood a stranger.
+  const recipient = createHash("sha256").update(input.email).digest("base64url").slice(0, 22);
+  const ackAllowed = await rateLimit(`ack:${recipient}`, 3, 24 * 3600_000);
   const [customerSent, teamSent] = await Promise.all([
-    sendMail(settings, { to: input.email, ...customerAck(settings, mail), replyTo: desk.email || undefined }),
-    sendMail(settings, { to: teamTo, ...teamNotice(settings, mail, `${base}/admin/enquiries/${row.id}`), replyTo: input.email }),
+    ackAllowed ? sendMail(settings, { to: input.email, ...customerAck(ctx, mail), replyTo: desk.email || undefined }) : Promise.resolve(false),
+    sendMail(settings, { to: teamTo, ...teamNotice(ctx, mail, `${base}/admin/enquiries/${row.id}`), replyTo: input.email }),
   ]);
   if (customerSent || teamSent) {
     await db

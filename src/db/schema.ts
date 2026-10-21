@@ -289,8 +289,41 @@ export const consentRecords = pgTable("consent_records", {
   createdAt: createdAt(),
 });
 
+// ---------- Testimonials (visitors submit, staff approve) ----------
+export const testimonialStatus = pgEnum("testimonial_status", ["PENDING", "APPROVED", "REJECTED"]);
+
+export const testimonials = pgTable(
+  "testimonials",
+  {
+    id: id(),
+    name: text("name").notNull(),
+    role: text("role"),
+    company: text("company"),
+    email: text("email"),
+    rating: integer("rating").notNull().default(5),
+    quote: text("quote").notNull(),
+    status: testimonialStatus("status").notNull().default("PENDING"),
+    /** Placeholder content shipped with the preview; shown with an "Example" label. */
+    isExample: boolean("is_example").notNull().default(false),
+    source: text("source").notNull().default("website"),
+    order: integer("order").notNull().default(0),
+    reviewedById: text("reviewed_by_id"),
+    reviewedAt: timestamp("reviewed_at", { withTimezone: true }),
+    createdAt: createdAt(),
+  },
+  (t) => [index("testimonials_status").on(t.status, t.createdAt)],
+);
+
+// ---------- Rate limiting (shared by every server instance) ----------
+export const rateLimits = pgTable("rate_limits", {
+  key: text("key").primaryKey(),
+  count: integer("count").notNull().default(0),
+  windowStart: timestamp("window_start", { withTimezone: true }).notNull().defaultNow(),
+});
+
 // ---------- Staff ----------
-export const role = pgEnum("role", ["ADMIN", "EDITOR", "COORDINATOR"]);
+/** MASTER is the platform owner (JusTech support). It is never shown to the organisation's staff. */
+export const role = pgEnum("role", ["MASTER", "ADMIN", "EDITOR", "COORDINATOR"]);
 
 export const adminUsers = pgTable("admin_users", {
   id: id(),
@@ -300,6 +333,10 @@ export const adminUsers = pgTable("admin_users", {
   role: role("role").notNull().default("EDITOR"),
   active: boolean("active").notNull().default(true),
   lastLoginAt: timestamp("last_login_at", { withTimezone: true }),
+  /** Bumped on password change or deactivation so every existing session stops working. */
+  sessionVersion: integer("session_version").notNull().default(1),
+  failedLogins: integer("failed_logins").notNull().default(0),
+  lockedUntil: timestamp("locked_until", { withTimezone: true }),
   createdAt: createdAt(),
 });
 

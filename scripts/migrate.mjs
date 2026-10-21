@@ -13,11 +13,20 @@ for (const file of [".env.local", ".env"]) {
   }
 }
 
-const url = process.env.DIRECT_URL || process.env.DATABASE_URL;
+const url =
+  process.env.DIRECT_URL || process.env.DATABASE_URL_UNPOOLED || process.env.POSTGRES_URL_NON_POOLING || process.env.DATABASE_URL || process.env.POSTGRES_URL;
 if (!url) {
-  console.error("DATABASE_URL is not set");
+  // Vercel preview builds often have no database attached; let them build with defaults.
+  if (process.env.VERCEL_ENV === "preview") {
+    console.warn("No database for this preview build. Skipping migrations; pages will show default content.");
+    process.exit(0);
+  }
+  console.error("DATABASE_URL is not set. On Vercel: Storage > connect the Neon database to this environment, then redeploy.");
   process.exit(1);
 }
+try {
+  console.log(`Migrating database at ${new URL(url).host}`);
+} catch {}
 const pool = new pg.Pool({
   connectionString: url,
   ssl: /sslmode=require|supabase|neon\.tech/.test(url) ? { rejectUnauthorized: false } : undefined,

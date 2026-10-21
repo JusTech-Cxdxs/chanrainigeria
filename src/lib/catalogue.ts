@@ -169,3 +169,18 @@ export const getProductIndex = cached(
       .orderBy(asc(categories.order), asc(families.order), asc(products.order)),
   [],
 );
+
+/** Approved testimonials, newest first (examples last). */
+export const getTestimonials = cached(
+  "testimonials",
+  "testimonials",
+  300,
+  () =>
+    db.query.testimonials.findMany({
+      where: eq(schema.testimonials.status, "APPROVED"),
+      orderBy: [asc(schema.testimonials.isExample), asc(schema.testimonials.order), desc(schema.testimonials.createdAt)],
+      columns: { id: true, name: true, role: true, company: true, rating: true, quote: true, isExample: true },
+      limit: 40,
+    }),
+  [],
+);

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHead } from "@/components/site/PageHead";
 import { getCategories, getServices } from "@/lib/catalogue";
-import { getSettings } from "@/lib/settings";
+import { getSettings, imageUrl } from "@/lib/settings";
 
 export const metadata: Metadata = {
   title: "Services",
@@ -20,6 +20,7 @@ export default async function Services() {
   return (
     <>
       <PageHead
+        image={imageUrl(s, "page-services")}
         crumbs={[{ href: "/", label: "Home" }, { label: "Services" }]}
         title={s.home.fieldServiceTitle}
         lead={s.home.fieldServiceText}

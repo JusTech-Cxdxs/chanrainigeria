@@ -13,17 +13,24 @@ a step says otherwise.
    - `SITE_URL=https://www.chanrainigeria.com`
    - `SMTP_*`: the mailbox the site sends from (e.g. `website@chanrainigeria.com`).
    - `ENYO_API_KEY`: optional.
+   - `SETUP_TOKEN`: a private code of 12+ characters, typed once at `/admin/setup`.
+   - `CRON_SECRET`: random, 16+ characters. Call `GET /api/cron/overdue` with
+     `Authorization: Bearer <CRON_SECRET>` once a day (a server cron job) for overdue-enquiry reminders.
+   - `TRUSTED_IP_HEADER=x-real-ip` (matches the Caddyfile below).
 4. `docker compose up -d --build`
 5. `docker compose run --rm setup` loads the catalogue. It is safe to repeat.
 6. HTTPS: install Caddy and use this as `/etc/caddy/Caddyfile`:
    ```
    chanrainigeria.com, www.chanrainigeria.com {
-     reverse_proxy localhost:3000
+     reverse_proxy localhost:3000 {
+       header_up X-Real-IP {remote_host}
+     }
    }
    ```
 7. DNS: point the domain's `A` records (`@` and `www`) at the server's IP. **Leave the `MX` records alone**,
    so company email keeps working.
-8. Open `https://www.chanrainigeria.com/admin/setup` and create the first administrator.
+8. Open `https://www.chanrainigeria.com/admin/setup`, enter the `SETUP_TOKEN` and create the platform
+   account. Then add the company's administrator under **Team**.
 9. In **Settings**, fill in the desk emails and phones, upload the logo, and set the sender address.
    Then send a test enquiry from the site.
 

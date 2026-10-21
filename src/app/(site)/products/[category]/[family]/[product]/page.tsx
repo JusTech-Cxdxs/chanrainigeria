@@ -5,7 +5,7 @@ import { Machine, machineForSlug } from "@/components/Machine";
 import { PageHead } from "@/components/site/PageHead";
 import { SpecTable } from "@/components/site/SpecTable";
 import { getFamily, getProduct } from "@/lib/catalogue";
-import { mediaUrl } from "@/lib/settings";
+import { getSettings, imageUrl, mediaUrl } from "@/lib/settings";
 
 type P = { params: Promise<{ category: string; family: string; product: string }> };
 export const dynamic = "force-dynamic";
@@ -34,6 +34,7 @@ export default async function ProductPage({ params }: P) {
         ]}
         title={title}
         lead={p.summary}
+        image={imageUrl(await getSettings(), `category-${c.slug}`)}
       />
       <div className="wrap grid gap-12 py-14 lg:grid-cols-[1.2fr_1fr]">
         <div>

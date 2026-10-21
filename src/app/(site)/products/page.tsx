@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Machine, machineForSlug } from "@/components/Machine";
 import { PageHead } from "@/components/site/PageHead";
 import { getCategories } from "@/lib/catalogue";
-import { mediaUrl } from "@/lib/settings";
+import { getSettings, imageUrl, mediaUrl } from "@/lib/settings";
 
 export const metadata: Metadata = {
   title: "Products",
@@ -12,13 +12,14 @@ export const metadata: Metadata = {
 export const dynamic = "force-dynamic";
 
 export default async function Products() {
-  const categories = await getCategories();
+  const [s, categories] = await Promise.all([getSettings(), getCategories()]);
   return (
     <>
       <PageHead
         crumbs={[{ href: "/", label: "Home" }, { label: "Products" }]}
         title="Products"
         lead="Choose a line to see each machine type, how it works and the models we supply. Ask for a quote on any of them."
+        image={imageUrl(s, "page-products")}
       />
       <div className="wrap space-y-20 py-14">
         {categories.length === 0 ? (
@@ -46,7 +47,7 @@ export default async function Products() {
                       <Machine kind={f.illustration || machineForSlug(f.slug, c.illustration)} className="w-full" />
                     )}
                     <span className="heading mt-2 block text-lg group-hover:text-brand">{f.name}</span>
-                    <span className="mt-1 line-clamp-2 block text-sm text-ink-soft">{f.summary}</span>
+                    <span className="mt-1 line-clamp-2 text-sm text-ink-soft">{f.summary}</span>
                   </Link>
                 </li>
               ))}

@@ -6,10 +6,12 @@ import { enyoAiConfigured } from "@/lib/enyo";
 import { formatDate } from "@/lib/format";
 import { TYPE_LABEL, SOURCE_LABEL, STATUS_LABEL, statusTone } from "@/lib/labels";
 import { mailConfigured } from "@/lib/mail";
+import { getSettings } from "@/lib/settings";
 
 export default async function Overview({ searchParams }: { searchParams: Promise<Record<string, string>> }) {
   const user = await requireAdmin();
-  const o = await overview();
+  const s = await getSettings();
+  const o = await overview(s.enquiries.overdueHours);
   const maxDay = Math.max(1, ...o.daily.map((d) => Math.max(d.enquiries, d.visitors)));
   const stats = [
     { label: "New enquiries", value: o.newCount, href: "/admin/enquiries?status=NEW" },
@@ -17,7 +19,7 @@ export default async function Overview({ searchParams }: { searchParams: Promise
     { label: "Open (new + in progress)", value: o.openCount, href: "/admin/enquiries?status=open" },
     { label: "Enquiries this week", value: o.week, href: "/admin/enquiries" },
     { label: "Visitors this week", value: o.visitors, href: "/admin/visitors" },
-    { label: "Enyo chats this week", value: o.chats7, href: "/admin/chats" },
+    { label: "Testimonials to approve", value: o.pendingTestimonials, href: "/admin/testimonials", warn: o.pendingTestimonials > 0 },
   ];
 
   return (
@@ -31,6 +33,29 @@ export default async function Overview({ searchParams }: { searchParams: Promise
           <ul className="mt-2 list-disc space-y-1 pl-5 text-[0.95rem]">
             {!mailConfigured() ? <li>Email isn&apos;t connected, so enquiries are saved here but no emails go out. Set the SMTP values in the server environment (see the README).</li> : null}
             {!enyoAiConfigured() ? <li>Enyo is running in basic mode (it points people to the right page). Add an AI key in the server environment to switch on full answers.</li> : null}
+          </ul>
+        </Panel>
+      ) : null}
+
+      {can.enquiries(user.role) && o.overdue.length ? (
+        <Panel title="Needs attention now" className="mb-6 !border-accent" aside={<Link href="/admin/enquiries?status=open" className="text-sm font-semibold text-brand">All open</Link>}>
+          <ul className="divide-y divide-line-soft">
+            {o.overdue.map((e) => {
+              const hours = Math.floor((Date.now() - new Date(e.createdAt).getTime()) / 3600_000);
+              return (
+                <li key={e.id}>
+                  <Link href={`/admin/enquiries/${e.id}`} className="flex flex-wrap items-center gap-x-4 gap-y-1 py-3 hover:text-brand">
+                    <span className="num font-semibold">{e.ref}</span>
+                    <span>{e.name}</span>
+                    <span className="text-ink-soft">{TYPE_LABEL[e.type]}</span>
+                    <span className="ml-auto flex items-center gap-2">
+                      {e.details.urgency === "machine_down" ? <Badge tone="warn">Machine down</Badge> : null}
+                      <span className="text-sm text-ink-soft num">{hours < 1 ? "just now" : `${hours} h waiting`}</span>
+                    </span>
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </Panel>
       ) : null}

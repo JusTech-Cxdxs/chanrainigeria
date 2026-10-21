@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHead } from "@/components/site/PageHead";
 import { getBrands, getCategories } from "@/lib/catalogue";
-import { getSettings } from "@/lib/settings";
+import { getSettings, imageUrl } from "@/lib/settings";
 
 export const metadata: Metadata = { title: "About us" };
 export const dynamic = "force-dynamic";
@@ -11,7 +11,7 @@ export default async function About() {
   const [s, categories, brands] = await Promise.all([getSettings(), getCategories(), getBrands()]);
   return (
     <>
-      <PageHead crumbs={[{ href: "/", label: "Home" }, { label: "About" }]} title={`About ${s.company.shortName}`} lead={s.company.tagline} />
+      <PageHead crumbs={[{ href: "/", label: "Home" }, { label: "About" }]} title={`About ${s.company.shortName}`} lead={s.company.tagline} image={imageUrl(s, "page-about")} />
       <div className="wrap grid gap-14 py-14 lg:grid-cols-[1.4fr_1fr]">
         <div className="prose-site text-lg">
           {s.company.about.split(/\n{2,}/).map((p) => (

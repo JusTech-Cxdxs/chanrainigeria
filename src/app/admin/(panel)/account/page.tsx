@@ -10,6 +10,7 @@ export default async function Account({ searchParams }: { searchParams: Promise<
       <Flash sp={await searchParams} />
       <Panel title="Change password" className="max-w-xl">
         <form action={changeOwnPassword} className="grid gap-4">
+          <Field label="Current password" name="current" type="password" required />
           <Field label="New password" name="password" type="password" required hint="At least 10 characters with letters and numbers." />
           <Field label="Confirm new password" name="confirm" type="password" required />
           <div>

@@ -36,7 +36,7 @@ export default async function EnquiryDetail({ params, searchParams }: { params: 
   if (!e) notFound();
   const [settings, staff, files, chat] = await Promise.all([
     getSettings(),
-    db.query.adminUsers.findMany({ where: eq(schema.adminUsers.active, true), columns: { id: true, name: true } }),
+    db.query.adminUsers.findMany({ where: eq(schema.adminUsers.active, true), columns: { id: true, name: true, role: true } }).then((l) => l.filter((u) => u.role !== "MASTER" || user.role === "MASTER")),
     e.attachmentIds.length
       ? db.query.media.findMany({ where: inArray(schema.media.id, e.attachmentIds), columns: { id: true, filename: true, mimeType: true } })
       : [],

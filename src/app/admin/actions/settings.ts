@@ -8,6 +8,8 @@ import { saveUpload } from "@/lib/media";
 import { getSettings, settingsSchema, type Settings } from "@/lib/settings";
 
 const s = (f: FormData, k: string) => String(f.get(k) ?? "").trim();
+/** Outside links must be plain https web addresses; anything else is dropped. */
+const link = (v: string) => (/^https:\/\/[^\s"'<>]+$/i.test(v) ? v.slice(0, 300) : "");
 const IMAGE = ["image/png", "image/svg+xml", "image/webp", "image/jpeg", "image/x-icon", "image/vnd.microsoft.icon"];
 
 /** WCAG contrast of white text on a colour — brand buttons use white text. */
@@ -49,17 +51,24 @@ export async function saveSettings(f: FormData) {
       tagline: s(f, "company_tagline"),
       about: s(f, "company_about"),
       groupName: s(f, "company_groupName"),
-      groupUrl: s(f, "company_groupUrl"),
+      groupUrl: link(s(f, "company_groupUrl")),
       heritage: s(f, "company_heritage"),
+      groupLine: s(f, "company_groupLine"),
     },
-    contact: { phone: s(f, "contact_phone"), whatsapp: s(f, "contact_whatsapp"), email: s(f, "contact_email"), hours: s(f, "contact_hours") },
+    contact: {
+      phone: s(f, "contact_phone"),
+      whatsapp: s(f, "contact_whatsapp"),
+      email: s(f, "contact_email"),
+      address: s(f, "contact_address"),
+      hours: s(f, "contact_hours"),
+    },
     desks,
     social: {
-      linkedin: s(f, "social_linkedin"),
-      facebook: s(f, "social_facebook"),
-      instagram: s(f, "social_instagram"),
-      x: s(f, "social_x"),
-      youtube: s(f, "social_youtube"),
+      linkedin: link(s(f, "social_linkedin")),
+      facebook: link(s(f, "social_facebook")),
+      instagram: link(s(f, "social_instagram")),
+      x: link(s(f, "social_x")),
+      youtube: link(s(f, "social_youtube")),
     },
     branding: {
       logoId: uploads.logoId !== undefined ? uploads.logoId : cur.branding.logoId,
@@ -70,12 +79,23 @@ export async function saveSettings(f: FormData) {
       showLoader: f.get("branding_showLoader") === "on",
     },
     home: {
-      heroTitle: s(f, "home_heroTitle"),
-      heroText: s(f, "home_heroText"),
+      slides: cur.home.slides,
+      showTestimonials: f.get("home_showTestimonials") === "on",
+      heroTitle: s(f, "home_heroTitle") || cur.home.heroTitle,
+      heroText: s(f, "home_heroText") || cur.home.heroText,
       fieldServiceTitle: s(f, "home_fieldServiceTitle"),
       fieldServiceText: s(f, "home_fieldServiceText"),
     },
+    images: cur.images,
     seo: { title: s(f, "seo_title"), description: s(f, "seo_description") },
+    enquiries: {
+      overdueHours: Math.min(720, Math.max(1, Number(f.get("enquiries_overdueHours")) || cur.enquiries.overdueHours)),
+      sendDailyReminder: f.get("enquiries_sendDailyReminder") === "on",
+    },
+    translate: {
+      enabled: f.get("translate_enabled") === "on",
+      languages: f.getAll("translate_languages").map(String).filter((l) => /^[a-z]{2}(-[A-Z]{2})?$/.test(l)),
+    },
     email: { fromName: s(f, "email_fromName"), fromAddress: s(f, "email_fromAddress"), replyTo: s(f, "email_replyTo"), footerNote: s(f, "email_footerNote") },
     enyo: {
       enabled: f.get("enyo_enabled") === "on",
