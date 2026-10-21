@@ -5,7 +5,8 @@ import { Section, SectionedPage, StatusPill } from "@/components/admin/Sections"
 import { AdminHead, Check, Field, Flash, SubmitButton } from "@/components/admin/ui";
 import { Icon } from "@/components/ui/Icon";
 import { has, requireAdmin } from "@/lib/auth";
-import { enyoAiConfigured } from "@/lib/enyo";
+import { AiConnection, type AiInfo } from "@/components/admin/AiConnection";
+import { aiConfig, GROQ_CHAIN } from "@/lib/ai";
 import { getSettings, mediaUrl } from "@/lib/settings";
 
 export const metadata: Metadata = { title: "Company settings" };
@@ -54,7 +55,12 @@ export default async function SettingsPage({ searchParams }: { searchParams: Pro
   const user = await requireAdmin("settings");
   const sp = await searchParams;
   const s = await getSettings();
-  const ai = enyoAiConfigured();
+  const c = aiConfig(s.enyo.model);
+  const ai = !!c;
+  const aiInfo: AiInfo = c
+    ? { on: true, provider: c.providerLabel, model: c.model, fastModel: c.fastModel, source: c.source, fallbacks: (c.fallbackModels ?? (/groq\.com/i.test(c.baseUrl) ? GROQ_CHAIN : [])).filter((m) => m !== c.model).slice(0, 4) }
+    : null;
+  const modelFromServer = !!process.env.ENYO_LLM_MODEL;
 
   const LogoInput = ({ k, label, hint }: { k: "logoId" | "logoDarkId" | "faviconId"; label: string; hint: string }) => (
     <div className="field">
@@ -237,14 +243,25 @@ export default async function SettingsPage({ searchParams }: { searchParams: Pro
             icon="sparkles"
             title="Enyo website assistant"
             lead="The chat on the public website that answers visitors and logs their requests."
-            aside={<StatusPill tone={ai ? "ok" : "off"}>{ai ? "AI connected" : "Basic mode (no AI key)"}</StatusPill>}
+            aside={<StatusPill tone={ai ? "ok" : "off"}>{ai ? "AI connected" : "Basic mode"}</StatusPill>}
           >
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="sm:col-span-2">
                 <Check label="Show Enyo on the website" name="enyo_enabled" defaultChecked={s.enyo.enabled} hint="Turned off, the chat button disappears from every page." />
               </div>
               <Field label="Name" name="enyo_name" defaultValue={s.enyo.name} hint="What the assistant calls itself." />
-              <Field label="AI model" name="enyo_model" defaultValue={s.enyo.model} hint="From your AI provider, e.g. llama-3.3-70b-versatile on Groq. The dashboard assistant uses it too." />
+              {modelFromServer ? (
+                <input type="hidden" name="enyo_model" value={s.enyo.model} />
+              ) : (
+                <Field
+                  label="AI model (optional)"
+                  name="enyo_model"
+                  defaultValue={s.enyo.model}
+                  placeholder="Uses the server setting"
+                  hint="Only used when the server doesn't set ENYO_LLM_MODEL. Leave empty normally."
+                />
+              )}
+              <AiConnection info={aiInfo} />
               <Field label="Greeting" name="enyo_greeting" defaultValue={s.enyo.greeting} textarea rows={2} className="sm:col-span-2" hint="The first message a visitor sees when they open the chat." />
               <Field label="Tone" name="enyo_tone" defaultValue={s.enyo.tone} className="sm:col-span-2" hint="How Enyo should sound, e.g. warm, clear and professional. Short answers." />
               <Field

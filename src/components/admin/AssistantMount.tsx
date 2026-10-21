@@ -22,8 +22,8 @@ export async function AssistantMount() {
           storageKey={createHash("sha256").update(`${user.id}:${user.sessionVersion}`).digest("base64url").slice(0, 16)}
           firstName={user.name.trim().split(/\s+/)[0] ?? ""}
           name={s.enyo.name || "Enyo"}
-          aiReady={assistantAiReady()}
-          starters={starterPrompts(user)}
+          aiReady={assistantAiReady(s)}
+          starters={starterPrompts(user, assistantAiReady(s))}
         />
       ) : null}
     </>

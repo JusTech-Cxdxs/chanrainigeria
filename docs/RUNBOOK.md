@@ -12,7 +12,7 @@ a step says otherwise.
    - `AUTH_SECRET`: from `openssl rand -base64 48`.
    - `SITE_URL=https://www.chanrainigeria.com`
    - `SMTP_*`: the mailbox the site sends from (e.g. `website@chanrainigeria.com`).
-   - `ENYO_API_KEY`: optional.
+   - `ENYO_LLM_BASE_URL`, `ENYO_LLM_API_KEY`, `ENYO_LLM_MODEL`, `ENYO_LLM_FAST_MODEL`: optional, the same as EJO 100.
    - `SETUP_TOKEN`: a private code of 12+ characters, typed once at `/admin/setup`.
    - `CRON_SECRET`: random, 16+ characters. Call `GET /api/cron/overdue` with
      `Authorization: Bearer <CRON_SECRET>` once a day (a server cron job) for overdue-enquiry reminders.
@@ -84,7 +84,7 @@ gunzip -c backups/chanrai-....sql.gz | docker compose exec -T db psql -U chanrai
 |---|---|
 | Customers say they got no email | Settings shows "Mail server not connected" → set `SMTP_*`. Otherwise check the enquiry's "Emails sent" line and the container logs: `docker compose logs web` |
 | A desk receives nothing | That desk's email in **Settings → Desks** |
-| Enyo only gives short pointers | No `ENYO_API_KEY`, or the AI provider is down; it falls back to basic mode automatically |
+| Enyo only gives short pointers | The `ENYO_LLM_*` settings are missing, or the AI provider is down. Company settings → Enyo → Test connection says which |
 | Changes made directly in the database don't show | **Settings → Refresh the website** |
 | Site down | `docker compose ps`, then `curl localhost:3000/api/health`, then `docker compose logs --tail=100 web` |
 | Locked out of every admin account | `docker compose exec db psql -U chanrai -d chanrai -c "update admin_users set active=true where email='…'"`, then reset the password from another admin, or run the seed with `ADMIN_EMAIL`/`ADMIN_PASSWORD` for a new admin |

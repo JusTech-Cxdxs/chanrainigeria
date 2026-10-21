@@ -23,7 +23,7 @@ company's own server later (see `RUNBOOK.md`).
 | `SETUP_TOKEN` | Any private code of at least 12 characters, e.g. `chanrai-setup-` plus some random letters. You type it once to create your account |
 | `CRON_SECRET` | Another random string (at least 16 characters). It protects the daily overdue reminder |
 | `PREVIEW_NOINDEX` | `1` keeps the preview out of Google. Remove it when the site goes live on chanrainigeria.com |
-| `ENYO_API_KEY` | Your Groq key (console.groq.com → API Keys). Without it, Enyo still works in basic mode |
+| `ENYO_LLM_BASE_URL`, `ENYO_LLM_API_KEY`, `ENYO_LLM_MODEL`, `ENYO_LLM_FAST_MODEL` | The same values as in your EJO 100 project. Without them, Enyo and the dashboard assistant work in basic mode. Check them under Company settings → Enyo → Test connection |
 
 Optional (emails). Without these, enquiries are still saved in the dashboard but no emails go out.
 
