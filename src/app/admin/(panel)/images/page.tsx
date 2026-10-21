@@ -141,17 +141,29 @@ export default async function Images({ searchParams }: { searchParams: Promise<R
                 />
               </ul>
               {line.families.map((fam) => (
-                <div key={fam.id} className="mt-6 rounded-2xl border border-line-soft bg-concrete/40 p-3 sm:p-4">
-                  <div className="mb-3 flex flex-wrap items-center gap-2">
-                    <p className="heading text-base">{fam.name}</p>
-                    <span className="text-sm text-ink-soft">
-                      · {fam.products.length} model{fam.products.length === 1 ? "" : "s"}
+                <details key={fam.id} className="group mt-4 rounded-2xl border border-line-soft bg-concrete/40">
+                  <summary className="flex cursor-pointer list-none flex-wrap items-center gap-x-3 gap-y-1 p-3 sm:p-4">
+                    <span className="grid h-12 w-16 shrink-0 place-items-center overflow-hidden rounded-lg border border-line bg-surface text-ink-soft">
+                      {fam.imageId || fam.products.some((p) => p.imageIds.length) ? (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img src={`/media/${fam.imageId ?? fam.products.find((p) => p.imageIds.length)!.imageIds[0]}?w=480`} alt="" className="h-full w-full object-cover" />
+                      ) : (
+                        <Icon name="image" />
+                      )}
                     </span>
-                    <Link href={`/admin/catalogue/types/${fam.id}`} className="ml-auto inline-flex items-center gap-1 text-sm font-semibold text-brand">
+                    <span className="min-w-0 flex-1">
+                      <span className="heading block text-base">{fam.name}</span>
+                      <span className="block text-sm text-ink-soft">
+                        {fam.imageId ? "Own picture" : "Line drawing"} · {fam.products.length} model{fam.products.length === 1 ? "" : "s"},{" "}
+                        {fam.products.filter((p) => p.imageIds.length).length} with photos
+                      </span>
+                    </span>
+                    <Link href={`/admin/catalogue/types/${fam.id}`} className="inline-flex items-center gap-1 text-sm font-semibold text-brand">
                       <Icon name="edit" size={14} /> Edit the words
                     </Link>
-                  </div>
-                  <ul className="grid gap-4 md:grid-cols-2">
+                    <Icon name="chevron-down" className="transition-transform group-open:rotate-180" />
+                  </summary>
+                  <ul className="grid gap-4 border-t border-line-soft p-3 sm:p-4 md:grid-cols-2">
                     <ImageCard
                       target={{ kind: "family", id: fam.id }}
                       title={`${fam.name}: main picture`}
@@ -172,7 +184,7 @@ export default async function Images({ searchParams }: { searchParams: Promise<R
                       />
                     ))}
                   </ul>
-                </div>
+                </details>
               ))}
             </Section>
           ))}
