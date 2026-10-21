@@ -85,11 +85,11 @@ export const GUIDE: GuideEntry[] = [
     keywords: "words wording text copy heading button page edit website content",
   },
   {
-    href: "/admin/appearance",
-    label: "Home slider",
+    href: "/admin/images",
+    label: "Images",
     perm: "pages",
     summary: "The photo slides at the top of the home page, and every named picture on the site.",
-    steps: ["Open Home slider.", "For each slide set the title, text, picture and button, or remove the slide.", "Upload high-resolution JPG or WebP photos at the size shown, then Save slider."],
+    steps: ["Open Images. Every picture on the site is there: home slides, page banners, each product line, machine type and model, brand logos, news pictures and the company logo.", "For a picture, choose Change to pick from the library or upload a new one. It saves straight away and the website updates.", "For the home slides, set each slide's picture, headline, text and button, then Save slides.", "Use the original, or History and undo, to put a picture back."],
     keywords: "slider slides banner hero photo picture image home",
   },
   {
@@ -479,7 +479,6 @@ async function runTool(u: AssistantUser, s: Settings, name: string, rawArgs: str
 // ---------- Model ----------
 
 type ApiMsg = WireMessage;
-type ApiToolCall = { id: string; type: "function"; function: { name: string; arguments: string } };
 
 export function assistantAiReady(s?: Settings) {
   return aiReady(s?.enyo.model);

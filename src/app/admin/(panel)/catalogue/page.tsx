@@ -85,9 +85,12 @@ export default async function Catalogue({ searchParams }: { searchParams: Promis
     <>
       <AdminHead
         title="Products"
-        lead="Your catalogue in three levels: product lines (e.g. Forklifts), the machine types inside each line (e.g. Electric counterbalance forklifts), and the models you supply (e.g. BYD ECB25). Changes show on the website within a minute."
+        lead="Your catalogue in three levels: product lines (e.g. Forklifts), the machine types inside each line (e.g. Electric counterbalance forklifts), and the models you supply (e.g. BYD ECB25). Open any line, type or model to change its words, specifications and pictures. All product pictures are also together under Images."
         actions={
           <>
+            <Link href="/admin/images" className="btn btn-outline">
+              <Icon name="images" size={17} /> Product pictures
+            </Link>
             <Link href="/admin/catalogue/brands" className="btn btn-outline">
               <Icon name="verified" size={17} /> Brands
             </Link>

@@ -203,7 +203,7 @@ export async function mediaUsage(): Promise<Map<string, Usage[]>> {
     db.select({ id: schema.brands.id, name: schema.brands.name, logoId: schema.brands.logoId }).from(schema.brands),
     db.select({ id: schema.posts.id, title: schema.posts.title, coverId: schema.posts.coverId, body: schema.posts.body }).from(schema.posts),
   ]);
-  for (const s of settings) walk(s.data, [], (id, path) => add(id, { where: settingsPlace(path), href: path[0] === "home" || path[0] === "images" ? "/admin/appearance" : "/admin/settings" }));
+  for (const s of settings) walk(s.data, [], (id, path) => add(id, { where: settingsPlace(path), href: path[0] === "home" || path[0] === "images" ? "/admin/images" : "/admin/settings" }));
   for (const p of pages) {
     const def = pageDef(p.page);
     walk(p.data, [], (id, path) => {

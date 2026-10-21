@@ -21,7 +21,7 @@ async function store(next: Settings, actorId: string, label: string) {
   revalidatePath("/", "layout");
 }
 
-const back = (key: "saved" | "error", msg: string, hash = "") => redirect(`/admin/appearance?${key}=${encodeURIComponent(msg)}${hash}`);
+const back = (key: "saved" | "error", msg: string, hash = "") => redirect(`/admin/images?${key}=${encodeURIComponent(msg)}${hash || "#slides"}`);
 
 /** The whole slider arrives as JSON from the slides editor: order, text, picture and button for each slide. */
 export async function saveSlides(f: FormData) {

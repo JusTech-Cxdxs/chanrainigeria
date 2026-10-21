@@ -44,7 +44,9 @@ export default async function PanelLayout({ children }: { children: React.ReactN
       label: "Website",
       items: [
         ...item("pages", { href: "/admin/pages", label: "Pages and text", icon: "pages" }),
-        ...item("pages", { href: "/admin/appearance", label: "Home slider", icon: "images" }),
+        ...((["pages", "products", "brands", "news", "settings"] as Permission[]).some((p) => has(user, p))
+          ? [{ href: "/admin/images", label: "Images", icon: "images" }]
+          : []),
         ...item("products", { href: "/admin/catalogue", label: "Products", icon: "package" }),
         ...item("brands", { href: "/admin/catalogue/brands", label: "Brands", icon: "verified" }),
         ...item("services", { href: "/admin/services", label: "Services", icon: "tool" }),

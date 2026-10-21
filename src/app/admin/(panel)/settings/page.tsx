@@ -211,7 +211,7 @@ export default async function SettingsPage({ searchParams }: { searchParams: Pro
             <div className="mt-6 border-t border-line-soft pt-5">
               <div className="flex flex-wrap items-baseline justify-between gap-2">
                 <SubHead>Home page</SubHead>
-                <Link href="/admin/appearance" className="mb-3 text-sm font-semibold text-brand hover:underline">
+                <Link href="/admin/images" className="mb-3 text-sm font-semibold text-brand hover:underline">
                   Edit the slider and pictures
                 </Link>
               </div>

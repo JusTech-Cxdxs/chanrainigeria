@@ -9,7 +9,7 @@ const home: PageDef = {
   path: "/",
   group: "Main pages",
   icon: "home",
-  description: "The first page visitors see. The photo slider at the top has its own section: Home slider.",
+  description: "The first page visitors see. The photo slider and every picture are changed under Images.",
   sections: [
     {
       label: "Under the slider",

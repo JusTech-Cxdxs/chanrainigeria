@@ -157,7 +157,6 @@ function relevant(families: FamilyDoc[], query: string, n = 2) {
 // ---------- Model call ----------
 
 type Msg = WireMessage;
-type ToolCall = { id: string; type: "function"; function: { name: string; arguments: string } };
 
 const tools = [
   {

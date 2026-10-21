@@ -148,8 +148,31 @@ export function MediaPicker({
 }
 
 /** Several pictures in order (e.g. a model's photos). The first one is used on cards. */
-export function MultiMediaPicker({ name, defaultValue = [], folder, max = 20 }: { name: string; defaultValue?: string[]; folder?: string; max?: number }) {
+export function MultiMediaPicker({
+  name,
+  defaultValue = [],
+  folder,
+  max = 20,
+  onChange,
+}: {
+  name?: string;
+  defaultValue?: string[];
+  folder?: string;
+  max?: number;
+  /** Called after every change (add, remove, reorder), e.g. to save straight away */
+  onChange?: (ids: string[]) => void;
+}) {
   const [ids, setIds] = useState(defaultValue);
+  const first = useRef(true);
+  const report = useRef(onChange);
+  report.current = onChange;
+  useEffect(() => {
+    if (first.current) {
+      first.current = false;
+      return;
+    }
+    report.current?.(ids);
+  }, [ids]);
   const [open, setOpen] = useState(false);
   const [busy, setBusy] = useState("");
   const [error, setError] = useState("");
@@ -178,9 +201,7 @@ export function MultiMediaPicker({ name, defaultValue = [], folder, max = 20 }: 
 
   return (
     <div className="space-y-3">
-      {ids.map((id) => (
-        <input key={id} type="hidden" name={name} value={id} />
-      ))}
+      {name ? ids.map((id) => <input key={id} type="hidden" name={name} value={id} />) : null}
       {ids.length ? (
         <ol className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
           {ids.map((id, i) => (
