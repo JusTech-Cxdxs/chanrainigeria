@@ -646,3 +646,19 @@ dialog::backdrop {
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
+/* Dashboard bell: a short swing every few seconds while urgent work waits. */
+.cn-bell-ring {
+  animation: cn-ring 2.5s ease-in-out infinite;
+  transform-origin: 50% 0;
+}
+@keyframes cn-ring {
+  0%, 80%, 100% { transform: rotate(0); }
+  84% { transform: rotate(14deg); }
+  88% { transform: rotate(-12deg); }
+  92% { transform: rotate(8deg); }
+  96% { transform: rotate(-4deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cn-bell-ring { animation: none; }
+}

@@ -18,7 +18,7 @@ export const PERMISSIONS = [
   // Administration
   { key: "settings", label: "Company settings", group: "Administration", help: "Company details, contacts, desks, colours, languages, Enyo and privacy." },
   { key: "email", label: "Email and notifications", group: "Administration", help: "Mail server, sender, and who receives which emails." },
-  { key: "team", label: "Team and roles", group: "Administration", help: "Add staff, set their roles, create and change roles." },
+  { key: "team", label: "Team and roles", group: "Administration", help: "Add staff, set their roles, create and change roles. This is full control of the dashboard, so give it only to administrators." },
   { key: "audit", label: "Activity log", group: "Administration", help: "Who did what, and when." },
   { key: "history", label: "History and undo", group: "Administration", help: "See earlier versions of anything and restore them." },
   // Tools

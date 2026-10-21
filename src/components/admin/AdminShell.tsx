@@ -7,6 +7,7 @@ import { PoweredByEjo } from "@/components/ejo/PoweredByEjo";
 import { SearchDialog } from "@/components/site/SearchDialog";
 import { openSearch } from "@/components/site/search-events";
 import { ThemeToggle } from "@/components/site/ThemeToggle";
+import { NotificationBell } from "./Notifications";
 import { Icon } from "@/components/ui/Icon";
 
 export type NavItem = { href: string; label: string; icon: string; badge?: number; urgent?: boolean };
@@ -156,6 +157,7 @@ export function AdminShell({
             <a href="/" target="_blank" rel="noopener" className="hidden rounded-full px-3 py-2 text-sm font-semibold text-brand hover:bg-brand/10 md:inline">
               View website
             </a>
+            <NotificationBell />
             <ThemeToggle />
             <div ref={menuRef} className="relative">
               <button

@@ -88,8 +88,15 @@ export async function savePage(key: string, f: FormData) {
   const values = cleanValues(def!, parsed);
   const p = problem(def!, values);
   if (p) redirect(`${back}?error=${encodeURIComponent(p)}`);
-  const data = diff(def!, values);
   const cur = await db.query.pageContent.findFirst({ where: eq(schema.pageContent.page, key) });
+  const data = diff(def!, values);
+  // Pictures are changed under Images, so this form never overwrites them.
+  const storedData = (cur?.data ?? {}) as Record<string, unknown>;
+  for (const fld of def!.sections.flatMap((x) => x.fields)) {
+    if (fld.type !== "image") continue;
+    delete data[fld.key];
+    if (typeof storedData[fld.key] === "string" && storedData[fld.key]) data[fld.key] = storedData[fld.key] as string;
+  }
   if (cur && same(cur.data as ContentValues, data)) redirect(`${back}?saved=${encodeURIComponent("No changes to save.")}`);
   await snapshot("page", key, def!.label, "update", user.id);
   await db

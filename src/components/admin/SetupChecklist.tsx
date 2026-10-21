@@ -4,6 +4,7 @@ import { Icon } from "@/components/ui/Icon";
 import { db, schema } from "@/db";
 import { has, type StaffUser } from "@/lib/auth";
 import type { Permission } from "@/lib/permissions";
+import { aiReady as aiReadyFor } from "@/lib/ai";
 import { mailConfigured } from "@/lib/mail";
 import { getSettings } from "@/lib/settings";
 
@@ -19,7 +20,7 @@ export async function SetupChecklist({ user }: { user: StaffUser }) {
     db.select({ examples: count() }).from(schema.testimonials).where(and(eq(schema.testimonials.isExample, true), eq(schema.testimonials.status, "APPROVED"))),
   ]);
   const mailReady = mailConfigured(s);
-  const aiReady = !!process.env.ENYO_API_KEY;
+  const aiReady = aiReadyFor(s.enyo.model);
 
   const all: Step[] = [
     { done: staff >= 2, title: "Add your team", text: "Give each person their own sign-in and a role.", href: "/admin/team", perm: "team" },

@@ -10,6 +10,8 @@ type Hit = { title: string; text?: string; href: string };
 
 const PAGES: [string, string, string][] = [
   ["Overview", "/admin", "home dashboard summary overdue"],
+  ["Notifications", "/admin/notifications", "notifications bell alerts sound mute"],
+  ["Images", "/admin/images", "images pictures photos slider slides banners logos forklift excavator model upload"],
   ["Enquiries", "/admin/enquiries", "enquiries tickets requests bookings quotes"],
   ["Machines down", "/admin/enquiries?urgency=machine_down", "urgent machine down breakdown"],
   ["Enyo chats", "/admin/chats", "chat enyo conversations ai"],
@@ -20,7 +22,6 @@ const PAGES: [string, string, string][] = [
   ["Manufacturers", "/admin/catalogue/brands", "brands manufacturers logos trusted"],
   ["Services", "/admin/services", "services"],
   ["News", "/admin/news", "news posts stories"],
-  ["Slider and images", "/admin/appearance", "slider hero images banners photos"],
   ["Locations", "/admin/branches", "locations branches address offices"],
   ["Media library", "/admin/media", "media files uploads"],
   ["Settings", "/admin/settings", "settings company contact phone email colours logo desks enyo privacy"],
@@ -55,11 +56,13 @@ export async function GET(req: Request) {
           .where(ilike(schema.chatMessages.content, like))
           .limit(5)
       : [],
-    db.query.testimonials.findMany({
-      where: or(ilike(schema.testimonials.name, like), ilike(schema.testimonials.quote, like), ilike(schema.testimonials.company, like)),
-      limit: 5,
-      columns: { id: true, name: true, quote: true, status: true },
-    }),
+    has(user, "testimonials")
+      ? db.query.testimonials.findMany({
+          where: or(ilike(schema.testimonials.name, like), ilike(schema.testimonials.quote, like), ilike(schema.testimonials.company, like)),
+          limit: 5,
+          columns: { id: true, name: true, quote: true, status: true },
+        })
+      : [],
     has(user, "products")
       ? db.query.products.findMany({ where: ilike(schema.products.name, like), limit: 6, columns: { id: true, name: true, summary: true } })
       : [],

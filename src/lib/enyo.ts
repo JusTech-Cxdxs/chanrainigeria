@@ -1,4 +1,6 @@
 import "server-only";
+import { aiConfig, aiReady, complete, pickModel, type WireMessage } from "./ai";
+import { clientKey, looksLikeSpam, rateLimit } from "./guard";
 import { asc, eq } from "drizzle-orm";
 import { db, schema } from "@/db";
 import type { Faq, SpecField } from "@/db/schema";
@@ -155,8 +157,7 @@ function relevant(families: FamilyDoc[], query: string, n = 2) {
 
 // ---------- Model call ----------
 
-type Msg = { role: "system" | "user" | "assistant" | "tool"; content: string; tool_calls?: ToolCall[]; tool_call_id?: string };
-type ToolCall = { id: string; type: "function"; function: { name: string; arguments: string } };
+type Msg = WireMessage;
 
 const tools = [
   {
@@ -211,22 +212,20 @@ ${core}
 ${extra[0]?.text ?? ""}${extra[1] ? `\n\nALSO RELEVANT: ${extra[1].name} (${extra[1].category}) — page /products/${extra[1].categorySlug}/${extra[1].slug}` : ""}`;
 }
 
-async function callModel(model: string, messages: Msg[]) {
-  const key = process.env.ENYO_API_KEY;
-  const base = (process.env.ENYO_API_URL || "https://api.groq.com/openai/v1").replace(/\/$/, "");
-  const res = await fetch(`${base}/chat/completions`, {
-    method: "POST",
-    headers: { "content-type": "application/json", authorization: `Bearer ${key}` },
-    body: JSON.stringify({ model, messages, tools, tool_choice: "auto", temperature: 0.3, max_tokens: 600 }),
-    signal: AbortSignal.timeout(25_000),
+async function callModel(settings: Settings, messages: Msg[], question: string) {
+  const c = aiConfig(settings.enyo.model)!;
+  const r = await complete(c, {
+    model: pickModel(c, question),
+    messages,
+    tools: tools.map((t) => t.function),
+    temperature: 0.3,
+    maxTokens: 700,
   });
-  if (!res.ok) throw new Error(`Model API ${res.status}: ${(await res.text()).slice(0, 300)}`);
-  const json = (await res.json()) as { choices: { message: { content: string | null; tool_calls?: ToolCall[] } }[] };
-  return json.choices[0].message;
+  return { content: r.content, tool_calls: r.tool_calls.length ? r.tool_calls : undefined };
 }
 
-export function enyoAiConfigured() {
-  return !!process.env.ENYO_API_KEY;
+export function enyoAiConfigured(settings?: Settings) {
+  return aiReady(settings?.enyo.model);
 }
 
 export type EnyoTurn = { reply: string; enquiryRef?: string };
@@ -244,7 +243,8 @@ export async function enyoReply(
     .join(" ");
 
   const latest = history.filter((m) => m.role === "user").at(-1)?.content ?? "";
-  if (!enyoAiConfigured()) return fallbackReply(settings, k, latest);
+  // A daily ceiling on AI answers for the whole site, so the AI bill can never be run up by a flood.
+  if (!enyoAiConfigured(settings) || !(await rateLimit("enyo:ai-daily", Number(process.env.ENYO_DAILY_AI_LIMIT ?? 3000), 86_400_000))) return fallbackReply(settings, k, latest);
 
   const messages: Msg[] = [
     { role: "system", content: systemPrompt(settings, k.core, relevant(k.families, recentUser), opts.page) },
@@ -254,13 +254,17 @@ export async function enyoReply(
   try {
     let enquiryRef: string | undefined;
     for (let step = 0; step < 3; step++) {
-      const msg = await callModel(settings.enyo.model, messages);
+      const msg = await callModel(settings, messages, latest);
       if (!msg.tool_calls?.length) return { reply: (msg.content ?? "").trim() || "Sorry, could you say that another way?", enquiryRef };
       messages.push({ role: "assistant", content: msg.content ?? "", tool_calls: msg.tool_calls });
       for (const call of msg.tool_calls) {
         let result: unknown;
         if (call.function.name === "create_enquiry" && !enquiryRef) {
           const a = JSON.parse(call.function.arguments || "{}") as Record<string, string>;
+          if (!(await rateLimit(`enq:${await clientKey()}`, 6, 10 * 60_000)) || looksLikeSpam(String(a.message ?? ""))) {
+            messages.push({ role: "tool", tool_call_id: call.id, content: JSON.stringify({ ok: false, note: "Too many requests or the message contains links. Ask the customer to call the desk instead." }) });
+            continue;
+          }
           const r = await createEnquiry(
             {
               type: a.type,

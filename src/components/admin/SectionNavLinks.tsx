@@ -35,7 +35,7 @@ export function SectionNavLinks({ links }: { links: { id: string; label: string;
                 href={`#${l.id}`}
                 onClick={() => setActive(l.id)}
                 aria-current={on ? "true" : undefined}
-                className={`flex items-center gap-2.5 whitespace-nowrap rounded-full border px-3 py-1.5 text-sm font-semibold transition-colors lg:rounded-xl lg:border-transparent lg:px-3 lg:py-2 ${
+                className={`flex items-center gap-2.5 whitespace-nowrap rounded-full lg:whitespace-normal lg:leading-snug border px-3 py-1.5 text-sm font-semibold transition-colors lg:rounded-xl lg:border-transparent lg:px-3 lg:py-2 ${
                   on ? "border-brand bg-brand/10 text-brand" : "border-line bg-surface text-ink-soft hover:text-ink lg:bg-transparent lg:hover:bg-surface"
                 }`}
               >

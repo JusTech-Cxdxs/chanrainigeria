@@ -61,8 +61,16 @@ const rename = (name: string, mime: string) => (extFor[mime] ? name.replace(/\.[
  * removed, scaled down to 2400 px wide, and photos saved as WebP. Logos with a transparent background
  * stay PNG so they keep working in emails. SVG and PDF files are stored as they are.
  */
+/** 40 megapixels covers any real camera photo; anything bigger is refused before it is decoded. */
+const MAX_PIXELS = 40_000_000;
+// One image at a time and no decoded-image cache: keeps memory flat under many uploads.
+sharp.concurrency(1);
+sharp.cache(false);
+
 async function processImage(data: Buffer, type: string) {
-  const img = sharp(data, { failOn: "none", limitInputPixels: 120_000_000 }).rotate();
+  const head = await sharp(data, { limitInputPixels: false }).metadata();
+  if ((head.width ?? 0) * (head.height ?? 0) > MAX_PIXELS) throw new Error("TOO_MANY_PIXELS");
+  const img = sharp(data, { failOn: "error", limitInputPixels: MAX_PIXELS, sequentialRead: true }).rotate();
   const meta = await img.metadata();
   const resize = (meta.width ?? 0) > MAX_IMAGE_WIDTH || (meta.height ?? 0) > MAX_IMAGE_WIDTH * 2;
   const pipeline = resize ? img.resize({ width: MAX_IMAGE_WIDTH, height: MAX_IMAGE_WIDTH * 2, fit: "inside", withoutEnlargement: true }) : img;
@@ -95,6 +103,7 @@ export async function prepareUpload(file: File, allowed: string[]): Promise<{ ok
     const p = await processImage(raw, type);
     return { ok: true, file: { filename: rename(name, p.mime), mimeType: p.mime, data: p.data, size: p.data.length, width: p.width, height: p.height } };
   } catch (e) {
+    if (e instanceof Error && e.message === "TOO_MANY_PIXELS") return { ok: false, error: `${file.name}: this picture is too large (over 40 megapixels). Resize it to about 3000 pixels wide and try again.` };
     console.error("[media] image processing", e);
     if (type === "image/heic") return { ok: false, error: `${file.name}: iPhone HEIC photos can't be read here. Change the camera setting to "Most compatible" or export the photo as JPG.` };
     return { ok: false, error: `${file.name}: this picture appears to be damaged and couldn't be read.` };
@@ -203,7 +212,7 @@ export async function mediaUsage(): Promise<Map<string, Usage[]>> {
     db.select({ id: schema.brands.id, name: schema.brands.name, logoId: schema.brands.logoId }).from(schema.brands),
     db.select({ id: schema.posts.id, title: schema.posts.title, coverId: schema.posts.coverId, body: schema.posts.body }).from(schema.posts),
   ]);
-  for (const s of settings) walk(s.data, [], (id, path) => add(id, { where: settingsPlace(path), href: path[0] === "home" || path[0] === "images" ? "/admin/appearance" : "/admin/settings" }));
+  for (const s of settings) walk(s.data, [], (id, path) => add(id, { where: settingsPlace(path), href: path[0] === "home" || path[0] === "images" ? "/admin/images" : "/admin/settings" }));
   for (const p of pages) {
     const def = pageDef(p.page);
     walk(p.data, [], (id, path) => {

@@ -3,6 +3,7 @@ import { revalidatePath, revalidateTag } from "next/cache";
 import { redirect } from "next/navigation";
 import { db, schema } from "@/db";
 import { audit, requireAdmin } from "@/lib/auth";
+import { testConnection } from "@/lib/ai";
 import { snapshot } from "@/lib/history";
 import { clearEnyoCache } from "@/lib/enyo";
 import { saveUpload } from "@/lib/media";
@@ -105,7 +106,7 @@ export async function saveSettings(f: FormData) {
       name: s(f, "enyo_name") || "Enyo",
       greeting: s(f, "enyo_greeting"),
       tone: s(f, "enyo_tone"),
-      model: s(f, "enyo_model") || cur.enyo.model,
+      model: s(f, "enyo_model").slice(0, 120),
       extraKnowledge: String(f.get("enyo_extraKnowledge") ?? "").trim().slice(0, 6000),
     },
     privacy: {
@@ -143,4 +144,13 @@ export async function refreshSiteCache() {
   clearEnyoCache();
   await audit(user.id, "refresh", "cache", "Refreshed the website cache");
   redirect("/admin/settings?saved=The%20website%20now%20shows%20the%20latest%20data.");
+}
+
+/** "Test connection" on Company settings → Enyo: one tiny request to the configured models. */
+export async function testAiConnection() {
+  const user = await requireAdmin("settings");
+  const s = await getSettings();
+  const r = await testConnection(s.enyo.model);
+  await audit(user.id, "test", "ai", r.ok ? "AI connection test passed" : "AI connection test failed");
+  return r;
 }

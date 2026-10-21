@@ -23,6 +23,11 @@ export async function updateEnquiry(id: string, form: FormData) {
   const status = String(form.get("status") ?? e.status) as (typeof STATUSES)[number];
   const assigneeId = String(form.get("assigneeId") ?? "") || null;
   if (!STATUSES.includes(status)) redirect(`/admin/enquiries/${id}?error=Unknown%20status`);
+  if (assigneeId && assigneeId !== e.assigneeId) {
+    // Only active staff (never the hidden platform account) can be given an enquiry.
+    const a = await db.query.adminUsers.findFirst({ where: eq(schema.adminUsers.id, assigneeId), columns: { active: true, role: true } });
+    if (!a || !a.active || (a.role === "MASTER" && !user.isMaster)) redirect(`/admin/enquiries/${id}?error=${encodeURIComponent("Choose someone from the list.")}`);
+  }
   await db.update(schema.enquiries).set({ status, assigneeId }).where(eq(schema.enquiries.id, id));
   const changes: string[] = [];
   if (status !== e.status) changes.push(`status ${STATUS_LABEL[e.status]} → ${STATUS_LABEL[status]}`);

@@ -3,7 +3,7 @@ import { and, desc, eq, getTableColumns, sql } from "drizzle-orm";
 import type { PgTable } from "drizzle-orm/pg-core";
 import { revalidatePath, revalidateTag } from "next/cache";
 import { db, schema } from "@/db";
-import type { Permission } from "./permissions";
+import { isPermission, type Permission } from "./permissions";
 
 /**
  * Undo for the whole dashboard. Before anything is changed or deleted, a copy of it as it was is kept
@@ -53,6 +53,16 @@ export const ENTITIES = {
 } satisfies Record<string, Entity>;
 
 export type EntityKey = keyof typeof ENTITIES;
+
+/**
+ * Who may restore what. History and undo covers content; roles and company settings always need their
+ * own section (Team and roles, Company settings), so History can never be used to win back access.
+ */
+export function canRestore(user: { permissions: readonly string[] }, entity: EntityKey) {
+  const own = user.permissions.includes(ENTITIES[entity].perm);
+  if (entity === "role" || entity === "settings") return own;
+  return own || user.permissions.includes("history");
+}
 export const isEntity = (v: string): v is EntityKey => v in ENTITIES;
 export type RevisionAction = "update" | "delete" | "restore";
 
@@ -137,7 +147,7 @@ function refreshAfter(entity: EntityKey) {
 }
 
 /** Put a stored version back. Returns the entity and id restored. */
-export async function restoreRevision(revisionId: string, actorId: string) {
+export async function restoreRevision(revisionId: string, actorId: string, opts: { canEmail: boolean } = { canEmail: false }) {
   const rev = await db.query.revisions.findFirst({ where: eq(schema.revisions.id, revisionId) });
   if (!rev || !isEntity(rev.entity)) throw new Error("That version no longer exists.");
   const entity = rev.entity;
@@ -145,6 +155,27 @@ export async function restoreRevision(revisionId: string, actorId: string) {
   const cols = getTableColumns(e.table) as Record<string, never>;
   const stored = rev.data as Record<string, unknown>;
   const values = revive(entity, stored);
+
+  // Mail server and alert recipients are only restored by people who may change them.
+  if (entity === "settings" && !opts.canEmail) {
+    const cur = await db.query.siteSettings.findFirst({ where: eq(schema.siteSettings.id, 1) });
+    const curData = (cur?.data ?? {}) as Record<string, unknown>;
+    const old = (values.data ?? {}) as Record<string, unknown>;
+    values.data = { ...old, email: curData.email, alerts: curData.alerts };
+  }
+  // Roles: only real permission names, never leave the team without a manager, and sign members in again.
+  if (entity === "role") {
+    const perms = Array.isArray(values.permissions) ? (values.permissions as unknown[]).map(String).filter(isPermission) : [];
+    values.permissions = perms;
+    if (!perms.includes("team")) {
+      const r = await db.execute<{ n: number }>(sql`
+        select count(*)::int as n from ${schema.adminUsers} u left join ${schema.roles} r on r.id = u.role_id
+        where u.active and u.role <> 'MASTER' and u.role_id is distinct from ${rev.entityId}
+          and (r.permissions ? 'team' or (u.role_id is null and u.role = 'ADMIN'))`);
+      if (Number(r.rows[0]?.n ?? 0) === 0) throw new Error("This version would leave nobody able to manage the team. Give another role that permission first.");
+    }
+    await db.update(schema.adminUsers).set({ sessionVersion: sql`${schema.adminUsers.sessionVersion} + 1` }).where(eq(schema.adminUsers.roleId, rev.entityId));
+  }
 
   if (entity === "media") {
     const cur = await db.query.media.findFirst({ where: eq(schema.media.id, rev.entityId), columns: { data: false } });

@@ -26,8 +26,8 @@ export default async function PagesIndex({ searchParams }: { searchParams: Promi
         title="Pages and text"
         lead="Every heading, paragraph, button and picture on the public website, page by page. Open a page, change what you need and save. The original wording is always one click away, and every save can be undone from History."
         actions={
-          <Link href="/admin/appearance" className="btn btn-outline">
-            <Icon name="images" size={17} /> Home slider
+          <Link href="/admin/images" className="btn btn-outline">
+            <Icon name="images" size={17} /> Images
           </Link>
         }
       />

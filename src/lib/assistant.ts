@@ -1,4 +1,5 @@
 import "server-only";
+import { aiConfig, aiReady, complete, pickModel, type WireMessage } from "./ai";
 import { and, asc, count, desc, eq, gte, ilike, inArray, lt, or, sql } from "drizzle-orm";
 import { db, schema } from "@/db";
 import type { StaffUser } from "./auth";
@@ -84,11 +85,11 @@ export const GUIDE: GuideEntry[] = [
     keywords: "words wording text copy heading button page edit website content",
   },
   {
-    href: "/admin/appearance",
-    label: "Home slider",
+    href: "/admin/images",
+    label: "Images",
     perm: "pages",
     summary: "The photo slides at the top of the home page, and every named picture on the site.",
-    steps: ["Open Home slider.", "For each slide set the title, text, picture and button, or remove the slide.", "Upload high-resolution JPG or WebP photos at the size shown, then Save slider."],
+    steps: ["Open Images. Every picture on the site is there: home slides, page banners, each product line, machine type and model, brand logos, news pictures and the company logo.", "For a picture, choose Change to pick from the library or upload a new one. It saves straight away and the website updates.", "For the home slides, set each slide's picture, headline, text and button, then Save slides.", "Use the original, or History and undo, to put a picture back."],
     keywords: "slider slides banner hero photo picture image home",
   },
   {
@@ -477,11 +478,10 @@ async function runTool(u: AssistantUser, s: Settings, name: string, rawArgs: str
 
 // ---------- Model ----------
 
-type ApiMsg = { role: "system" | "user" | "assistant" | "tool"; content: string; tool_calls?: ApiToolCall[]; tool_call_id?: string };
-type ApiToolCall = { id: string; type: "function"; function: { name: string; arguments: string } };
+type ApiMsg = WireMessage;
 
-export function assistantAiReady() {
-  return !!process.env.ENYO_API_KEY;
+export function assistantAiReady(s?: Settings) {
+  return aiReady(s?.enyo.model);
 }
 
 function systemPrompt(u: AssistantUser, s: Settings, path?: string) {
@@ -505,24 +505,16 @@ GUIDE
 ${guideText(u)}`;
 }
 
-async function callModel(model: string, messages: ApiMsg[], tools: ToolDef[]) {
-  const base = (process.env.ENYO_API_URL || "https://api.groq.com/openai/v1").replace(/\/$/, "");
-  const res = await fetch(`${base}/chat/completions`, {
-    method: "POST",
-    headers: { "content-type": "application/json", authorization: `Bearer ${process.env.ENYO_API_KEY}` },
-    body: JSON.stringify({
-      model,
-      messages,
-      tools: tools.map((t) => ({ type: "function", function: { name: t.name, description: t.description, parameters: t.parameters } })),
-      tool_choice: "auto",
-      temperature: 0.4,
-      max_tokens: 1200,
-    }),
-    signal: AbortSignal.timeout(30_000),
+async function callModel(s: Settings, messages: ApiMsg[], tools: ToolDef[], question: string) {
+  const c = aiConfig(s.enyo.model)!;
+  const r = await complete(c, {
+    model: pickModel(c, question),
+    messages,
+    tools: tools.map((t) => ({ name: t.name, description: t.description, parameters: t.parameters })),
+    temperature: 0.4,
+    maxTokens: 1400,
   });
-  if (!res.ok) throw new Error(`Model API ${res.status}: ${(await res.text()).slice(0, 300)}`);
-  const json = (await res.json()) as { choices: { message: { content: string | null; tool_calls?: ApiToolCall[] } }[] };
-  return json.choices[0].message;
+  return { content: r.content, tool_calls: r.tool_calls.length ? r.tool_calls : undefined };
 }
 
 /** The house style: no em dashes, whatever the model writes. */
@@ -538,13 +530,13 @@ export type AssistantAnswer = { reply: string; mode: "ai" | "basic"; used: strin
 
 export async function assistantReply(u: AssistantUser, s: Settings, history: ChatMsg[], path?: string): Promise<AssistantAnswer> {
   const question = history.filter((m) => m.role === "user").at(-1)?.content ?? "";
-  if (!assistantAiReady()) return basicAnswer(u, s, question);
+  if (!assistantAiReady(s)) return basicAnswer(u, s, question);
   const tools = toolsFor(u);
   const messages: ApiMsg[] = [{ role: "system", content: systemPrompt(u, s, path) }, ...history.slice(-14)];
   const used: string[] = [];
   try {
     for (let step = 0; step < 4; step++) {
-      const msg = await callModel(s.enyo.model, messages, tools);
+      const msg = await callModel(s, messages, tools, question);
       if (!msg.tool_calls?.length) return { reply: tidy(msg.content ?? "") || "Sorry, could you put that another way?", mode: "ai", used };
       messages.push({ role: "assistant", content: msg.content ?? "", tool_calls: msg.tool_calls });
       for (const call of msg.tool_calls.slice(0, 4)) {
@@ -607,7 +599,7 @@ export async function basicAnswer(u: AssistantUser, s: Settings, q: string): Pro
     return {
       mode: "basic",
       used: [],
-      reply: `Writing drafts needs the AI connection, which isn't set up on this server yet (your IT team adds an ENYO_API_KEY). Until then I can show you where things are and look up figures.${g ? `\n\n${asSteps(g)}` : ""}`,
+      reply: `Writing drafts needs the AI connection, which isn't switched on for this site yet (your IT team adds the ENYO_LLM settings on the server). Until then I can show you where things are and look up figures.${g ? `\n\n${asSteps(g)}` : ""}`,
     };
   }
 

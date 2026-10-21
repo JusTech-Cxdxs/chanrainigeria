@@ -163,6 +163,25 @@ function ImageInput({ f, value, onChange, slotUrls }: { f: ImageField; value: st
   return <MediaPicker value={value} onChange={onChange} folder="Page banners" originalUrl={slotUrls[f.default] ?? ""} resolve={slotUrls} />;
 }
 
+/** Page pictures are changed under Images; here they're shown for context with a link there. */
+function ImageLink({ value, original }: { value: string; original: string }) {
+  const url = /^[0-9a-f-]{36}$/i.test(value) ? `/media/${value}?w=480` : original;
+  return (
+    <div className="flex flex-wrap items-center gap-4 rounded-xl border border-line bg-concrete/40 p-3">
+      {url ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img src={url} alt="" className="aspect-[16/7] w-44 rounded-lg object-cover" />
+      ) : null}
+      <div className="min-w-0 flex-1 text-sm text-ink-soft">
+        <p>{value ? "Your own picture." : "The original picture."} Pictures are changed in one place, with every other picture on the site.</p>
+        <a href="/admin/images#banners" className="mt-1 inline-flex items-center gap-1 font-semibold text-brand">
+          <Icon name="images" size={15} /> Change it under Images
+        </a>
+      </div>
+    </div>
+  );
+}
+
 function ListInput({ f, items, onChange, slotUrls, idBase }: { f: ListField; items: Item[]; onChange: (v: Item[]) => void; slotUrls: Record<string, string>; idBase: string }) {
   const max = f.max ?? 50;
   const min = f.min ?? 0;
@@ -322,7 +341,7 @@ export function PageEditor({
                   {f.type === "toggle" ? (
                     <Toggle id={id} on={!!v} onChange={(x) => set(f.key, x)} />
                   ) : f.type === "image" ? (
-                    <ImageInput f={f} value={String(v ?? "")} onChange={(x) => set(f.key, x)} slotUrls={slotUrls} />
+                    <ImageLink value={String(v ?? "")} original={slotUrls[f.default] ?? ""} />
                   ) : f.type === "list" ? (
                     <ListInput f={f} items={(v as Item[]) ?? []} onChange={(x) => set(f.key, x)} slotUrls={slotUrls} idBase={id} />
                   ) : (

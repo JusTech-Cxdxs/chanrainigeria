@@ -17,6 +17,10 @@ const nextConfig: NextConfig = {
   experimental: {
     serverActions: { bodySizeLimit: "14mb" },
   },
+  // The old slider page now lives under Images.
+  async redirects() {
+    return [{ source: "/admin/appearance", destination: "/admin/images", permanent: true }];
+  },
   async headers() {
     return [{ source: "/:path*", headers: securityHeaders }];
   },

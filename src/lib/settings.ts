@@ -215,7 +215,8 @@ export const defaultSettings: Settings = {
     name: "Enyo",
     greeting: "Hello, I'm Enyo, Chanrai Nigeria's assistant. Ask me about our machines, booking a technician, parts, or where to find us.",
     tone: "Warm, clear and professional. Short answers. Nigerian English is welcome.",
-    model: "llama-3.3-70b-versatile",
+    /** Empty = the server's ENYO_LLM_MODEL (or Groq's default). */
+    model: "",
     extraKnowledge: "",
   },
   translate: { enabled: true, languages: ["fr", "zh-CN", "hi", "ar", "pt", "ha", "yo", "ig"] },

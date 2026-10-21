@@ -11,7 +11,7 @@ import { db, schema } from "@/db";
 import { has, requireAdmin } from "@/lib/auth";
 import { pageDef } from "@/lib/content-registry";
 import { formatDate } from "@/lib/format";
-import { ENTITIES, isEntity, revisionVerb, type EntityKey } from "@/lib/history";
+import { canRestore, ENTITIES, isEntity, revisionVerb, type EntityKey } from "@/lib/history";
 
 export const dynamic = "force-dynamic";
 
@@ -120,11 +120,12 @@ export default async function RevisionPage({ params, searchParams }: { params: P
   if (!rev || !isEntity(rev.entity)) notFound();
   const entity = rev.entity as EntityKey;
   const e = ENTITIES[entity];
-  if (!has(me, "history") && !has(me, e.perm)) redirect("/admin?denied=1");
+  if (!canRestore(me, entity)) redirect("/admin?denied=1");
   const cols = getTableColumns(e.table as PgTable) as Record<string, never>;
   const now = ((await db.select().from(e.table as PgTable).where(eq(cols[e.key], rev.entityId)).limit(1))[0] ?? null) as Record<string, unknown> | null;
   const then = rev.data as Record<string, unknown>;
-  const all = rows(entity, rev.entityId, then, now);
+  // Mail server details and alert recipients are only shown to people who manage email; they aren't restored otherwise.
+  const all = rows(entity, rev.entityId, then, now).filter((r) => entity !== "settings" || has(me, "email") || !/^(email|alerts)\./.test(r.key));
   const changed = all.filter((r) => !eqv(r.then, r.now));
   const same = all.length - changed.length;
   const gone = !now || (entity === "media" && !!now.deletedAt);

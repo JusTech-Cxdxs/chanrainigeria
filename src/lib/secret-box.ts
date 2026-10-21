@@ -31,8 +31,10 @@ export function open(sealed: string): string | null {
   const [v, iv, tag, ct] = sealed.split(".");
   if (v !== VERSION || !iv || !tag || ct === undefined) return null;
   try {
-    const decipher = createDecipheriv("aes-256-gcm", key(), Buffer.from(iv, "base64url"));
-    decipher.setAuthTag(Buffer.from(tag, "base64url"));
+    const t = Buffer.from(tag, "base64url");
+    if (t.length !== 16) return null;
+    const decipher = createDecipheriv("aes-256-gcm", key(), Buffer.from(iv, "base64url"), { authTagLength: 16 });
+    decipher.setAuthTag(t);
     return Buffer.concat([decipher.update(Buffer.from(ct, "base64url")), decipher.final()]).toString("utf8");
   } catch {
     return null;
