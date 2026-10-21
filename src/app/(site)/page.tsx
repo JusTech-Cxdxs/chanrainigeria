@@ -1,11 +1,13 @@
 import Link from "next/link";
 import { Leaf } from "@/components/brand/Leaf";
 import { BrandsMarquee } from "@/components/site/BrandsMarquee";
+import { Framed } from "@/components/site/FamilyPicture";
 import { HeroSlider } from "@/components/site/HeroSlider";
 import { TestimonialsMarquee } from "@/components/site/Testimonials";
 import { Icon } from "@/components/ui/Icon";
 import { getBrands, getCategories, getPosts, getTestimonials } from "@/lib/catalogue";
 import { getContent } from "@/lib/content";
+import { siteContent } from "@/components/site/site-content";
 import { formatDate, telHref } from "@/lib/format";
 import { getSettings, imageUrl, mediaUrl } from "@/lib/settings";
 
@@ -15,7 +17,16 @@ export const dynamic = "force-dynamic";
 const QUICK_ICONS = ["tool", "file", "package", "phone"];
 
 export default async function Home() {
-  const [s, c, categories, brands, posts, testimonials] = await Promise.all([getSettings(), getContent("home"), getCategories(), getBrands(), getPosts(3), getTestimonials()]);
+  const [s, c, categories, brands, posts, testimonials, tPage, newsPage] = await Promise.all([
+    getSettings(),
+    getContent("home"),
+    getCategories(),
+    getBrands(),
+    getPosts(3),
+    getTestimonials(),
+    siteContent("testimonials"),
+    siteContent("news"),
+  ]);
   const slides = s.home.slides.map((sl) => ({ ...sl, image: imageUrl(s, sl.image) }));
 
   return (
@@ -104,7 +115,7 @@ export default async function Home() {
             {categories.map((cat) => (
               <div key={cat.id} className="grid border-b border-line last:border-b-0 md:grid-cols-[1.1fr_1fr_1fr_1fr] md:divide-x md:divide-line-soft">
                 <div className="px-6 pb-2 pt-6 md:py-6">
-                  <Link href={`/products/${cat.slug}`} className="heading text-xl hover:text-brand">
+                  <Link href={`/products/${cat.slug}`} className="heading text-xl hover:text-brand-ink">
                     {cat.name}
                   </Link>
                   {cat.brand ? <p className="mt-1 text-sm text-ink-soft">{cat.brand.name}</p> : null}
@@ -178,7 +189,7 @@ export default async function Home() {
               {c.t("testimonialsButton")}
             </Link>
           </div>
-          <TestimonialsMarquee items={testimonials} />
+          <TestimonialsMarquee items={testimonials} exampleLabel={tPage.t("exampleBadge")} />
         </section>
       ) : null}
 
@@ -197,11 +208,10 @@ export default async function Home() {
             {posts.map((p, k) => (
               <li key={p.id} className="reveal" style={{ ["--i" as string]: k }}>
                 <Link href={`/news/${p.slug}`} className="card card-hover group block h-full overflow-hidden">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={p.coverId ? mediaUrl(p.coverId)! : imageUrl(s, "page-news")} alt="" loading="lazy" className="aspect-[16/9] w-full object-cover" />
+                  <Framed src={p.coverId ? mediaUrl(p.coverId) : newsPage.img("image")} ratio="aspect-[16/9]" className="!rounded-none" />
                   <span className="block p-5">
                     <span className="text-sm text-ink-soft">{formatDate(p.publishedAt)}</span>
-                    <span className="heading mt-1 block text-xl group-hover:text-brand">{p.title}</span>
+                    <span className="heading mt-1 block text-xl group-hover:text-brand-ink">{p.title}</span>
                     <span className="mt-2 line-clamp-3 text-ink-soft">{p.excerpt}</span>
                   </span>
                 </Link>

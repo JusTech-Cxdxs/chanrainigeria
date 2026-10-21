@@ -24,6 +24,8 @@
   --deep: #0b2416;
   --deep-2: #06120a;
   --drawing: var(--brand);
+  /* Green for text and small marks on the page background (lighter in dark mode so it stays readable) */
+  --brand-ink: var(--brand);
   --header-h: 72px;
   color-scheme: light;
 }
@@ -38,10 +40,12 @@
     --line-soft: #142a1d;
     --danger: #f97066;
     --drawing: #4ade80;
+    --brand-ink: #4ade80;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
+  --brand-ink: #4ade80;
   --ink: #f1f5f9;
   --ink-soft: #9db3a6;
   --concrete: #06120a;
@@ -97,6 +101,7 @@
   --color-danger: var(--danger);
   --color-deep: var(--deep);
   --color-drawing: var(--drawing);
+  --color-brand-ink: var(--brand-ink);
 }
 
 @layer base {
@@ -227,7 +232,7 @@
     background: rgb(255 255 255 / 0.18);
   }
   .btn-quiet {
-    color: var(--brand);
+    color: var(--brand-ink);
     padding-inline: 0.25rem;
     border-radius: 6px;
   }
@@ -254,6 +259,8 @@
   .field {
     display: grid;
     gap: 0.375rem;
+    /* Fields side by side keep their boxes level even when one has help text under it */
+    align-content: start;
   }
   .field > span {
     font-size: 0.9375rem;
@@ -317,7 +324,7 @@
     margin-block: 0.25rem;
   }
   .prose-site a {
-    color: var(--brand);
+    color: var(--brand-ink);
     text-decoration: underline;
     text-underline-offset: 3px;
   }

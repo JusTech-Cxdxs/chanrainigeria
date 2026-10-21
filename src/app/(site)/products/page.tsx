@@ -1,52 +1,45 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { Machine, machineForSlug } from "@/components/Machine";
+import { FamilyPicture } from "@/components/site/FamilyPicture";
 import { PageHead } from "@/components/site/PageHead";
+import { pageMetadata, siteContent } from "@/components/site/site-content";
+import { Icon } from "@/components/ui/Icon";
 import { getCategories } from "@/lib/catalogue";
-import { getSettings, imageUrl, mediaUrl } from "@/lib/settings";
+import { mediaUrl } from "@/lib/settings";
 
-export const metadata: Metadata = {
-  title: "Products",
-  description: "Construction equipment, CNG and gas equipment, and electric forklifts available from Chanrai Nigeria.",
-};
+export const generateMetadata = () => pageMetadata("products");
 export const dynamic = "force-dynamic";
 
 export default async function Products() {
-  const [s, categories] = await Promise.all([getSettings(), getCategories()]);
+  const [c, nav, categories] = await Promise.all([siteContent("products"), siteContent("header"), getCategories()]);
   return (
     <>
-      <PageHead
-        crumbs={[{ href: "/", label: "Home" }, { label: "Products" }]}
-        title="Products"
-        lead="Choose a line to see each machine type, how it works and the models we supply. Ask for a quote on any of them."
-        image={imageUrl(s, "page-products")}
-      />
+      <PageHead crumbs={[{ href: "/", label: nav.t("crumbHome") }, { label: c.t("crumb") }]} title={c.t("title")} lead={c.t("lead")} image={c.img("image")} />
       <div className="wrap space-y-20 py-14">
-        {categories.length === 0 ? (
-          <p className="text-ink-soft">The catalogue is being prepared. Contact us and we&apos;ll tell you what&apos;s available.</p>
-        ) : null}
-        {categories.map((c) => (
-          <section key={c.id} aria-labelledby={`c-${c.slug}`}>
+        {categories.length === 0 ? <p className="text-ink-soft">{c.t("empty")}</p> : null}
+        {categories.map((cat) => (
+          <section key={cat.id} aria-labelledby={`c-${cat.slug}`} className="reveal">
             <div className="flex flex-wrap items-baseline justify-between gap-3 border-b-2 border-ink pb-3">
-              <h2 id={`c-${c.slug}`} className="heading text-3xl">
-                <Link href={`/products/${c.slug}`} className="hover:text-brand">
-                  {c.name}
+              <h2 id={`c-${cat.slug}`} className="heading text-3xl">
+                <Link href={`/products/${cat.slug}`} className="hover:text-brand-ink">
+                  {cat.name}
                 </Link>
               </h2>
-              {c.brand ? <span className="text-ink-soft">{c.brand.name}</span> : null}
+              <span className="flex items-center gap-4">
+                {cat.brand ? <span className="text-ink-soft">{cat.brand.name}</span> : null}
+                <Link href={`/products/${cat.slug}`} className="btn-quiet inline-flex items-center gap-1.5 font-semibold">
+                  {c.t("lineLink")}
+                  <Icon name="arrow" size={16} />
+                </Link>
+              </span>
             </div>
-            <p className="mt-4 max-w-[62ch] text-ink-soft">{c.tagline}</p>
+            <p className="mt-4 max-w-[62ch] text-ink-soft">{cat.tagline}</p>
             <ul className="mt-8 grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-4">
-              {c.families.map((f) => (
+              {cat.families.map((f) => (
                 <li key={f.id}>
-                  <Link href={`/products/${c.slug}/${f.slug}`} className="group block">
-                    {f.imageId ? (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img src={mediaUrl(f.imageId)!} alt="" className="aspect-[12/7] w-full object-contain" />
-                    ) : (
-                      <Machine kind={f.illustration || machineForSlug(f.slug, c.illustration)} className="w-full" />
-                    )}
-                    <span className="heading mt-2 block text-lg group-hover:text-brand">{f.name}</span>
+                  <Link href={`/products/${cat.slug}/${f.slug}`} className="group block">
+                    <FamilyPicture src={mediaUrl(f.imageId)} fallback={<Machine kind={f.illustration || machineForSlug(f.slug, cat.illustration)} className="w-full" />} />
+                    <span className="heading mt-3 block text-lg group-hover:text-brand-ink">{f.name}</span>
                     <span className="mt-1 line-clamp-2 text-sm text-ink-soft">{f.summary}</span>
                   </Link>
                 </li>

@@ -1,22 +1,18 @@
-import Link from "next/link";
-import { Machine } from "@/components/Machine";
+import type { Metadata } from "next";
+import { NotFoundView } from "@/components/site/NotFoundView";
+import { siteContent } from "@/components/site/site-content";
+import SiteLayout from "./(site)/layout";
 
+export async function generateMetadata(): Promise<Metadata> {
+  const c = await siteContent("not-found");
+  return { title: c.t("title"), robots: { index: false } };
+}
+
+// Addresses that match no page at all. Wrapped in the public site's header and footer so it looks like the site.
 export default function NotFound() {
   return (
-    <main className="wrap grid min-h-[70vh] place-items-center py-16">
-      <div className="max-w-xl text-center">
-        <Machine kind="excavator" className="mx-auto w-64" />
-        <h1 className="display mt-6 text-4xl">We couldn&apos;t find that page</h1>
-        <p className="mt-3 text-ink-soft">The link may be old, or the page has moved. Try the products list or get in touch.</p>
-        <div className="mt-8 flex flex-wrap justify-center gap-3">
-          <Link href="/products" className="btn btn-primary">
-            See products
-          </Link>
-          <Link href="/contact" className="btn btn-outline">
-            Contact us
-          </Link>
-        </div>
-      </div>
-    </main>
+    <SiteLayout>
+      <NotFoundView />
+    </SiteLayout>
   );
 }

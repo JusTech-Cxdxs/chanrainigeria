@@ -1,18 +1,42 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
+import { Icon } from "@/components/ui/Icon";
+import { fill, type Labels } from "./fill";
 import { SEARCH_OPEN } from "./search-events";
 
 type Hit = { title: string; text?: string; href: string };
 type Group = { label: string; hits: Hit[] };
 
-const SUGGESTIONS = ["Excavator", "Forklift", "CNG dispenser", "Book a technician", "Parts", "Phone number"];
 
 /**
  * One search box for the whole site (Ctrl K or ⌘K anywhere). Results come back grouped:
  * contact details, models, machine types, product lines, services, news, locations and pages.
  */
-export function SearchDialog({ endpoint = "/api/search", placeholder = "Search machines, services, parts, contacts…" }: { endpoint?: string; placeholder?: string }) {
+/** Wording used when no labels are passed (the dashboard's own search). The public site passes the "header" page text. */
+const DEFAULT_LABELS: Labels = {
+  searchPlaceholder: "Search machines, services, parts, contacts…",
+  searchAria: "Search",
+  searchClose: "Esc",
+  searchTry: "Try",
+  searchEmpty: "Nothing matches “{q}”. Try a machine type, a model number or a service.",
+  searchHelp: "↑ ↓ to move, Enter to open, Esc to close",
+};
+const DEFAULT_SUGGESTIONS = ["Excavator", "Forklift", "CNG dispenser", "Book a technician", "Parts", "Phone number"];
+
+export function SearchDialog({
+  endpoint = "/api/search",
+  placeholder,
+  labels = DEFAULT_LABELS,
+  suggestions = DEFAULT_SUGGESTIONS,
+}: {
+  endpoint?: string;
+  placeholder?: string;
+  /** The "header" page text */
+  labels?: Labels;
+  suggestions?: string[];
+}) {
+  const L: Labels = { ...DEFAULT_LABELS, ...labels, ...(placeholder ? { searchPlaceholder: placeholder } : {}) };
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [q, setQ] = useState("");
@@ -82,10 +106,7 @@ export function SearchDialog({ endpoint = "/api/search", placeholder = "Search m
       <button className="fade absolute inset-0 bg-black/55 backdrop-blur-sm" aria-label="Close search" onClick={() => setOpen(false)} />
       <div className="pop relative flex max-h-[80dvh] w-full max-w-2xl flex-col overflow-hidden rounded-2xl border border-line bg-surface text-ink shadow-2xl">
         <div className="flex items-center gap-3 border-b border-line px-4">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" className="shrink-0 text-ink-soft" aria-hidden>
-            <circle cx="11" cy="11" r="7" />
-            <path d="m20 20-3.5-3.5" />
-          </svg>
+          <Icon name="search" size={20} strokeWidth={2.1} className="shrink-0 text-brand-ink" />
           <input
             ref={input}
             value={q}
@@ -102,31 +123,31 @@ export function SearchDialog({ endpoint = "/api/search", placeholder = "Search m
               }
               if (e.key === "Enter" && flat[cursor]) go(flat[cursor]);
             }}
-            placeholder={placeholder}
+            placeholder={L.searchPlaceholder}
             className="h-14 flex-1 bg-transparent text-[16px] outline-none placeholder:text-ink-soft/80"
-            aria-label="Search"
+            aria-label={L.searchAria}
             maxLength={80}
           />
           {busy ? <span className="h-4 w-4 animate-spin rounded-full border-2 border-brand border-t-transparent" aria-hidden /> : null}
-          <button type="button" onClick={() => setOpen(false)} className="rounded-md border border-line px-2 py-0.5 text-xs text-ink-soft">
-            Esc
+          <button type="button" onClick={() => setOpen(false)} className="rounded-md border border-line px-2 py-0.5 text-xs text-ink-soft hover:border-brand hover:text-brand-ink">
+            {L.searchClose}
           </button>
         </div>
 
         <div className="scroll-thin overflow-y-auto p-2" aria-live="polite">
           {q.trim().length < 2 ? (
             <div className="p-3">
-              <p className="text-sm text-ink-soft">Try</p>
+              <p className="text-sm text-ink-soft">{L.searchTry}</p>
               <div className="mt-2 flex flex-wrap gap-2">
-                {SUGGESTIONS.map((s) => (
-                  <button key={s} type="button" onClick={() => setQ(s)} className="rounded-full border border-line px-3 py-1.5 text-sm hover:border-brand hover:text-brand">
+                {suggestions.map((s) => (
+                  <button key={s} type="button" onClick={() => setQ(s)} className="rounded-full border border-line px-3 py-1.5 text-sm hover:border-brand hover:text-brand-ink">
                     {s}
                   </button>
                 ))}
               </div>
             </div>
           ) : groups.length === 0 && !busy ? (
-            <p className="p-5 text-ink-soft">Nothing matches &ldquo;{q}&rdquo;. Try a machine type, a model number or a service.</p>
+            <p className="p-5 text-ink-soft">{fill(L.searchEmpty, { q })}</p>
           ) : (
             groups.map((g) => (
               <section key={g.label} className="mb-2">
@@ -154,7 +175,7 @@ export function SearchDialog({ endpoint = "/api/search", placeholder = "Search m
             ))
           )}
         </div>
-        <p className="hidden border-t border-line px-4 py-2 text-xs text-ink-soft sm:block">↑ ↓ to move, Enter to open, Esc to close</p>
+        <p className="hidden border-t border-line px-4 py-2 text-xs text-ink-soft sm:block">{L.searchHelp}</p>
       </div>
     </div>
   );

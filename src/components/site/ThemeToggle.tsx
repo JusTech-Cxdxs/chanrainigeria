@@ -3,10 +3,19 @@ import { useEffect, useState } from "react";
 
 type Mode = "system" | "light" | "dark";
 const next: Record<Mode, Mode> = { system: "light", light: "dark", dark: "system" };
-const label: Record<Mode, string> = { system: "Theme: automatic", light: "Theme: light", dark: "Theme: dark" };
+const DEFAULT_LABELS: Record<Mode, string> = { system: "Theme: automatic", light: "Theme: light", dark: "Theme: dark" };
 
 /** Cycles automatic → light → dark. The choice is kept on this device only. */
-export function ThemeToggle({ withLabel = false, className = "" }: { withLabel?: boolean; className?: string }) {
+export function ThemeToggle({
+  withLabel = false,
+  className = "",
+  labels: label = DEFAULT_LABELS,
+}: {
+  withLabel?: boolean;
+  className?: string;
+  /** From the "header" page text */
+  labels?: Record<Mode, string>;
+}) {
   const [mode, setMode] = useState<Mode>("system");
 
   useEffect(() => {
