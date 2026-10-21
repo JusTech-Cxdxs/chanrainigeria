@@ -1,8 +1,8 @@
-# Runs the website and its PostgreSQL database on any server with Docker.
-# 1. cp .env.example .env   and fill it in
-# 2. docker compose up -d --build
-# 3. docker compose run --rm setup     (first time only: loads the product catalogue)
-# 4. open http://SERVER:3000/admin/setup to create the first administrator
+# For building and testing from source (JusTech only).
+# Customers receive a prebuilt image instead: see deploy/docker-compose.yml and docs/DELIVERY.md.
+#   cp .env.example .env    and fill it in
+#   docker compose up -d --build
+#   open http://localhost:3000/admin/setup
 services:
   db:
     image: postgres:16-alpine
@@ -30,16 +30,6 @@ services:
       DIRECT_URL: postgresql://chanrai:${POSTGRES_PASSWORD}@db:5432/chanrai
     ports:
       - "${WEB_PORT:-3000}:3000"
-
-  setup:
-    build: { context: ., target: setup }
-    profiles: ["setup"]
-    depends_on:
-      db: { condition: service_healthy }
-    env_file: .env
-    environment:
-      DATABASE_URL: postgresql://chanrai:${POSTGRES_PASSWORD}@db:5432/chanrai
-      DIRECT_URL: postgresql://chanrai:${POSTGRES_PASSWORD}@db:5432/chanrai
 
 volumes:
   db-data:

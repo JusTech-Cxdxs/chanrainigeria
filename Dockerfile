@@ -1,6 +1,10 @@
-# Chanrai Nigeria website — production image.
-#   docker compose up -d          (app + database)
-#   docker compose run --rm setup (first time: load the catalogue)
+# Chanrai Nigeria website: production image.
+#
+# The final image contains only the compiled application, never the source code:
+#   - .next/standalone   the compiled server (minified)
+#   - dist/*.mjs         database migrations and first-run content, bundled into single files
+#   - drizzle/, content/ SQL migrations and the starter catalogue
+# Build and ship it with scripts/release.sh. Customers install it with deploy/docker-compose.yml.
 
 # ---- dependencies ----
 FROM node:20-alpine AS deps
@@ -14,33 +18,27 @@ WORKDIR /app
 ENV NEXT_TELEMETRY_DISABLED=1
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-RUN npm run build
-
-# ---- setup tools (migrations + seed with the full toolchain) ----
-FROM build AS setup
-CMD ["npm", "run", "db:setup"]
+RUN npm run build && npm run bundle:scripts
 
 # ---- runtime ----
 FROM node:20-alpine AS runner
 WORKDIR /app
-ENV NODE_ENV=production NEXT_TELEMETRY_DISABLED=1 PORT=3000 HOSTNAME=0.0.0.0
+ARG VERSION=dev
+LABEL org.opencontainers.image.title="Chanrai Nigeria website" \
+      org.opencontainers.image.version="${VERSION}" \
+      org.opencontainers.image.licenses="LicenseRef-JusTech-Proprietary"
+ENV NODE_ENV=production NEXT_TELEMETRY_DISABLED=1 PORT=3000 HOSTNAME=0.0.0.0 APP_VERSION=${VERSION}
 RUN addgroup -S app && adduser -S app -G app
 COPY --from=build --chown=app:app /app/.next/standalone ./
 COPY --from=build --chown=app:app /app/.next/static ./.next/static
 COPY --from=build --chown=app:app /app/public ./public
 COPY --from=build --chown=app:app /app/drizzle ./drizzle
-COPY --from=build --chown=app:app /app/scripts/migrate.mjs ./scripts/migrate.mjs
-# The migrator needs the full drizzle-orm and pg packages, not just the traced subset.
-COPY --from=deps --chown=app:app /app/node_modules/drizzle-orm ./node_modules/drizzle-orm
-COPY --from=deps --chown=app:app /app/node_modules/pg ./node_modules/pg
-COPY --from=deps --chown=app:app /app/node_modules/pg-pool ./node_modules/pg-pool
-COPY --from=deps --chown=app:app /app/node_modules/pg-protocol ./node_modules/pg-protocol
-COPY --from=deps --chown=app:app /app/node_modules/pg-types ./node_modules/pg-types
-COPY --from=deps --chown=app:app /app/node_modules/pg-connection-string ./node_modules/pg-connection-string
-COPY --from=deps --chown=app:app /app/node_modules/pgpass ./node_modules/pgpass
+COPY --from=build --chown=app:app /app/content ./content
+COPY --from=build --chown=app:app /app/dist ./dist
+COPY --from=build --chown=app:app /app/LICENSE ./LICENSE
 USER app
 EXPOSE 3000
-HEALTHCHECK --interval=30s --timeout=5s --start-period=30s CMD wget -qO- http://127.0.0.1:3000/api/health || exit 1
-# Clear the data cache (so catalogue loads or direct database edits always show), bring the
-# database schema up to date, then start the site.
-CMD ["sh", "-c", "rm -rf .next/cache/fetch-cache && node scripts/migrate.mjs && node server.js"]
+HEALTHCHECK --interval=30s --timeout=5s --start-period=40s CMD wget -qO- http://127.0.0.1:3000/api/health || exit 1
+# On every start: bring the database up to date, add any missing starter content (never overwrites
+# staff changes), clear the data cache, then start the site.
+CMD ["sh", "-c", "node dist/migrate.mjs && node dist/seed.mjs && rm -rf .next/cache/fetch-cache && node server.js"]

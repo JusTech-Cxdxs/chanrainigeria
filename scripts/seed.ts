@@ -165,6 +165,29 @@ async function main() {
     console.log("testimonials: added 4 examples");
   }
 
+  // Starter articles (practical guides, no company news is invented). Only when there are no posts yet.
+  const anyPost = await db.query.posts.findFirst();
+  if (!anyPost) {
+    const newsDir = join(process.cwd(), "content", "news");
+    const files = readdirSync(newsDir).filter((f) => f.endsWith(".md")).sort();
+    for (const [i, file] of files.entries()) {
+      const raw = readFileSync(join(newsDir, file), "utf8");
+      const m = raw.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
+      if (!m) continue;
+      const meta = Object.fromEntries(m[1].split("\n").map((l) => [l.slice(0, l.indexOf(":")).trim(), l.slice(l.indexOf(":") + 1).trim()]));
+      await db.insert(schema.posts).values({
+        slug: meta.slug,
+        title: meta.title,
+        category: meta.category || "News",
+        excerpt: meta.excerpt ?? "",
+        body: m[2].trim(),
+        published: true,
+        publishedAt: new Date(Date.now() - i * 86400_000),
+      });
+    }
+    console.log(`news: added ${files.length} starter articles`);
+  }
+
   // Built-in roles, and a role for anyone who signed up before roles existed.
   for (const [i, r] of SYSTEM_ROLES.entries()) {
     const existing = await db.query.roles.findFirst({ where: eq(schema.roles.name, r.name) });

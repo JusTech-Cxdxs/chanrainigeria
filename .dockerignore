@@ -6,3 +6,10 @@ node_modules
 !.env.example
 *.log
 docs/screenshots
+dist
+release
+.claude
+.github
+docs
+*.md
+!content/**/*.md

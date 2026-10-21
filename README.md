@@ -75,8 +75,7 @@ any server. You only need it if the company hosts the site on its own machine (o
 **A. Their own server (VPS or cloud VM) with Docker.** This is the recommended route for full ownership.
 ```bash
 cp .env.example .env          # set POSTGRES_PASSWORD, AUTH_SECRET, SITE_URL, SMTP_*
-docker compose up -d --build
-docker compose run --rm setup # first time only: loads the catalogue
+docker compose up -d --build   # first start also loads the catalogue
 ```
 Put a reverse proxy (Caddy or Nginx) in front for HTTPS on `chanrainigeria.com`, and set `TRUSTED_IP_HEADER`
 to the header it sets (`x-real-ip` for Caddy/Nginx as configured in the runbook) so rate limits see real visitors.
