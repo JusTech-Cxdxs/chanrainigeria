@@ -7,7 +7,7 @@ import { formatDate } from "@/lib/format";
 const PER = 50;
 
 export default async function Audit({ searchParams }: { searchParams: Promise<Record<string, string>> }) {
-  const me = await requireAdmin(["ADMIN"]);
+  const me = await requireAdmin("audit");
   const page = Math.max(1, Number((await searchParams).page) || 1);
   const [[{ n }], rows] = await Promise.all([
     db.select({ n: count() }).from(schema.auditLogs),

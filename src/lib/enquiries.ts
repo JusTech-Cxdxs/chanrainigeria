@@ -6,7 +6,7 @@ import { eq, sql } from "drizzle-orm";
 import { z } from "zod";
 import { db, schema } from "@/db";
 import { customerAck, teamNotice, type EnquiryForMail } from "./email-templates";
-import { emailContext, sendMail } from "./mail";
+import { emailContext, enquiryRecipients, sendMail } from "./mail";
 import { deskFor, getSettings } from "./settings";
 
 export const TYPE_LABELS = {
@@ -151,14 +151,14 @@ export async function createEnquiry(
   };
 
   const base = siteUrl();
-  const teamTo = desk.email || settings.contact.email;
-  const ctx = await emailContext();
+  // Desk inbox, extra addresses and staff with alerts on for this desk (Email and alerts, Team).
+  const [ctx, team] = await Promise.all([emailContext(), enquiryRecipients(settings, desk.key)]);
   // At most three acknowledgements a day to any one address, so the form can't be used to flood a stranger.
   const recipient = createHash("sha256").update(input.email).digest("base64url").slice(0, 22);
   const ackAllowed = await rateLimit(`ack:${recipient}`, 3, 24 * 3600_000);
   const [customerSent, teamSent] = await Promise.all([
     ackAllowed ? sendMail(settings, { to: input.email, ...customerAck(ctx, mail), replyTo: desk.email || undefined }) : Promise.resolve(false),
-    sendMail(settings, { to: teamTo, ...teamNotice(ctx, mail, `${base}/admin/enquiries/${row.id}`), replyTo: input.email }),
+    sendMail(settings, { to: team.to, bcc: team.bcc, ...teamNotice(ctx, mail, `${base}/admin/enquiries/${row.id}`), replyTo: input.email }),
   ]);
   if (customerSent || teamSent) {
     await db

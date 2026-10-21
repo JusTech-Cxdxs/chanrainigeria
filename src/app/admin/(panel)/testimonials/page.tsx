@@ -14,7 +14,7 @@ const TABS = [
 ] as const;
 
 export default async function TestimonialsAdmin({ searchParams }: { searchParams: Promise<Record<string, string>> }) {
-  await requireAdmin();
+  await requireAdmin("testimonials");
   const sp = await searchParams;
   const tab = (TABS.find(([k]) => k === sp.tab)?.[0] ?? "PENDING") as (typeof TABS)[number][0];
   const all = await db.query.testimonials.findMany({ orderBy: [desc(schema.testimonials.createdAt)] });

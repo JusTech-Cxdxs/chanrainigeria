@@ -11,3 +11,6 @@ uploads/
 backups/
 tsconfig.tsbuildinfo
 next-env.d.ts
+dist
+release
+.claude/

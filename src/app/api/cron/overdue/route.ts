@@ -4,8 +4,7 @@ import { and, asc, inArray, lt, or, sql } from "drizzle-orm";
 import { db, schema } from "@/db";
 import { overdueDigest } from "@/lib/email-templates";
 import { TYPE_LABEL } from "@/lib/labels";
-import { emailContext, sendMail } from "@/lib/mail";
-import { deskFor } from "@/lib/settings";
+import { emailContext, enquiryRecipients, optedInStaff, sendMail } from "@/lib/mail";
 
 export const dynamic = "force-dynamic";
 
@@ -18,15 +17,16 @@ function authorised(req: Request) {
 }
 
 /**
- * Daily reminder (08:00 Lagos): each desk gets the list of its open enquiries that are past the
- * overdue target or have a machine down. Called by the host's scheduler (vercel.json, or a cron
- * line on a server) with the CRON_SECRET header.
+ * Daily reminder (08:00 Lagos): each desk's list of open enquiries that are past the overdue target
+ * or have a machine down goes to the same people as that desk's new enquiries (desk inbox, extra
+ * addresses, staff with alerts on). Switched off by either Email and alerts (daily overdue list) or
+ * Company settings (daily reminder). Called by the host's scheduler with the CRON_SECRET header.
  */
 export async function GET(req: Request) {
   if (!authorised(req)) return new Response("Not found", { status: 404 });
   const ctx = await emailContext();
   const s = ctx.s;
-  if (!s.enquiries.sendDailyReminder) return Response.json({ sent: 0, reason: "switched off" });
+  if (!s.enquiries.sendDailyReminder || !s.alerts.overdueDigest) return Response.json({ sent: 0, reason: "switched off" });
 
   const E = schema.enquiries;
   const rows = await db.query.enquiries.findMany({
@@ -43,9 +43,10 @@ export async function GET(req: Request) {
   for (const r of rows) byDesk.set(r.desk, [...(byDesk.get(r.desk) ?? []), r]);
 
   let sent = 0;
+  const staff = await optedInStaff().catch(() => []);
   for (const [key, list] of byDesk) {
-    const desk = deskFor(s, key);
-    if (!desk.email) continue;
+    const { to, bcc, desk } = await enquiryRecipients(s, key, staff);
+    if (!to.length) continue;
     const items = list.map((r) => ({
       ref: r.ref,
       name: r.name,
@@ -54,7 +55,7 @@ export async function GET(req: Request) {
       urgent: r.details.urgency === "machine_down",
       link: `${base}/admin/enquiries/${r.id}`,
     }));
-    if (await sendMail(s, { to: desk.email, ...overdueDigest(ctx, desk.label, items, `${base}/admin/enquiries?status=open`) })) sent++;
+    if (await sendMail(s, { to, bcc, ...overdueDigest(ctx, desk.label, items, `${base}/admin/enquiries?status=open`) })) sent++;
   }
   return Response.json({ sent, overdue: rows.length });
 }

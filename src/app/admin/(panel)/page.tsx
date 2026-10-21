@@ -1,11 +1,10 @@
 import Link from "next/link";
+import { SetupChecklist } from "@/components/admin/SetupChecklist";
 import { AdminHead, Badge, Empty, Flash, Panel } from "@/components/admin/ui";
 import { overview } from "@/lib/admin-queries";
-import { can, requireAdmin } from "@/lib/auth";
-import { enyoAiConfigured } from "@/lib/enyo";
+import { has, requireAdmin } from "@/lib/auth";
 import { formatDate } from "@/lib/format";
 import { TYPE_LABEL, SOURCE_LABEL, STATUS_LABEL, statusTone } from "@/lib/labels";
-import { mailConfigured } from "@/lib/mail";
 import { getSettings } from "@/lib/settings";
 
 export default async function Overview({ searchParams }: { searchParams: Promise<Record<string, string>> }) {
@@ -27,17 +26,9 @@ export default async function Overview({ searchParams }: { searchParams: Promise
       <AdminHead title={`Hello, ${user.name.split(" ")[0]}`} lead="What's happening on the website and at the enquiry desk." />
       <Flash sp={await searchParams} />
 
-      {!mailConfigured() || !enyoAiConfigured() ? (
-        <Panel className="mb-6 border-accent">
-          <h2 className="heading text-lg">Finish connecting the site</h2>
-          <ul className="mt-2 list-disc space-y-1 pl-5 text-[0.95rem]">
-            {!mailConfigured() ? <li>Email isn&apos;t connected, so enquiries are saved here but no emails go out. Set the SMTP values in the server environment (see the README).</li> : null}
-            {!enyoAiConfigured() ? <li>Enyo is running in basic mode (it points people to the right page). Add an AI key in the server environment to switch on full answers.</li> : null}
-          </ul>
-        </Panel>
-      ) : null}
+      <SetupChecklist user={user} />
 
-      {can.enquiries(user.role) && o.overdue.length ? (
+      {has(user, "enquiries") && o.overdue.length ? (
         <Panel title="Needs attention now" className="mb-6 !border-accent" aside={<Link href="/admin/enquiries?status=open" className="text-sm font-semibold text-brand">All open</Link>}>
           <ul className="divide-y divide-line-soft">
             {o.overdue.map((e) => {
@@ -121,7 +112,7 @@ export default async function Overview({ searchParams }: { searchParams: Promise
         </Panel>
       </div>
 
-      {can.enquiries(user.role) ? (
+      {has(user, "enquiries") ? (
         <Panel title="Latest enquiries" className="mt-6" aside={<Link href="/admin/enquiries" className="text-sm font-semibold text-brand">All enquiries</Link>}>
           {o.recent.length ? (
             <ul className="divide-y divide-line-soft">
@@ -163,7 +154,7 @@ export default async function Overview({ searchParams }: { searchParams: Promise
             <p className="text-ink-soft">Visits are counted only for people who accept statistics cookies.</p>
           )}
         </Panel>
-        {can.catalogue(user.role) ? (
+        {has(user, "products") ? (
           <Panel title="Catalogue checks">
             <p>
               <span className="display num text-3xl">{o.unverified}</span>{" "}

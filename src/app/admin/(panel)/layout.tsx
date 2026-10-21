@@ -3,9 +3,11 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import { logout } from "@/app/admin/actions/auth";
 import { AdminShell, type NavGroup } from "@/components/admin/AdminShell";
+import { AssistantMount } from "@/components/admin/AssistantMount";
 import { NavProgress } from "@/components/ejo/NavProgress";
 import { db, schema } from "@/db";
-import { can, requireAdmin, ROLE_LABEL } from "@/lib/auth";
+import { has, requireAdmin } from "@/lib/auth";
+import type { Permission } from "@/lib/permissions";
 import { getSettings, mediaUrl } from "@/lib/settings";
 
 export const metadata: Metadata = { title: "Dashboard", robots: { index: false, follow: false } };
@@ -25,59 +27,53 @@ export default async function PanelLayout({ children }: { children: React.ReactN
     db.select({ n: count() }).from(schema.testimonials).where(eq(schema.testimonials.status, "PENDING")),
   ]);
 
-  const r = user.role;
+  // The sidebar is the permission map: a section that isn't listed is a section you can't open.
+  const item = (perm: Permission | null, it: NavGroup["items"][number]) => (perm === null || has(user, perm) ? [it] : []);
   const groups: NavGroup[] = [
     {
       label: "Desk",
       items: [
         { href: "/admin", label: "Overview", icon: "home" },
-        ...(can.enquiries(r)
-          ? [
-              { href: "/admin/enquiries", label: "Enquiries", icon: "inbox", badge: newCount || undefined, urgent: overdue > 0 },
-              { href: "/admin/chats", label: "Enyo chats", icon: "chat" },
-            ]
-          : []),
-        { href: "/admin/testimonials", label: "Testimonials", icon: "star", badge: pending || undefined },
-        { href: "/admin/visitors", label: "Visitors", icon: "chart" },
+        ...item("enquiries", { href: "/admin/enquiries", label: "Enquiries", icon: "inbox", badge: newCount || undefined, urgent: overdue > 0 }),
+        ...item("chats", { href: "/admin/chats", label: "Enyo chats", icon: "chat" }),
+        ...item("testimonials", { href: "/admin/testimonials", label: "Testimonials", icon: "quote", badge: pending || undefined }),
+        ...item("visitors", { href: "/admin/visitors", label: "Visitors", icon: "chart" }),
       ],
     },
-    ...(can.catalogue(r)
-      ? [
-          {
-            label: "Website",
-            items: [
-              { href: "/admin/catalogue", label: "Products", icon: "box" },
-              { href: "/admin/services", label: "Services", icon: "tool" },
-              { href: "/admin/news", label: "News", icon: "news" },
-              { href: "/admin/appearance", label: "Slider and images", icon: "image" },
-              { href: "/admin/branches", label: "Locations", icon: "pin" },
-              { href: "/admin/media", label: "Media library", icon: "folder" },
-            ],
-          },
-        ]
-      : []),
-    ...(can.settings(r)
-      ? [
-          {
-            label: "Administration",
-            items: [
-              { href: "/admin/settings", label: "Settings", icon: "gear" },
-              { href: "/admin/team", label: "Team", icon: "users" },
-              { href: "/admin/audit", label: "Activity log", icon: "log" },
-            ],
-          },
-        ]
-      : []),
-  ];
+    {
+      label: "Website",
+      items: [
+        ...item("pages", { href: "/admin/pages", label: "Pages and text", icon: "pages" }),
+        ...item("pages", { href: "/admin/appearance", label: "Home slider", icon: "images" }),
+        ...item("products", { href: "/admin/catalogue", label: "Products", icon: "package" }),
+        ...item("brands", { href: "/admin/catalogue/brands", label: "Brands", icon: "verified" }),
+        ...item("services", { href: "/admin/services", label: "Services", icon: "tool" }),
+        ...item("news", { href: "/admin/news", label: "News", icon: "news" }),
+        ...item("locations", { href: "/admin/branches", label: "Locations", icon: "pin" }),
+        ...item("media", { href: "/admin/media", label: "Media library", icon: "folder" }),
+      ],
+    },
+    {
+      label: "Administration",
+      items: [
+        ...item("settings", { href: "/admin/settings", label: "Company settings", icon: "gear" }),
+        ...item("email", { href: "/admin/email", label: "Email and alerts", icon: "mail" }),
+        ...item("team", { href: "/admin/team", label: "Team and roles", icon: "users" }),
+        ...item("history", { href: "/admin/history", label: "History and undo", icon: "history" }),
+        ...item("audit", { href: "/admin/audit", label: "Activity log", icon: "log" }),
+      ],
+    },
+  ].filter((g) => g.items.length);
 
   return (
     <>
       <Suspense>
         <NavProgress />
       </Suspense>
+      <AssistantMount />
       <AdminShell
         groups={groups}
-        user={{ name: user.name, email: user.email, role: ROLE_LABEL[user.role] }}
+        user={{ name: user.name, email: user.email, role: user.roleName }}
         company={{ shortName: s.company.shortName, logoUrl: mediaUrl(s.branding.logoId) }}
         logout={logout}
         enquiryBadge={newCount || undefined}

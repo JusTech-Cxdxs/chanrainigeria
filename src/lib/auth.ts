@@ -6,6 +6,7 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { cache } from "react";
 import { db, schema } from "@/db";
+import { ALL_PERMISSIONS, isPermission, SYSTEM_ROLES, type Permission } from "./permissions";
 
 /** In production the cookie uses the __Host- prefix: HTTPS only, this exact host, never readable by subdomains. */
 export const SESSION_COOKIE = process.env.NODE_ENV === "production" ? "__Host-cn_admin" : "cn_admin";
@@ -63,9 +64,12 @@ export async function endSession() {
   (await cookies()).delete(SESSION_COOKIE);
 }
 
+/** Access for a role row; legacy enum values map onto the matching system role names. */
+const LEGACY_PERMS: Record<string, Permission[]> = Object.fromEntries(SYSTEM_ROLES.filter((r) => r.legacy).map((r) => [r.legacy, r.permissions]));
+
 /**
- * The signed-in staff member, or null. A session stops working as soon as the account is
- * deactivated or its password changes (the version in the token no longer matches).
+ * The signed-in staff member with their permissions, or null. A session stops working as soon as the
+ * account is deactivated or its password changes (the version in the token no longer matches).
  */
 export const currentAdmin = cache(async () => {
   const token = (await cookies()).get(SESSION_COOKIE)?.value;
@@ -75,32 +79,32 @@ export const currentAdmin = cache(async () => {
     const user = await db.query.adminUsers.findFirst({
       where: eq(schema.adminUsers.id, String(payload.sub)),
       columns: { passwordHash: false },
+      with: { roleRef: true },
     });
     if (!user?.active || user.sessionVersion !== Number(payload.v)) return null;
-    return user;
+    const permissions: Permission[] =
+      user.role === "MASTER" ? ALL_PERMISSIONS : user.roleRef ? user.roleRef.permissions.filter(isPermission) : (LEGACY_PERMS[user.role] ?? []);
+    const roleName = user.role === "MASTER" ? "Platform support" : (user.roleRef?.name ?? ROLE_LABEL[user.role]);
+    return { ...user, permissions, roleName, isMaster: user.role === "MASTER" };
   } catch {
     return null;
   }
 });
 
-/** The platform owner counts as an administrator everywhere. */
-export const isAdmin = (r: Role) => r === "MASTER" || r === "ADMIN";
+export type StaffUser = NonNullable<Awaited<ReturnType<typeof currentAdmin>>>;
 
-export async function requireAdmin(roles?: Role[]) {
+export const has = (user: { permissions: readonly string[] } | null | undefined, p: Permission) => !!user?.permissions.includes(p);
+
+/** Signed-in staff only; with a permission, people without it are sent to the overview. */
+export async function requireAdmin(perm?: Permission | Permission[]) {
   const user = await currentAdmin();
   if (!user) redirect("/admin/login");
-  if (roles && !roles.includes(user.role) && !(user.role === "MASTER" && roles.includes("ADMIN"))) redirect("/admin?denied=1");
+  if (perm) {
+    const list = Array.isArray(perm) ? perm : [perm];
+    if (!list.some((p) => user.permissions.includes(p))) redirect("/admin?denied=1");
+  }
   return user;
 }
-
-export const can = {
-  catalogue: (r: Role) => isAdmin(r) || r === "EDITOR",
-  content: (r: Role) => isAdmin(r) || r === "EDITOR",
-  enquiries: (r: Role) => isAdmin(r) || r === "COORDINATOR",
-  settings: (r: Role) => isAdmin(r),
-  team: (r: Role) => isAdmin(r),
-  testimonials: () => true,
-};
 
 export async function audit(actorId: string | null, action: string, entity: string, summary: string, entityId?: string) {
   await db
@@ -117,11 +121,6 @@ export const ROLE_LABEL: Record<Role, string> = {
   COORDINATOR: "Enquiry coordinator",
 };
 
-export const ROLE_HELP: Record<Exclude<Role, "MASTER">, string> = {
-  ADMIN: "Everything: settings, team, content and enquiries.",
-  EDITOR: "Products, services, news, testimonials, images and locations.",
-  COORDINATOR: "Enquiries, Enyo chats and testimonials to approve.",
-};
 
 /** Failed sign-ins before an account is locked, and for how long. */
 export const LOCKOUT = { attempts: 6, minutes: 15 };

@@ -3,7 +3,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Fragment, useEffect, useRef, useState } from "react";
 import { EnyoAvatar } from "@/components/ejo/EnyoAvatar";
+import { Icon } from "@/components/ui/Icon";
 import { ENYO_ASK } from "./enyo-events";
+import { withNode, type Labels } from "./fill";
 
 type Msg = { role: "user" | "assistant"; content: string };
 export type EnyoContact = { legalName: string; phone: string; whatsapp: string; email: string; address: string; hours: string };
@@ -43,7 +45,20 @@ function Rich({ text }: { text: string }) {
   );
 }
 
-export function Enyo({ name, greeting, contact }: { name: string; greeting: string; contact: EnyoContact }) {
+export function Enyo({
+  name,
+  greeting,
+  contact,
+  labels: L,
+  suggestions,
+}: {
+  name: string;
+  greeting: string;
+  contact: EnyoContact;
+  /** The "enyo" page text, with {enyo} already filled */
+  labels: Labels;
+  suggestions: string[];
+}) {
   const path = usePathname();
   const [open, setOpen] = useState(false);
   const [view, setView] = useState<"chat" | "contact">("chat");
@@ -118,7 +133,7 @@ export function Enyo({ name, greeting, contact }: { name: string; greeting: stri
     setBusy(true);
     const { ok, data } = await post({ action: "message", message: t }).catch(() => ({ ok: false, data: {} as Record<string, string> }));
     setBusy(false);
-    if (!ok) return setError(data.error || "I couldn't reach the server. Check your connection and try again.");
+    if (!ok) return setError(data.error || L.errorNetwork);
     setMsgs((m) => [...m, { role: "assistant", content: data.reply }]);
   }
 
@@ -137,7 +152,7 @@ export function Enyo({ name, greeting, contact }: { name: string; greeting: stri
     setBusy(false);
     if (!ok) {
       const errs = data.errors ? Object.values(data.errors as Record<string, string[]>).flat().join(" ") : data.error;
-      return setError(errs || "Please check your details.");
+      return setError(errs || L.handoffError);
     }
     setHandoff(false);
     setMsgs((m) => [...m, { role: "assistant", content: data.reply }]);
@@ -151,22 +166,22 @@ export function Enyo({ name, greeting, contact }: { name: string; greeting: stri
         <div className="fixed bottom-4 right-4 z-40 flex flex-col items-end gap-3 sm:bottom-6 sm:right-6" style={{ marginBottom: "env(safe-area-inset-bottom)" }}>
           {nudge ? (
             <div className="pop relative max-w-[16rem] rounded-2xl rounded-br-md border border-line bg-surface p-3.5 text-sm text-ink shadow-xl">
-              <button type="button" onClick={() => setNudge(false)} className="absolute right-1.5 top-1 px-1 text-ink-soft" aria-label="Dismiss">
-                ×
+              <button type="button" onClick={() => setNudge(false)} className="absolute right-1 top-1 grid h-6 w-6 place-items-center rounded-full text-ink-soft hover:bg-concrete hover:text-ink" aria-label={L.dismiss}>
+                <Icon name="x" size={14} />
               </button>
-              Hi, I&apos;m {name}. Need a quote, a technician or parts? I can help.
+              <span className="block pr-4">{L.nudge}</span>
             </div>
           ) : null}
           <button
             type="button"
             onClick={() => setOpen(true)}
             className="flex h-14 items-center gap-2 rounded-full bg-brand pl-1.5 pr-5 font-semibold text-on-brand shadow-[0_10px_28px_-10px_rgba(22,163,74,0.7)] transition hover:scale-[1.03]"
-            aria-label={`Ask ${name}, our assistant`}
+            aria-label={L.launcherAria}
           >
             <span className="grid h-11 w-11 place-items-center overflow-hidden rounded-full bg-white/95">
               <EnyoAvatar mood="wave" size={44} />
             </span>
-            Ask {name}
+            {L.launcher}
           </button>
         </div>
       ) : null}
@@ -174,7 +189,7 @@ export function Enyo({ name, greeting, contact }: { name: string; greeting: stri
       {open ? (
         <section
           role="dialog"
-          aria-label={`${name} chat`}
+          aria-label={`${name}: ${L.tabChat}`}
           className="pop fixed inset-0 z-[70] flex flex-col overflow-hidden bg-surface text-ink sm:inset-auto sm:bottom-6 sm:right-6 sm:h-[min(660px,calc(100dvh-3rem))] sm:w-[400px] sm:rounded-[var(--ejo-radius-xl)] sm:border sm:border-line sm:shadow-2xl"
           style={{ paddingTop: "env(safe-area-inset-top)", paddingBottom: "env(safe-area-inset-bottom)" }}
         >
@@ -186,21 +201,17 @@ export function Enyo({ name, greeting, contact }: { name: string; greeting: stri
               <p className="heading leading-tight">{name}</p>
               <p className="flex items-center gap-1.5 text-xs text-ink-soft">
                 <span className="h-1.5 w-1.5 rounded-full bg-[#22c55e]" aria-hidden />
-                AI assistant, replies straight away
+                {L.status}
               </p>
             </div>
             <div className="ml-auto flex items-center gap-1">
               {contact.phone ? (
-                <a href={tel(contact.phone)} className="grid h-10 w-10 place-items-center rounded-full text-brand hover:bg-brand/10" aria-label={`Call ${contact.phone}`} title="Call us">
-                  <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-                    <path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2" />
-                  </svg>
+                <a href={tel(contact.phone)} className="grid h-10 w-10 place-items-center rounded-full text-brand-ink hover:bg-brand/10" aria-label={`${L.callAria}: ${contact.phone}`} title={L.callAria}>
+                  <Icon name="phone" size={19} />
                 </a>
               ) : null}
-              <button type="button" onClick={() => setOpen(false)} className="grid h-10 w-10 place-items-center rounded-full hover:bg-concrete" aria-label="Close chat">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" aria-hidden>
-                  <path d="M6 6l12 12M18 6 6 18" />
-                </svg>
+              <button type="button" onClick={() => setOpen(false)} className="grid h-10 w-10 place-items-center rounded-full hover:bg-concrete" aria-label={L.closeChat}>
+                <Icon name="x" size={20} />
               </button>
             </div>
           </header>
@@ -212,31 +223,31 @@ export function Enyo({ name, greeting, contact }: { name: string; greeting: stri
                 role="tab"
                 aria-selected={view === v}
                 onClick={() => setView(v)}
-                className={`rounded-t-lg px-4 py-2 text-sm font-semibold ${view === v ? "border-b-2 border-brand text-brand" : "text-ink-soft hover:text-ink"}`}
+                className={`rounded-t-lg px-4 py-2 text-sm font-semibold ${view === v ? "border-b-2 border-brand text-brand-ink" : "text-ink-soft hover:text-brand-ink"}`}
               >
-                {v === "chat" ? "Chat" : "Contact us"}
+                {v === "chat" ? L.tabChat : L.tabContact}
               </button>
             ))}
           </div>
 
           {view === "contact" ? (
             <div className="scroll-thin flex-1 space-y-3 overflow-y-auto p-4">
-              <p className="text-sm text-ink-soft">Prefer a person? Reach our team directly.</p>
+              <p className="text-sm text-ink-soft">{L.contactIntro}</p>
               {[
-                contact.phone && { href: tel(contact.phone), title: "Call us", text: contact.phone, d: "M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2" },
-                contact.whatsapp && { href: wa(contact.whatsapp), title: "WhatsApp", text: contact.whatsapp, d: "M3 21l1.7-5A9 9 0 1 1 8 19.3zM9 9c0 3 3 6 6 6l1.5-1.5-2-1-1 1a5 5 0 0 1-2.5-2.5l1-1-1-2Z", ext: true },
-                contact.email && { href: `mailto:${contact.email}`, title: "Email", text: contact.email, d: "M3 6h18v12H3zM3 7l9 6 9-6" },
+                contact.phone && { href: tel(contact.phone), title: L.callTitle, text: contact.phone, icon: "phone" },
+                contact.whatsapp && { href: wa(contact.whatsapp), title: L.whatsappTitle, text: contact.whatsapp, icon: "whatsapp", ext: true },
+                contact.email && { href: `mailto:${contact.email}`, title: L.emailTitle, text: contact.email, icon: "mail" },
                 contact.address && {
                   href: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contact.address)}`,
-                  title: "Visit us",
+                  title: L.visitTitle,
                   text: contact.address,
-                  d: "M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11Zm0-8.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z",
+                  icon: "pin",
                   ext: true,
                 },
               ]
                 .filter(Boolean)
                 .map((c) => {
-                  const item = c as { href: string; title: string; text: string; d: string; ext?: boolean };
+                  const item = c as { href: string; title: string; text: string; icon: string; ext?: boolean };
                   return (
                     <a
                       key={item.title}
@@ -245,10 +256,8 @@ export function Enyo({ name, greeting, contact }: { name: string; greeting: stri
                       rel={item.ext ? "noopener noreferrer" : undefined}
                       className="card card-hover flex items-center gap-4 p-4"
                     >
-                      <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-brand/10 text-brand">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-                          <path d={item.d} />
-                        </svg>
+                      <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-brand/10 text-brand-ink">
+                        <Icon name={item.icon} size={20} />
                       </span>
                       <span className="min-w-0">
                         <span className="block font-semibold">{item.title}</span>
@@ -261,8 +270,9 @@ export function Enyo({ name, greeting, contact }: { name: string; greeting: stri
                 <p className="font-semibold">{contact.legalName}</p>
                 {contact.hours ? <p className="mt-1 text-ink-soft">{contact.hours}</p> : null}
               </div>
-              <Link href="/book-service" className="btn btn-primary w-full">
-                Book a technician
+              <Link href={L.bookLink || "/book-service"} className="btn btn-primary w-full">
+                <Icon name="calendar" size={16} />
+                {L.bookButton}
               </Link>
             </div>
           ) : !accepted ? (
@@ -274,17 +284,21 @@ export function Enyo({ name, greeting, contact }: { name: string; greeting: stri
               </div>
               <p>{greeting}</p>
               <p className="text-ink-soft">
-                {name} is an automated assistant. Conversations are saved so our team can follow up, as described in our{" "}
-                <Link href="/privacy" className="text-brand underline">
-                  privacy notice
-                </Link>
-                . Please don&apos;t share bank or ID details.
+                {withNode(
+                  L.consentText,
+                  "privacy",
+                  <Link href="/privacy" className="text-brand-ink underline">
+                    {L.privacyLink}
+                  </Link>,
+                )}
               </p>
               <button type="button" className="btn btn-primary w-full" onClick={() => setAccepted(true)}>
-                Start chat
+                <Icon name="chat" size={16} />
+                {L.startChat}
               </button>
               <button type="button" className="btn btn-outline w-full" onClick={() => setView("contact")}>
-                Talk to a person instead
+                <Icon name="users" size={16} />
+                {L.talkPerson}
               </button>
             </div>
           ) : (
@@ -302,7 +316,7 @@ export function Enyo({ name, greeting, contact }: { name: string; greeting: stri
                   </p>
                 ))}
                 {busy ? (
-                  <p className="inline-flex gap-1 rounded-2xl bg-concrete px-4 py-3" aria-label={`${name} is typing`}>
+                  <p className="inline-flex gap-1 rounded-2xl bg-concrete px-4 py-3" aria-label={L.typing}>
                     {[0, 1, 2].map((k) => (
                       <span key={k} className="h-2 w-2 animate-bounce rounded-full bg-ink-soft" style={{ animationDelay: `${k * 120}ms` }} />
                     ))}
@@ -322,18 +336,19 @@ export function Enyo({ name, greeting, contact }: { name: string; greeting: stri
                       submitHandoff(e.currentTarget);
                     }}
                   >
-                    <p className="text-sm font-semibold">Leave your details and our team will reply by email.</p>
-                    <input name="name" required placeholder="Full name" className="input" autoComplete="name" maxLength={120} />
-                    <input name="email" type="email" required placeholder="Email" className="input" autoComplete="email" maxLength={200} />
-                    <input name="phone" type="tel" placeholder="Phone (optional)" className="input" autoComplete="tel" maxLength={40} />
-                    <textarea name="message" required placeholder="What do you need?" className="input min-h-20" maxLength={2000} />
-                    <p className="text-xs text-ink-soft">By sending, you agree we can use these details to reply, as in our privacy notice.</p>
+                    <p className="text-sm font-semibold">{L.handoffIntro}</p>
+                    <input name="name" required placeholder={L.handoffName} aria-label={L.handoffName} className="input" autoComplete="name" maxLength={120} />
+                    <input name="email" type="email" required placeholder={L.handoffEmail} aria-label={L.handoffEmail} className="input" autoComplete="email" maxLength={200} />
+                    <input name="phone" type="tel" placeholder={L.handoffPhone} aria-label={L.handoffPhone} className="input" autoComplete="tel" maxLength={40} />
+                    <textarea name="message" required placeholder={L.handoffMessage} aria-label={L.handoffMessage} className="input min-h-20" maxLength={2000} />
+                    <p className="text-xs text-ink-soft">{L.handoffConsent}</p>
                     <div className="flex gap-2">
                       <button type="submit" className="btn btn-primary flex-1" disabled={busy}>
-                        Send request
+                        <Icon name="send" size={16} />
+                        {L.handoffSend}
                       </button>
                       <button type="button" className="btn btn-outline" onClick={() => setHandoff(false)}>
-                        Cancel
+                        {L.handoffCancel}
                       </button>
                     </div>
                   </form>
@@ -344,17 +359,17 @@ export function Enyo({ name, greeting, contact }: { name: string; greeting: stri
                 {!handoff ? (
                   <div className="no-scrollbar mb-2 flex gap-2 overflow-x-auto text-sm">
                     {msgs.length === 0
-                      ? ["How do I book a technician?", "Which forklift for a warehouse?", "Where are you located?"].map((q) => (
-                          <button key={q} type="button" onClick={() => send(q)} className="shrink-0 rounded-full border border-line px-3 py-1.5 hover:border-brand">
+                      ? suggestions.map((q) => (
+                          <button key={q} type="button" onClick={() => send(q)} className="shrink-0 rounded-full border border-line px-3 py-1.5 hover:border-brand hover:text-brand-ink">
                             {q}
                           </button>
                         ))
                       : null}
-                    <button type="button" onClick={() => setHandoff(true)} className="shrink-0 rounded-full border border-line px-3 py-1.5 font-semibold text-brand hover:border-brand">
-                      Leave a request
+                    <button type="button" onClick={() => setHandoff(true)} className="shrink-0 rounded-full border border-line px-3 py-1.5 font-semibold text-brand-ink hover:border-brand">
+                      {L.leaveRequest}
                     </button>
-                    <button type="button" onClick={() => setView("contact")} className="shrink-0 rounded-full border border-line px-3 py-1.5 font-semibold text-brand hover:border-brand">
-                      Talk to a person
+                    <button type="button" onClick={() => setView("contact")} className="shrink-0 rounded-full border border-line px-3 py-1.5 font-semibold text-brand-ink hover:border-brand">
+                      {L.talkPersonChip}
                     </button>
                   </div>
                 ) : null}
@@ -366,7 +381,7 @@ export function Enyo({ name, greeting, contact }: { name: string; greeting: stri
                   }}
                 >
                   <label htmlFor="enyo-input" className="sr-only">
-                    Message {name}
+                    {L.inputLabel}
                   </label>
                   <textarea
                     id="enyo-input"
@@ -381,13 +396,11 @@ export function Enyo({ name, greeting, contact }: { name: string; greeting: stri
                     }}
                     rows={1}
                     maxLength={1500}
-                    placeholder="Type your question"
+                    placeholder={L.inputPlaceholder}
                     className="input min-h-11 flex-1 resize-none"
                   />
-                  <button type="submit" className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-brand text-on-brand disabled:opacity-50" disabled={busy || !input.trim()} aria-label="Send">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-                      <path d="M5 12h14M13 6l6 6-6 6" />
-                    </svg>
+                  <button type="submit" className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-brand text-on-brand disabled:opacity-50" disabled={busy || !input.trim()} aria-label={L.send}>
+                    <Icon name="send" size={18} />
                   </button>
                 </form>
               </div>

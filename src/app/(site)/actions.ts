@@ -1,5 +1,6 @@
 "use server";
 import { z } from "zod";
+import { siteContent } from "@/components/site/site-content";
 import { createEnquiry, enquiryInput } from "@/lib/enquiries";
 import { ALLOWED_UPLOADS, clientKey, looksLikeBot, looksLikeSpam, rateLimit } from "@/lib/guard";
 import { saveUpload } from "@/lib/media";
@@ -21,14 +22,29 @@ function echo(form: FormData) {
   return v;
 }
 
+/** Which "forms" page message replaces the validator's wording for each field. */
+const FIELD_MESSAGE: Record<string, string> = {
+  name: "nameError",
+  email: "emailError",
+  phone: "phoneError",
+  message: "messageError",
+  consent: "consentError",
+  type: "typeError",
+  categorySlug: "lineError",
+};
+
 export async function submitEnquiry(_: FormState, form: FormData): Promise<FormState> {
+  const L = await siteContent("forms");
+  const fail = (message: string, errors?: Record<string, string[]>): FormState => ({ status: "error", message, errors, values: echo(form), at: Date.now() });
+
   if (looksLikeBot(form)) return { status: "sent", ref: "—", desk: "" };
-  if (!(await rateLimit(`enq:${await clientKey()}`, 6, 10 * 60_000))) {
-    return { status: "error", message: "Too many requests from this connection. Please wait a few minutes and try again.", values: echo(form), at: Date.now() };
-  }
+  if (!(await rateLimit(`enq:${await clientKey()}`, 6, 10 * 60_000))) return fail(L.t("errorTooMany"));
+
+  const kind = str(form, "_form");
+  const filled = (k: string) => !!str(form, k)?.trim();
 
   const payload = {
-    type: str(form, "type") ?? "GENERAL",
+    type: str(form, "type") || "",
     name: str(form, "name") ?? "",
     email: str(form, "email") ?? "",
     phone: str(form, "phone"),
@@ -51,46 +67,53 @@ export async function submitEnquiry(_: FormState, form: FormData): Promise<FormS
   };
 
   // Check the fields before storing any photos, so failed attempts leave nothing behind.
+  // Nothing is pre-selected in the forms, so the choices each form needs are checked here.
+  const errors: Record<string, string[]> = {};
   const check = enquiryInput.safeParse(payload);
   if (!check.success) {
-    return {
-      status: "error",
-      message: "Please check the highlighted fields. If you attached photos, add them again.",
-      errors: z.flattenError(check.error).fieldErrors as Record<string, string[]>,
-      values: echo(form),
-      at: Date.now(),
-    };
+    for (const [k, msgs] of Object.entries(z.flattenError(check.error).fieldErrors as Record<string, string[] | undefined>)) {
+      if (!msgs?.length) continue;
+      const key = k === "categorySlug" ? "category" : k;
+      errors[key] = [FIELD_MESSAGE[k] ? L.t(FIELD_MESSAGE[k]) : msgs[0]];
+    }
   }
+  if (kind === "contact" && !["QUOTE", "GENERAL", "CALLBACK"].includes(payload.type)) errors.type = [L.t("typeError")];
+  if (kind === "service" || kind === "parts") {
+    if (!filled("category")) errors.category = [L.t("lineError")];
+    if (!filled("phone") && !errors.phone) errors.phone = [L.t("phoneRequiredError")];
+  }
+  if (kind === "service") {
+    if (!filled("siteLocation")) errors.siteLocation = [L.t("siteError")];
+    if (!payload.details.urgency) errors.urgency = [L.t("urgencyError")];
+  }
+  // A failed check on nested machine details has no field of its own; show it on the message.
+  if (errors.details) {
+    errors.message ??= errors.details;
+    delete errors.details;
+  }
+  if (Object.keys(errors).length) return fail(L.t("errorGeneric"), errors);
 
-  if (looksLikeSpam(payload.message)) {
-    return { status: "error", message: "Please remove web links and code from your message, then send it again.", errors: { message: ["Please remove links from your message."] }, values: echo(form), at: Date.now() };
-  }
+  if (looksLikeSpam(payload.message)) return fail(L.t("errorLinks"), { message: [L.t("errorLinksField")] });
 
   const files = form.getAll("photos").filter((f): f is File => f instanceof File && f.size > 0).slice(0, 4);
   const total = files.reduce((n, f) => n + f.size, 0);
-  if (total > 12 * 1024 * 1024) {
-    return { status: "error", message: "The photos add up to more than 12 MB. Please send fewer or smaller photos.", errors: { photos: ["Too large in total."] }, values: echo(form), at: Date.now() };
-  }
-  if (files.length && !(await rateLimit(`uploads:${await clientKey()}`, 20, 24 * 3600_000))) {
-    return { status: "error", message: "You've sent a lot of photos today. Please send this request without photos, or call us.", values: echo(form), at: Date.now() };
-  }
+  if (total > 12 * 1024 * 1024) return fail(L.t("errorPhotosSize"), { photos: [L.t("errorPhotosField")] });
+  if (files.length && !(await rateLimit(`uploads:${await clientKey()}`, 20, 24 * 3600_000))) return fail(L.t("errorPhotosDaily"));
   const attachmentIds: string[] = [];
   for (const f of files) {
     const r = await saveUpload(f, { allowed: ALLOWED_UPLOADS, isPrivate: true });
-    if (!r.ok) return { status: "error", message: r.error, errors: { photos: [r.error] }, values: echo(form), at: Date.now() };
+    if (!r.ok) return fail(r.error, { photos: [r.error] });
     attachmentIds.push(r.id);
   }
 
   const result = await createEnquiry(payload, { source: "FORM", attachmentIds });
 
   if (!result.ok) {
-    return {
-      status: "error",
-      message: "Please check the highlighted fields. If you attached photos, add them again.",
-      errors: result.errors as Record<string, string[]>,
-      values: echo(form),
-      at: Date.now(),
-    };
+    const errs: Record<string, string[]> = {};
+    for (const [k, msgs] of Object.entries((result.errors ?? {}) as Record<string, string[] | undefined>)) {
+      if (msgs?.length) errs[k === "categorySlug" ? "category" : k] = [FIELD_MESSAGE[k] ? L.t(FIELD_MESSAGE[k]) : msgs[0]];
+    }
+    return fail(L.t("errorGeneric"), errs);
   }
   return { status: "sent", ref: result.ref, desk: result.desk.label, deskPhone: result.desk.phone || undefined };
 }

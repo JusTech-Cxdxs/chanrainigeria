@@ -29,6 +29,13 @@
       "when": 1792539058701,
       "tag": "0003_testimonials_security",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1792549358916,
+      "tag": "0004_cms_roles_history",
+      "breakpoints": true
     }
   ]
 }

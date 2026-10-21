@@ -18,7 +18,8 @@ a step says otherwise.
      `Authorization: Bearer <CRON_SECRET>` once a day (a server cron job) for overdue-enquiry reminders.
    - `TRUSTED_IP_HEADER=x-real-ip` (matches the Caddyfile below).
 4. `docker compose up -d --build`
-5. `docker compose run --rm setup` loads the catalogue. It is safe to repeat.
+5. The first start creates the tables and loads the catalogue by itself (safe on every start).
+   For the customer's own server, use the prebuilt release instead: see `docs/DELIVERY.md`.
 6. HTTPS: install Caddy and use this as `/etc/caddy/Caddyfile`:
    ```
    chanrainigeria.com, www.chanrainigeria.com {

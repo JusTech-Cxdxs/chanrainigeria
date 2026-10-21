@@ -75,6 +75,28 @@ export const settingsSchema = z.object({
     fromAddress: z.string(),
     replyTo: z.string(),
     footerNote: z.string(),
+    /** Heading over the brand logos at the foot of every email, e.g. "Authorised dealer for" */
+    brandsLabel: z.string(),
+    /** Mail server set in the dashboard. Empty host = use the SMTP_* server environment variables. */
+    smtp: z.object({
+      host: z.string(),
+      port: z.number().int().min(1).max(65535),
+      secure: z.boolean(),
+      user: z.string(),
+      /** Encrypted with AUTH_SECRET (see src/lib/secret-box.ts); never sent to the browser. */
+      passEnc: z.string(),
+    }),
+  }),
+  /** Who receives which emails. Staff can also opt in individually under Team. */
+  alerts: z.object({
+    /** Send new enquiries to the desk's own inbox (Company settings → Desks). */
+    deskInbox: z.boolean(),
+    /** Extra addresses that get every new enquiry, comma separated. */
+    alsoEmail: z.string(),
+    /** Send new testimonials waiting for approval to these addresses (empty = main contact email). */
+    testimonialsTo: z.string(),
+    /** Daily list of overdue enquiries. */
+    overdueDigest: z.boolean(),
   }),
   enquiries: z.object({
     /** An open enquiry with no reply after this many hours is shown as overdue and goes in the daily reminder. */
@@ -183,7 +205,10 @@ export const defaultSettings: Settings = {
     fromAddress: "",
     replyTo: "cng@chanrainigeria.com",
     footerNote: "Chanrai Nigeria Limited, a business of the Kewalram Chanrai Group",
+    brandsLabel: "Authorised dealer for",
+    smtp: { host: "", port: 587, secure: false, user: "", passEnc: "" },
   },
+  alerts: { deskInbox: true, alsoEmail: "", testimonialsTo: "", overdueDigest: true },
   enquiries: { overdueHours: 24, sendDailyReminder: true },
   enyo: {
     enabled: true,

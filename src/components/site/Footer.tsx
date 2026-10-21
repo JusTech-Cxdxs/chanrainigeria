@@ -4,7 +4,9 @@ import type { CategoryWithFamilies } from "@/lib/catalogue";
 import { telHref, waHref } from "@/lib/format";
 import type { Settings } from "@/lib/settings";
 import { mediaUrl } from "@/lib/settings";
+import { Icon } from "@/components/ui/Icon";
 import { CookieSettingsLink } from "./CookieBanner";
+import { siteContent } from "./site-content";
 
 type BranchLite = { id: string; name: string; address: string; city: string; state: string; phone: string | null };
 type BrandLite = { id: string; name: string; logoId: string | null; website: string | null };
@@ -17,7 +19,7 @@ const SOCIAL_ICONS: Record<string, string> = {
   youtube: "M22 12s0-3.3-.4-4.8a2.5 2.5 0 0 0-1.8-1.8C18.3 5 12 5 12 5s-6.3 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2C2 8.7 2 12 2 12s0 3.3.4 4.8a2.5 2.5 0 0 0 1.8 1.8C5.7 19 12 19 12 19s6.3 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8c.4-1.5.4-4.8.4-4.8ZM10 15V9l5 3Z",
 };
 
-export function Footer({
+export async function Footer({
   settings: s,
   categories,
   branches,
@@ -28,6 +30,7 @@ export function Footer({
   branches: BranchLite[];
   brands: BrandLite[];
 }) {
+  const ft = await siteContent("footer");
   const social = Object.entries(s.social).filter(([, v]) => v);
   return (
     <footer className="ambient relative overflow-hidden bg-deep text-white">
@@ -61,11 +64,11 @@ export function Footer({
         </div>
 
         <nav aria-label="Products" className="lg:col-span-2">
-          <p className="font-semibold">Products</p>
+          <p className="font-semibold">{ft.t("productsHeading")}</p>
           <ul className="mt-4 space-y-2.5 text-white/70">
             {categories.map((c) => (
               <li key={c.id}>
-                <Link href={`/products/${c.slug}`} className="hover:text-white">
+                <Link href={`/products/${c.slug}`} className="transition-colors hover:text-mint">
                   {c.name}
                 </Link>
               </li>
@@ -74,19 +77,11 @@ export function Footer({
         </nav>
 
         <nav aria-label="Company" className="lg:col-span-2">
-          <p className="font-semibold">Company</p>
+          <p className="font-semibold">{ft.t("companyHeading")}</p>
           <ul className="mt-4 space-y-2.5 text-white/70">
-            {[
-              ["/services", "Services"],
-              ["/book-service", "Book a technician"],
-              ["/parts", "Parts"],
-              ["/news", "News"],
-              ["/testimonials", "Testimonials"],
-              ["/about", "About us"],
-              ["/contact", "Contact"],
-            ].map(([href, label]) => (
-              <li key={href}>
-                <Link href={href} className="hover:text-white">
+            {ft.list("companyLinks").map(({ href, label }, i) => (
+              <li key={`${href}-${i}`}>
+                <Link href={href} className="transition-colors hover:text-mint">
                   {label}
                 </Link>
               </li>
@@ -95,37 +90,43 @@ export function Footer({
         </nav>
 
         <div className="lg:col-span-4">
-          <p className="font-semibold">Talk to us</p>
+          <p className="font-semibold">{ft.t("talkHeading")}</p>
           <address className="mt-4 space-y-3 not-italic text-white/80">
             {s.contact.phone ? (
-              <a href={telHref(s.contact.phone)} className="flex items-center gap-3 hover:text-white">
-                <Icon d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2" />
+              <a href={telHref(s.contact.phone)} className="group flex items-center gap-3 transition-colors hover:text-white">
+                <Row icon="phone" />
                 <span className="num">{s.contact.phone}</span>
               </a>
             ) : null}
             {s.contact.whatsapp ? (
-              <a href={waHref(s.contact.whatsapp)} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 hover:text-white">
-                <Icon d="M3 21l1.7-5A9 9 0 1 1 8 19.3zM9 9c0 3 3 6 6 6l1.5-1.5-2-1-1 1a5 5 0 0 1-2.5-2.5l1-1-1-2Z" />
-                WhatsApp
+              <a href={waHref(s.contact.whatsapp)} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-3 transition-colors hover:text-white">
+                <Row icon="whatsapp" />
+                {ft.t("whatsappLabel")}
               </a>
             ) : null}
             {s.contact.email ? (
-              <a href={`mailto:${s.contact.email}`} className="flex items-center gap-3 break-all hover:text-white">
-                <Icon d="M3 6h18v12H3zM3 7l9 6 9-6" />
+              <a href={`mailto:${s.contact.email}`} className="group flex items-center gap-3 break-all transition-colors hover:text-white">
+                <Row icon="mail" />
                 {s.contact.email}
               </a>
             ) : null}
             {s.contact.address ? (
-              <p className="flex gap-3">
-                <Icon d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11Zm0-8.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" />
-                <span>{s.contact.address}</span>
+              <p className="flex items-start gap-3">
+                <Row icon="pin" />
+                <span className="pt-1.5">{s.contact.address}</span>
               </p>
             ) : null}
-            {s.contact.hours ? <p className="pl-8 text-sm text-white/60">{s.contact.hours}</p> : null}
+            {s.contact.hours ? (
+              <p className="flex items-center gap-3 text-sm text-white/65">
+                <Row icon="clock" />
+                {s.contact.hours}
+              </p>
+            ) : null}
           </address>
           {branches.length > 1 ? (
-            <Link href="/contact#branches" className="mt-3 inline-block pl-8 text-sm font-semibold text-mint hover:underline">
-              All locations
+            <Link href="/contact#branches" className="mt-4 inline-flex items-center gap-1.5 pl-12 text-sm font-semibold text-mint hover:underline">
+              {ft.t("allLocations")}
+              <Icon name="arrow" size={15} />
             </Link>
           ) : null}
         </div>
@@ -134,7 +135,7 @@ export function Footer({
       {brands.length ? (
         <div className="border-t border-white/10">
           <div className="wrap flex flex-wrap items-center gap-x-8 gap-y-3 py-6">
-            <span className="text-sm text-white/60">Equipment we supply</span>
+            <span className="text-sm text-white/60">{ft.t("brandsLabel")}</span>
             {brands.map((b) =>
               b.logoId ? (
                 // eslint-disable-next-line @next/next/no-img-element
@@ -154,24 +155,24 @@ export function Footer({
           <p>
             © {new Date().getFullYear()} {s.company.name}.{" "}
             {s.company.groupUrl ? (
-              <a href={s.company.groupUrl} target="_blank" rel="noopener noreferrer" className="hover:text-white">
+              <a href={s.company.groupUrl} target="_blank" rel="noopener noreferrer" className="hover:text-mint">
                 {s.company.groupName}
               </a>
             ) : null}
           </p>
           <ul className="flex flex-wrap gap-x-5 gap-y-2 sm:ml-auto">
             <li>
-              <Link href="/privacy" className="hover:text-white">
-                Privacy notice
+              <Link href="/privacy" className="hover:text-mint">
+                {ft.t("privacyLabel")}
               </Link>
             </li>
             <li>
-              <Link href="/cookies" className="hover:text-white">
-                Cookie notice
+              <Link href="/cookies" className="hover:text-mint">
+                {ft.t("cookiesLabel")}
               </Link>
             </li>
             <li>
-              <CookieSettingsLink />
+              <CookieSettingsLink label={ft.t("cookieSettingsLabel")} className="hover:text-mint" />
             </li>
           </ul>
         </div>
@@ -180,10 +181,11 @@ export function Footer({
   );
 }
 
-function Icon({ d }: { d: string }) {
+/** The round mint icon at the start of each contact row. */
+function Row({ icon }: { icon: string }) {
   return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 text-mint" aria-hidden>
-      <path d={d} />
-    </svg>
+    <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-white/[0.08] text-mint transition-colors group-hover:bg-mint group-hover:text-deep">
+      <Icon name={icon} size={17} />
+    </span>
   );
 }

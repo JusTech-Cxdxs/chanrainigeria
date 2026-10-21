@@ -1,33 +1,25 @@
-import type { Metadata } from "next";
 import { PageHead } from "@/components/site/PageHead";
+import { pageMetadata, siteContent } from "@/components/site/site-content";
 import { TestimonialGrid } from "@/components/site/Testimonials";
 import { getTestimonials } from "@/lib/catalogue";
-import { getSettings, imageUrl } from "@/lib/settings";
 import { ShareForm } from "./ShareForm";
 
-export const metadata: Metadata = { title: "What customers say" };
+export const generateMetadata = () => pageMetadata("testimonials");
 export const dynamic = "force-dynamic";
 
 export default async function Testimonials() {
-  const [s, items] = await Promise.all([getSettings(), getTestimonials()]);
+  const [c, forms, nav, items] = await Promise.all([siteContent("testimonials"), siteContent("forms"), siteContent("header"), getTestimonials()]);
   return (
     <>
-      <PageHead
-        crumbs={[{ href: "/", label: "Home" }, { label: "Testimonials" }]}
-        title="What customers say"
-        lead="Feedback from contractors, station operators and warehouse teams we work with. Every testimonial is checked by our team before it appears."
-        image={imageUrl(s, "page-about")}
-      />
+      <PageHead crumbs={[{ href: "/", label: nav.t("crumbHome") }, { label: c.t("crumb") }]} title={c.t("title")} lead={c.t("lead")} image={c.img("image")} />
       <div className="wrap grid gap-16 py-16">
-        {items.length ? <TestimonialGrid items={items} /> : <p className="text-ink-soft">Be the first to share your experience.</p>}
-        <section id="share" className="grid gap-8 lg:grid-cols-[1fr_1.4fr]">
+        {items.length ? <TestimonialGrid items={items} exampleLabel={c.t("exampleBadge")} /> : <p className="text-ink-soft">{c.t("empty")}</p>}
+        <section id="share" className="grid scroll-mt-28 gap-8 lg:grid-cols-[1fr_1.4fr]">
           <div>
-            <h2 className="heading text-3xl">Share your experience</h2>
-            <p className="mt-3 text-ink-soft measure">
-              Worked with us on a machine, a station or a fleet? Tell others how it went. Your email stays private and your words appear only after our team approves them.
-            </p>
+            <h2 className="heading text-3xl">{c.t("shareTitle")}</h2>
+            <p className="mt-3 text-ink-soft measure">{c.t("shareText")}</p>
           </div>
-          <ShareForm companyName={s.company.shortName} />
+          <ShareForm labels={forms.labels()} />
         </section>
       </div>
     </>

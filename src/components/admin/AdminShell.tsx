@@ -7,40 +7,22 @@ import { PoweredByEjo } from "@/components/ejo/PoweredByEjo";
 import { SearchDialog } from "@/components/site/SearchDialog";
 import { openSearch } from "@/components/site/search-events";
 import { ThemeToggle } from "@/components/site/ThemeToggle";
+import { Icon } from "@/components/ui/Icon";
 
 export type NavItem = { href: string; label: string; icon: string; badge?: number; urgent?: boolean };
 export type NavGroup = { label: string; items: NavItem[] };
 
-const ICON: Record<string, string> = {
-  home: "M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z",
-  inbox: "M3 13h5l1 3h6l1-3h5M5 4h14l2 9v6a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-6z",
-  chat: "M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z",
-  star: "m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z",
-  chart: "M3 3v18h18M7 15l4-4 3 3 5-6",
-  box: "M21 8 12 3 3 8v8l9 5 9-5V8zM3 8l9 5 9-5M12 13v8",
-  tool: "M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z",
-  news: "M4 4h13v16H6a2 2 0 0 1-2-2zM17 8h3v10a2 2 0 0 1-2 2M8 8h5M8 12h5M8 16h3",
-  image: "M3 5h18v14H3zM3 16l5-5 4 4 3-3 6 6M15 9.5a1.5 1.5 0 1 0 0-.01",
-  pin: "M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11Zm0-8.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z",
-  folder: "M3 6a1 1 0 0 1 1-1h5l2 2h9a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z",
-  gear: "M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-2.8 1.2V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-2.9-1.2l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1A1.7 1.7 0 0 0 3.1 14H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.2-2.9l-.1-.1A2 2 0 1 1 7 4.2l.1.1A1.7 1.7 0 0 0 10 3.1V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 2.9 1.2l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1A1.7 1.7 0 0 0 20.9 10H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1Z",
-  users: "M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8",
-  log: "M9 12h6M9 16h6M9 8h2M6 3h9l4 4v14H6z",
-  search: "M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14ZM20 20l-3.5-3.5",
-  menu: "M4 7h16M4 12h16M4 17h10",
-};
-
-export function Icon({ name, size = 19 }: { name: string; size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-      <path d={ICON[name] ?? ICON.folder} />
-    </svg>
-  );
-}
+export { Icon };
 
 function Nav({ groups, onPick }: { groups: NavGroup[]; onPick?: () => void }) {
   const path = usePathname();
-  const active = (href: string) => (href === "/admin" ? path === "/admin" : path === href || path.startsWith(`${href}/`));
+  // The longest matching link wins, so /admin/catalogue/brands marks Brands and not Products too.
+  const matches = (href: string) => (href === "/admin" ? path === "/admin" : path === href || path.startsWith(`${href}/`));
+  const best = groups
+    .flatMap((g) => g.items.map((i) => i.href))
+    .filter(matches)
+    .sort((a, b) => b.length - a.length)[0];
+  const active = (href: string) => href === best;
   return (
     <nav aria-label="Dashboard" className="space-y-6 px-3">
       {groups.map((g) => (

@@ -6,10 +6,11 @@ import "./load-env";
 import { readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import bcrypt from "bcryptjs";
-import { eq } from "drizzle-orm";
+import { and, eq, inArray, isNull } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/node-postgres";
 import { Pool } from "pg";
 import * as schema from "../src/db/schema";
+import { SYSTEM_ROLES } from "../src/lib/permissions";
 
 type SeedFile = {
   order?: number;
@@ -150,6 +151,15 @@ async function main() {
     console.log(`${c.name}: ${fCount} new types, ${pCount} new models${update ? " (existing refreshed)" : ""}`);
   }
 
+  // The three manufacturers Chanrai represents are authorised dealerships. Fill the relationship only
+  // where staff haven't set one, so re-running never overwrites their wording.
+  const dealer = await db
+    .update(schema.brands)
+    .set({ relationship: "Authorised dealer" })
+    .where(and(eq(schema.brands.relationship, ""), inArray(schema.brands.slug, ["liugong", "sopan", "byd"])))
+    .returning({ name: schema.brands.name });
+  if (dealer.length) console.log(`brands: relationship set for ${dealer.map((b) => b.name).join(", ")}`);
+
   // Example testimonials for the preview. They show an "Example" label on the site until the
   // company replaces them with real ones (Dashboard → Testimonials).
   const anyTestimonial = await db.query.testimonials.findFirst();
@@ -162,6 +172,47 @@ async function main() {
     ];
     await db.insert(schema.testimonials).values(examples.map((e, i) => ({ ...e, status: "APPROVED" as const, isExample: true, source: "staff", order: i })));
     console.log("testimonials: added 4 examples");
+  }
+
+  // Starter articles (practical guides, no company news is invented). Only when there are no posts yet.
+  const anyPost = await db.query.posts.findFirst();
+  if (!anyPost) {
+    const newsDir = join(process.cwd(), "content", "news");
+    const files = readdirSync(newsDir).filter((f) => f.endsWith(".md")).sort();
+    for (const [i, file] of files.entries()) {
+      const raw = readFileSync(join(newsDir, file), "utf8");
+      const m = raw.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
+      if (!m) continue;
+      const meta = Object.fromEntries(m[1].split("\n").map((l) => [l.slice(0, l.indexOf(":")).trim(), l.slice(l.indexOf(":") + 1).trim()]));
+      await db.insert(schema.posts).values({
+        slug: meta.slug,
+        title: meta.title,
+        category: meta.category || "News",
+        excerpt: meta.excerpt ?? "",
+        body: m[2].trim(),
+        published: true,
+        publishedAt: new Date(Date.now() - i * 86400_000),
+      });
+    }
+    console.log(`news: added ${files.length} starter articles`);
+  }
+
+  // Built-in roles, and a role for anyone who signed up before roles existed.
+  for (const [i, r] of SYSTEM_ROLES.entries()) {
+    const existing = await db.query.roles.findFirst({ where: eq(schema.roles.name, r.name) });
+    if (!existing) {
+      await db.insert(schema.roles).values({ name: r.name, description: r.description, permissions: [...r.permissions], isSystem: true, order: i });
+      console.log(`roles: added ${r.name}`);
+    }
+  }
+  const allRoles = await db.query.roles.findMany();
+  for (const r of SYSTEM_ROLES.filter((x) => x.legacy)) {
+    const target = allRoles.find((x) => x.name === r.name);
+    if (!target) continue;
+    await db
+      .update(schema.adminUsers)
+      .set({ roleId: target.id })
+      .where(and(isNull(schema.adminUsers.roleId), eq(schema.adminUsers.role, r.legacy as "ADMIN" | "EDITOR" | "COORDINATOR")));
   }
 
   // Optional first admin from the environment (otherwise use /admin/setup in the browser).

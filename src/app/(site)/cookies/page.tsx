@@ -1,39 +1,29 @@
-import type { Metadata } from "next";
 import { CookieSettingsLink } from "@/components/site/CookieBanner";
 import { PageHead } from "@/components/site/PageHead";
+import { pageMetadata, siteContent } from "@/components/site/site-content";
+import { renderMarkdown } from "@/lib/markdown";
 
-export const metadata: Metadata = { title: "Cookie notice" };
+export const generateMetadata = () => pageMetadata("cookies");
 export const dynamic = "force-dynamic";
 
-const rows = [
-  ["cn_consent", "Cookie", "Essential", "Remembers your cookie choice", "6 months"],
-  ["cn_vid", "Cookie", "Statistics (optional)", "Random ID to count visits without storing your IP address", "6 months"],
-  ["cn_admin", "Cookie", "Essential (staff only)", "Keeps staff signed in to the dashboard", "12 hours"],
-  ["theme", "Local storage", "Essential", "Remembers light or dark mode if you choose one", "Until cleared"],
-  ["cn_loaded", "Session storage", "Essential", "Shows the logo animation only on your first page", "Until the tab closes"],
-  ["cn_enyo", "Session storage", "Essential", "Keeps your assistant conversation while you browse", "Until the tab closes"],
-];
-
-export default function Cookies() {
+export default async function Cookies() {
+  const [c, nav] = await Promise.all([siteContent("cookies"), siteContent("header")]);
+  const cols = [c.t("colName"), c.t("colType"), c.t("colPurpose"), c.t("colWhat"), c.t("colHow")];
+  const rows = c.list("rows");
+  const body = c.t("body");
   return (
     <>
-      <PageHead
-        crumbs={[{ href: "/", label: "Home" }, { label: "Cookie notice" }]}
-        title="Cookie notice"
-        lead="We keep cookies to a minimum. Optional statistics only run if you accept them, and there are no advertising or third-party tracking cookies."
-      >
+      <PageHead crumbs={[{ href: "/", label: nav.t("crumbHome") }, { label: c.t("crumb") }]} title={c.t("title")} lead={c.t("lead")}>
         <p className="mt-6">
-          <span className="btn btn-outline">
-            <CookieSettingsLink />
-          </span>
+          <CookieSettingsLink label={c.t("settingsButton")} className="btn btn-glass" />
         </p>
       </PageHead>
       <div className="wrap py-12">
-        <div className="overflow-x-auto rounded-lg border border-line bg-surface">
+        <div className="overflow-x-auto rounded-[18px] border border-line bg-surface">
           <table className="w-full min-w-[40rem] text-left text-[0.95rem]">
-            <thead className="border-b border-line text-sm text-ink-soft">
+            <thead className="border-b border-line bg-concrete/60 text-sm text-ink-soft">
               <tr>
-                {["Name", "Type", "Purpose", "What it does", "How long"].map((h) => (
+                {cols.map((h) => (
                   <th key={h} scope="col" className="px-4 py-3 font-semibold">
                     {h}
                   </th>
@@ -41,18 +31,21 @@ export default function Cookies() {
               </tr>
             </thead>
             <tbody>
-              {rows.map((r) => (
-                <tr key={r[0]} className="border-b border-line-soft last:border-0">
-                  {r.map((c, i) => (
-                    <td key={i} className={`px-4 py-3 ${i === 0 ? "font-semibold" : ""}`}>
-                      {c}
-                    </td>
-                  ))}
+              {rows.map((r, i) => (
+                <tr key={`${r.name}-${i}`} className="border-b border-line-soft last:border-0">
+                  <td className="px-4 py-3 font-semibold">
+                    <code className="text-[0.9rem]">{r.name}</code>
+                  </td>
+                  <td className="px-4 py-3">{r.type}</td>
+                  <td className="px-4 py-3">{r.purpose}</td>
+                  <td className="px-4 py-3">{r.what}</td>
+                  <td className="px-4 py-3">{r.how}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
+        {body ? <div className="prose-site mt-10" dangerouslySetInnerHTML={{ __html: renderMarkdown(body) }} /> : null}
       </div>
     </>
   );
