@@ -1,7 +1,9 @@
+import { inArray } from "drizzle-orm";
 import Link from "next/link";
 import { Leaf } from "@/components/brand/Leaf";
+import { db, schema } from "@/db";
 import { BrandsMarquee } from "@/components/site/BrandsMarquee";
-import { brandLogo, logoScale } from "@/lib/brand-logos";
+import { brandLogo, logoAspect, logoScale } from "@/lib/brand-logos";
 import { Framed } from "@/components/site/FamilyPicture";
 import { HeroSlider } from "@/components/site/HeroSlider";
 import { TestimonialsMarquee } from "@/components/site/Testimonials";
@@ -29,6 +31,19 @@ export default async function Home() {
     siteContent("news"),
   ]);
   const slides = s.home.slides.map((sl) => ({ ...sl, image: imageUrl(s, sl.image) }));
+  // Each logo's shape, so the brands band can size every logo before it has loaded (a band that
+  // changes width while it moves is what makes it jump).
+  const homeBrands = brands.filter((b) => b.showOnHome);
+  const logoIds = homeBrands.map((b) => b.logoId).filter((x): x is string => !!x);
+  const shapes = new Map<string, number>();
+  if (logoIds.length) {
+    const rows = await db
+      .select({ id: schema.media.id, width: schema.media.width, height: schema.media.height })
+      .from(schema.media)
+      .where(inArray(schema.media.id, logoIds))
+      .catch(() => []);
+    for (const r of rows) if (r.width && r.height) shapes.set(r.id, r.width / r.height);
+  }
 
   return (
     <>
@@ -173,7 +188,10 @@ export default async function Home() {
 
       <BrandsMarquee
         title={c.t("brandsTitle")}
-        brands={brands.filter((b) => b.showOnHome).map((b) => ({ name: b.name, logo: brandLogo(b), website: b.website, scale: logoScale(b) }))}
+        brands={homeBrands.map((b) => {
+          const aspect = logoAspect(b, b.logoId ? shapes.get(b.logoId) : undefined);
+          return { name: b.name, logo: brandLogo(b), website: b.website, scale: logoScale(b, aspect), aspect };
+        })}
       />
 
       {c.on("showTestimonials") && s.home.showTestimonials && testimonials.length ? (

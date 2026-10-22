@@ -56,9 +56,10 @@ export function TestimonialsMarquee({ items, exampleLabel = "Example" }: { items
   const track = [...base, ...base];
   return (
     <div className="marquee relative overflow-hidden py-2 [mask-image:linear-gradient(90deg,transparent,black_5%,black_95%,transparent)]" tabIndex={0} aria-label="Customer testimonials, scrolling">
-      <ul className="marquee-track flex w-max gap-5" style={{ ["--marquee-speed" as string]: `${Math.max(40, track.length * 7)}s` }}>
+      {/* Spacing is padding inside each item (not a gap) so both halves are exactly equal and the loop never hitches. */}
+      <ul className="marquee-track flex w-max" style={{ ["--marquee-speed" as string]: `${Math.max(40, track.length * 7)}s` }}>
         {track.map((t, k) => (
-          <li key={`${t.id}-${k}`}>
+          <li key={`${t.id}-${k}`} className="shrink-0 pr-5">
             <Card t={t} hidden={k >= base.length} exampleLabel={exampleLabel} />
           </li>
         ))}
