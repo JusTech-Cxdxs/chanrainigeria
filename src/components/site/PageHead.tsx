@@ -17,7 +17,7 @@ export function PageHead({
   children?: React.ReactNode;
 }) {
   return (
-    <section className="relative isolate overflow-hidden bg-deep text-white">
+    <section className="relative isolate overflow-hidden bg-deep text-white [overflow:clip]">
       {image ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img

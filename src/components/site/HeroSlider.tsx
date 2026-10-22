@@ -78,11 +78,12 @@ export function HeroSlider({ slides, eyebrow, secondary }: { slides: HeroSlide[]
           <p className="rise mt-5 max-w-[52ch] text-lg text-white/85 sm:text-xl" style={{ animationDelay: "160ms" }}>
             {slides[i].text}
           </p>
-          <div className="rise mt-8 flex flex-wrap gap-3" style={{ animationDelay: "240ms" }}>
-            <Link href={slides[i].ctaHref} className="btn btn-primary">
+          {/* Phones: both buttons full width, one under the other. Wider screens: side by side. */}
+          <div className="rise mt-8 grid gap-3 min-[480px]:flex min-[480px]:flex-wrap" style={{ animationDelay: "240ms" }}>
+            <Link href={slides[i].ctaHref} className="btn btn-primary w-full min-[480px]:w-auto">
               {slides[i].ctaLabel}
             </Link>
-            <Link href={secondary.href} className="btn btn-glass">
+            <Link href={secondary.href} className="btn btn-glass w-full min-[480px]:w-auto">
               {secondary.label}
             </Link>
           </div>

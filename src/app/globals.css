@@ -106,6 +106,8 @@
 
 @layer base {
   html {
+    /* Nothing can ever push the page sideways on a phone (clip, unlike hidden, keeps sticky headers working). */
+    overflow-x: clip;
     -webkit-text-size-adjust: 100%;
     scroll-behavior: smooth;
     scroll-padding-top: calc(var(--header-h) + 16px);
@@ -196,7 +198,15 @@
       box-shadow 0.15s;
     text-decoration: none;
     cursor: pointer;
-    white-space: nowrap;
+    /* Long labels wrap inside the button instead of running off a narrow screen. */
+    max-width: 100%;
+    white-space: normal;
+    text-align: center;
+    text-wrap: balance;
+    line-height: 1.25;
+  }
+  .btn > svg {
+    flex-shrink: 0;
   }
   .btn:active {
     transform: scale(0.98);

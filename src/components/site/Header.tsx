@@ -100,7 +100,13 @@ export function Header({
         </a>
         <div className="wrap flex h-[var(--header-h)] items-center gap-3">
           <Link href="/" className="mr-auto shrink-0 lg:mr-4" aria-label={`${name}, ${L.crumbHome}`}>
-            <Wordmark name={name} logoUrl={logoUrl} logoDarkUrl={logoDarkUrl} size="md" tone={glass ? "onDark" : "default"} />
+            {/* The smallest phones (under 360px) get the compact logo so every header button fits. */}
+            <span className="max-[359px]:hidden">
+              <Wordmark name={name} logoUrl={logoUrl} logoDarkUrl={logoDarkUrl} size="md" tone={glass ? "onDark" : "default"} />
+            </span>
+            <span className="hidden max-[359px]:inline-flex">
+              <Wordmark name={name} logoUrl={logoUrl} logoDarkUrl={logoDarkUrl} size="sm" tone={glass ? "onDark" : "default"} />
+            </span>
           </Link>
 
           <nav aria-label="Main" className="mr-auto hidden items-center lg:flex">
