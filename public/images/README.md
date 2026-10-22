@@ -4,8 +4,8 @@ These images are drawn illustrations used as placeholders. Each one should be re
 
 | File | Size (px) | Where it is used | Note |
 | --- | --- | --- | --- |
-| hero-1.jpg | 2400 × 1350 | Home page slider, slide 1 (construction) | Replace with a real photo of the same name and aspect ratio (JPG, at least this resolution). |
-| hero-2.jpg | 2400 × 1350 | Home page slider, slide 2 (CNG station) | Replace with a real photo of the same name and aspect ratio (JPG, at least this resolution). |
+| hero-1.jpg | 2400 × 1350 | Home page slider, construction slide (second) | Replace with a real photo of the same name and aspect ratio (JPG, at least this resolution). |
+| hero-2.jpg | 2400 × 1350 | Home page slider, CNG station slide (shown first) | Replace with a real photo of the same name and aspect ratio (JPG, at least this resolution). |
 | hero-3.jpg | 2400 × 1350 | Home page slider, slide 3 (warehouse / forklifts) | Replace with a real photo of the same name and aspect ratio (JPG, at least this resolution). |
 | page-products.jpg | 2400 × 900 | Products index page banner | Replace with a real photo of the same name and aspect ratio (JPG, at least this resolution). |
 | page-services.jpg | 2400 × 900 | Services page banner | Replace with a real photo of the same name and aspect ratio (JPG, at least this resolution). |
@@ -15,7 +15,7 @@ These images are drawn illustrations used as placeholders. Each one should be re
 | page-about.jpg | 2400 × 900 | About page banner (also used on the Testimonials page) | Replace with a real photo of the same name and aspect ratio (JPG, at least this resolution). |
 | page-news.jpg | 2400 × 900 | News page banner; fallback cover for news posts without their own image | Replace with a real photo of the same name and aspect ratio (JPG, at least this resolution). |
 | category-construction-equipment.jpg | 1600 × 1000 | Construction equipment category, family and product page banners; home page category card | Replace with a real photo of the same name and aspect ratio (JPG, at least this resolution). |
-| category-cng-gas-equipment.jpg | 1600 × 1000 | CNG and gas equipment category, family and product page banners; home page category card | Replace with a real photo of the same name and aspect ratio (JPG, at least this resolution). |
+| category-cng-gas-equipment.jpg | 1600 × 1000 | CNG compression and gas equipment category, family and product page banners; home page category card | Replace with a real photo of the same name and aspect ratio (JPG, at least this resolution). |
 | category-forklifts-material-handling.jpg | 1600 × 1000 | Forklifts and material handling category, family and product page banners; home page category card | Replace with a real photo of the same name and aspect ratio (JPG, at least this resolution). |
 | og-image.jpg | 1200 × 630 | Link preview image when the site is shared (WhatsApp, LinkedIn, X, etc.) | Replace with a real photo of the same name and aspect ratio (JPG, at least this resolution). |
 

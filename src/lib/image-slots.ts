@@ -14,8 +14,8 @@ export const IMAGE_SLOTS: ImageSlot[] = [
   { key: "page-contact", file: "page-contact.jpg", label: "Contact banner", size: "2400 × 900", usedOn: "Contact page" },
   { key: "page-about", file: "page-about.jpg", label: "About banner", size: "2400 × 900", usedOn: "About page" },
   { key: "page-news", file: "page-news.jpg", label: "News banner", size: "2400 × 900", usedOn: "News pages" },
+  { key: "category-cng-gas-equipment", file: "category-cng-gas-equipment.jpg", label: "CNG compression and gas equipment", size: "1600 × 1000", usedOn: "Line page banner and home cards" },
   { key: "category-construction-equipment", file: "category-construction-equipment.jpg", label: "Construction equipment", size: "1600 × 1000", usedOn: "Line page banner and home cards" },
-  { key: "category-cng-gas-equipment", file: "category-cng-gas-equipment.jpg", label: "CNG and gas equipment", size: "1600 × 1000", usedOn: "Line page banner and home cards" },
   { key: "category-forklifts-material-handling", file: "category-forklifts-material-handling.jpg", label: "Forklifts", size: "1600 × 1000", usedOn: "Line page banner and home cards" },
   { key: "og-image", file: "og-image.jpg", label: "Link preview", size: "1200 × 630", usedOn: "When the site is shared on WhatsApp, LinkedIn and others" },
 ];

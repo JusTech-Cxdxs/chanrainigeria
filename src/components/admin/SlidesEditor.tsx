@@ -96,7 +96,7 @@ export function SlidesEditor({ initial, slotUrls, action }: { initial: Slide[]; 
                       value={s.ctaHref}
                       onChange={(e) => set(i, "ctaHref", e.target.value)}
                       className="input"
-                      placeholder="/products/construction-equipment"
+                      placeholder="/products/cng-gas-equipment"
                       aria-invalid={!!hrefProblem}
                       style={hrefProblem ? { borderColor: "var(--danger)" } : undefined}
                     />

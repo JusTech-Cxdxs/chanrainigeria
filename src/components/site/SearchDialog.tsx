@@ -22,7 +22,7 @@ const DEFAULT_LABELS: Labels = {
   searchEmpty: "Nothing matches “{q}”. Try a machine type, a model number or a service.",
   searchHelp: "↑ ↓ to move, Enter to open, Esc to close",
 };
-const DEFAULT_SUGGESTIONS = ["Excavator", "Forklift", "CNG dispenser", "Book a technician", "Parts", "Phone number"];
+const DEFAULT_SUGGESTIONS = ["CNG compressor", "Excavator", "Forklift", "Book a technician", "Parts", "Phone number"];
 
 export function SearchDialog({
   endpoint = "/api/search",

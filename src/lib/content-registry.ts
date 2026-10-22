@@ -74,7 +74,7 @@ const home: PageDef = {
           label: "Text",
           type: "textarea",
           default:
-            "Excavators don't drive to workshops and compressors don't leave the station. Book a visit and a technician comes to your site with the tools and parts the job needs.",
+            "Compressors don't leave the station and excavators don't drive to workshops. Book a visit and a technician comes to your site with the tools and parts the job needs.",
         },
         { key: "fieldButton", label: "Button", type: "text", default: "Book a technician" },
         { key: "fieldCallPrefix", label: "Call button starts with", type: "text", default: "Call" },
@@ -242,7 +242,7 @@ const header: PageDef = {
           min: 1,
           max: 8,
           fields: [text("text", "Words", "")],
-          default: [{ text: "Excavator" }, { text: "Forklift" }, { text: "CNG dispenser" }, { text: "Book a technician" }, { text: "Parts" }, { text: "Phone number" }],
+          default: [{ text: "CNG compressor" }, { text: "Excavator" }, { text: "Forklift" }, { text: "Book a technician" }, { text: "Parts" }, { text: "Phone number" }],
         },
         text("searchEmpty", "When nothing matches", "Nothing matches “{q}”. Try a machine type, a model number or a service.", "{q} is what the visitor typed."),
         text("searchHelp", "Keyboard help at the bottom", "↑ ↓ to move, Enter to open, Esc to close"),
@@ -402,7 +402,7 @@ const enyo: PageDef = {
           min: 0,
           max: 5,
           fields: [text("text", "Question", "")],
-          default: [{ text: "How do I book a technician?" }, { text: "Which forklift for a warehouse?" }, { text: "Where are you located?" }],
+          default: [{ text: "What does a CNG station need?" }, { text: "How do I book a technician?" }, { text: "Which forklift for a warehouse?" }, { text: "Where are you located?" }],
         },
         text("leaveRequest", "Leave a request chip", "Leave a request"),
         text("talkPersonChip", "Talk to a person chip", "Talk to a person"),
@@ -677,7 +677,7 @@ const about: PageDef = {
           fields: [text("value", "Big figure", ""), text("label", "What it means", "")],
           default: [
             { value: "Since 1900", label: "The Kewalram Chanrai Group in Nigeria" },
-            { value: "3", label: "Equipment lines: construction, CNG and gas, forklifts" },
+            { value: "3", label: "Equipment lines: CNG and gas, construction, forklifts" },
             { value: "1 team", label: "For sales, on-site service and genuine parts" },
           ],
         },
@@ -697,7 +697,7 @@ const about: PageDef = {
           max: 6,
           fields: [text("title", "Title", ""), area("text", "Text", "")],
           default: [
-            { title: "We come to the machine", text: "Our technicians work on the job site, at the station or in the warehouse, so your equipment stays where it earns." },
+            { title: "We come to the machine", text: "Our technicians work at the station, on the job site or in the warehouse, so your equipment stays where it earns." },
             { title: "Genuine parts", text: "Parts from the manufacturers we represent, matched to your machine by serial number." },
             { title: "One team for the whole life of the machine", text: "Sales, field service and parts from people who know the equipment." },
           ],
@@ -824,7 +824,7 @@ const products: PageDef = {
         text("lineLink", "Link beside each line", "See the range"),
       ],
     },
-    seo("Products", "Construction equipment, CNG and gas equipment, and electric forklifts available from {company}."),
+    seo("Products", "CNG compression and gas equipment, construction equipment and electric forklifts available from {company}."),
   ],
 };
 
@@ -834,7 +834,7 @@ const productLine: PageDef = {
   path: null,
   group: "Products and services",
   icon: "folder",
-  description: "Wording shared by every product line page (for example Construction equipment). Each line's own text and picture are under Catalogue.",
+  description: "Wording shared by every product line page (for example CNG compression and gas equipment). Each line's own text and picture are under Catalogue.",
   sections: [
     {
       label: "Banner buttons",
@@ -877,7 +877,7 @@ const machineType: PageDef = {
   path: null,
   group: "Products and services",
   icon: "forklift",
-  description: "Wording shared by every machine type page (for example Excavators). Each type's own text is under Catalogue.",
+  description: "Wording shared by every machine type page (for example CNG Dispensers). Each type's own text is under Catalogue.",
   sections: [
     {
       label: "Banner buttons",
@@ -966,7 +966,7 @@ const services: PageDef = {
       slot: "page-services",
       crumb: "Services",
       title: "We come to the machine",
-      lead: "Excavators don't drive to workshops and compressors don't leave the station. Book a visit and a technician comes to your site with the tools and parts the job needs.",
+      lead: "Compressors don't leave the station and excavators don't drive to workshops. Book a visit and a technician comes to your site with the tools and parts the job needs.",
     }),
     {
       label: "Banner buttons",
@@ -984,7 +984,7 @@ const services: PageDef = {
         text("lineButton", "Button under each line", "Book a {line} technician", "{line} is the line name."),
       ],
     },
-    seo("Services", "On-site field service, maintenance contracts, CNG station installation, parts and training."),
+    seo("Services", "CNG station installation and maintenance, on-site field service, maintenance contracts, parts and training."),
   ],
 };
 
@@ -1002,7 +1002,7 @@ const parts: PageDef = {
       title: "Parts",
       lead: "Filters, wear parts, hydraulic components, batteries and station spares. Send the machine's serial number and the part numbers if you have them, and we'll confirm availability.",
     }),
-    seo("Parts", "Request genuine parts for construction equipment, CNG equipment and forklifts."),
+    seo("Parts", "Request genuine parts for CNG compression and gas equipment, construction equipment and forklifts."),
   ],
 };
 
@@ -1018,7 +1018,7 @@ const bookService: PageDef = {
       slot: "page-book-service",
       crumb: "Book a technician",
       title: "Book a technician",
-      lead: "Our technicians come to the machine: on the job site, at the station or in your warehouse. Tell us what it is, where it is and what's happening.",
+      lead: "Our technicians come to the machine: at the station, on the job site or in your warehouse. Tell us what it is, where it is and what's happening.",
     }),
     {
       label: "Urgent box in the banner",
@@ -1028,7 +1028,7 @@ const bookService: PageDef = {
         text("downText", "Text", "Call the service desk on {phone}", "{phone} is the service desk number."),
       ],
     },
-    seo("Book a technician", "Book an on-site service visit for construction equipment, CNG equipment or forklifts anywhere in Nigeria."),
+    seo("Book a technician", "Book an on-site service visit for CNG compression and gas equipment, construction equipment or forklifts anywhere in Nigeria."),
   ],
 };
 
