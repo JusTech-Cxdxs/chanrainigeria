@@ -167,7 +167,7 @@ export default async function Catalogue({ searchParams }: { searchParams: Promis
         </div>
       ) : (
         <EmptyState icon="package" title="No product lines yet">
-          Add your first line below, for example Construction equipment.
+          Add your first line below, for example CNG compression and gas equipment.
         </EmptyState>
       )}
       <section className="mt-6 rounded-2xl border border-dashed border-line p-4 sm:p-6">

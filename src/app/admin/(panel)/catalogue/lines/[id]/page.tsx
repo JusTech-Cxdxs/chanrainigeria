@@ -14,7 +14,7 @@ import { getSettings } from "@/lib/settings";
 
 export const dynamic = "force-dynamic";
 
-const DRAWINGS = ["excavator", "loader", "dozer", "grader", "roller", "forklift", "pallet", "stacker", "compressor", "dispenser", "cascade", "skid", "station"];
+const DRAWINGS = ["compressor", "dispenser", "cascade", "skid", "station", "excavator", "loader", "dozer", "grader", "roller", "forklift", "pallet", "stacker"];
 
 export default async function EditLine({ params, searchParams }: { params: Promise<{ id: string }>; searchParams: Promise<Record<string, string>> }) {
   const me = await requireAdmin("products");

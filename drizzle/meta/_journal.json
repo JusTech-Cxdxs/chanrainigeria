@@ -43,6 +43,13 @@
       "when": 1792557721817,
       "tag": "0005_notifications",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1792666324796,
+      "tag": "0006_cng_first",
+      "breakpoints": true
     }
   ]
 }

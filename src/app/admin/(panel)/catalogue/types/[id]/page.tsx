@@ -15,7 +15,7 @@ import { toLines } from "@/lib/lines";
 
 export const dynamic = "force-dynamic";
 
-const DRAWINGS = ["", "excavator", "loader", "dozer", "grader", "skidsteer", "backhoe", "roller", "forklift", "pallet", "stacker", "tractor", "compressor", "dispenser", "cascade", "skid", "station"];
+const DRAWINGS = ["", "compressor", "dispenser", "cascade", "skid", "station", "excavator", "loader", "dozer", "grader", "skidsteer", "backhoe", "roller", "forklift", "pallet", "stacker", "tractor"];
 
 export default async function EditType({ params, searchParams }: { params: Promise<{ id: string }>; searchParams: Promise<Record<string, string>> }) {
   const me = await requireAdmin("products");
@@ -45,7 +45,7 @@ export default async function EditType({ params, searchParams }: { params: Promi
       <Crumbs items={[{ href: "/admin/catalogue", label: "Products" }, { href: `/admin/catalogue/lines/${line!.id}`, label: line!.name }, { label: f?.name ?? "New machine type" }]} />
       <AdminHead
         title={f?.name ?? "New machine type"}
-        lead={f ? `Machine type. On the website at /products/${f.category.slug}/${f.slug}` : "A kind of machine within the line, for example wheel loaders, pallet trucks or CNG dispensers. Its models are added after you create it."}
+        lead={f ? `Machine type. On the website at /products/${f.category.slug}/${f.slug}` : "A kind of machine within the line, for example CNG dispensers, wheel loaders or pallet trucks. Its models are added after you create it."}
         actions={
           f ? (
             <a href={`/products/${f.category.slug}/${f.slug}`} target="_blank" rel="noopener" className="btn btn-outline">

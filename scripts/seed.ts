@@ -22,11 +22,12 @@ type SeedFile = {
   })[];
 };
 
-// How each line behaves on the site. Order follows the client's own list.
-const LINE: Record<string, { order: number; desk: string; illustration: string }> = {
-  "construction-equipment": { order: 1, desk: "sales", illustration: "excavator" },
-  "cng-gas-equipment": { order: 2, desk: "cng", illustration: "compressor" },
-  "forklifts-material-handling": { order: 3, desk: "sales", illustration: "forklift" },
+// How each line behaves on the site. Order follows the client's own list: CNG first.
+// `prefix` keeps service addresses stable whatever the order; `brandOrder` is the order of the logos.
+const LINE: Record<string, { order: number; desk: string; illustration: string; prefix: string; brandOrder: number }> = {
+  "cng-gas-equipment": { order: 1, desk: "cng", illustration: "compressor", prefix: "cng", brandOrder: 2 },
+  "construction-equipment": { order: 2, desk: "sales", illustration: "excavator", prefix: "construction", brandOrder: 1 },
+  "forklifts-material-handling": { order: 3, desk: "sales", illustration: "forklift", prefix: "forklift", brandOrder: 3 },
 };
 
 const update = process.argv.includes("--update");
@@ -68,11 +69,11 @@ async function main() {
   const dir = join(process.cwd(), "content", "seed");
   for (const file of readdirSync(dir).filter((f) => f.endsWith(".json"))) {
     const seed = JSON.parse(readFileSync(join(dir, file), "utf8")) as SeedFile;
-    const line = LINE[seed.category.slug] ?? { order: 9, desk: "sales", illustration: "excavator" };
+    const line = LINE[seed.category.slug] ?? { order: 9, desk: "sales", illustration: "excavator", prefix: seed.category.slug, brandOrder: 9 };
 
     // Brand
     let brand = await db.query.brands.findFirst({ where: eq(schema.brands.slug, seed.brand.slug) });
-    const brandVals = { name: seed.brand.name, website: seed.brand.website ?? null, about: seed.brand.about, highlights: seed.brand.highlights ?? [], order: line.order };
+    const brandVals = { name: seed.brand.name, website: seed.brand.website ?? null, about: seed.brand.about, highlights: seed.brand.highlights ?? [], order: line.brandOrder };
     if (!brand) [brand] = await db.insert(schema.brands).values({ slug: seed.brand.slug, ...brandVals }).returning();
     else if (update) await db.update(schema.brands).set(brandVals).where(eq(schema.brands.id, brand.id));
 
@@ -97,7 +98,7 @@ async function main() {
 
     // Services
     for (const [i, s] of seed.services.entries()) {
-      const slug = `${line.order === 2 ? "cng" : line.order === 3 ? "forklift" : "construction"}-${s.slug}`;
+      const slug = `${line.prefix}-${s.slug}`;
       const vals = { name: s.name, summary: s.summary, includes: s.includes ?? [], order: i, categoryId: cat.id };
       const row = await db.query.services.findFirst({ where: eq(schema.services.slug, slug) });
       if (!row) await db.insert(schema.services).values({ slug, ...vals });

@@ -133,9 +133,9 @@ export const defaultSettings: Settings = {
   company: {
     name: "Chanrai Nigeria Limited",
     shortName: "Chanrai Nigeria",
-    tagline: "Construction machinery, CNG systems and forklifts. Supplied, installed and serviced where you work.",
+    tagline: "CNG compression and gas equipment, construction machinery and electric forklifts. Supplied, installed and serviced where you work.",
     about:
-      "Chanrai Nigeria supplies construction equipment, CNG and gas equipment, and electric forklifts to contractors, fleet operators, gas distributors and industry across Nigeria.\n\nOur technicians go to the machine: on the job site, at the station or in the warehouse. Sales, field service and genuine parts come from one team that knows the equipment.",
+      "Chanrai Nigeria supplies CNG compression and gas equipment, construction equipment and electric forklifts to gas distributors, CNG station operators, contractors, fleet operators and industry across Nigeria.\n\nOur technicians go to the machine: at the station, on the job site or in the warehouse. Sales, field service and genuine parts come from one team that knows the equipment.",
     groupName: "Kewalram Chanrai Group",
     groupUrl: "https://www.kewalramchanrai.com",
     heritage: "The Kewalram Chanrai Group has been in Nigeria since 1900.",
@@ -166,18 +166,18 @@ export const defaultSettings: Settings = {
   home: {
     slides: [
       {
+        title: "CNG stations, built and kept running",
+        text: "Compressors, dispensers and gas skids, installed, commissioned and maintained on site.",
+        image: "hero-2",
+        ctaLabel: "See CNG compression and gas equipment",
+        ctaHref: "/products/cng-gas-equipment",
+      },
+      {
         title: "Machines that keep Nigeria building",
         text: "Excavators, loaders, dozers and graders, with technicians who come to your site.",
         image: "hero-1",
         ctaLabel: "See construction equipment",
         ctaHref: "/products/construction-equipment",
-      },
-      {
-        title: "CNG stations, built and kept running",
-        text: "Compressors, dispensers and gas skids, installed, commissioned and maintained on site.",
-        image: "hero-2",
-        ctaLabel: "See CNG and gas equipment",
-        ctaHref: "/products/cng-gas-equipment",
       },
       {
         title: "Electric forklifts for busy warehouses",
@@ -187,18 +187,18 @@ export const defaultSettings: Settings = {
         ctaHref: "/products/forklifts-material-handling",
       },
     ],
-    heroTitle: "Machines that keep Nigeria building, moving and fuelled",
-    heroText: "Construction equipment, CNG station systems and electric forklifts, with sales, genuine parts and technicians who come to your site.",
+    heroTitle: "Equipment that keeps Nigeria fuelled, building and moving",
+    heroText: "CNG compression and gas equipment, construction equipment and electric forklifts, with sales, genuine parts and technicians who come to your site.",
     fieldServiceTitle: "We come to the machine",
     fieldServiceText:
-      "Excavators don't drive to workshops and compressors don't leave the station. Book a visit and a technician comes to your site with the tools and parts the job needs.",
+      "Compressors don't leave the station and excavators don't drive to workshops. Book a visit and a technician comes to your site with the tools and parts the job needs.",
     showTestimonials: true,
   },
   images: {},
   seo: {
-    title: "Chanrai Nigeria | Construction, CNG and forklift equipment",
+    title: "Chanrai Nigeria | CNG compression, construction and forklift equipment",
     description:
-      "Construction machinery, CNG and gas equipment, and electric forklifts in Nigeria. Sales, on-site service and genuine parts from Chanrai Nigeria, a business of the Kewalram Chanrai Group.",
+      "CNG compression and gas equipment, construction machinery and electric forklifts in Nigeria. Sales, on-site service and genuine parts from Chanrai Nigeria, a business of the Kewalram Chanrai Group.",
   },
   email: {
     fromName: "Chanrai Nigeria",

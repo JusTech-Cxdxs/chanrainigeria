@@ -1,7 +1,7 @@
 # Chanrai Nigeria — website
 
 The public website, enquiry desk and **Enyo** assistant for Chanrai Nigeria Limited (Kewalram Chanrai Group):
-construction equipment, CNG & gas equipment and forklifts, with sales, on-site field service and parts.
+CNG compression & gas equipment, construction equipment and forklifts, with sales, on-site field service and parts.
 
 Built by JusTech. This repository is everything needed to run, change and host the site. There is no
 external service it depends on except a PostgreSQL database, an SMTP mailbox and (optionally) an AI key.
