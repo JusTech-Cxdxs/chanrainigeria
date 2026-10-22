@@ -70,9 +70,9 @@ export function TestimonialsMarquee({ items, exampleLabel = "Example" }: { items
 
 export function TestimonialGrid({ items, exampleLabel = "Example" }: { items: TestimonialCard[]; exampleLabel?: string }) {
   return (
-    <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+    <ul className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
       {items.map((t, k) => (
-        <li key={t.id} className="reveal [&_figure]:w-full" style={{ ["--i" as string]: k % 6 }}>
+        <li key={t.id} className="reveal min-w-0 [&_figure]:w-full [&_figure]:min-w-0" style={{ ["--i" as string]: k % 6 }}>
           <Card t={t} exampleLabel={exampleLabel} />
         </li>
       ))}
