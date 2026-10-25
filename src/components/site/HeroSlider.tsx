@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { srcSetFor } from "@/lib/responsive-image";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 export type HeroSlide = { title: string; text: string; image: string; ctaLabel: string; ctaHref: string };
@@ -51,23 +52,33 @@ export function HeroSlider({ slides, eyebrow, secondary }: { slides: HeroSlide[]
       }}
     >
       {slides.map((s, k) => (
-        <div key={k} className={`absolute inset-0 -z-20 transition-opacity duration-1000 ${k === i ? "opacity-100" : "opacity-0"}`} aria-hidden={k !== i}>
+        <div
+          key={k}
+          className={`absolute inset-x-0 top-0 -z-20 h-[64%] overflow-hidden transition-opacity duration-1000 sm:inset-0 sm:h-auto ${k === i ? "opacity-100" : "opacity-0"}`}
+          aria-hidden={k !== i}
+        >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={s.image}
+            srcSet={srcSetFor(s.image)}
+            sizes="100vw"
             alt=""
-            className="h-full w-full object-cover"
+            decoding="async"
+            className="h-full w-full object-cover object-center"
             style={k === i ? { animation: `kenburns ${INTERVAL + 1500}ms ease-out both` } : undefined}
             fetchPriority={k === 0 ? "high" : "low"}
             loading={k === 0 ? "eager" : "lazy"}
           />
         </div>
       ))}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#06120a]/90 via-[#06120a]/55 to-transparent" aria-hidden />
-      <div className="absolute inset-0 -z-10 bg-gradient-to-t from-[#06120a]/85 via-transparent to-[#06120a]/40" aria-hidden />
+      {/* Phones: a light shade for the header, then the photo fades into the green behind the text. */}
+      <div className="absolute inset-x-0 top-0 -z-10 h-[64%] bg-gradient-to-b from-[#06120a]/60 via-[#06120a]/30 via-30% to-[#0b2416] sm:hidden" aria-hidden />
+      {/* Tablets and desktop: text side shaded, the equipment side left bright. */}
+      <div className="absolute inset-0 -z-10 hidden bg-gradient-to-r from-[#06120a]/85 via-[#06120a]/45 to-transparent sm:block" aria-hidden />
+      <div className="absolute inset-0 -z-10 hidden bg-gradient-to-t from-[#06120a]/75 via-transparent via-45% to-[#06120a]/35 sm:block" aria-hidden />
 
       <div className="wrap pb-16 pt-[calc(var(--header-h)+3rem)] sm:pb-24">
-        <div key={i} className="max-w-3xl" role="group" aria-roledescription="slide" aria-label={`${i + 1} of ${n}`}>
+        <div key={i} className="max-w-3xl max-sm:[text-shadow:0_2px_14px_rgb(6_18_10/0.65)]" role="group" aria-roledescription="slide" aria-label={`${i + 1} of ${n}`}>
           <p className="rise flex items-center gap-3 text-sm font-semibold text-mint">
             <span className="h-px w-10 bg-mint" aria-hidden />
             {eyebrow}

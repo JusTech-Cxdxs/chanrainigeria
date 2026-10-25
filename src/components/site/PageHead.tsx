@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { srcSetFor } from "@/lib/responsive-image";
 
 export type Crumb = { href?: string; label: string };
 
@@ -22,15 +23,18 @@ export function PageHead({
         // eslint-disable-next-line @next/next/no-img-element
         <img
           src={image}
+          srcSet={srcSetFor(image)}
+          sizes="100vw"
           alt=""
-          className="absolute inset-0 -z-20 h-full w-full object-cover"
+          decoding="async"
+          className="absolute inset-0 -z-20 h-full w-full object-cover object-[65%_center]"
           style={{ animation: "kenburns 14s ease-out both" }}
           fetchPriority="high"
         />
       ) : (
         <div className="mesh absolute inset-0 -z-20" aria-hidden />
       )}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#06120a]/90 via-[#06120a]/65 to-[#06120a]/25" aria-hidden />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#06120a]/90 via-[#06120a]/60 to-[#06120a]/15 max-sm:bg-[#06120a]/65 max-sm:bg-none" aria-hidden />
       <div className="absolute inset-x-0 bottom-0 -z-10 h-24 bg-gradient-to-t from-[#06120a]/60 to-transparent" aria-hidden />
       <div className="wrap pb-12 pt-[calc(var(--header-h)+2.5rem)] sm:pb-16 sm:pt-[calc(var(--header-h)+4rem)]">
         {crumbs.length ? (

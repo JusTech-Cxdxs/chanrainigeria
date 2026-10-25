@@ -4,6 +4,7 @@ import { Leaf } from "@/components/brand/Leaf";
 import { db, schema } from "@/db";
 import { BrandsMarquee } from "@/components/site/BrandsMarquee";
 import { brandLogo, logoAspect, logoScale } from "@/lib/brand-logos";
+import { srcSetFor } from "@/lib/responsive-image";
 import { Framed } from "@/components/site/FamilyPicture";
 import { HeroSlider } from "@/components/site/HeroSlider";
 import { TestimonialsMarquee } from "@/components/site/Testimonials";
@@ -87,15 +88,18 @@ export default async function Home() {
           <ul className="mt-10 grid gap-5 lg:grid-cols-3">
             {categories.map((cat, k) => (
               <li key={cat.id} className="reveal" style={{ ["--i" as string]: k }}>
-                <Link href={`/products/${cat.slug}`} className="group relative block h-[26rem] overflow-hidden rounded-[22px] bg-deep text-white">
+                <Link href={`/products/${cat.slug}`} className="group relative block h-[22rem] overflow-hidden rounded-[22px] bg-deep text-white sm:h-[26rem]">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={cat.imageId ? mediaUrl(cat.imageId)! : imageUrl(s, `category-${cat.slug}`)}
+                    srcSet={srcSetFor(cat.imageId ? mediaUrl(cat.imageId) : imageUrl(s, `category-${cat.slug}`))}
+                    sizes="(min-width: 1024px) 34vw, 100vw"
                     alt=""
                     loading="lazy"
-                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    decoding="async"
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                   />
-                  <span className="absolute inset-0 bg-gradient-to-t from-[#06120a] via-[#06120a]/45 to-transparent" aria-hidden />
+                  <span className="absolute inset-0 bg-gradient-to-t from-[#06120a]/95 via-[#06120a]/35 via-45% to-transparent" aria-hidden />
                   <span className="absolute inset-x-0 bottom-0 p-6">
                     {cat.brand ? <span className="text-sm font-semibold text-mint">{cat.brand.name}</span> : null}
                     <span className="heading mt-1 block text-2xl">{cat.name}</span>
