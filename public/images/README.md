@@ -1,6 +1,6 @@
-# Site images (placeholders)
+# Site images
 
-These images are drawn illustrations used as placeholders. Each one should be replaced with a real photo using the **same file name**. The code finds images by file name, so nothing else needs to change.
+The home slides, the three product-line pictures and the link preview now use the supplied equipment images (October 2026). The page banners are still drawn placeholders. Each one should be replaced with a real photo using the **same file name**. The code finds images by file name, so nothing else needs to change.
 
 | File | Size (px) | Where it is used | Note |
 | --- | --- | --- | --- |
