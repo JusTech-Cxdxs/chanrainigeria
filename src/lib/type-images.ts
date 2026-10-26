@@ -14,13 +14,13 @@ const BUNDLED = new Set([
   "wheel-loaders",
   "bulldozers",
   "motor-graders",
-  "rollers-compactors",
+  "rollers",
   "mining-trucks",
   "four-wheel-counterbalance-forklifts",
-  "electric-pallet-trucks",
-  "electric-stackers",
-  "electric-reach-trucks",
-  "electric-tow-tractors",
+  "pallet-trucks",
+  "stackers",
+  "reach-trucks",
+  "tow-tractors",
 ]);
 
 /** Shipped pictures that show one particular model (the model name is visible on the machine). */

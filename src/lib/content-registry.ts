@@ -101,7 +101,7 @@ const home: PageDef = {
     {
       label: "Brands strip",
       hint: "Logos are managed under Brands.",
-      fields: [{ key: "brandsTitle", label: "Heading", type: "text", default: "Trusted by Leading Brands" }],
+      fields: [{ key: "brandsTitle", label: "Heading", type: "text", default: "The brands we supply and support" }],
     },
     {
       label: "Testimonials",
@@ -661,6 +661,15 @@ const about: PageDef = {
       fields: [
         md("body", "Story", "", "Leave empty to use the About text and heritage line from Company settings. Headings, lists and links are allowed."),
         text("groupLink", "Link to the group website", "Visit the {group} website", "{group} is the group name from Company settings. Hidden when no group website is set."),
+      ],
+    },
+    {
+      label: "Photos beside our story",
+      fields: [
+        toggle("showStoryPhotos", "Show the photos", true),
+        image("storyPhoto1", "Large photo (CNG)", "about-1", "Landscape, about 2400 × 1400. Links to the first product line."),
+        image("storyPhoto2", "Small photo (construction)", "about-2", "About 1600 × 1200. Links to the second product line."),
+        image("storyPhoto3", "Small photo (forklifts)", "about-3", "About 1600 × 1200. Links to the third product line."),
       ],
     },
     {

@@ -163,13 +163,20 @@ async function main() {
       about: "Fornovo Gas is an Italian natural gas compression specialist, founded in 1969 near Parma. It began by running natural gas refuelling stations, has moved natural gas by road in cylinder and tube trailers since 1985, and has built its own CNG and natural gas compressors since 2004. Its reciprocating compressors run CNG refuelling stations, biomethane plants and industrial gas services, with more than 3,500 units installed in more than 60 countries.",
       highlights: ["Founded in 1969 in Italy", "Moving natural gas by road in cylinder and tube trailers since 1985", "Own range of CNG and natural gas reciprocating compressors since 2004", "More than 3,500 compressors installed in more than 60 countries", "Quality and environmental management certified to ISO 9001 and ISO 14001"],
       order: 2,
+      line: "cng-gas-equipment",
     },
   ];
-  for (const p of partners) {
-    const has = await db.query.brands.findFirst({ where: eq(schema.brands.slug, p.slug) });
+  for (const { line, ...p } of partners) {
+    let has = await db.query.brands.findFirst({ where: eq(schema.brands.slug, p.slug) });
     if (!has) {
-      await db.insert(schema.brands).values({ ...p, relationship: "Brand partner" });
+      [has] = await db.insert(schema.brands).values({ ...p, relationship: "Brand partner" }).returning();
       console.log(`brands: added ${p.name}`);
+    }
+    // Show the partner beside the line's main brand, unless staff have already chosen the line's brands.
+    const cat = await db.query.categories.findFirst({ where: eq(schema.categories.slug, line) });
+    if (cat && !cat.moreBrandIds.length) {
+      await db.update(schema.categories).set({ moreBrandIds: [has.id] }).where(eq(schema.categories.id, cat.id));
+      console.log(`${cat.name}: ${p.name} added beside the main brand`);
     }
   }
 

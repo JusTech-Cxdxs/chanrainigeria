@@ -4,6 +4,7 @@ import { pageMetadata, siteContent } from "@/components/site/site-content";
 import { Icon } from "@/components/ui/Icon";
 import { getBrands, getCategories } from "@/lib/catalogue";
 import { renderMarkdown } from "@/lib/markdown";
+import { srcSetFor } from "@/lib/responsive-image";
 
 export const generateMetadata = () => pageMetadata("about");
 export const dynamic = "force-dynamic";
@@ -61,6 +62,44 @@ export default async function About() {
               <Icon name="external" size={16} />
             </a>
           ) : null}
+          {c.on("showStoryPhotos") ? (
+            <div className="mt-10 grid grid-cols-2 gap-3 sm:gap-4 lg:sticky lg:top-28">
+              {["storyPhoto1", "storyPhoto2", "storyPhoto3"].map((key, i) => {
+                const src = c.img(key);
+                const cat = categories[i];
+                if (!src) return null;
+                const inner = (
+                  <>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={src}
+                      srcSet={srcSetFor(src)}
+                      sizes={i === 0 ? "(min-width: 1024px) 50vw, 100vw" : "(min-width: 1024px) 25vw, 50vw"}
+                      alt={cat ? cat.name : ""}
+                      loading="lazy"
+                      decoding="async"
+                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                    />
+                    {cat ? (
+                      <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent px-3 pb-2.5 pt-8 text-[0.8rem] font-semibold leading-tight text-white sm:px-4 sm:pb-3 sm:text-sm">
+                        {cat.name}
+                      </span>
+                    ) : null}
+                  </>
+                );
+                const cls = `group relative block overflow-hidden rounded-[18px] bg-line ${i === 0 ? "col-span-2 aspect-[12/7]" : "aspect-[4/3]"}`;
+                return cat ? (
+                  <Link key={key} href={`/products/${cat.slug}`} className={cls}>
+                    {inner}
+                  </Link>
+                ) : (
+                  <div key={key} className={cls}>
+                    {inner}
+                  </div>
+                );
+              })}
+            </div>
+          ) : null}
         </div>
         <aside className="space-y-8">
           <section className="card p-6">
@@ -71,7 +110,7 @@ export default async function About() {
                   <Link href={`/products/${cat.slug}`} className="group flex items-center justify-between gap-3 py-3 hover:text-brand-ink">
                     <span className="font-semibold">{cat.name}</span>
                     <span className="flex items-center gap-2 text-sm text-ink-soft">
-                      {cat.brand ? cat.brand.name : null}
+                      {cat.brands.map((b) => b.name).join(" · ")}
                       <Icon name="chevron-right" size={16} className="text-brand-ink transition-transform group-hover:translate-x-0.5" />
                     </span>
                   </Link>

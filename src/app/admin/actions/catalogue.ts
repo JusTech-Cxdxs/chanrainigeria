@@ -95,6 +95,7 @@ export async function saveCategory(id: string, f: FormData) {
       order: num(f, "order"),
       published: on(f, "published"),
       brandId: s(f, "brandId") || null,
+      moreBrandIds: [...new Set(f.getAll("moreBrandIds").map(String).filter((id) => id && id !== s(f, "brandId")))],
       imageId: mediaId(f, "imageId"),
     })
     .where(eq(schema.categories.id, id));

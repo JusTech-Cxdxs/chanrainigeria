@@ -69,6 +69,8 @@ async function loadKnowledge(settings: Settings) {
     getServices(),
   ]);
   const [brands, about] = await Promise.all([getBrands(), getContent("about")]);
+  const lineBrandNames = (c: { brand: { id: string; name: string } | null; moreBrandIds: string[] }) =>
+    [c.brand?.name, ...c.moreBrandIds.filter((id) => id !== c.brand?.id).map((id) => brands.find((b) => b.id === id)?.name)].filter(Boolean).join(" and ");
   const safetyRules = about.on("showSafety") ? about.list("safetyRules") : [];
 
   const s = settings;
@@ -86,7 +88,7 @@ PRODUCT LINES:
 ${cats
   .map(
     (c) =>
-      `- ${c.name}${c.brand ? ` (${c.brand.name})` : ""} — page /products/${c.slug}. Types: ${c.families
+      `- ${c.name}${lineBrandNames(c) ? ` (${lineBrandNames(c)})` : ""} — page /products/${c.slug}. Types: ${c.families
         .map((f) => `${f.name} [${f.products.map((p) => p.name).join(", ") || "models on request"}]`)
         .join("; ")}`,
   )

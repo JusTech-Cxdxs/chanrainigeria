@@ -87,6 +87,20 @@ export default async function EditLine({ params, searchParams }: { params: Promi
               </select>
               <small>The manufacturer whose logo shows on this line&apos;s page.</small>
             </label>
+            {brands.length > 1 ? (
+              <fieldset className="field">
+                <span>Other brands in this line</span>
+                <div className="flex flex-wrap gap-x-5 gap-y-2 pt-1">
+                  {brands.map((b) => (
+                    <label key={b.id} className="inline-flex items-center gap-2 text-[0.95rem]">
+                      <input type="checkbox" name="moreBrandIds" value={b.id} defaultChecked={c.moreBrandIds.includes(b.id)} />
+                      {b.name}
+                    </label>
+                  ))}
+                </div>
+                <small>Shown after the main brand on the site, e.g. SOPAN · Fornovo Gas. The main brand is skipped if ticked here too.</small>
+              </fieldset>
+            ) : null}
             <Field label="Tagline" name="tagline" defaultValue={c.tagline} className="sm:col-span-2" hint="One short line under the heading, about 80 characters." />
             <Field label="Introduction" name="intro" defaultValue={c.intro} textarea className="sm:col-span-2" hint="Two or three sentences on what the line covers and who it is for." />
             <label className="field">
