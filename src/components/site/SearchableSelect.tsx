@@ -162,7 +162,13 @@ export function SearchableSelect({
   filtered.forEach((o, i) => {
     if (o.group && o.group !== lastGroup) {
       rows.push(
-        <li key={`g-${o.group}-${i}`} role="presentation" className="sticky top-0 z-10 bg-surface/95 px-3 pb-1 pt-3 text-xs font-semibold text-ink-soft backdrop-blur">
+        <li
+          key={`g-${o.group}-${i}`}
+          role="presentation"
+          // Headings scroll with their options (not sticky): a long heading that wraps onto two lines used to
+          // show its second line under the next sticky heading.
+          className="border-t border-line-soft px-3 pb-1 pt-3 text-xs font-semibold leading-snug text-ink-soft first:border-t-0"
+        >
           {o.group}
         </li>,
       );

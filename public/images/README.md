@@ -15,7 +15,7 @@ The home slides, the three product-line pictures and the link preview now use th
 | page-about.jpg | 2400 × 900 | About page banner (also used on the Testimonials page) | Replace with a real photo of the same name and aspect ratio (JPG, at least this resolution). |
 | page-news.jpg | 2400 × 900 | News page banner; fallback cover for news posts without their own image | Replace with a real photo of the same name and aspect ratio (JPG, at least this resolution). |
 | category-construction-equipment.jpg | 1600 × 1000 | Construction equipment category, family and product page banners; home page category card | Replace with a real photo of the same name and aspect ratio (JPG, at least this resolution). |
-| category-cng-gas-equipment.jpg | 1600 × 1000 | CNG compression and gas equipment category, family and product page banners; home page category card | Replace with a real photo of the same name and aspect ratio (JPG, at least this resolution). |
+| category-cng-gas-equipment.jpg | 1600 × 1000 | CNG refueling, compression, storage and dispensing equipment category, family and product page banners; home page category card | Replace with a real photo of the same name and aspect ratio (JPG, at least this resolution). |
 | category-forklifts-material-handling.jpg | 1600 × 1000 | Forklifts and material handling category, family and product page banners; home page category card | Replace with a real photo of the same name and aspect ratio (JPG, at least this resolution). |
 | og-image.jpg | 1200 × 630 | Link preview image when the site is shared (WhatsApp, LinkedIn, X, etc.) | Replace with a real photo of the same name and aspect ratio (JPG, at least this resolution). |
 

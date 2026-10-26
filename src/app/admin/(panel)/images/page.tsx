@@ -9,6 +9,7 @@ import { Icon } from "@/components/ui/Icon";
 import { db, schema } from "@/db";
 import { has, requireAdmin } from "@/lib/auth";
 import { brandLogo } from "@/lib/brand-logos";
+import { bundledTypeImage } from "@/lib/type-images";
 import { PAGES } from "@/lib/content-registry";
 import { IMAGE_SLOTS } from "@/lib/image-slots";
 import { getSettings, imageUrl } from "@/lib/settings";
@@ -145,9 +146,9 @@ export default async function Images({ searchParams }: { searchParams: Promise<R
                 <details key={fam.id} className="group mt-4 rounded-2xl border border-line-soft bg-concrete/40">
                   <summary className="flex cursor-pointer list-none flex-wrap items-center gap-x-3 gap-y-1 p-3 sm:p-4">
                     <span className="grid h-12 w-16 shrink-0 place-items-center overflow-hidden rounded-lg border border-line bg-surface text-ink-soft">
-                      {fam.imageId || fam.products.some((p) => p.imageIds.length) ? (
+                      {fam.imageId || bundledTypeImage(fam.slug) || fam.products.some((p) => p.imageIds.length) ? (
                         // eslint-disable-next-line @next/next/no-img-element
-                        <img src={`/media/${fam.imageId ?? fam.products.find((p) => p.imageIds.length)!.imageIds[0]}?w=480`} alt="" className="h-full w-full object-cover" />
+                        <img src={fam.imageId ? `/media/${fam.imageId}?w=480` : (bundledTypeImage(fam.slug) ?? `/media/${fam.products.find((p) => p.imageIds.length)!.imageIds[0]}?w=480`)} alt="" className="h-full w-full object-cover" />
                       ) : (
                         <Icon name="image" />
                       )}
@@ -155,7 +156,7 @@ export default async function Images({ searchParams }: { searchParams: Promise<R
                     <span className="min-w-0 flex-1">
                       <span className="heading block text-base">{fam.name}</span>
                       <span className="block text-sm text-ink-soft">
-                        {fam.imageId ? "Own picture" : "Line drawing"} · {fam.products.length} model{fam.products.length === 1 ? "" : "s"},{" "}
+                        {fam.imageId ? "Own picture" : bundledTypeImage(fam.slug) ? "Supplied picture" : "Line drawing"} · {fam.products.length} model{fam.products.length === 1 ? "" : "s"},{" "}
                         {fam.products.filter((p) => p.imageIds.length).length} with photos
                       </span>
                     </span>
@@ -171,6 +172,7 @@ export default async function Images({ searchParams }: { searchParams: Promise<R
                       where="Shown on the machine type's page and in product lists"
                       size="1600 × 1000"
                       value={fam.imageId ?? ""}
+                      originalUrl={bundledTypeImage(fam.slug) ?? undefined}
                       folder="Products"
                       href={`/products/${line.slug}/${fam.slug}`}
                     />

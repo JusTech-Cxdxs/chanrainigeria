@@ -1,6 +1,6 @@
 // Logos for the brands the site ships with. An uploaded logo (Dashboard → Images or Brands) always
 // wins; until then these files in /public/brand/logos are used, so the brands strip never shows plain text.
-export const BUNDLED_LOGOS = ["liugong", "sopan", "byd"] as const;
+export const BUNDLED_LOGOS = ["liugong", "sopan", "byd", "fornovogas"] as const;
 
 /** The logo URL for a brand, relative to the site, or null when there is none. */
 export function brandLogo(b: { slug?: string | null; logoId?: string | null }) {
@@ -10,7 +10,7 @@ export function brandLogo(b: { slug?: string | null; logoId?: string | null }) {
 }
 
 /** Width ÷ height of the bundled files, so compact logos (BYD) can be drawn a little taller than wide ones. */
-const ASPECT: Record<string, number> = { liugong: 784 / 200, sopan: 661 / 200, byd: 359 / 200 };
+const ASPECT: Record<string, number> = { liugong: 784 / 200, sopan: 661 / 200, byd: 359 / 200, fornovogas: 1052 / 200 };
 
 /**
  * A height multiplier that gives logos of different shapes a similar visual weight (1 for wide

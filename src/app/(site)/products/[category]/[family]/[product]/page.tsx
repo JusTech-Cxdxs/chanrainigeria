@@ -9,6 +9,7 @@ import { SpecTable } from "@/components/site/SpecTable";
 import { Icon } from "@/components/ui/Icon";
 import { getFamily, getProduct } from "@/lib/catalogue";
 import { imageUrl, mediaUrl } from "@/lib/settings";
+import { modelFallbackImage } from "@/lib/type-images";
 
 type P = { params: Promise<{ category: string; family: string; product: string }> };
 export const dynamic = "force-dynamic";
@@ -25,7 +26,9 @@ export default async function ProductPage({ params }: P) {
   const [f, L, nav, prod] = await Promise.all([getFamily(family), siteContent("model"), siteContent("header"), siteContent("products")]);
   const c = p.family.category;
   const title = [p.brand?.name, p.name].filter(Boolean).join(" ");
-  const [first, ...rest] = p.imageIds.map((id) => mediaUrl(id)!);
+  const own = p.imageIds.map((id) => mediaUrl(id)!);
+  const borrowed = own.length ? null : modelFallbackImage(p.family, p.slug);
+  const [first, ...rest] = own.length ? own : borrowed ? [borrowed] : [];
 
   return (
     <>

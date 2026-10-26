@@ -1,7 +1,7 @@
 {
   "category": {
     "slug": "cng-gas-equipment",
-    "name": "CNG Compression & Gas Equipment",
+    "name": "CNG Refueling, Compression, Storage & Dispensing Equipment",
     "tagline": "Compressors, dispensers and gas skids for Nigeria's CNG stations and gas users",
     "intro": "Chanrai Nigeria supplies the station-side equipment that turns pipeline or trucked natural gas into vehicle fuel and dependable industrial supply: online and booster compressors, CNG dispensers and gas utility skids. We back it with installation, commissioning and on-site operation and maintenance so stations stay available. The range is aimed at developers, fleet operators and industrial users taking part in Nigeria's shift to compressed natural gas.",
     "salesBlurb": "Our sales engineers help size and configure complete CNG stations or single items, including mother, online and daughter station compressors, hydraulic boosters for cascade offloading, dispensers, and metering, pressure-regulating and decompression skids for gas users.",
@@ -12,15 +12,15 @@
     "slug": "sopan",
     "name": "SOPAN",
     "website": "https://sopan.co.in",
-    "about": "SOPAN is an Indian energy-services group with offices in Pune, Ahmedabad and Delhi plus a Gulf entity, Sopan Energy Contracting LLC. Its equipment business, Sopan Process Technologies (SPTL, sptlglobal.com), designs and builds CNG and compressed-biogas station equipment: hydraulic booster and online reciprocating compressors, dispensers, and metering, pressure-regulating and decompression skids. The wider group also handles EPC projects, operation and maintenance of compression systems and gas networks, and asset-integrity services such as CNG cylinder and safety relief valve testing. The group says it has more than 20 years of experience in oil and gas, city gas distribution and biogas.",
+    "about": "SOPAN is an Indian energy-services group with offices in Pune, Ahmedabad and Delhi plus a Gulf entity, Sopan Energy Contracting LLC. Its equipment business, Sopan Process Technologies (SPTL, sptlglobal.com), designs and builds CNG and compressed-biogas station equipment: hydraulic booster and online reciprocating compressors, dispensers, and metering, pressure-regulating and decompression skids. The wider group also handles EPC projects, operation and maintenance of compression systems and gas networks, and asset-integrity services such as CNG cylinder and safety relief valve testing. The group has more than 20 years of experience in oil and gas, city gas distribution and biogas.",
     "highlights": [
-      "Equipment range covers hydraulic booster compressors, online reciprocating CNG/CBG compressors, CNG/CBG dispensers and gas utility skids (sptlglobal.com)",
-      "Says it has worked with 25+ city gas distribution companies across 150+ geographical areas (sptlglobal.com)",
-      "Reports O&M support for more than 900 CNG compressors of various models (sptlglobal.com)",
-      "Says it has 3 manufacturing facilities in Gujarat and Maharashtra, India (sopan.co.in)",
-      "In-house test rig can pressurise nitrogen to 250 bar(g), with storage up to 300 bar(g), for batch accuracy testing of dispensers, boosters, cascades and fill posts before dispatch (sptlglobal.com)",
-      "Its CGD testing facilities are described as certified by India's Chief Controller of Explosives, Nagpur (sptlglobal.com)",
-      "COMPRETECH remote equipment monitoring and the MTeamz+ service-ticketing app support connected equipment (sptlglobal.com)"
+      "Equipment range covers hydraulic booster compressors, online reciprocating CNG/CBG compressors, CNG/CBG dispensers and gas utility skids",
+      "Has worked with 25+ city gas distribution companies across 150+ geographical areas",
+      "Provides O&M support for more than 900 CNG compressors of various models",
+      "Operates 3 manufacturing facilities in Gujarat and Maharashtra, India",
+      "In-house test rig pressurises nitrogen to 250 bar(g), with storage up to 300 bar(g), for batch accuracy testing of dispensers, boosters, cascades and fill posts before dispatch",
+      "Its CGD testing facilities are certified by India's Chief Controller of Explosives, Nagpur",
+      "COMPRETECH remote equipment monitoring and the MTeamz+ service-ticketing app support connected equipment"
     ],
     "sources": [
       "https://sopan.co.in",
@@ -35,16 +35,18 @@
     {
       "slug": "cng-station-epc",
       "name": "CNG Station EPC (Design and Build)",
-      "summary": "Turnkey engineering, procurement and construction of CNG infrastructure, from site layout and equipment selection through civil, mechanical and electrical works to a station ready for licensing.",
+      "summary": "Turnkey engineering, procurement and construction of CNG infrastructure, from site layout and equipment selection through mechanical, piping and electrical works to a station ready for licensing.",
       "includes": [
         "Station concept and equipment sizing for mother, online or daughter configurations",
         "Process and layout engineering, including hazardous-area and separation-distance planning",
         "Procurement and supply of compressors, dispensers, storage and skids",
-        "Civil, mechanical, piping, electrical and instrumentation works",
+        "Mechanical, piping, electrical and instrumentation works",
         "Fire-fighting and gas-detection systems",
         "Documentation to support the operator's regulatory approvals"
       ],
-      "sources": ["https://sopan.co.in"]
+      "sources": [
+        "https://sopan.co.in"
+      ]
     },
     {
       "slug": "installation-commissioning",
@@ -81,15 +83,17 @@
       ]
     },
     {
-      "slug": "cng-cylinder-testing",
-      "name": "CNG Cylinder Testing",
-      "summary": "Periodic inspection and testing of CNG cylinders as part of an asset-integrity programme, so cylinders stay within their certified service life.",
+      "slug": "service-agreements",
+      "name": "Service Agreement & Service Contracts",
+      "summary": "Annual service agreements that cover your stations and equipment with planned visits, agreed response times and a single point of contact.",
       "includes": [
-        "Visual inspection of cylinders and valves",
-        "Pressure testing in line with the applicable cylinder standard",
-        "Test records to support the owner's compliance file"
+        "Scheduled preventive maintenance visits",
+        "Agreed breakdown response times",
+        "Genuine parts and consumables planning",
+        "Service records and equipment health reports after every visit",
+        "Contracts sized to a single site or a whole network"
       ],
-      "sources": ["https://sopan.co.in"]
+      "sources": []
     },
     {
       "slug": "srv-testing",
@@ -100,7 +104,9 @@
         "Reporting of results and identification of valves needing service or replacement",
         "Scheduling within a wider asset-integrity plan"
       ],
-      "sources": ["https://sopan.co.in"]
+      "sources": [
+        "https://sopan.co.in"
+      ]
     },
     {
       "slug": "equipment-leasing",
@@ -128,7 +134,9 @@
         "SCADA/RTU remote access and historical data logs",
         "Mobile service tickets, technician assignment updates and maintenance history (MTeamz+)"
       ],
-      "sources": ["https://sptlglobal.com/iot-solutions-compretech-mteamz/"]
+      "sources": [
+        "https://sptlglobal.com/iot-solutions-compretech-mteamz/"
+      ]
     }
   ],
   "families": [
@@ -138,13 +146,38 @@
       "summary": "Complete station configurations (mother, online and daughter) built from compressors, storage, dispensers and controls, sized to your gas supply and vehicle demand.",
       "howItWorks": "A CNG station takes natural gas at whatever pressure is available, compresses it to about **250 bar**, stores it and dispenses it into vehicle cylinders rated for **200 bar**. The supply source decides the configuration.\n\n**Mother station.** Located on a gas pipeline. A large multi-stage reciprocating compressor fills mobile cascades (racks of high-pressure cylinders on a truck or trailer) through filling posts. It may also have dispensers for local vehicles.\n\n**Online station.** Also connected to a pipeline, but it compresses gas only for its own dispensers. Gas goes from the compressor through a priority panel into stationary storage banks and on to the forecourt.\n\n**Daughter station.** Has no pipeline. It gets gas from a mobile cascade trucked in from a mother station. At first the cascade's own pressure fills vehicles directly. As that pressure drops, a **hydraulic booster compressor** pushes the remaining gas up to dispensing pressure. This lets the station empty the cascade down to a low residual pressure before the truck returns for a refill.\n\nEvery configuration needs the same supporting systems: gas filtration and drying, **sequential (low/medium/high) bank filling** to keep fills fast and save compressor energy, emergency shutdown, gas detection, venting and fire protection.\n\nIn Nigeria, many new stations under the Presidential CNG programme are daughter stations, because pipeline access is limited. That makes the booster, cascade and dispenser set-up the most common station package.",
       "keyComponents": [
-        { "name": "Primary compressor", "role": "Raises pipeline gas to storage pressure at mother and online stations." },
-        { "name": "Hydraulic booster compressor", "role": "Draws gas from a trucked cascade and raises it to dispensing pressure at daughter stations." },
-        { "name": "Gas dryer and filters", "role": "Remove moisture, dust and liquids so water does not condense or freeze in high-pressure lines and vehicle cylinders." },
-        { "name": "Priority panel", "role": "Sends compressed gas first to the dispensers, then to each storage bank in turn." },
-        { "name": "Storage cascade", "role": "Banks of high-pressure cylinders that buffer gas so dispensing is not limited by compressor output." },
-        { "name": "Dispenser", "role": "Meters and delivers gas into vehicles, with safety shut-offs and billing." },
-        { "name": "Station control and ESD system", "role": "Coordinates equipment, monitors gas detectors and shuts the station down safely on a fault." }
+        {
+          "name": "Primary compressor",
+          "role": "Raises pipeline gas to storage pressure at mother and online stations."
+        },
+        {
+          "name": "Hydraulic booster compressor",
+          "role": "Draws gas from a trucked cascade and raises it to dispensing pressure at daughter stations."
+        },
+        {
+          "name": "Gas dryer and filters",
+          "role": "Remove moisture, dust and liquids so water does not condense or freeze in high-pressure lines and vehicle cylinders."
+        },
+        {
+          "name": "Priority panel",
+          "role": "Sends compressed gas first to the dispensers, then to each storage bank in turn."
+        },
+        {
+          "name": "Storage cascade",
+          "role": "Banks of high-pressure cylinders that buffer gas so dispensing is not limited by compressor output."
+        },
+        {
+          "name": "Dispenser",
+          "role": "Meters and delivers gas into vehicles, with safety shut-offs and billing."
+        },
+        {
+          "name": "Station control and ESD system",
+          "role": "Coordinates equipment, monitors gas detectors and shuts the station down safely on a fault."
+        },
+        {
+          "name": "Tube trailer skids",
+          "role": "Transport CNG from the mother station to consumers and to daughter stations in a virtual pipeline network."
+        }
       ],
       "applications": [
         "Pipeline-connected mother stations filling cascades for a network of daughter stations",
@@ -168,9 +201,27 @@
           "Inspect dispenser hoses, nozzles and breakaways"
         ],
         "intervals": [
-          { "hours": 500, "tasks": ["Inspect filters and drain separators", "Check fittings and supports for loosening"] },
-          { "hours": 2000, "tasks": ["Service compressor valves and seals as required", "Test station shutdown functions"] },
-          { "hours": 8000, "tasks": ["Major compressor inspection", "Safety relief valve testing and calibration of instruments"] }
+          {
+            "hours": 500,
+            "tasks": [
+              "Inspect filters and drain separators",
+              "Check fittings and supports for loosening"
+            ]
+          },
+          {
+            "hours": 2000,
+            "tasks": [
+              "Service compressor valves and seals as required",
+              "Test station shutdown functions"
+            ]
+          },
+          {
+            "hours": 8000,
+            "tasks": [
+              "Major compressor inspection",
+              "Safety relief valve testing and calibration of instruments"
+            ]
+          }
         ],
         "note": "Indicative, based on general industry practice for CNG stations. Always follow the manufacturer's operation and maintenance manual and the regulator's inspection requirements."
       },
@@ -181,19 +232,59 @@
         "Fill only vehicles fitted with cylinders manufactured, tested and certified for automotive CNG and installed at accredited conversion centres. Stations should carry out pre-fill safety checks."
       ],
       "specFields": [
-        { "key": "stationType", "label": "Station type", "unit": "" },
-        { "key": "compressorCapacity", "label": "Compressor capacity", "unit": "SCMH" },
-        { "key": "storageWaterVolume", "label": "Storage water volume", "unit": "L" },
-        { "key": "storagePressure", "label": "Storage pressure", "unit": "bar g" },
-        { "key": "dispensers", "label": "Number of dispensers", "unit": "" },
-        { "key": "nozzles", "label": "Total nozzles", "unit": "" },
-        { "key": "vehiclesPerDay", "label": "Design vehicles per day", "unit": "" }
+        {
+          "key": "stationType",
+          "label": "Station type",
+          "unit": ""
+        },
+        {
+          "key": "compressorCapacity",
+          "label": "Compressor capacity",
+          "unit": "SCMH"
+        },
+        {
+          "key": "storageWaterVolume",
+          "label": "Storage water volume",
+          "unit": "L"
+        },
+        {
+          "key": "storagePressure",
+          "label": "Storage pressure",
+          "unit": "bar g"
+        },
+        {
+          "key": "dispensers",
+          "label": "Number of dispensers",
+          "unit": ""
+        },
+        {
+          "key": "nozzles",
+          "label": "Total nozzles",
+          "unit": ""
+        },
+        {
+          "key": "vehiclesPerDay",
+          "label": "Design vehicles per day",
+          "unit": ""
+        }
       ],
       "faq": [
-        { "q": "What is the difference between a mother, online and daughter station?", "a": "Mother and online stations are both on a gas pipeline. A mother station mainly fills mobile cascades for other sites, while an online station compresses gas only for its own dispensers. A daughter station has no pipeline and runs on gas delivered by cascade." },
-        { "q": "Why does a daughter station need a booster?", "a": "As vehicles are filled, the cascade pressure falls and soon cannot fill a 200 bar vehicle cylinder by itself. The booster raises the remaining gas to dispensing pressure, so more of each delivery can be sold." },
-        { "q": "Can a station be expanded later?", "a": "Yes, if planned for. Leave space and pipework connections for extra storage, dispensers or a second compressor, and size the electrical supply with growth in mind." },
-        { "q": "Do you supply vehicle conversion kits?", "a": "This range covers station-side equipment. Vehicle conversion should be done at accredited conversion centres using certified kits and cylinders." }
+        {
+          "q": "What is the difference between a mother, online and daughter station?",
+          "a": "Mother and online stations are both on a gas pipeline. A mother station mainly fills mobile cascades for other sites, while an online station compresses gas only for its own dispensers. A daughter station has no pipeline and runs on gas delivered by cascade."
+        },
+        {
+          "q": "Why does a daughter station need a booster?",
+          "a": "As vehicles are filled, the cascade pressure falls and soon cannot fill a 200 bar vehicle cylinder by itself. The booster raises the remaining gas to dispensing pressure, so more of each delivery can be sold."
+        },
+        {
+          "q": "Can a station be expanded later?",
+          "a": "Yes, if planned for. Leave space and pipework connections for extra storage, dispensers or a second compressor, and size the electrical supply with growth in mind."
+        },
+        {
+          "q": "Do you supply vehicle conversion kits?",
+          "a": "This range covers station-side equipment. Vehicle conversion should be done at accredited conversion centres using certified kits and cylinders."
+        }
       ],
       "models": []
     },
@@ -201,15 +292,36 @@
       "slug": "hydraulic-booster-compressors",
       "name": "Hydraulic Booster Compressors",
       "summary": "Compact, hydraulically driven compressors that draw gas from a mobile cascade and raise it to vehicle-filling pressure, the core of a daughter station.",
-      "howItWorks": "A hydraulic booster replaces the electric-motor crankshaft of a conventional compressor with **hydraulic drive**. An electric motor turns a hydraulic pump in a power unit. The pump drives a hydraulic piston back and forth, and that piston is rigidly connected to gas pistons in sealed compression cylinders. A directional valve reverses the oil flow at the end of each stroke, so gas is drawn in and pushed out on alternate strokes through check valves.\n\nThe booster is suited to cascade offloading because hydraulic drive works well with **variable suction pressure**. When a cascade arrives full (around 200 bar), the booster has little to do and its throughput is high. As the cascade empties, the compression ratio rises and the throughput falls, but the booster can keep drawing gas down to a low residual pressure. SPTL quotes a suction range of 200 down to 30 bar g. The lower the cascade can be emptied, the more gas is sold per trip and the fewer truck deliveries are needed.\n\nThe gas end runs with **non-lubricated** seals, so no oil enters the gas. This protects dispensers and vehicle cylinders. The hydraulic oil is cooled by a fan cooler, and the gas may be cooled after compression before it reaches the dispenser or a small buffer store. A PLC sequences the strokes, monitors pressures and temperatures, and shuts the unit down on a fault. Boosters can also be connected to SCADA or RTU systems for remote monitoring.",
+      "howItWorks": "A hydraulic booster replaces the electric-motor crankshaft of a conventional compressor with **hydraulic drive**. An electric motor turns a hydraulic pump in a power unit. The pump drives a hydraulic piston back and forth, and that piston is rigidly connected to gas pistons in sealed compression cylinders. A directional valve reverses the oil flow at the end of each stroke, so gas is drawn in and pushed out on alternate strokes through check valves.\n\nThe booster is suited to cascade offloading because hydraulic drive works well with **variable suction pressure**. When a cascade arrives full (around 200 bar), the booster has little to do and its throughput is high. As the cascade empties, the compression ratio rises and the throughput falls, but the booster can keep drawing gas down to a low residual pressure. The suction range runs from 200 down to 30 bar g. The lower the cascade can be emptied, the more gas is sold per trip and the fewer truck deliveries are needed.\n\nThe gas end runs with **non-lubricated** seals, so no oil enters the gas. This protects dispensers and vehicle cylinders. The hydraulic oil is cooled by a fan cooler, and the gas may be cooled after compression before it reaches the dispenser or a small buffer store. A PLC sequences the strokes, monitors pressures and temperatures, and shuts the unit down on a fault. Boosters can also be connected to SCADA or RTU systems for remote monitoring.",
       "keyComponents": [
-        { "name": "Hydraulic power unit", "role": "Electric motor, pump and reservoir that supply pressurised oil to drive the compressor." },
-        { "name": "Intensifier / gas cylinders", "role": "Hydraulically driven pistons that draw in and compress the gas." },
-        { "name": "Directional control valve", "role": "Reverses oil flow at each end of the stroke to produce reciprocating motion." },
-        { "name": "Suction and discharge check valves", "role": "Let gas flow one way only through each compression chamber." },
-        { "name": "Oil and gas coolers", "role": "Remove the heat of hydraulic losses and compression." },
-        { "name": "Cascade connection panel", "role": "Hoses, valves and instruments that link the trailer cascade to the booster safely." },
-        { "name": "PLC control and safety instrumentation", "role": "Sequences operation, monitors pressures and temperatures, and trips the unit on faults." }
+        {
+          "name": "Hydraulic power unit",
+          "role": "Electric motor, pump and reservoir that supply pressurised oil to drive the compressor."
+        },
+        {
+          "name": "Intensifier / gas cylinders",
+          "role": "Hydraulically driven pistons that draw in and compress the gas."
+        },
+        {
+          "name": "Directional control valve",
+          "role": "Reverses oil flow at each end of the stroke to produce reciprocating motion."
+        },
+        {
+          "name": "Suction and discharge check valves",
+          "role": "Let gas flow one way only through each compression chamber."
+        },
+        {
+          "name": "Oil and gas coolers",
+          "role": "Remove the heat of hydraulic losses and compression."
+        },
+        {
+          "name": "Cascade connection panel",
+          "role": "Hoses, valves and instruments that link the trailer cascade to the booster safely."
+        },
+        {
+          "name": "PLC control and safety instrumentation",
+          "role": "Sequences operation, monitors pressures and temperatures, and trips the unit on faults."
+        }
       ],
       "applications": [
         "Daughter stations under Nigeria's Presidential CNG programme fed by trucked cascades",
@@ -233,9 +345,29 @@
           "Alarm history on the control panel"
         ],
         "intervals": [
-          { "hours": 500, "tasks": ["Inspect gas inlet filter", "Check hose condition and fittings torque"] },
-          { "hours": 2000, "tasks": ["Replace hydraulic oil filter", "Inspect gas seals and check valves", "Clean oil cooler fins"] },
-          { "hours": 4000, "tasks": ["Replace gas piston seals and wear parts as required", "Hydraulic oil analysis or change", "Calibrate pressure transmitters and test safety valves"] }
+          {
+            "hours": 500,
+            "tasks": [
+              "Inspect gas inlet filter",
+              "Check hose condition and fittings torque"
+            ]
+          },
+          {
+            "hours": 2000,
+            "tasks": [
+              "Replace hydraulic oil filter",
+              "Inspect gas seals and check valves",
+              "Clean oil cooler fins"
+            ]
+          },
+          {
+            "hours": 4000,
+            "tasks": [
+              "Replace gas piston seals and wear parts as required",
+              "Hydraulic oil analysis or change",
+              "Calibrate pressure transmitters and test safety valves"
+            ]
+          }
         ],
         "note": "Indicative, based on general industry practice for hydraulic boosters. Always follow the manufacturer's operation and maintenance manual."
       },
@@ -246,19 +378,60 @@
         "Accept only cascades with in-date cylinder certification."
       ],
       "specFields": [
-        { "key": "flowCapacity", "label": "Throughput", "unit": "SCMH" },
-        { "key": "suctionPressure", "label": "Suction pressure range", "unit": "bar g" },
-        { "key": "dischargePressure", "label": "Discharge pressure", "unit": "bar g" },
-        { "key": "motorPower", "label": "Motor power", "unit": "kW" },
-        { "key": "fillingPoints", "label": "Filling points supported", "unit": "" },
-        { "key": "lubrication", "label": "Gas-end lubrication", "unit": "" },
-        { "key": "gasType", "label": "Gas type", "unit": "" },
-        { "key": "connectivity", "label": "Remote connectivity", "unit": "" }
+        {
+          "key": "flowCapacity",
+          "label": "Throughput",
+          "unit": "SCMH"
+        },
+        {
+          "key": "suctionPressure",
+          "label": "Suction pressure range",
+          "unit": "bar g"
+        },
+        {
+          "key": "dischargePressure",
+          "label": "Discharge pressure",
+          "unit": "bar g"
+        },
+        {
+          "key": "motorPower",
+          "label": "Motor power",
+          "unit": "kW"
+        },
+        {
+          "key": "fillingPoints",
+          "label": "Filling points supported",
+          "unit": ""
+        },
+        {
+          "key": "lubrication",
+          "label": "Gas-end lubrication",
+          "unit": ""
+        },
+        {
+          "key": "gasType",
+          "label": "Gas type",
+          "unit": ""
+        },
+        {
+          "key": "connectivity",
+          "label": "Remote connectivity",
+          "unit": ""
+        }
       ],
       "faq": [
-        { "q": "How low can the booster empty a cascade?", "a": "SPTL quotes a suction range down to 30 bar g. The actual residual pressure depends on station settings and demand." },
-        { "q": "Will oil get into my vehicles' cylinders?", "a": "The gas end is non-lubricated, so the gas stays oil-free." },
-        { "q": "Can one booster feed more than one dispenser?", "a": "Yes. SPTL describes its boosters as supporting multiple vehicle filling points. The number depends on throughput and peak demand." }
+        {
+          "q": "How low can the booster empty a cascade?",
+          "a": "The booster works with suction pressure down to 30 bar g. The actual residual pressure depends on station settings and demand."
+        },
+        {
+          "q": "Will oil get into my vehicles' cylinders?",
+          "a": "The gas end is non-lubricated, so the gas stays oil-free."
+        },
+        {
+          "q": "Can one booster feed more than one dispenser?",
+          "a": "Yes. The boosters support multiple vehicle filling points. The number depends on throughput and peak demand."
+        }
       ],
       "models": [
         {
@@ -282,7 +455,9 @@
             "connectivity": "SCADA / RTU"
           },
           "specsVerified": false,
-          "sources": ["https://sptlglobal.com/hydraulic-booster-compressors/"]
+          "sources": [
+            "https://sptlglobal.com/hydraulic-booster-compressors/"
+          ]
         }
       ]
     },
@@ -292,14 +467,38 @@
       "summary": "Multi-stage reciprocating compressors that take pipeline gas up to CNG storage pressure, for mother stations, online stations and pipeline boosting.",
       "howItWorks": "A reciprocating compressor raises gas pressure in steps. Compressing natural gas from pipeline pressure to about 250 bar in one cylinder would produce very high temperatures, so the job is split across **several stages**, usually three or four for CNG. Each stage handles a similar pressure ratio.\n\nAn electric motor (or gas engine) drives a **crankshaft** directly or through belts. Connecting rods and crossheads turn the rotation into straight-line piston strokes. Each cylinder has automatic **suction and discharge valves** that open and close with the pressure difference. Gas is drawn in, compressed and pushed out on every stroke. Each stage has a smaller bore than the one before, because the gas becomes denser.\n\n**Intercooling** follows each stage. The hot gas passes through an air-cooled (or water-cooled) heat exchanger to bring its temperature back down before the next stage. This cuts the power needed, protects valves and seals, and lets moisture or liquids drop out in **separators**, which drain automatically. An aftercooler cools the gas before it leaves the package.\n\nIn **non-lubricated** cylinders the piston and rider rings are made of self-lubricating polymers instead of oil-fed metal, so the gas leaves oil-free. Inlet filtration and a gas dryer protect the machine and the downstream vehicle cylinders. Each stage has a safety relief valve, and temperature, pressure and vibration trips are monitored by the control panel. At start and stop the machine is unloaded or blown down to a recovery vessel. Discharge goes to a priority panel and storage at an online station, or to filling posts for mobile cascades at a mother station.",
       "keyComponents": [
-        { "name": "Frame and crankshaft", "role": "Converts motor rotation into the reciprocating motion of the pistons." },
-        { "name": "Compression cylinders (multi-stage)", "role": "Raise gas pressure in steps, with each stage sized for denser gas." },
-        { "name": "Suction and discharge valves", "role": "Self-acting valves that control gas flow into and out of each cylinder." },
-        { "name": "Inter-stage coolers and separators", "role": "Cool the gas between stages and remove condensed liquids." },
-        { "name": "Inlet filter and gas dryer", "role": "Protect the compressor and keep moisture out of high-pressure storage and vehicles." },
-        { "name": "Drive motor (direct or belt)", "role": "Supplies shaft power to the compressor." },
-        { "name": "Control panel and safety trips", "role": "Start/stop sequencing, protection and remote monitoring." },
-        { "name": "Blowdown / recovery vessel", "role": "Captures gas released at shutdown so it is not vented to atmosphere." }
+        {
+          "name": "Frame and crankshaft",
+          "role": "Converts motor rotation into the reciprocating motion of the pistons."
+        },
+        {
+          "name": "Compression cylinders (multi-stage)",
+          "role": "Raise gas pressure in steps, with each stage sized for denser gas."
+        },
+        {
+          "name": "Suction and discharge valves",
+          "role": "Self-acting valves that control gas flow into and out of each cylinder."
+        },
+        {
+          "name": "Inter-stage coolers and separators",
+          "role": "Cool the gas between stages and remove condensed liquids."
+        },
+        {
+          "name": "Inlet filter and gas dryer",
+          "role": "Protect the compressor and keep moisture out of high-pressure storage and vehicles."
+        },
+        {
+          "name": "Drive motor (direct or belt)",
+          "role": "Supplies shaft power to the compressor."
+        },
+        {
+          "name": "Control panel and safety trips",
+          "role": "Start/stop sequencing, protection and remote monitoring."
+        },
+        {
+          "name": "Blowdown / recovery vessel",
+          "role": "Captures gas released at shutdown so it is not vented to atmosphere."
+        }
       ],
       "applications": [
         "Mother stations on gas pipelines filling mobile cascades for daughter stations",
@@ -323,10 +522,35 @@
           "Vibration and unusual noise"
         ],
         "intervals": [
-          { "hours": 500, "tasks": ["Inspect inlet filter element", "Check belt tension (belt drive) and cooler fins"] },
-          { "hours": 2000, "tasks": ["Inspect or service compressor valves", "Change crankcase oil and filter", "Test safety trips"] },
-          { "hours": 4000, "tasks": ["Replace piston and rider rings and packing as required", "Inspect dryer desiccant", "Calibrate instruments and test relief valves"] },
-          { "hours": 16000, "tasks": ["Major overhaul: bearings, crossheads, cylinder liners inspection"] }
+          {
+            "hours": 500,
+            "tasks": [
+              "Inspect inlet filter element",
+              "Check belt tension (belt drive) and cooler fins"
+            ]
+          },
+          {
+            "hours": 2000,
+            "tasks": [
+              "Inspect or service compressor valves",
+              "Change crankcase oil and filter",
+              "Test safety trips"
+            ]
+          },
+          {
+            "hours": 4000,
+            "tasks": [
+              "Replace piston and rider rings and packing as required",
+              "Inspect dryer desiccant",
+              "Calibrate instruments and test relief valves"
+            ]
+          },
+          {
+            "hours": 16000,
+            "tasks": [
+              "Major overhaul: bearings, crossheads, cylinder liners inspection"
+            ]
+          }
         ],
         "note": "Indicative, based on general industry practice for reciprocating gas compressors. Always follow the manufacturer's operation and maintenance manual."
       },
@@ -337,19 +561,60 @@
         "Recognised codes for packaged reciprocating gas compressors and natural gas fuelling stations should guide design and inspection."
       ],
       "specFields": [
-        { "key": "flowCapacity", "label": "Capacity", "unit": "SCMH" },
-        { "key": "suctionPressure", "label": "Suction pressure", "unit": "bar g" },
-        { "key": "dischargePressure", "label": "Discharge pressure", "unit": "bar g" },
-        { "key": "stages", "label": "Compression stages", "unit": "" },
-        { "key": "motorPower", "label": "Motor power", "unit": "kW" },
-        { "key": "drive", "label": "Drive", "unit": "" },
-        { "key": "lubrication", "label": "Cylinder lubrication", "unit": "" },
-        { "key": "gasType", "label": "Gas type", "unit": "" }
+        {
+          "key": "flowCapacity",
+          "label": "Capacity",
+          "unit": "SCMH"
+        },
+        {
+          "key": "suctionPressure",
+          "label": "Suction pressure",
+          "unit": "bar g"
+        },
+        {
+          "key": "dischargePressure",
+          "label": "Discharge pressure",
+          "unit": "bar g"
+        },
+        {
+          "key": "stages",
+          "label": "Compression stages",
+          "unit": ""
+        },
+        {
+          "key": "motorPower",
+          "label": "Motor power",
+          "unit": "kW"
+        },
+        {
+          "key": "drive",
+          "label": "Drive",
+          "unit": ""
+        },
+        {
+          "key": "lubrication",
+          "label": "Cylinder lubrication",
+          "unit": ""
+        },
+        {
+          "key": "gasType",
+          "label": "Gas type",
+          "unit": ""
+        }
       ],
       "faq": [
-        { "q": "Why are several stages needed?", "a": "Splitting compression across stages, with cooling in between, keeps gas temperatures and the power needed under control and protects valves and seals." },
-        { "q": "What does non-lubricated mean?", "a": "The cylinders run with self-lubricating rings instead of oil, so no compressor oil is carried into the gas." },
-        { "q": "What capacities are available?", "a": "SPTL lists online reciprocating compressors up to 3,000 SCMH, with higher capacities on request." }
+        {
+          "q": "Why are several stages needed?",
+          "a": "Splitting compression across stages, with cooling in between, keeps gas temperatures and the power needed under control and protects valves and seals."
+        },
+        {
+          "q": "What does non-lubricated mean?",
+          "a": "The cylinders run with self-lubricating rings instead of oil, so no compressor oil is carried into the gas."
+        },
+        {
+          "q": "What capacities are available?",
+          "a": "Online reciprocating compressors are available up to 3,000 SCMH, with higher capacities on request."
+        }
       ],
       "models": [
         {
@@ -371,7 +636,10 @@
             "gasType": "Natural gas / CBG"
           },
           "specsVerified": false,
-          "sources": ["https://sptlglobal.com/online-reciprocating-cng-compressor/", "https://sptlglobal.com"]
+          "sources": [
+            "https://sptlglobal.com/online-reciprocating-cng-compressor/",
+            "https://sptlglobal.com"
+          ]
         }
       ]
     },
@@ -381,12 +649,30 @@
       "summary": "Metered CNG/CBG dispensers in 1 to 3 bank configurations for cars, buses and tricycles, with safety shut-offs and billing.",
       "howItWorks": "A CNG dispenser does for gas what a petrol pump does for liquid fuel, but at about 200 bar into the vehicle. It has to measure accurately, fill quickly and stop at the right pressure.\n\n**Metering.** Gas is sold by mass (kg) or standard volume, so most CNG dispensers use a **Coriolis mass-flow meter**. Gas flows through vibrating tubes, and the mass flow twists the tubes slightly. The meter turns that twist into mass flow regardless of pressure or temperature. The electronics multiply the result by the unit price for the display and billing.\n\n**Sequential bank filling.** In a 2- or 3-bank dispenser, solenoid or electro-pneumatic valves fill first from the low-pressure storage bank. When flow drops, they switch to the medium bank and then to the high bank. This draws stored gas down evenly and keeps fills fast, and the compressor then tops up the banks.\n\n**Temperature compensation.** Gas heats up as it is compressed into the vehicle cylinder. A cylinder filled to 200 bar while hot will settle below 200 bar once it cools. A temperature-compensated dispenser uses ambient temperature to calculate a target pressure that gives the correct settled fill without ever exceeding the cylinder's safe limit. This matters in Nigeria's high ambient temperatures.\n\n**Safety.** Each hose has a **breakaway coupling** that separates and seals both ends if a vehicle drives off while connected. An over-pressure cut-off and excess-flow protection limit what reaches the vehicle. Filters remove particles and oil aerosols, and nozzles are designed to match standard vehicle receptacles.",
       "keyComponents": [
-        { "name": "Mass-flow meter", "role": "Measures gas delivered, typically by the Coriolis principle, for accurate billing." },
-        { "name": "Sequencing valves", "role": "Solenoid or electro-pneumatic valves that switch between storage banks during a fill." },
-        { "name": "Coalescing and particulate filters", "role": "Remove oil aerosols and particles so clean gas reaches the vehicle." },
-        { "name": "Hoses, nozzles and breakaways", "role": "Connect to the vehicle receptacle and separate safely if pulled." },
-        { "name": "Electronic computer and display", "role": "Controls the fill, applies the price and shows quantity and amount." },
-        { "name": "Pressure and temperature sensors", "role": "Provide data for fill termination and over-pressure protection." }
+        {
+          "name": "Mass-flow meter",
+          "role": "Measures gas delivered, typically by the Coriolis principle, for accurate billing."
+        },
+        {
+          "name": "Sequencing valves",
+          "role": "Solenoid or electro-pneumatic valves that switch between storage banks during a fill."
+        },
+        {
+          "name": "Coalescing and particulate filters",
+          "role": "Remove oil aerosols and particles so clean gas reaches the vehicle."
+        },
+        {
+          "name": "Hoses, nozzles and breakaways",
+          "role": "Connect to the vehicle receptacle and separate safely if pulled."
+        },
+        {
+          "name": "Electronic computer and display",
+          "role": "Controls the fill, applies the price and shows quantity and amount."
+        },
+        {
+          "name": "Pressure and temperature sensors",
+          "role": "Provide data for fill termination and over-pressure protection."
+        }
       ],
       "applications": [
         "Forecourt dispensing for cars and tricycles (keke)",
@@ -409,9 +695,28 @@
           "Look for leaks inside the cabinet (by smell, sound or detector)"
         ],
         "intervals": [
-          { "hours": 1000, "tasks": ["Drain and inspect filters", "Check valve operation"] },
-          { "hours": 4000, "tasks": ["Replace filter elements", "Service nozzle seals", "Verify meter accuracy against reference"] },
-          { "hours": 8000, "tasks": ["Replace hoses or breakaways per age and condition", "Recalibrate pressure transmitters"] }
+          {
+            "hours": 1000,
+            "tasks": [
+              "Drain and inspect filters",
+              "Check valve operation"
+            ]
+          },
+          {
+            "hours": 4000,
+            "tasks": [
+              "Replace filter elements",
+              "Service nozzle seals",
+              "Verify meter accuracy against reference"
+            ]
+          },
+          {
+            "hours": 8000,
+            "tasks": [
+              "Replace hoses or breakaways per age and condition",
+              "Recalibrate pressure transmitters"
+            ]
+          }
         ],
         "note": "Indicative, based on general industry practice for CNG dispensers. Hose replacement is often driven by age as well as hours. Always follow the manufacturer's operation and maintenance manual."
       },
@@ -422,18 +727,55 @@
         "Dispenser electrics must be suitable for hazardous areas, and the unit should be protected from vehicle impact."
       ],
       "specFields": [
-        { "key": "banks", "label": "Bank configuration", "unit": "" },
-        { "key": "nozzles", "label": "Nozzles / hoses", "unit": "" },
-        { "key": "vehicleTypes", "label": "Vehicle types", "unit": "" },
-        { "key": "flowRate", "label": "Max flow", "unit": "kg/min" },
-        { "key": "workingPressure", "label": "Working pressure", "unit": "bar g" },
-        { "key": "meterType", "label": "Meter type", "unit": "" },
-        { "key": "connectivity", "label": "Remote connectivity", "unit": "" }
+        {
+          "key": "banks",
+          "label": "Bank configuration",
+          "unit": ""
+        },
+        {
+          "key": "nozzles",
+          "label": "Nozzles / hoses",
+          "unit": ""
+        },
+        {
+          "key": "vehicleTypes",
+          "label": "Vehicle types",
+          "unit": ""
+        },
+        {
+          "key": "flowRate",
+          "label": "Max flow",
+          "unit": "kg/min"
+        },
+        {
+          "key": "workingPressure",
+          "label": "Working pressure",
+          "unit": "bar g"
+        },
+        {
+          "key": "meterType",
+          "label": "Meter type",
+          "unit": ""
+        },
+        {
+          "key": "connectivity",
+          "label": "Remote connectivity",
+          "unit": ""
+        }
       ],
       "faq": [
-        { "q": "Why is CNG sold by kg or SCM rather than litres?", "a": "Gas volume changes with pressure and temperature. Mass is constant, so mass-based metering is fair to both buyer and seller." },
-        { "q": "What is a breakaway?", "a": "A coupling in the hose that separates and seals both ends if a vehicle drives away while still connected, preventing a gas release." },
-        { "q": "Can one dispenser serve cars and buses?", "a": "SPTL offers configurations for cars, buses and auto-rickshaws. Buses normally need a higher-flow nozzle, so mixed sites often have separate lanes." }
+        {
+          "q": "Why is CNG sold by kg or SCM rather than litres?",
+          "a": "Gas volume changes with pressure and temperature. Mass is constant, so mass-based metering is fair to both buyer and seller."
+        },
+        {
+          "q": "What is a breakaway?",
+          "a": "A coupling in the hose that separates and seals both ends if a vehicle drives away while still connected, preventing a gas release."
+        },
+        {
+          "q": "Can one dispenser serve cars and buses?",
+          "a": "SPTL offers configurations for cars, buses and auto-rickshaws. Buses normally need a higher-flow nozzle, so mixed sites often have separate lanes."
+        }
       ],
       "models": [
         {
@@ -445,7 +787,7 @@
             "1, 2 or 3 bank configurations",
             "Oil-free filling with coalescing and particulate filters",
             "Fast-acting electro-pneumatic or solenoid valves",
-            "Breakaways and filling nozzles described as certified, plus over-pressure fill protection",
+            "Certified breakaways and filling nozzles, plus over-pressure fill protection",
             "Gas measurement for billing and RTU Modbus connectivity"
           ],
           "specs": {
@@ -454,7 +796,9 @@
             "connectivity": "RTU Modbus"
           },
           "specsVerified": false,
-          "sources": ["https://sptlglobal.com/cng-cbg-dispenser/"]
+          "sources": [
+            "https://sptlglobal.com/cng-cbg-dispenser/"
+          ]
         }
       ]
     },
@@ -462,14 +806,32 @@
       "slug": "cascades-storage",
       "name": "Cascades & Storage",
       "summary": "High-pressure cylinder banks that store compressed gas at the station or carry it by road to daughter stations, supplied as part of a station solution.",
-      "howItWorks": "A cascade is a group of high-pressure gas cylinders connected by manifold piping and valves. It is usually rated around **250 bar** and mounted in a steel frame. **Stationary** cascades stay on site as station storage. **Mobile** cascades are mounted on a truck or trailer and carry gas from a mother station to daughter stations or industrial users.\n\nStation storage is normally split into **low, medium and high pressure banks**. A **priority panel** sends the compressor's output first to the dispensers when vehicles are filling, and otherwise to the banks in order, starting with the high bank. When dispensing, the dispenser draws from the low bank first and moves to higher banks as flow drops. Running the banks this way gives fast fills and uses more of the stored gas than a single bank could.\n\nA mobile cascade is filled at a mother station through a filling post, then driven to the daughter site and connected to the booster through a decanting panel. Storage capacity is usually stated as **water volume** (litres). Multiplying water volume by the usable pressure drop gives the gas available.\n\nCylinders are made of steel or composite (Type 1 to 4), each with a valve, a burst disc or pressure relief device, and an individual certificate. They need periodic **inspection and hydrostatic retesting** to stay in service.\n\nNote: SPTL lists cascades (mobile and stationary) as station equipment and as wet-leased equipment, but publishes no cascade models or specifications. Chanrai supplies cascades as part of a station package.",
+      "howItWorks": "A cascade is a group of high-pressure gas cylinders connected by manifold piping and valves. It is usually rated around **250 bar** and mounted in a steel frame. **Stationary** cascades stay on site as station storage. **Mobile** cascades are mounted on a truck or trailer and carry gas from a mother station to daughter stations or industrial users.\n\nStation storage is normally split into **low, medium and high pressure banks**. A **priority panel** sends the compressor's output first to the dispensers when vehicles are filling, and otherwise to the banks in order, starting with the high bank. When dispensing, the dispenser draws from the low bank first and moves to higher banks as flow drops. Running the banks this way gives fast fills and uses more of the stored gas than a single bank could.\n\nA mobile cascade is filled at a mother station through a filling post, then driven to the daughter site and connected to the booster through a decanting panel. Storage capacity is usually stated as **water volume** (litres). Multiplying water volume by the usable pressure drop gives the gas available.\n\nCylinders are made of steel or composite (Type 1 to 4), each with a valve, a burst disc or pressure relief device, and an individual certificate. They need periodic **inspection and hydrostatic retesting** to stay in service.\n\nChanrai supplies mobile and stationary cascades as part of a station package, sized to each project.",
       "keyComponents": [
-        { "name": "High-pressure cylinders", "role": "Store compressed gas, each built and certified for its working pressure." },
-        { "name": "Manifold and isolation valves", "role": "Connect cylinders into banks and allow sections to be isolated." },
-        { "name": "Pressure relief devices", "role": "Protect each cylinder or bank from overpressure or fire exposure." },
-        { "name": "Frame or trailer chassis", "role": "Supports and protects the cylinders; the mobile version is road-going." },
-        { "name": "Priority panel", "role": "Controls the order in which banks are filled from the compressor." },
-        { "name": "Filling post / decanting panel", "role": "Connects mobile cascades for filling at the mother station and offloading at the daughter station." }
+        {
+          "name": "High-pressure cylinders",
+          "role": "Store compressed gas, each built and certified for its working pressure."
+        },
+        {
+          "name": "Manifold and isolation valves",
+          "role": "Connect cylinders into banks and allow sections to be isolated."
+        },
+        {
+          "name": "Pressure relief devices",
+          "role": "Protect each cylinder or bank from overpressure or fire exposure."
+        },
+        {
+          "name": "Frame or trailer chassis",
+          "role": "Supports and protects the cylinders; the mobile version is road-going."
+        },
+        {
+          "name": "Priority panel",
+          "role": "Controls the order in which banks are filled from the compressor."
+        },
+        {
+          "name": "Filling post / decanting panel",
+          "role": "Connects mobile cascades for filling at the mother station and offloading at the daughter station."
+        }
       ],
       "applications": [
         "Station buffer storage at online and mother stations",
@@ -490,8 +852,20 @@
           "Confirm pressure gauges read plausibly"
         ],
         "intervals": [
-          { "hours": 4000, "tasks": ["Leak test manifolds and fittings", "Inspect frame mounts and earthing"] },
-          { "hours": 8000, "tasks": ["Inspect and service isolation valves", "Test pressure relief devices"] }
+          {
+            "hours": 4000,
+            "tasks": [
+              "Leak test manifolds and fittings",
+              "Inspect frame mounts and earthing"
+            ]
+          },
+          {
+            "hours": 8000,
+            "tasks": [
+              "Inspect and service isolation valves",
+              "Test pressure relief devices"
+            ]
+          }
         ],
         "note": "Indicative. Cylinder requalification is set by calendar (typically a few years, per the cylinder standard and regulator), not by hours. Always follow the manufacturer's manual and the applicable cylinder standard."
       },
@@ -502,17 +876,50 @@
         "Follow Nigerian regulations for transporting and storing compressed gas."
       ],
       "specFields": [
-        { "key": "waterVolume", "label": "Total water volume", "unit": "L" },
-        { "key": "workingPressure", "label": "Working pressure", "unit": "bar g" },
-        { "key": "cylinderType", "label": "Cylinder type", "unit": "" },
-        { "key": "cylinders", "label": "Number of cylinders", "unit": "" },
-        { "key": "banks", "label": "Banks", "unit": "" },
-        { "key": "mounting", "label": "Mounting", "unit": "" }
+        {
+          "key": "waterVolume",
+          "label": "Total water volume",
+          "unit": "L"
+        },
+        {
+          "key": "workingPressure",
+          "label": "Working pressure",
+          "unit": "bar g"
+        },
+        {
+          "key": "cylinderType",
+          "label": "Cylinder type",
+          "unit": ""
+        },
+        {
+          "key": "cylinders",
+          "label": "Number of cylinders",
+          "unit": ""
+        },
+        {
+          "key": "banks",
+          "label": "Banks",
+          "unit": ""
+        },
+        {
+          "key": "mounting",
+          "label": "Mounting",
+          "unit": ""
+        }
       ],
       "faq": [
-        { "q": "How much gas does a cascade hold?", "a": "It depends on water volume, working pressure and how far it can be emptied. Ask us to calculate usable gas for your booster and delivery pattern." },
-        { "q": "Can cascades be leased?", "a": "SPTL lists mobile and stationary cascades among equipment available on wet lease. Contact us to discuss options in Nigeria." },
-        { "q": "How often must cylinders be retested?", "a": "Retest intervals are set by the cylinder's design standard and local regulations, usually every few years." }
+        {
+          "q": "How much gas does a cascade hold?",
+          "a": "It depends on water volume, working pressure and how far it can be emptied. Ask us to calculate usable gas for your booster and delivery pattern."
+        },
+        {
+          "q": "Can cascades be leased?",
+          "a": "Yes. Mobile and stationary cascades are available on wet lease. Contact us to discuss options in Nigeria."
+        },
+        {
+          "q": "How often must cylinders be retested?",
+          "a": "Retest intervals are set by the cylinder's design standard and local regulations, usually every few years."
+        }
       ],
       "models": []
     },
@@ -522,13 +929,34 @@
       "summary": "Pre-fabricated skids that measure gas, reduce and control its pressure, and decompress CNG for industrial and network users.",
       "howItWorks": "Gas utility skids are factory-built assemblies of piping, valves and instruments on a steel base. They are made to be lifted into place and connected.\n\n**Metering skids** measure gas for custody transfer or process control. The meter type depends on flow range and accuracy: rotary positive displacement (RPD) for low to medium flows, turbine or ultrasonic for larger and steadier flows, and orifice or vortex where simplicity matters. A **flow computer** corrects measured volume to standard conditions using pressure and temperature, totalises it and can send data to SCADA. A twin-stream design allows one meter to be serviced while the other stays in use.\n\n**Pressure regulating skids (PRS)** reduce supply pressure to the level the user needs and hold it steady as demand changes. A typical stream has an isolation valve, filter, slam-shut valve, active regulator and monitor regulator. Pressure relief valves protect downstream equipment, and **fail-to-close** logic shuts off supply if control is lost. **Odorisation** is added where gas enters public distribution, so leaks can be smelled.\n\n**Decompression skids** take gas from very high pressure (for example a CNG cascade at about 200 bar) down to usable pressure. A large pressure drop cools gas sharply (the Joule-Thomson effect), which can freeze regulators and form hydrates. A **hot-water bath or electric heater** warms the gas before or between reduction stages to prevent this.",
       "keyComponents": [
-        { "name": "Inlet filter / separator", "role": "Removes dust and liquids that would damage meters and regulators." },
-        { "name": "Gas meter", "role": "RPD, turbine, ultrasonic, orifice or vortex meter selected for the flow range." },
-        { "name": "Flow computer / totaliser", "role": "Converts measured volume to standard conditions and logs consumption." },
-        { "name": "Slam-shut and regulators", "role": "Reduce pressure and shut off supply on an over-pressure fault." },
-        { "name": "Pressure relief valves", "role": "Vent safely if downstream pressure rises above set limits." },
-        { "name": "Heater (water bath or electric)", "role": "Offsets cooling from large pressure drops in decompression service." },
-        { "name": "RTU / SCADA interface", "role": "Sends flow and pressure data for remote monitoring." }
+        {
+          "name": "Inlet filter / separator",
+          "role": "Removes dust and liquids that would damage meters and regulators."
+        },
+        {
+          "name": "Gas meter",
+          "role": "RPD, turbine, ultrasonic, orifice or vortex meter selected for the flow range."
+        },
+        {
+          "name": "Flow computer / totaliser",
+          "role": "Converts measured volume to standard conditions and logs consumption."
+        },
+        {
+          "name": "Slam-shut and regulators",
+          "role": "Reduce pressure and shut off supply on an over-pressure fault."
+        },
+        {
+          "name": "Pressure relief valves",
+          "role": "Vent safely if downstream pressure rises above set limits."
+        },
+        {
+          "name": "Heater (water bath or electric)",
+          "role": "Offsets cooling from large pressure drops in decompression service."
+        },
+        {
+          "name": "RTU / SCADA interface",
+          "role": "Sends flow and pressure data for remote monitoring."
+        }
       ],
       "applications": [
         "Factories switching boilers, furnaces or gensets to natural gas",
@@ -552,9 +980,28 @@
           "Look and listen for leaks or icing"
         ],
         "intervals": [
-          { "hours": 2000, "tasks": ["Clean or replace filter elements", "Functional test of slam-shut valves"] },
-          { "hours": 4000, "tasks": ["Service regulators", "Test pressure relief valves", "Verify meter and flow computer"] },
-          { "hours": 8000, "tasks": ["Calibrate transmitters", "Inspect heater bath and elements"] }
+          {
+            "hours": 2000,
+            "tasks": [
+              "Clean or replace filter elements",
+              "Functional test of slam-shut valves"
+            ]
+          },
+          {
+            "hours": 4000,
+            "tasks": [
+              "Service regulators",
+              "Test pressure relief valves",
+              "Verify meter and flow computer"
+            ]
+          },
+          {
+            "hours": 8000,
+            "tasks": [
+              "Calibrate transmitters",
+              "Inspect heater bath and elements"
+            ]
+          }
         ],
         "note": "Indicative, based on general industry practice for gas regulating and metering stations. Always follow the manufacturer's operation and maintenance manual."
       },
@@ -565,19 +1012,60 @@
         "Gas supply installations are subject to Nigerian midstream and downstream regulation. Confirm approvals with the regulator and your gas supplier."
       ],
       "specFields": [
-        { "key": "skidType", "label": "Skid type", "unit": "" },
-        { "key": "flowCapacity", "label": "Flow capacity", "unit": "SCMH" },
-        { "key": "inletPressure", "label": "Inlet pressure", "unit": "bar g" },
-        { "key": "outletPressure", "label": "Outlet pressure", "unit": "bar g" },
-        { "key": "meterType", "label": "Meter type", "unit": "" },
-        { "key": "streams", "label": "Stream configuration", "unit": "" },
-        { "key": "heating", "label": "Heating", "unit": "" },
-        { "key": "connectivity", "label": "Remote connectivity", "unit": "" }
+        {
+          "key": "skidType",
+          "label": "Skid type",
+          "unit": ""
+        },
+        {
+          "key": "flowCapacity",
+          "label": "Flow capacity",
+          "unit": "SCMH"
+        },
+        {
+          "key": "inletPressure",
+          "label": "Inlet pressure",
+          "unit": "bar g"
+        },
+        {
+          "key": "outletPressure",
+          "label": "Outlet pressure",
+          "unit": "bar g"
+        },
+        {
+          "key": "meterType",
+          "label": "Meter type",
+          "unit": ""
+        },
+        {
+          "key": "streams",
+          "label": "Stream configuration",
+          "unit": ""
+        },
+        {
+          "key": "heating",
+          "label": "Heating",
+          "unit": ""
+        },
+        {
+          "key": "connectivity",
+          "label": "Remote connectivity",
+          "unit": ""
+        }
       ],
       "faq": [
-        { "q": "Why does CNG decompression need heating?", "a": "Gas cools sharply when its pressure is cut. Without heating, regulators can freeze and moisture can form ice or hydrates." },
-        { "q": "Which meter should I use?", "a": "It depends on flow range, accuracy and whether the meter is for billing. SPTL offers RPD, ultrasonic, turbine, orifice and vortex options." },
-        { "q": "What is fail-to-close?", "a": "A safety principle where the regulating system shuts off gas, rather than letting it through, if control is lost." }
+        {
+          "q": "Why does CNG decompression need heating?",
+          "a": "Gas cools sharply when its pressure is cut. Without heating, regulators can freeze and moisture can form ice or hydrates."
+        },
+        {
+          "q": "Which meter should I use?",
+          "a": "It depends on flow range, accuracy and whether the meter is for billing. SPTL offers RPD, ultrasonic, turbine, orifice and vortex options."
+        },
+        {
+          "q": "What is fail-to-close?",
+          "a": "A safety principle where the regulating system shuts off gas, rather than letting it through, if control is lost."
+        }
       ],
       "models": [
         {
@@ -600,7 +1088,9 @@
             "connectivity": "RTU / SCADA"
           },
           "specsVerified": false,
-          "sources": ["https://sptlglobal.com/gas-utility-skids/"]
+          "sources": [
+            "https://sptlglobal.com/gas-utility-skids/"
+          ]
         },
         {
           "slug": "sopan-pressure-regulating-skid",
@@ -617,7 +1107,9 @@
             "streams": "Single or twin (manual / hot standby)"
           },
           "specsVerified": false,
-          "sources": ["https://sptlglobal.com/gas-utility-skids/"]
+          "sources": [
+            "https://sptlglobal.com/gas-utility-skids/"
+          ]
         },
         {
           "slug": "sopan-decompression-skid",
@@ -634,9 +1126,105 @@
             "heating": "Hot-water bath or electric"
           },
           "specsVerified": false,
-          "sources": ["https://sptlglobal.com/gas-utility-skids/"]
+          "sources": [
+            "https://sptlglobal.com/gas-utility-skids/"
+          ]
         }
       ]
+    },
+    {
+      "slug": "cng-tube-trailer-skids",
+      "name": "CNG Tube Trailer Skids",
+      "summary": "Road-going skids of large high-pressure tubes that carry CNG from the mother station to consumers and to daughter stations in a virtual pipeline network.",
+      "howItWorks": "A **tube trailer skid** is a bank of long, large-diameter seamless pressure tubes held in a steel frame and connected by a manifold with isolation valves. The skid is mounted on a semi-trailer, or built as a container-sized frame that can be lifted onto one.\n\nAt the **mother station** the skid is connected to a filling post and filled by the station compressors. A truck then pulls it to the **daughter station** or to an industrial customer, where it is connected to a decanting panel. At a daughter station a booster compressor draws gas from the tubes and raises it to dispensing pressure; at an industrial site a pressure-reducing skid lowers it to the pressure the burners or engines need.\n\nWhen the skid is nearly empty it is swapped for a full one and returned to the mother station. Moving gas this way is called a **virtual pipeline**: it reaches customers far from the gas network without building a pipeline.",
+      "keyComponents": [
+        {
+          "name": "Seamless pressure tubes",
+          "role": "Store compressed gas at working pressure, each built and certified for high-pressure service."
+        },
+        {
+          "name": "Manifold and isolation valves",
+          "role": "Connect the tubes and allow each one to be isolated."
+        },
+        {
+          "name": "Pressure relief devices",
+          "role": "Protect the tubes from overpressure or fire exposure."
+        },
+        {
+          "name": "Frame and semi-trailer chassis",
+          "role": "Carry and protect the tubes on the road."
+        },
+        {
+          "name": "Filling and decanting connections",
+          "role": "Connect the skid at the mother station and at the delivery point."
+        }
+      ],
+      "applications": [
+        "Supplying daughter stations without pipeline access",
+        "Virtual-pipeline gas supply to factories, hotels and power users",
+        "Temporary supply during pipeline outages or before a pipeline arrives"
+      ],
+      "choosingTips": [
+        "Size the skid's water volume from daily gas demand and how often deliveries can be made.",
+        "Allow for the residual pressure your booster or pressure-reducing skid can reach.",
+        "Confirm tube certificates, manufacture dates and next retest dates before acceptance.",
+        "Check road-vehicle compliance, axle loads and driver training for your routes."
+      ],
+      "maintenance": {
+        "dailyChecks": [
+          "Visual check for damage, corrosion or leaks",
+          "Check valves and relief devices are not tampered with",
+          "Check tyres, lights and coupling before every trip"
+        ],
+        "intervals": [
+          {
+            "hours": 4000,
+            "tasks": [
+              "Leak test manifolds and fittings",
+              "Inspect frame mounts and earthing"
+            ]
+          }
+        ],
+        "note": "Indicative. Tube requalification is set by calendar under the tube standard and the regulator, not by hours."
+      },
+      "safety": [
+        "Use only tubes manufactured, tested and certified to a recognised high-pressure gas standard, and keep the certificates.",
+        "Earth the skid during filling and decanting, and keep it away from ignition sources and public access.",
+        "Follow Nigerian regulations for transporting and storing compressed gas."
+      ],
+      "specFields": [
+        {
+          "key": "waterVolume",
+          "label": "Total water volume",
+          "unit": "L"
+        },
+        {
+          "key": "workingPressure",
+          "label": "Working pressure",
+          "unit": "bar g"
+        },
+        {
+          "key": "tubes",
+          "label": "Number of tubes",
+          "unit": ""
+        },
+        {
+          "key": "mounting",
+          "label": "Mounting",
+          "unit": ""
+        }
+      ],
+      "faq": [
+        {
+          "q": "What is a virtual pipeline?",
+          "a": "Moving compressed gas by road in tube trailer skids from a mother station to customers, instead of through a pipeline."
+        },
+        {
+          "q": "How much gas does a tube trailer carry?",
+          "a": "It depends on water volume, working pressure and how far it can be emptied at the delivery point. Ask us to calculate it for your route and demand."
+        }
+      ],
+      "models": []
     }
   ]
 }

@@ -133,9 +133,9 @@ export const defaultSettings: Settings = {
   company: {
     name: "Chanrai Nigeria Limited",
     shortName: "Chanrai Nigeria",
-    tagline: "CNG compression and gas equipment, construction machinery and electric forklifts. Supplied, installed and serviced where you work.",
+    tagline: "CNG refueling, compression, storage and dispensing equipment, construction machinery and electric forklifts. Supplied, installed and serviced where you work.",
     about:
-      "Chanrai Nigeria supplies CNG compression and gas equipment, construction equipment and electric forklifts to gas distributors, CNG station operators, contractors, fleet operators and industry across Nigeria.\n\nOur technicians go to the machine: at the station, on the job site or in the warehouse. Sales, field service and genuine parts come from one team that knows the equipment.",
+      "Chanrai Nigeria supplies CNG refueling, compression, storage and dispensing equipment, construction equipment and electric forklifts to gas distributors, CNG station operators, contractors, fleet operators and industry across Nigeria.\n\nOur technicians go to the machine: at the station, on the job site or in the warehouse. Sales, field service and genuine parts come from one team that knows the equipment.",
     groupName: "Kewalram Chanrai Group",
     groupUrl: "https://www.kewalramchanrai.com",
     heritage: "The Kewalram Chanrai Group has been in Nigeria since 1900.",
@@ -146,13 +146,13 @@ export const defaultSettings: Settings = {
     whatsapp: "09111867252",
     email: "cng@chanrainigeria.com",
     address: "122-132 Oshodi Apapa Expressway, Isolo, Lagos, Nigeria",
-    hours: "Monday to Friday, 8:00 to 17:00",
+    hours: "24 hours, 7 days a week",
   },
   desks: {
     sales: { label: "Equipment sales", email: "", phone: "", whatsapp: "" },
     service: { label: "Field service", email: "", phone: "", whatsapp: "" },
     parts: { label: "Parts", email: "", phone: "", whatsapp: "" },
-    cng: { label: "CNG and gas", email: "cng@chanrainigeria.com", phone: "09111867252", whatsapp: "" },
+    cng: { label: "All products: sales, service and parts", email: "cng@chanrainigeria.com", phone: "09111867252", whatsapp: "" },
   },
   social: { linkedin: "", facebook: "", instagram: "", x: "", youtube: "" },
   branding: {
@@ -169,7 +169,7 @@ export const defaultSettings: Settings = {
         title: "CNG stations, built and kept running",
         text: "Compressors, dispensers and gas skids, installed, commissioned and maintained on site.",
         image: "hero-2",
-        ctaLabel: "See CNG compression and gas equipment",
+        ctaLabel: "See CNG equipment",
         ctaHref: "/products/cng-gas-equipment",
       },
       {
@@ -188,7 +188,7 @@ export const defaultSettings: Settings = {
       },
     ],
     heroTitle: "Equipment that keeps Nigeria fuelled, building and moving",
-    heroText: "CNG compression and gas equipment, construction equipment and electric forklifts, with sales, genuine parts and technicians who come to your site.",
+    heroText: "CNG refueling, compression, storage and dispensing equipment, construction equipment and electric forklifts, with sales, genuine parts and technicians who come to your site.",
     fieldServiceTitle: "We come to the machine",
     fieldServiceText:
       "Compressors don't leave the station and excavators don't drive to workshops. Book a visit and a technician comes to your site with the tools and parts the job needs.",
@@ -196,9 +196,9 @@ export const defaultSettings: Settings = {
   },
   images: {},
   seo: {
-    title: "Chanrai Nigeria | CNG compression, construction and forklift equipment",
+    title: "Chanrai Nigeria | CNG, construction and forklift equipment",
     description:
-      "CNG compression and gas equipment, construction machinery and electric forklifts in Nigeria. Sales, on-site service and genuine parts from Chanrai Nigeria, a business of the Kewalram Chanrai Group.",
+      "CNG refueling, compression, storage and dispensing equipment, construction machinery and electric forklifts in Nigeria. Sales, on-site service and genuine parts from Chanrai Nigeria, a business of the Kewalram Chanrai Group.",
   },
   email: {
     fromName: "Chanrai Nigeria",
