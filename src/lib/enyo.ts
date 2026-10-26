@@ -4,7 +4,8 @@ import { clientKey, looksLikeSpam, rateLimit } from "./guard";
 import { asc, eq } from "drizzle-orm";
 import { db, schema } from "@/db";
 import type { Faq, SpecField } from "@/db/schema";
-import { getBranches, getServices } from "./catalogue";
+import { getBranches, getBrands, getServices } from "./catalogue";
+import { getContent } from "./content";
 import { createEnquiry } from "./enquiries";
 import { specValue } from "./format";
 import type { Settings } from "./settings";
@@ -67,6 +68,8 @@ async function loadKnowledge(settings: Settings) {
     getBranches(),
     getServices(),
   ]);
+  const [brands, about] = await Promise.all([getBrands(), getContent("about")]);
+  const safetyRules = about.on("showSafety") ? about.list("safetyRules") : [];
 
   const s = settings;
   const desks = Object.values(s.desks)
@@ -90,6 +93,10 @@ ${cats
   .join("\n")}
 SERVICES:
 ${categoriesWithServices(services, cats.map((c) => c.name))}
+BRAND PARTNERS (in this order):
+${brands.map((b) => `- ${b.name}${b.relationship ? ` (${b.relationship})` : ""}${b.website ? `, ${b.website}` : ""}: ${b.about || (b.highlights ?? []).join("; ")}`).join("\n")}
+CONTACT: one desk for every product (sales, service and parts), ${s.contact.hours || "see /contact"}. Phone ${s.contact.phone}, email ${s.contact.email}.
+${safetyRules.length ? `SAFETY FIRST (everyone's responsibility). Golden rules: ${safetyRules.map((r) => r.title).join("; ")}. Never advise anyone to open, modify or repair high-pressure gas equipment themselves; send them to a trained technician.\n` : ""}SCOPE NOTE: Chanrai Nigeria does not do civil works; station projects cover engineering, equipment, mechanical, piping, electrical and instrumentation works.
 SERVICE MODEL: Service is mostly ON SITE — technicians travel to the machine (CNG station, job site, warehouse). Book at /book-service. Parts requests at /parts. Quotes at /contact.
 ${s.enyo.extraKnowledge ? `EXTRA NOTES FROM STAFF:\n${s.enyo.extraKnowledge}` : ""}`;
 

@@ -23,11 +23,12 @@ type SeedFile = {
 };
 
 // How each line behaves on the site. Order follows the client's own list: CNG first.
-// `prefix` keeps service addresses stable whatever the order; `brandOrder` is the order of the logos.
+// `prefix` keeps service addresses stable whatever the order; `brandOrder` is the order of the logos
+// (SOPAN, Fornovo Gas, LiuGong, BYD).
 const LINE: Record<string, { order: number; desk: string; illustration: string; prefix: string; brandOrder: number }> = {
-  "cng-gas-equipment": { order: 1, desk: "cng", illustration: "compressor", prefix: "cng", brandOrder: 2 },
-  "construction-equipment": { order: 2, desk: "sales", illustration: "excavator", prefix: "construction", brandOrder: 1 },
-  "forklifts-material-handling": { order: 3, desk: "sales", illustration: "forklift", prefix: "forklift", brandOrder: 3 },
+  "cng-gas-equipment": { order: 1, desk: "cng", illustration: "compressor", prefix: "cng", brandOrder: 1 },
+  "construction-equipment": { order: 2, desk: "sales", illustration: "excavator", prefix: "construction", brandOrder: 3 },
+  "forklifts-material-handling": { order: 3, desk: "sales", illustration: "forklift", prefix: "forklift", brandOrder: 4 },
 };
 
 const update = process.argv.includes("--update");
@@ -153,11 +154,21 @@ async function main() {
   }
 
   // Brand partners with no product line file of their own (logo shipped in /public/brand/logos).
-  const partners = [{ slug: "fornovogas", name: "Fornovogas", order: 4 }];
+  // Fornovo Gas sits second, right after SOPAN: both are CNG partners and CNG leads the site.
+  const partners = [
+    {
+      slug: "fornovogas",
+      name: "Fornovo Gas",
+      website: "https://www.fornovogas.it",
+      about: "Fornovo Gas is an Italian natural gas compression specialist, founded in 1969 near Parma. It began by running natural gas refuelling stations, has moved natural gas by road in cylinder and tube trailers since 1985, and has built its own CNG and natural gas compressors since 2004. Its reciprocating compressors run CNG refuelling stations, biomethane plants and industrial gas services, with more than 3,500 units installed in more than 60 countries.",
+      highlights: ["Founded in 1969 in Italy", "Moving natural gas by road in cylinder and tube trailers since 1985", "Own range of CNG and natural gas reciprocating compressors since 2004", "More than 3,500 compressors installed in more than 60 countries", "Quality and environmental management certified to ISO 9001 and ISO 14001"],
+      order: 2,
+    },
+  ];
   for (const p of partners) {
     const has = await db.query.brands.findFirst({ where: eq(schema.brands.slug, p.slug) });
     if (!has) {
-      await db.insert(schema.brands).values({ slug: p.slug, name: p.name, order: p.order, relationship: "Brand partner" });
+      await db.insert(schema.brands).values({ ...p, relationship: "Brand partner" });
       console.log(`brands: added ${p.name}`);
     }
   }

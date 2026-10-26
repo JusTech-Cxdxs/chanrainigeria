@@ -16,6 +16,8 @@ export default async function About() {
   const body = c.t("body");
   const stats = c.list("stats");
   const values = c.list("values");
+  const safetyCommitments = c.list("safetyCommitments");
+  const safetyRules = c.list("safetyRules");
 
   return (
     <>
@@ -110,6 +112,58 @@ export default async function About() {
                 </li>
               ))}
             </ul>
+          </div>
+        </section>
+      ) : null}
+
+      {c.on("showSafety") ? (
+        <section className="wrap pb-20 sm:pb-24" aria-labelledby="safety-h">
+          <div className="overflow-hidden rounded-[28px] border border-line bg-surface">
+            <div className="grid gap-10 p-6 sm:p-10 lg:grid-cols-[0.9fr_1.4fr] lg:gap-14 lg:p-12">
+              <div>
+                <p className="flex items-center gap-2 text-sm font-bold uppercase tracking-[0.14em] text-brand-ink">
+                  <Icon name="shield" size={18} />
+                  {c.t("safetyEyebrow")}
+                </p>
+                <h2 id="safety-h" className="heading reveal mt-3 text-3xl sm:text-4xl">
+                  {c.t("safetyTitle")}
+                </h2>
+                {c.t("safetyLead") ? <p className="mt-4 text-ink-soft">{c.t("safetyLead")}</p> : null}
+                {safetyCommitments.length ? (
+                  <ul className="mt-8 grid gap-3">
+                    {safetyCommitments.map((k, i) => (
+                      <li key={`${k.text}-${i}`} className="flex items-center gap-3 rounded-2xl bg-brand/10 px-4 py-3 font-semibold text-ink">
+                        <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-brand text-on-brand">
+                          <Icon name="check" size={16} strokeWidth={3} />
+                        </span>
+                        {k.text}
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
+              </div>
+              {safetyRules.length ? (
+                <div>
+                  <p className="heading text-xl">{c.t("safetyRulesTitle")}</p>
+                  <ul className="mt-5 grid gap-x-8 sm:grid-cols-2">
+                    {safetyRules.map((r, i) => (
+                      <li key={`${r.title}-${i}`} className="flex gap-3 border-b border-line-soft py-4">
+                        <span className="mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-brand/10 text-brand-ink">
+                          <Icon name="check-circle" size={16} />
+                        </span>
+                        <span>
+                          <span className="block font-semibold text-ink">{r.title}</span>
+                          {r.text ? <span className="block text-[0.95rem] text-ink-soft">{r.text}</span> : null}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null}
+            </div>
+            {c.t("safetyFooter") ? (
+              <p className="bg-deep px-6 py-4 text-center font-semibold tracking-wide text-white sm:px-10">{c.t("safetyFooter")}</p>
+            ) : null}
           </div>
         </section>
       ) : null}
