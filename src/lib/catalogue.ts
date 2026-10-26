@@ -19,8 +19,17 @@ function cached<A extends unknown[], R>(name: string, tag: string, revalidate: n
   };
 }
 
+type Brand = typeof brands.$inferSelect;
+
+/** A line's brands in order: its main brand, then the others staff chose for it (e.g. SOPAN, then Fornovo Gas). */
+function withBrands<C extends { brand: Brand | null; moreBrandIds: string[] }>(cat: C, all: Brand[]): C & { brands: Brand[] } {
+  const more = cat.moreBrandIds.map((id) => all.find((b) => b.id === id)).filter((b): b is Brand => !!b && b.id !== cat.brand?.id);
+  return { ...cat, brands: [...(cat.brand ? [cat.brand] : []), ...more] };
+}
+
 async function loadCategories() {
-  return db.query.categories.findMany({
+  const all = await db.query.brands.findMany();
+  const rows = await db.query.categories.findMany({
     where: eq(categories.published, true),
     orderBy: [asc(categories.order), asc(categories.name)],
     with: {
@@ -32,6 +41,7 @@ async function loadCategories() {
       },
     },
   });
+  return rows.map((r) => withBrands(r, all));
 }
 export type CategoryWithFamilies = Awaited<ReturnType<typeof loadCategories>>[number];
 
@@ -41,8 +51,8 @@ export const getCategory = cached(
   "category",
   "catalogue",
   600,
-  async (slug: string) =>
-    (await db.query.categories.findFirst({
+  async (slug: string) => {
+    const row = await db.query.categories.findFirst({
       where: and(eq(categories.slug, slug), eq(categories.published, true)),
       with: {
         brand: true,
@@ -59,7 +69,9 @@ export const getCategory = cached(
         },
         services: { where: eq(services.published, true), orderBy: [asc(services.order)] },
       },
-    })) ?? null,
+    });
+    return row ? withBrands(row, await db.query.brands.findMany()) : null;
+  },
   null,
 );
 

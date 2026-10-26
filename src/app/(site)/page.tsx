@@ -97,11 +97,13 @@ export default async function Home() {
                     alt=""
                     loading="lazy"
                     decoding="async"
+                    // The supplied forklift picture keeps its BYD sign and tow tractor on the right; aim the card there.
+                    style={!cat.imageId && cat.slug === "forklifts-material-handling" ? { objectPosition: "78% 50%" } : undefined}
                     className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                   />
                   <span className="absolute inset-0 bg-gradient-to-t from-[#06120a]/95 via-[#06120a]/35 via-45% to-transparent" aria-hidden />
                   <span className="absolute inset-x-0 bottom-0 p-6">
-                    {cat.brand ? <span className="text-sm font-semibold text-mint">{cat.brand.name}</span> : null}
+                    {cat.brands.length ? <span className="text-sm font-semibold text-mint">{cat.brands.map((b) => b.name).join(" · ")}</span> : null}
                     <span className="heading mt-1 block text-2xl">{cat.name}</span>
                     <span className="mt-2 line-clamp-2 text-white/80">{cat.families.map((f) => f.name).join(", ")}</span>
                     <span className="mt-4 inline-flex items-center gap-2 font-semibold">
@@ -138,7 +140,7 @@ export default async function Home() {
                   <Link href={`/products/${cat.slug}`} className="heading text-xl hover:text-brand-ink">
                     {cat.name}
                   </Link>
-                  {cat.brand ? <p className="mt-1 text-sm text-ink-soft">{cat.brand.name}</p> : null}
+                  {cat.brands.length ? <p className="mt-1 text-sm text-ink-soft">{cat.brands.map((b) => b.name).join(" · ")}</p> : null}
                 </div>
                 {[
                   [c.t("matrixSales"), cat.salesBlurb, `/contact?type=QUOTE&category=${cat.slug}`, c.t("matrixSalesCta")],

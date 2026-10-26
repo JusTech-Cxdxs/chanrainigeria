@@ -27,7 +27,7 @@ export default async function Products() {
                 </Link>
               </h2>
               <span className="flex items-center gap-4">
-                {cat.brand ? <span className="text-ink-soft">{cat.brand.name}</span> : null}
+                {cat.brands.length ? <span className="text-ink-soft">{cat.brands.map((b) => b.name).join(" · ")}</span> : null}
                 <Link href={`/products/${cat.slug}`} className="btn-quiet inline-flex items-center gap-1.5 font-semibold">
                   {c.t("lineLink")}
                   <Icon name="arrow" size={16} />

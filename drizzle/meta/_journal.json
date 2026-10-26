@@ -64,6 +64,20 @@
       "when": 1793048936782,
       "tag": "0008_fornovo_order",
       "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "7",
+      "when": 1793050000000,
+      "tag": "0009_brands_heading",
+      "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "7",
+      "when": 1793051520195,
+      "tag": "0010_line_more_brands",
+      "breakpoints": true
     }
   ]
 }

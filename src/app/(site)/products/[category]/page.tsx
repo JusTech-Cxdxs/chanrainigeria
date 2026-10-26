@@ -113,29 +113,33 @@ export default async function CategoryPage({ params }: P) {
           </section>
         ) : null}
 
-        {cat.brand ? (
-          <section className="mt-16 max-w-3xl" aria-labelledby="brand-h">
-            <h2 id="brand-h" className="heading text-2xl">
-              {c.f("brandTitle", { brand: cat.brand.name })}
-            </h2>
-            <p className="mt-3 text-ink-soft">{cat.brand.about}</p>
-            {cat.brand.highlights.length ? (
-              <ul className="mt-4 space-y-1.5">
-                {cat.brand.highlights.map((h) => (
-                  <li key={h} className="flex gap-2">
-                    <Icon name="check" size={16} className="mt-1 shrink-0 text-brand-ink" />
-                    {h}
-                  </li>
-                ))}
-              </ul>
-            ) : null}
-            {cat.brand.website ? (
-              <a href={cat.brand.website} target="_blank" rel="noopener" className="btn-quiet mt-4 inline-flex items-center gap-1.5 px-0 font-semibold">
-                {c.t("brandWebsite")}
-                <Icon name="external" size={16} />
-              </a>
-            ) : null}
-          </section>
+        {cat.brands.length ? (
+          <div className={`mt-16 grid gap-10 ${cat.brands.length > 1 ? "lg:grid-cols-2 lg:gap-14" : "max-w-3xl"}`}>
+            {cat.brands.map((brand, i) => (
+              <section key={brand.id} aria-labelledby={`brand-h-${i}`}>
+                <h2 id={`brand-h-${i}`} className="heading text-2xl">
+                  {c.f("brandTitle", { brand: brand.name })}
+                </h2>
+                <p className="mt-3 text-ink-soft">{brand.about}</p>
+                {brand.highlights.length ? (
+                  <ul className="mt-4 space-y-1.5">
+                    {brand.highlights.map((h) => (
+                      <li key={h} className="flex gap-2">
+                        <Icon name="check" size={16} className="mt-1 shrink-0 text-brand-ink" />
+                        {h}
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
+                {brand.website ? (
+                  <a href={brand.website} target="_blank" rel="noopener" className="btn-quiet mt-4 inline-flex items-center gap-1.5 px-0 font-semibold">
+                    {c.t("brandWebsite")}
+                    <Icon name="external" size={16} />
+                  </a>
+                ) : null}
+              </section>
+            ))}
+          </div>
         ) : null}
       </div>
     </>

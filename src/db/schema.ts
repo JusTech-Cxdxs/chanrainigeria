@@ -99,6 +99,8 @@ export const categories = pgTable("categories", {
   order: integer("order").notNull().default(0),
   published: boolean("published").notNull().default(true),
   brandId: text("brand_id").references(() => brands.id, { onDelete: "set null" }),
+  /** Other brands supplied in this line, shown after the main brand (brand ids, in order). */
+  moreBrandIds: json<string[]>("more_brand_ids", "[]"),
 });
 
 export const families = pgTable("families", {
