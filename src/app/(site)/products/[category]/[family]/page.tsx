@@ -10,6 +10,7 @@ import { Icon } from "@/components/ui/Icon";
 import { getFamily } from "@/lib/catalogue";
 import { renderMarkdown } from "@/lib/markdown";
 import { imageUrl, mediaUrl } from "@/lib/settings";
+import { familyImage, modelFallbackImage } from "@/lib/type-images";
 
 type P = { params: Promise<{ category: string; family: string }> };
 export const dynamic = "force-dynamic";
@@ -36,7 +37,7 @@ export default async function FamilyPage({ params }: P) {
     highlights: p.highlights,
     specs: p.specs,
     specsVerified: p.specsVerified,
-    images: p.imageIds.map((i) => mediaUrl(i)!),
+    images: p.imageIds.length ? p.imageIds.map((i) => mediaUrl(i)!) : [modelFallbackImage(f, p.slug)].filter((x): x is string => !!x),
     brochure: mediaUrl(p.brochureId),
     href: `/products/${c.slug}/${f.slug}/${p.slug}`,
   }));
@@ -97,7 +98,7 @@ export default async function FamilyPage({ params }: P) {
             </div>
             <div className="lg:pt-14">
               <Framed
-                src={mediaUrl(f.imageId)}
+                src={familyImage(f)}
                 alt={f.name}
                 zoom={false}
                 fallback={<Machine kind={kind} className="w-full" title={L.f("drawingTitle", { type: f.name.toLowerCase().replace(/s$/, "") })} />}

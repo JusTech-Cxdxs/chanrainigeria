@@ -6,6 +6,7 @@ import { pageMetadata, siteContent } from "@/components/site/site-content";
 import { Icon } from "@/components/ui/Icon";
 import { getCategories } from "@/lib/catalogue";
 import { mediaUrl } from "@/lib/settings";
+import { familyImage } from "@/lib/type-images";
 
 export const generateMetadata = () => pageMetadata("products");
 export const dynamic = "force-dynamic";
@@ -38,7 +39,7 @@ export default async function Products() {
               {cat.families.map((f) => (
                 <li key={f.id}>
                   <Link href={`/products/${cat.slug}/${f.slug}`} className="group block">
-                    <FamilyPicture src={mediaUrl(f.imageId)} fallback={<Machine kind={f.illustration || machineForSlug(f.slug, cat.illustration)} className="w-full" />} />
+                    <FamilyPicture src={familyImage(f)} alt={f.name} fallback={<Machine kind={f.illustration || machineForSlug(f.slug, cat.illustration)} className="w-full" />} />
                     <span className="heading mt-3 block text-lg group-hover:text-brand-ink">{f.name}</span>
                     <span className="mt-1 line-clamp-2 text-sm text-ink-soft">{f.summary}</span>
                   </Link>

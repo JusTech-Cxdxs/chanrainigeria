@@ -14,10 +14,10 @@
     "website": "https://www.forklift-byd.com",
     "about": "BYD began in 1995 as a rechargeable-battery manufacturer and now builds electric vehicles, batteries and material handling equipment. Its forklift division makes battery-electric counterbalance forklifts, pallet trucks, stackers, reach trucks, tow tractors and logistics robots. BYD develops the trucks, the lithium iron phosphate (LFP) battery cells and the chargers in-house and designs them to work together. Its electric counterbalance range spans roughly 1.6 to 8 tonnes.",
     "highlights": [
-      "Founded in 1995 as a battery company; describes itself as vertically integrated in forklifts from the battery cell up",
+      "Founded in 1995 as a battery company; vertically integrated in forklifts, from the battery cell up",
       "Every truck in the range runs on BYD lithium iron phosphate (LFP) batteries with a battery management system",
-      "BYD Singapore quotes more than 4,000 charge cycles for its forklift batteries and promotes opportunity charging at breaks",
-      "BYD states its battery passed low-temperature testing at -40 °C",
+      "Forklift batteries rated for more than 4,000 charge cycles, with opportunity charging at breaks",
+      "Battery tested for low-temperature operation at -40 °C",
       "Electric counterbalance range of about 1.6–8 t in Europe, plus warehouse equipment and tow tractors up to 37 t",
       "The ECB18C three-wheel forklift was named IFOY test winner at CeMAT 2016"
     ],
@@ -775,6 +775,36 @@
             "https://sg.byd.com/wp-content/uploads/2025/09/BYD-Forklift-Product-Brochure.pdf",
             "https://sg.byd.com/wp-content/uploads/2022/03/Counterbalance-Forklift-Series.pdf"
           ]
+        },
+        {
+          "slug": "byd-el25-pro",
+          "name": "EL25-Pro",
+          "brand": "byd",
+          "summary": "2.5 t electric counterbalance forklift, single drive.",
+          "highlights": [
+            "Rated capacity 2.5 t",
+            "Single drive motor"
+          ],
+          "specs": {
+            "ratedCapacity": 2500
+          },
+          "specsVerified": false,
+          "sources": []
+        },
+        {
+          "slug": "byd-el30-pro",
+          "name": "EL30-Pro",
+          "brand": "byd",
+          "summary": "3.0 t electric counterbalance forklift, single drive.",
+          "highlights": [
+            "Rated capacity 3.0 t",
+            "Single drive motor"
+          ],
+          "specs": {
+            "ratedCapacity": 3000
+          },
+          "specsVerified": false,
+          "sources": []
         }
       ]
     },
@@ -782,7 +812,7 @@
       "slug": "heavy-duty-counterbalance-forklifts",
       "name": "Heavy-Duty Electric Counterbalance Forklifts",
       "summary": "4–8 t electric forklifts for heavy pallets, steel, ports and outdoor yards, replacing large diesel trucks without exhaust fumes.",
-      "howItWorks": "A **heavy-duty electric counterbalance forklift** does the work of a large diesel truck: steel coils, bagged commodities, beverage pallets in pairs, machinery and container-yard tasks. The layout is the same as a standard counterbalance truck. Forks lift at the front, and the counterweight and battery at the rear keep it balanced. Every major part is scaled up for heavier loads and outdoor duty.\n\n**Power.** These trucks carry large 80 V lithium iron phosphate (LFP) packs. BYD lists 540 or 810 Ah on its 4–5 t trucks and 810 or 1,080 Ah on its 6–8 t trucks, which store far more energy than a light forklift. Two high-power AC traction motors drive the front axle, and a separate AC motor runs the hydraulic pump for lifting, tilting and attachments.\n\n**Brakes and regeneration.** Heavy loads need strong, durable braking. BYD's 6–8 t trucks use oil-immersed disc brakes, which run sealed in oil and resist dust and water. Regenerative braking on the traction motors puts energy back into the battery whenever the truck slows.\n\n**Mast and tyres.** Masts are heavier-section duplex or triplex designs, and they often carry attachments such as side-shifts, fork positioners or clamps. These trucks usually run on large pneumatic or solid tyres for yards, and BYD notes that its tallest masts on the 6–8 t trucks need widened tyres.\n\n**Charging.** Large packs need high-current chargers. BYD lists 200 A as standard on the 6–8 t trucks, with 400 A fast charging as an option. Planning the charger supply is therefore part of choosing the truck.\n\n**Stability.** Capacity is rated at the load centre shown on the data plate (600 mm for BYD's 6–8 t trucks). Long or bulky loads, attachments and high lifts all reduce the safe capacity.",
+      "howItWorks": "A **heavy-duty electric counterbalance forklift** does the work of a large diesel truck: steel coils, bagged commodities, beverage pallets in pairs, machinery and container-yard tasks. The layout is the same as a standard counterbalance truck. Forks lift at the front, and the counterweight and battery at the rear keep it balanced. Every major part is scaled up for heavier loads and outdoor duty.\n\n**Power.** These trucks carry large 80 V lithium iron phosphate (LFP) packs. BYD offers 540 or 810 Ah on its 4–5 t trucks and 810 or 1,080 Ah on its 6–8 t trucks, which store far more energy than a light forklift. Two high-power AC traction motors drive the front axle, and a separate AC motor runs the hydraulic pump for lifting, tilting and attachments.\n\n**Brakes and regeneration.** Heavy loads need strong, durable braking. BYD's 6–8 t trucks use oil-immersed disc brakes, which run sealed in oil and resist dust and water. Regenerative braking on the traction motors puts energy back into the battery whenever the truck slows.\n\n**Mast and tyres.** Masts are heavier-section duplex or triplex designs, and they often carry attachments such as side-shifts, fork positioners or clamps. These trucks usually run on large pneumatic or solid tyres for yards, and BYD notes that its tallest masts on the 6–8 t trucks need widened tyres.\n\n**Charging.** Large packs need high-current chargers. BYD fits 200 A as standard on the 6–8 t trucks, with 400 A fast charging as an option. Planning the charger supply is therefore part of choosing the truck.\n\n**Stability.** Capacity is rated at the load centre shown on the data plate (600 mm for BYD's 6–8 t trucks). Long or bulky loads, attachments and high lifts all reduce the safe capacity.",
       "keyComponents": [
         {
           "name": "High-capacity 80 V LFP battery",
@@ -1169,7 +1199,7 @@
       "slug": "pallet-trucks",
       "name": "Electric Pallet Trucks",
       "summary": "Powered 2 t pallet trucks, walk-behind or stand-on, for moving pallets quickly across warehouse floors and loading docks.",
-      "howItWorks": "An **electric pallet truck** (powered pallet jack) moves pallets across the floor. It lifts a pallet only a short way, just enough to clear the ground, and is not built for stacking. The operator walks behind it or stands on a platform and steers with a **tiller arm** that holds all the controls: travel direction and speed, lift and lower, horn, and a belly-button reversing switch for safety.\n\n**Drive.** A single drive wheel under the power unit is driven by an AC traction motor and steered by the tiller. Two load wheels under the fork tips carry the pallet. Releasing the tiller or pushing it to the upper or lower position applies an electromagnetic brake. Lifting off the throttle gives regenerative slowing.\n\n**Lift.** A small electric hydraulic power pack pushes a cylinder that raises the fork frame. Linkage rods running along each fork push the load wheels down at the same time, so the whole pallet lifts evenly.\n\n**Battery.** BYD pallet trucks run on 24 V lithium iron phosphate (LFP) batteries. Many have an on-board charger that plugs into a normal socket, so the truck can be charged anywhere during a break. The battery management system (BMS) protects the cells from over-charge, over-discharge and overheating.\n\n**Variants.** Walkie (pedestrian) trucks suit short runs and tight spaces. Stand-on platform trucks are faster and suit longer distances, such as dock-to-store runs in large distribution centres. BYD also lists pallet trucks with higher lift for working at waist height in retail stores.",
+      "howItWorks": "An **electric pallet truck** (powered pallet jack) moves pallets across the floor. It lifts a pallet only a short way, just enough to clear the ground, and is not built for stacking. The operator walks behind it or stands on a platform and steers with a **tiller arm** that holds all the controls: travel direction and speed, lift and lower, horn, and a belly-button reversing switch for safety.\n\n**Drive.** A single drive wheel under the power unit is driven by an AC traction motor and steered by the tiller. Two load wheels under the fork tips carry the pallet. Releasing the tiller or pushing it to the upper or lower position applies an electromagnetic brake. Lifting off the throttle gives regenerative slowing.\n\n**Lift.** A small electric hydraulic power pack pushes a cylinder that raises the fork frame. Linkage rods running along each fork push the load wheels down at the same time, so the whole pallet lifts evenly.\n\n**Battery.** BYD pallet trucks run on 24 V lithium iron phosphate (LFP) batteries. Many have an on-board charger that plugs into a normal socket, so the truck can be charged anywhere during a break. The battery management system (BMS) protects the cells from over-charge, over-discharge and overheating.\n\n**Variants.** Walkie (pedestrian) trucks suit short runs and tight spaces. Stand-on platform trucks are faster and suit longer distances, such as dock-to-store runs in large distribution centres. BYD also offers pallet trucks with higher lift for working at waist height in retail stores.",
       "keyComponents": [
         {
           "name": "Tiller arm",
@@ -1324,7 +1354,7 @@
         },
         {
           "q": "Will it work in a cold room?",
-          "a": "BYD reports that its LFP battery passed testing at -40 °C, and cold-store variants exist in some markets. Confirm the specification for your temperature."
+          "a": "The LFP battery is tested for operation at -40 °C, and cold-store variants are available in some markets. Confirm the specification for your temperature."
         },
         {
           "q": "How should we look after the lithium battery?",
@@ -1674,7 +1704,7 @@
       "slug": "reach-trucks",
       "name": "Electric Reach Trucks",
       "summary": "Narrow-aisle electric trucks that reach into racking and lift high, packing more storage into the same warehouse floor.",
-      "howItWorks": "A **reach truck** is designed to store pallets high in narrow aisles. A counterbalance forklift carries its load in front of the front wheels and needs a wide aisle to turn. A reach truck instead has two **outrigger legs** with load wheels that stretch forward from the chassis. The mast moves forward along the legs (a **moving-mast** design) to pick or place a pallet, then pulls back so the load sits within the truck's wheelbase while it travels and turns.\n\n**Why it needs less space.** The load is carried inside the footprint and the truck pivots around a central drive wheel, so it can make a right-angle turn into racking in a much narrower aisle than a counterbalance truck. Lift heights are usually higher too, using three-stage masts.\n\n**Drive and hydraulics.** A single steered drive wheel under the operator compartment is powered by an AC traction motor. A separate pump motor supplies the hydraulic circuit for lift, reach, tilt and side-shift. The operator sits sideways or stands, depending on the model, so both travel directions are easy to see.\n\n**Battery.** BYD's reach trucks use lithium iron phosphate (LFP) batteries. BYD lists 80 V packs on its RTR series and 48 V packs on its R15PS/R18PS models. Because LFP accepts opportunity charging, operators can top up at breaks instead of changing batteries. The BMS manages cell balance and temperature.\n\n**Height and stability.** At height, the truck's capacity falls and the mast flexes more. Reach trucks therefore have load charts specific to each mast and height. Many also use speed and lift-height interlocks, and some offer height pre-selection or tilt-at-height limits.",
+      "howItWorks": "A **reach truck** is designed to store pallets high in narrow aisles. A counterbalance forklift carries its load in front of the front wheels and needs a wide aisle to turn. A reach truck instead has two **outrigger legs** with load wheels that stretch forward from the chassis. The mast moves forward along the legs (a **moving-mast** design) to pick or place a pallet, then pulls back so the load sits within the truck's wheelbase while it travels and turns.\n\n**Why it needs less space.** The load is carried inside the footprint and the truck pivots around a central drive wheel, so it can make a right-angle turn into racking in a much narrower aisle than a counterbalance truck. Lift heights are usually higher too, using three-stage masts.\n\n**Drive and hydraulics.** A single steered drive wheel under the operator compartment is powered by an AC traction motor. A separate pump motor supplies the hydraulic circuit for lift, reach, tilt and side-shift. The operator sits sideways or stands, depending on the model, so both travel directions are easy to see.\n\n**Battery.** BYD's reach trucks use lithium iron phosphate (LFP) batteries. The RTR series uses 80 V packs and the R15PS/R18PS models use 48 V packs. Because LFP accepts opportunity charging, operators can top up at breaks instead of changing batteries. The BMS manages cell balance and temperature.\n\n**Height and stability.** At height, the truck's capacity falls and the mast flexes more. Reach trucks therefore have load charts specific to each mast and height. Many also use speed and lift-height interlocks, and some offer height pre-selection or tilt-at-height limits.",
       "keyComponents": [
         {
           "name": "Outrigger legs with load wheels",
@@ -1938,7 +1968,7 @@
       "slug": "tow-tractors",
       "name": "Electric Tow Tractors",
       "summary": "Battery-electric tugs from 3 t to over 30 t towing capacity for moving trains of trailers in factories, ports and logistics hubs.",
-      "howItWorks": "An **electric tow tractor** (tug) pulls loads on trailers or carts instead of lifting them. One tractor can move a train of several trailers, so it can replace many forklift trips over long internal routes: between production halls, from warehouse to dispatch, or across port and airport aprons.\n\n**Drawbar pull, not lift.** A tractor is rated by the **towed load** it can pull on level ground. It works by putting traction through its drive wheels, which needs weight on those wheels. Tractors are therefore heavy for their size, and the towing rating drops on slopes and slippery surfaces. A tow coupling at the rear connects the trailers, and a pin or automatic hitch is common.\n\n**Drive.** An AC traction motor drives the wheels through a reduction gearbox and differential, with the speed controlled electronically. When the operator eases off, regenerative braking slows the tractor and train and puts energy back into the battery. Mechanical service and parking brakes hold the train. BYD lists hill-hold and slope protection on its larger tractors.\n\n**Sizes.** Compact pedestrian or stand-on tugs (around 3–5 t towed) move carts in assembly plants and hospitals. Seated and cab tractors (25 t and above) haul heavy trailer trains outdoors.\n\n**Battery.** BYD's tractors use lithium iron phosphate (LFP) batteries: 24–48 V on the small tugs and 80 V on the large tractors. Long routes make tractors good candidates for opportunity charging at the end of each loop. The BMS keeps the pack within safe limits.",
+      "howItWorks": "An **electric tow tractor** (tug) pulls loads on trailers or carts instead of lifting them. One tractor can move a train of several trailers, so it can replace many forklift trips over long internal routes: between production halls, from warehouse to dispatch, or across port and airport aprons.\n\n**Drawbar pull, not lift.** A tractor is rated by the **towed load** it can pull on level ground. It works by putting traction through its drive wheels, which needs weight on those wheels. Tractors are therefore heavy for their size, and the towing rating drops on slopes and slippery surfaces. A tow coupling at the rear connects the trailers, and a pin or automatic hitch is common.\n\n**Drive.** An AC traction motor drives the wheels through a reduction gearbox and differential, with the speed controlled electronically. When the operator eases off, regenerative braking slows the tractor and train and puts energy back into the battery. Mechanical service and parking brakes hold the train. The larger tractors have hill-hold and slope protection.\n\n**Sizes.** Compact pedestrian or stand-on tugs (around 3–5 t towed) move carts in assembly plants and hospitals. Seated and cab tractors (25 t and above) haul heavy trailer trains outdoors.\n\n**Battery.** BYD's tractors use lithium iron phosphate (LFP) batteries: 24–48 V on the small tugs and 80 V on the large tractors. Long routes make tractors good candidates for opportunity charging at the end of each loop. The BMS keeps the pack within safe limits.",
       "keyComponents": [
         {
           "name": "AC traction motor and drive axle",
@@ -2125,7 +2155,7 @@
           "summary": "BYD's 37 t heavy tow tractor, launched in Europe for heavy-haul internal logistics.",
           "highlights": [
             "37,000 kg towing capacity",
-            "BYD claims more than 10 hours of operation per charge",
+            "More than 10 hours of operation per charge",
             "BYD iron-phosphate battery"
           ],
           "specs": {

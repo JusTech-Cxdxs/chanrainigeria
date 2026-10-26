@@ -152,6 +152,16 @@ async function main() {
     console.log(`${c.name}: ${fCount} new types, ${pCount} new models${update ? " (existing refreshed)" : ""}`);
   }
 
+  // Brand partners with no product line file of their own (logo shipped in /public/brand/logos).
+  const partners = [{ slug: "fornovogas", name: "Fornovogas", order: 4 }];
+  for (const p of partners) {
+    const has = await db.query.brands.findFirst({ where: eq(schema.brands.slug, p.slug) });
+    if (!has) {
+      await db.insert(schema.brands).values({ slug: p.slug, name: p.name, order: p.order, relationship: "Brand partner" });
+      console.log(`brands: added ${p.name}`);
+    }
+  }
+
   // The three manufacturers Chanrai represents are authorised dealerships. Fill the relationship only
   // where staff haven't set one, so re-running never overwrites their wording.
   const dealer = await db

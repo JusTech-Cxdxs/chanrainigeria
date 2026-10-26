@@ -731,7 +731,7 @@ const contact: PageDef = {
         text("directions", "Directions link", "Directions"),
       ],
     },
-    seo("Contact", "Talk to {company}'s sales, service, parts or CNG desk."),
+    seo("Contact", "Talk to {company} about sales, service and parts for every product, 24 hours a day."),
   ],
 };
 
@@ -824,7 +824,7 @@ const products: PageDef = {
         text("lineLink", "Link beside each line", "See the range"),
       ],
     },
-    seo("Products", "CNG compression and gas equipment, construction equipment and electric forklifts available from {company}."),
+    seo("Products", "CNG refueling, compression, storage and dispensing equipment, construction equipment and electric forklifts available from {company}."),
   ],
 };
 
@@ -834,7 +834,7 @@ const productLine: PageDef = {
   path: null,
   group: "Products and services",
   icon: "folder",
-  description: "Wording shared by every product line page (for example CNG compression and gas equipment). Each line's own text and picture are under Catalogue.",
+  description: "Wording shared by every product line page (for example CNG refueling, compression, storage and dispensing equipment). Each line's own text and picture are under Catalogue.",
   sections: [
     {
       label: "Banner buttons",
@@ -1002,7 +1002,7 @@ const parts: PageDef = {
       title: "Parts",
       lead: "Filters, wear parts, hydraulic components, batteries and station spares. Send the machine's serial number and the part numbers if you have them, and we'll confirm availability.",
     }),
-    seo("Parts", "Request genuine parts for CNG compression and gas equipment, construction equipment and forklifts."),
+    seo("Parts", "Request genuine parts for CNG refueling, compression, storage and dispensing equipment, construction equipment and forklifts."),
   ],
 };
 
@@ -1028,7 +1028,7 @@ const bookService: PageDef = {
         text("downText", "Text", "Call the service desk on {phone}", "{phone} is the service desk number."),
       ],
     },
-    seo("Book a technician", "Book an on-site service visit for CNG compression and gas equipment, construction equipment or forklifts anywhere in Nigeria."),
+    seo("Book a technician", "Book an on-site service visit for CNG refueling, compression, storage and dispensing equipment, construction equipment or forklifts anywhere in Nigeria."),
   ],
 };
 

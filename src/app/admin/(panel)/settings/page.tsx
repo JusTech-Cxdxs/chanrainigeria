@@ -149,7 +149,7 @@ export default async function SettingsPage({ searchParams }: { searchParams: Pro
               <Field label="Main email" name="contact_email" type="email" defaultValue={s.contact.email} hint="Used for any desk without its own email, and as the last resort for alerts." />
               <Field label="Main phone" name="contact_phone" defaultValue={s.contact.phone} hint="Shown in the header, footer and every email." />
               <Field label="Main WhatsApp" name="contact_whatsapp" defaultValue={s.contact.whatsapp} hint="The number for the WhatsApp button. Leave empty to hide it." />
-              <Field label="Opening hours" name="contact_hours" defaultValue={s.contact.hours} hint="For example: Monday to Friday, 8:00 to 17:00." />
+              <Field label="Opening hours" name="contact_hours" defaultValue={s.contact.hours} hint="For example: 24 hours, 7 days a week." />
               <Field label="Address" name="contact_address" defaultValue={s.contact.address} className="sm:col-span-2" hint="Shown in the footer, in Enyo's Contact us card and in every email." />
             </div>
 

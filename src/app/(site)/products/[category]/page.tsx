@@ -8,6 +8,7 @@ import { siteContent } from "@/components/site/site-content";
 import { Icon } from "@/components/ui/Icon";
 import { getCategory } from "@/lib/catalogue";
 import { imageUrl, mediaUrl } from "@/lib/settings";
+import { familyImage } from "@/lib/type-images";
 
 type P = { params: Promise<{ category: string }> };
 export const dynamic = "force-dynamic";
@@ -55,7 +56,7 @@ export default async function CategoryPage({ params }: P) {
             <li key={f.id}>
               <Link href={`/products/${cat.slug}/${f.slug}`} className="group grid items-center gap-4 py-6 sm:grid-cols-[12rem_1fr_auto] sm:gap-8">
                 <span className="block w-48">
-                  <FamilyPicture src={mediaUrl(f.imageId)} fallback={<Machine kind={f.illustration || machineForSlug(f.slug, cat.illustration)} className="w-full" />} />
+                  <FamilyPicture src={familyImage(f)} alt={f.name} fallback={<Machine kind={f.illustration || machineForSlug(f.slug, cat.illustration)} className="w-full" />} />
                 </span>
                 <span>
                   <span className="heading block text-xl group-hover:text-brand-ink">{f.name}</span>

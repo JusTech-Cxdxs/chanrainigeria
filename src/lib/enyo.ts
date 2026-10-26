@@ -321,7 +321,7 @@ function fallbackReply(settings: Settings, k: { families: FamilyDoc[] }, q: stri
   if (/part|filter|spare/.test(lower)) return { reply: `Send a [parts request](/parts). The serial number and part numbers help us confirm quickly.` };
   if (/where|address|branch|office|location|located/.test(lower)) return { reply: `Our locations and desks are on the [contact page](/contact#branches).` };
   if (/cng|gas|compressor|dispenser|station|cascade/.test(lower) && desk("cng"))
-    return { reply: `For CNG compression and gas equipment, contact our CNG desk on ${desk("cng")}, or see the [CNG compression and gas equipment range](/products/cng-gas-equipment).` };
+    return { reply: `For CNG refueling, compression, storage and dispensing equipment, call ${desk("cng")}, or see the [CNG equipment range](/products/cng-gas-equipment).` };
   const f = relevant(k.families, q, 1)[0];
   if (f) return { reply: `You might be looking for ${f.name} (${f.category}). See [how they work and the models we supply](/products/${f.categorySlug}/${f.slug}).` };
   return { reply: `I can help with our products, booking a technician, parts and finding us. Try asking about a machine type, or use "Leave a request" and our team will reply by email.` };
