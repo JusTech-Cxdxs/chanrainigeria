@@ -1,4 +1,5 @@
 "use client";
+
 // Model cards with a quick-view dialog: specs, highlights and the enquiry actions. No prices.
 import Link from "next/link";
 import { useRef, useState } from "react";
@@ -9,6 +10,7 @@ import { Icon } from "@/components/ui/Icon";
 import { askEnyo } from "./enyo-events";
 import { Framed } from "./FamilyPicture";
 import { fill, type Labels } from "./fill";
+import { srcSetFor } from "@/lib/responsive-image";
 
 export type ModelCard = {
   id: string;
@@ -115,7 +117,7 @@ export function ModelGrid({
               <div className="flex snap-x gap-3 overflow-x-auto">
                 {active.images.map((src) => (
                   // eslint-disable-next-line @next/next/no-img-element
-                  <img key={src} src={src} alt={active.name} className="aspect-[4/3] w-full max-w-md shrink-0 snap-start rounded object-cover" />
+                  <img key={src} src={src} srcSet={srcSetFor(src)} sizes="(min-width: 640px) 448px, 100vw" alt={active.name} className="aspect-[4/3] w-full max-w-md shrink-0 snap-start rounded object-cover" />
                 ))}
               </div>
             ) : null}

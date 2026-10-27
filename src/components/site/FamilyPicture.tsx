@@ -1,3 +1,5 @@
+import { srcSetFor } from "@/lib/responsive-image";
+
 /**
  * Every uploaded picture on the public site sits in one of these frames: a fixed shape, cropped to fill
  * (object-cover), with the same soft dark green shade at the bottom. A tall, small or very bright photo
@@ -12,6 +14,7 @@ export function Framed({
   fallback,
   eager,
   zoom = true,
+  sizes = "(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw",
 }: {
   src: string | null | undefined;
   alt?: string;
@@ -25,6 +28,8 @@ export function Framed({
   eager?: boolean;
   /** Slow zoom on hover when the frame sits inside a link with the "group" class */
   zoom?: boolean;
+  /** How wide the frame is on screen, so phones download a small copy and big screens a sharp one */
+  sizes?: string;
 }) {
   if (!src) {
     return fallback ? <span className={`grid ${ratio} w-full place-items-center overflow-hidden ${className}`}>{fallback}</span> : null;
@@ -34,6 +39,8 @@ export function Framed({
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={src}
+        srcSet={srcSetFor(src)}
+        sizes={sizes}
         alt={alt}
         loading={eager ? "eager" : "lazy"}
         decoding="async"

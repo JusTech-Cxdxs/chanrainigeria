@@ -14,6 +14,7 @@ import { getContent } from "@/lib/content";
 import { siteContent } from "@/components/site/site-content";
 import { formatDate, telHref } from "@/lib/format";
 import { getSettings, imageUrl, mediaUrl } from "@/lib/settings";
+import { postCover } from "@/lib/type-images";
 
 export const dynamic = "force-dynamic";
 
@@ -233,7 +234,7 @@ export default async function Home() {
             {posts.map((p, k) => (
               <li key={p.id} className="reveal" style={{ ["--i" as string]: k }}>
                 <Link href={`/news/${p.slug}`} className="card card-hover group block h-full overflow-hidden">
-                  <Framed src={p.coverId ? mediaUrl(p.coverId) : newsPage.img("image")} ratio="aspect-[16/9]" className="!rounded-none" />
+                  <Framed src={postCover(p) ?? newsPage.img("image")} ratio="aspect-[16/9]" className="!rounded-none" />
                   <span className="block p-5">
                     <span className="text-sm text-ink-soft">{formatDate(p.publishedAt)}</span>
                     <span className="heading mt-1 block text-xl group-hover:text-brand-ink">{p.title}</span>

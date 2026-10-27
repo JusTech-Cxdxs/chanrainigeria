@@ -5,7 +5,7 @@ import { pageMetadata, siteContent } from "@/components/site/site-content";
 import { Icon } from "@/components/ui/Icon";
 import { getPosts } from "@/lib/catalogue";
 import { formatDate } from "@/lib/format";
-import { mediaUrl } from "@/lib/settings";
+import { postCover } from "@/lib/type-images";
 
 export const generateMetadata = () => pageMetadata("news");
 export const dynamic = "force-dynamic";
@@ -24,7 +24,7 @@ export default async function News() {
             {posts.map((p) => (
               <li key={p.id} className="reveal">
                 <Link href={`/news/${p.slug}`} className="group grid gap-5 py-8 md:grid-cols-[16rem_1fr] md:gap-8">
-                  <Framed src={p.coverId ? mediaUrl(p.coverId) : fallback} ratio="aspect-[16/10]" />
+                  <Framed src={postCover(p) ?? fallback} ratio="aspect-[16/10]" />
                   <span>
                     <span className="flex items-center gap-1.5 text-sm text-ink-soft">
                       <Icon name="calendar" size={15} />
