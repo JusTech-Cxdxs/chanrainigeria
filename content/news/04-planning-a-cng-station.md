@@ -1,7 +1,7 @@
 ---
 title: Planning a CNG station: what to have ready
 slug: planning-a-cng-station
-category: CNG and gas
+category: CNG
 excerpt: Good information at the start makes the design, approvals and installation of a CNG station much smoother.
 ---
 Compressed natural gas stations need careful planning. Having the right information ready helps us recommend the right equipment and plan the installation.

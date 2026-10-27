@@ -8,8 +8,9 @@ import type { Labels } from "./fill";
 import { LanguagePicker } from "./LanguagePicker";
 import { openSearch } from "./search-events";
 import { ThemeToggle } from "./ThemeToggle";
+import { srcSetFor } from "@/lib/responsive-image";
 
-type NavCategory = { id: string; slug: string; name: string; families: { id: string; slug: string; name: string }[] };
+type NavCategory = { id: string; slug: string; name: string; families: { id: string; slug: string; name: string; image?: string | null }[] };
 export type NavLink = { label: string; href: string };
 
 /** The section a link belongs to: /products/... marks Products, /news/x marks News. */
@@ -123,7 +124,7 @@ export function Header({
                 {bar(productsOn)}
               </Link>
               {mega && categories.length ? (
-                <div className="pop absolute left-0 top-full w-[46rem] pt-3" onBlur={(e) => !e.currentTarget.contains(e.relatedTarget) && setMega(false)}>
+                <div className="pop absolute left-0 top-full w-[min(54rem,calc(100vw-14rem))] pt-3" onBlur={(e) => !e.currentTarget.contains(e.relatedTarget) && setMega(false)}>
                   <div className="overflow-hidden rounded-2xl border border-line bg-surface text-ink shadow-2xl">
                     <div className="grid grid-cols-3 gap-6 p-6">
                       {categories.map((c) => {
@@ -138,7 +139,7 @@ export function Header({
                               {lineOn ? <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-brand-ink" aria-hidden /> : null}
                               {c.name}
                             </Link>
-                            <ul className="mt-3 space-y-1.5 text-[0.92rem] text-ink-soft">
+                            <ul className="mt-3 space-y-1 text-[0.9rem] text-ink-soft">
                               {c.families.slice(0, 8).map((f) => {
                                 const famOn = isActive(path, `/products/${c.slug}/${f.slug}`);
                                 return (
@@ -146,9 +147,22 @@ export function Header({
                                     <Link
                                       href={`/products/${c.slug}/${f.slug}`}
                                       aria-current={famOn ? "page" : undefined}
-                                      className={`hover:text-brand-ink ${famOn ? "font-semibold text-brand-ink" : ""}`}
+                                      className={`group/f -mx-1.5 flex items-center gap-2.5 rounded-lg px-1.5 py-1 leading-snug hover:bg-brand/[0.06] hover:text-brand-ink ${famOn ? "font-semibold text-brand-ink" : ""}`}
                                     >
-                                      {f.name}
+                                      {f.image ? (
+                                        // eslint-disable-next-line @next/next/no-img-element
+                                        <img
+                                          src={f.image.startsWith("/images/types/") ? f.image.replace(/\.jpg$/, "-240.jpg") : f.image}
+                                          srcSet={f.image.startsWith("/images/types/") ? undefined : srcSetFor(f.image)}
+                                          sizes="112px"
+                                          alt=""
+                                          decoding="async"
+                                          className="h-9 w-14 shrink-0 rounded-md bg-line object-cover ring-1 ring-line transition-transform group-hover/f:scale-[1.04]"
+                                        />
+                                      ) : (
+                                        <span className="h-9 w-14 shrink-0 rounded-md bg-brand/10" aria-hidden />
+                                      )}
+                                      <span>{f.name}</span>
                                     </Link>
                                   </li>
                                 );

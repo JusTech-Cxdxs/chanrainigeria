@@ -11,6 +11,7 @@ import { SearchDialog } from "@/components/site/SearchDialog";
 import { siteContent } from "@/components/site/site-content";
 import { getBranches, getBrands, getCategories } from "@/lib/catalogue";
 import { getSettings, mediaUrl } from "@/lib/settings";
+import { familyImage } from "@/lib/type-images";
 
 export default async function SiteLayout({ children }: { children: React.ReactNode }) {
   const [s, categories, branches, brands, nav, cookie, enyo] = await Promise.all([
@@ -37,7 +38,7 @@ export default async function SiteLayout({ children }: { children: React.ReactNo
         name={s.company.shortName}
         logoUrl={mediaUrl(s.branding.logoId)}
         logoDarkUrl={mediaUrl(s.branding.logoDarkId)}
-        categories={categories.map((c) => ({ id: c.id, slug: c.slug, name: c.name, families: c.families.map((f) => ({ id: f.id, slug: f.slug, name: f.name })) }))}
+        categories={categories.map((c) => ({ id: c.id, slug: c.slug, name: c.name, families: c.families.map((f) => ({ id: f.id, slug: f.slug, name: f.name, image: familyImage(f) })) }))}
         languages={s.translate.languages}
         translate={s.translate.enabled}
         labels={navLabels}
