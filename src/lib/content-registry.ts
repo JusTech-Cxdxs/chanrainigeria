@@ -686,7 +686,7 @@ const about: PageDef = {
           fields: [text("value", "Big figure", ""), text("label", "What it means", "")],
           default: [
             { value: "Since 1900", label: "The Kewalram Chanrai Group in Nigeria" },
-            { value: "3", label: "Equipment lines: CNG and gas, construction, forklifts" },
+            { value: "3", label: "Equipment lines: CNG, construction and forklifts" },
             { value: "1 team", label: "For sales, on-site service and genuine parts" },
           ],
         },
