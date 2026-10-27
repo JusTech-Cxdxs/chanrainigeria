@@ -5,7 +5,6 @@ import { PageHead } from "@/components/site/PageHead";
 import { pageMetadata, siteContent } from "@/components/site/site-content";
 import { Icon } from "@/components/ui/Icon";
 import { getCategories } from "@/lib/catalogue";
-import { mediaUrl } from "@/lib/settings";
 import { familyImage } from "@/lib/type-images";
 
 export const generateMetadata = () => pageMetadata("products");
