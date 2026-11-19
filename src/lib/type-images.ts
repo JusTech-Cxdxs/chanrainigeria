@@ -1,6 +1,7 @@
 // Pictures shipped with the site for machine types (public/images/types/<slug>.jpg), models
 // (public/images/models/<slug>.jpg) and the starter articles (public/images/news/<slug>.jpg).
 // An uploaded picture (Dashboard → Images, the model's page, or the article) always wins.
+import { officialModel, showsSister } from "./official-media";
 import { mediaUrl } from "./settings";
 
 const BUNDLED = new Set([
@@ -64,7 +65,22 @@ export function familyImage(f: { slug: string; imageId?: string | null }): strin
  * carry no model name, so every model of the type can borrow one.
  */
 export function modelFallbackImage(f: { slug: string; imageId?: string | null }, modelSlug: string): string | null {
-  return bundledModelImage(modelSlug) ?? familyImage(f);
+  return modelPictures(f, modelSlug)[0] ?? null;
+}
+
+/**
+ * Every shipped picture of a model, best first: the manufacturer's studio pictures, our own photo of the
+ * model, then the manufacturer's working photos. Where the studio pictures show a sister model our own
+ * photo leads. A model with none of these borrows its type's picture.
+ */
+export function modelPictures(f: { slug: string; imageId?: string | null }, modelSlug: string): string[] {
+  const o = officialModel(modelSlug);
+  const own = bundledModelImage(modelSlug);
+  const studio = o?.studio.map((s) => s.src) ?? [];
+  const all = [...(own && showsSister(modelSlug) ? [own, ...studio] : [...studio, ...(own ? [own] : [])]), ...(o?.gallery ?? [])];
+  if (all.length) return all;
+  const t = familyImage(f);
+  return t ? [t] : [];
 }
 
 /** An article's cover: uploaded, else shipped, else null. */

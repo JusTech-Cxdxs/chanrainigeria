@@ -4,9 +4,11 @@ import { notFound } from "next/navigation";
 import { Machine, machineForSlug } from "@/components/Machine";
 import { FamilyPicture } from "@/components/site/FamilyPicture";
 import { PageHead } from "@/components/site/PageHead";
+import { FilmCard } from "@/components/site/Showroom";
 import { siteContent } from "@/components/site/site-content";
 import { Icon } from "@/components/ui/Icon";
 import { getCategory } from "@/lib/catalogue";
+import { fileSize, officialLine } from "@/lib/official-media";
 import { imageUrl, mediaUrl } from "@/lib/settings";
 import { familyImage } from "@/lib/type-images";
 
@@ -22,6 +24,8 @@ export default async function CategoryPage({ params }: P) {
   const cat = await getCategory((await params).category);
   if (!cat) notFound();
   const [c, nav, prod] = await Promise.all([siteContent("product-line"), siteContent("header"), siteContent("products")]);
+
+  const official = officialLine(cat.slug);
 
   const trio = [
     { icon: "file", title: c.t("salesTitle"), text: cat.salesBlurb, href: `/contact?type=QUOTE&category=${cat.slug}`, cta: c.t("salesLink") },
@@ -110,6 +114,34 @@ export default async function CategoryPage({ params }: P) {
                 </li>
               ))}
             </ul>
+          </section>
+        ) : null}
+
+        {official?.films.length ? (
+          <section className="mt-16" aria-labelledby="films-h">
+            <h2 id="films-h" className="heading text-2xl">
+              {c.t("filmsTitle")}
+            </h2>
+            <div className={`mt-6 grid gap-6 ${official.films.length > 1 ? "md:grid-cols-2" : "max-w-3xl"}`}>
+              {official.films.map((film) => (
+                <FilmCard key={film.title} film={film} playLabel={c.t("filmPlay")} />
+              ))}
+            </div>
+            {official.brochures?.length ? (
+              <>
+                <h3 className="heading mt-8 text-lg">{c.t("downloadsTitle")}</h3>
+                <ul className="mt-3 flex flex-wrap gap-3">
+                  {official.brochures.map((b) => (
+                    <li key={b.href}>
+                      <a href={b.href} target="_blank" rel="noopener" className="btn btn-outline">
+                        <Icon name="download" />
+                        {c.f("downloadItem", { label: b.label ?? "", size: fileSize(b.kb) })}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            ) : null}
           </section>
         ) : null}
 
