@@ -1,0 +1,1297 @@
+{
+ "models": {
+  "liugong-915e": {
+   "brand": "LiuGong",
+   "source": "https://mea.liugong.com/product/915e/",
+   "studio": [
+    {
+     "src": "/official/liugong/915e/studio.webp",
+     "w": 1024,
+     "h": 726
+    }
+   ],
+   "banner": "/official/liugong/915e/banner.jpg",
+   "gallery": [
+    "/official/liugong/915e/photo-1.jpg",
+    "/official/liugong/915e/photo-2.jpg",
+    "/official/liugong/915e/photo-3.jpg",
+    "/official/liugong/915e/photo-4.jpg",
+    "/official/liugong/915e/photo-5.jpg",
+    "/official/liugong/915e/photo-6.jpg"
+   ],
+   "brochure": {
+    "href": "/official/brochures/liugong-915e.pdf",
+    "kb": 1191,
+    "sheet": "/official/liugong/915e/sheet.jpg",
+    "sheetSize": [
+     1800,
+     2443
+    ]
+   }
+  },
+  "liugong-922e": {
+   "brand": "LiuGong",
+   "source": "https://mea.liugong.com/product/922e/",
+   "studio": [
+    {
+     "src": "/official/liugong/922e/studio.webp",
+     "w": 892,
+     "h": 662
+    }
+   ],
+   "banner": "/official/liugong/922e/banner.jpg",
+   "gallery": [
+    "/official/liugong/922e/photo-1.jpg"
+   ],
+   "brochure": {
+    "href": "/official/brochures/liugong-922e.pdf",
+    "kb": 174,
+    "sheet": "/official/liugong/922e/sheet.jpg",
+    "sheetSize": [
+     1800,
+     2426
+    ]
+   }
+  },
+  "liugong-936e": {
+   "brand": "LiuGong",
+   "source": "https://mea.liugong.com/product/936e/",
+   "studio": [
+    {
+     "src": "/official/liugong/936e/studio.webp",
+     "w": 796,
+     "h": 734
+    }
+   ],
+   "banner": "/official/liugong/936e/banner.jpg",
+   "gallery": [
+    "/official/liugong/936e/photo-1.jpg",
+    "/official/liugong/936e/photo-2.jpg",
+    "/official/liugong/936e/photo-3.jpg",
+    "/official/liugong/936e/photo-4.jpg",
+    "/official/liugong/936e/photo-5.jpg",
+    "/official/liugong/936e/photo-6.jpg",
+    "/official/liugong/936e/photo-7.jpg",
+    "/official/liugong/936e/photo-8.jpg",
+    "/official/liugong/936e/photo-9.jpg"
+   ],
+   "brochure": {
+    "href": "/official/brochures/liugong-936e.pdf",
+    "kb": 1670,
+    "sheet": "/official/liugong/936e/sheet.jpg",
+    "sheetSize": [
+     1800,
+     2443
+    ]
+   }
+  },
+  "liugong-950e": {
+   "brand": "LiuGong",
+   "source": "https://mea.liugong.com/product/950e/",
+   "studio": [],
+   "banner": "/official/liugong/950e/banner.jpg",
+   "gallery": [
+    "/official/liugong/950e/photo-1.jpg",
+    "/official/liugong/950e/photo-2.jpg",
+    "/official/liugong/950e/photo-3.jpg",
+    "/official/liugong/950e/photo-4.jpg",
+    "/official/liugong/950e/photo-5.jpg",
+    "/official/liugong/950e/photo-6.jpg",
+    "/official/liugong/950e/photo-7.jpg",
+    "/official/liugong/950e/photo-8.jpg",
+    "/official/liugong/950e/photo-9.jpg"
+   ],
+   "brochure": {
+    "href": "/official/brochures/liugong-950e.pdf",
+    "kb": 188,
+    "sheet": "/official/liugong/950e/sheet.jpg",
+    "sheetSize": [
+     1800,
+     2316
+    ]
+   }
+  },
+  "liugong-990f": {
+   "brand": "LiuGong",
+   "source": "https://mea.liugong.com/product/990f/",
+   "studio": [
+    {
+     "src": "/official/liugong/990f/studio.webp",
+     "w": 1142,
+     "h": 756
+    }
+   ],
+   "banner": "/official/liugong/990f/banner.jpg",
+   "gallery": [
+    "/official/liugong/990f/photo-1.jpg"
+   ],
+   "brochure": {
+    "href": "/official/brochures/liugong-990f.pdf",
+    "kb": 1604,
+    "sheet": "/official/liugong/990f/sheet.jpg",
+    "sheetSize": [
+     1800,
+     2426
+    ]
+   }
+  },
+  "liugong-835h": {
+   "brand": "LiuGong",
+   "source": "https://mea.liugong.com/product/835h/",
+   "studio": [
+    {
+     "src": "/official/liugong/835h/studio.webp",
+     "w": 1156,
+     "h": 674
+    }
+   ],
+   "banner": "/official/liugong/835h/banner.jpg",
+   "gallery": [
+    "/official/liugong/835h/photo-1.jpg",
+    "/official/liugong/835h/photo-2.jpg",
+    "/official/liugong/835h/photo-3.jpg",
+    "/official/liugong/835h/photo-4.jpg",
+    "/official/liugong/835h/photo-5.jpg",
+    "/official/liugong/835h/photo-6.jpg",
+    "/official/liugong/835h/photo-7.jpg"
+   ],
+   "brochure": {
+    "href": "/official/brochures/liugong-835h.pdf",
+    "kb": 255,
+    "sheet": "/official/liugong/835h/sheet.jpg",
+    "sheetSize": [
+     1800,
+     2443
+    ]
+   }
+  },
+  "liugong-842h": {
+   "brand": "LiuGong",
+   "source": "https://mea.liugong.com/product/842h/",
+   "studio": [
+    {
+     "src": "/official/liugong/842h/studio.webp",
+     "w": 1088,
+     "h": 594
+    }
+   ],
+   "banner": "/official/liugong/842h/banner.jpg",
+   "gallery": [
+    "/official/liugong/842h/photo-1.jpg",
+    "/official/liugong/842h/photo-2.jpg",
+    "/official/liugong/842h/photo-3.jpg",
+    "/official/liugong/842h/photo-4.jpg",
+    "/official/liugong/842h/photo-5.jpg",
+    "/official/liugong/842h/photo-6.jpg"
+   ],
+   "brochure": {
+    "href": "/official/brochures/liugong-842h.pdf",
+    "kb": 1396,
+    "sheet": "/official/liugong/842h/sheet.jpg",
+    "sheetSize": [
+     1800,
+     2443
+    ]
+   }
+  },
+  "liugong-856h": {
+   "brand": "LiuGong",
+   "source": "https://mea.liugong.com/product/856h/",
+   "studio": [
+    {
+     "src": "/official/liugong/856h/studio.webp",
+     "w": 976,
+     "h": 690
+    }
+   ],
+   "banner": "/official/liugong/856h/banner.jpg",
+   "gallery": [
+    "/official/liugong/856h/photo-1.jpg",
+    "/official/liugong/856h/photo-2.jpg",
+    "/official/liugong/856h/photo-3.jpg",
+    "/official/liugong/856h/photo-4.jpg",
+    "/official/liugong/856h/photo-5.jpg",
+    "/official/liugong/856h/photo-6.jpg",
+    "/official/liugong/856h/photo-7.jpg",
+    "/official/liugong/856h/photo-8.jpg",
+    "/official/liugong/856h/photo-9.jpg"
+   ],
+   "brochure": {
+    "href": "/official/brochures/liugong-856h.pdf",
+    "kb": 309,
+    "sheet": "/official/liugong/856h/sheet.jpg",
+    "sheetSize": [
+     1800,
+     2443
+    ]
+   }
+  },
+  "liugong-862h": {
+   "brand": "LiuGong",
+   "source": "https://mea.liugong.com/product/862h/",
+   "studio": [
+    {
+     "src": "/official/liugong/862h/studio.webp",
+     "w": 1082,
+     "h": 716
+    }
+   ],
+   "banner": "/official/liugong/862h/banner.jpg",
+   "gallery": [
+    "/official/liugong/862h/photo-1.jpg",
+    "/official/liugong/862h/photo-2.jpg",
+    "/official/liugong/862h/photo-3.jpg"
+   ],
+   "brochure": {
+    "href": "/official/brochures/liugong-862h.pdf",
+    "kb": 2014,
+    "sheet": "/official/liugong/862h/sheet.jpg",
+    "sheetSize": [
+     1800,
+     2443
+    ]
+   }
+  },
+  "liugong-890h": {
+   "brand": "LiuGong",
+   "source": "https://mea.liugong.com/product/890h/",
+   "studio": [
+    {
+     "src": "/official/liugong/890h/studio.webp",
+     "w": 1126,
+     "h": 678
+    }
+   ],
+   "banner": "/official/liugong/890h/banner.jpg",
+   "gallery": [
+    "/official/liugong/890h/photo-1.jpg",
+    "/official/liugong/890h/photo-2.jpg",
+    "/official/liugong/890h/photo-3.jpg",
+    "/official/liugong/890h/photo-4.jpg",
+    "/official/liugong/890h/photo-5.jpg",
+    "/official/liugong/890h/photo-6.jpg",
+    "/official/liugong/890h/photo-7.jpg"
+   ],
+   "brochure": {
+    "href": "/official/brochures/liugong-890h.pdf",
+    "kb": 2725,
+    "sheet": "/official/liugong/890h/sheet.jpg",
+    "sheetSize": [
+     1800,
+     2443
+    ]
+   }
+  },
+  "liugong-b230": {
+   "brand": "LiuGong",
+   "source": "https://mea.liugong.com/product/b230/",
+   "studio": [
+    {
+     "src": "/official/liugong/b230/studio.webp",
+     "w": 948,
+     "h": 752
+    }
+   ],
+   "banner": "/official/liugong/b230/banner.jpg",
+   "gallery": [
+    "/official/liugong/b230/photo-1.jpg",
+    "/official/liugong/b230/photo-2.jpg",
+    "/official/liugong/b230/photo-3.jpg",
+    "/official/liugong/b230/photo-4.jpg",
+    "/official/liugong/b230/photo-5.jpg",
+    "/official/liugong/b230/photo-6.jpg"
+   ],
+   "brochure": {
+    "href": "/official/brochures/liugong-b230.pdf",
+    "kb": 1081,
+    "sheet": "/official/liugong/b230/sheet.jpg",
+    "sheetSize": [
+     1800,
+     2443
+    ]
+   }
+  },
+  "liugong-b230s": {
+   "brand": "LiuGong",
+   "source": "https://mea.liugong.com/product/b230s/",
+   "studio": [
+    {
+     "src": "/official/liugong/b230s/studio.webp",
+     "w": 948,
+     "h": 752
+    }
+   ],
+   "banner": "/official/liugong/b230s/banner.jpg",
+   "gallery": [
+    "/official/liugong/b230s/photo-1.jpg",
+    "/official/liugong/b230s/photo-2.jpg",
+    "/official/liugong/b230s/photo-3.jpg",
+    "/official/liugong/b230s/photo-4.jpg",
+    "/official/liugong/b230s/photo-5.jpg",
+    "/official/liugong/b230s/photo-6.jpg"
+   ],
+   "brochure": {
+    "href": "/official/brochures/liugong-b230s.pdf",
+    "kb": 2292,
+    "sheet": "/official/liugong/b230s/sheet.jpg",
+    "sheetSize": [
+     1800,
+     2443
+    ]
+   }
+  },
+  "liugong-b320": {
+   "brand": "LiuGong",
+   "source": "https://mea.liugong.com/product/b320/",
+   "studio": [
+    {
+     "src": "/official/liugong/b320/studio.webp",
+     "w": 894,
+     "h": 784
+    }
+   ],
+   "banner": "/official/liugong/b320/banner.jpg",
+   "gallery": [
+    "/official/liugong/b320/photo-1.jpg",
+    "/official/liugong/b320/photo-2.jpg",
+    "/official/liugong/b320/photo-3.jpg"
+   ],
+   "brochure": {
+    "href": "/official/brochures/liugong-b320.pdf",
+    "kb": 121,
+    "sheet": "/official/liugong/b320/sheet.jpg",
+    "sheetSize": [
+     1800,
+     2443
+    ]
+   }
+  },
+  "liugong-4180d": {
+   "brand": "LiuGong",
+   "source": "https://mea.liugong.com/product/4180d/",
+   "studio": [
+    {
+     "src": "/official/liugong/4180d/studio.webp",
+     "w": 1234,
+     "h": 672
+    }
+   ],
+   "banner": "/official/liugong/4180d/banner.jpg",
+   "gallery": [
+    "/official/liugong/4180d/photo-1.jpg"
+   ],
+   "brochure": {
+    "href": "/official/brochures/liugong-4180d.pdf",
+    "kb": 1454,
+    "sheet": "/official/liugong/4180d/sheet.jpg",
+    "sheetSize": [
+     1800,
+     2443
+    ]
+   }
+  },
+  "liugong-4215d": {
+   "brand": "LiuGong",
+   "source": "https://mea.liugong.com/product/4215d/",
+   "studio": [
+    {
+     "src": "/official/liugong/4215d/studio.webp",
+     "w": 1236,
+     "h": 676
+    }
+   ],
+   "banner": "/official/liugong/4215d/banner.jpg",
+   "gallery": [
+    "/official/liugong/4215d/photo-1.jpg",
+    "/official/liugong/4215d/photo-2.jpg",
+    "/official/liugong/4215d/photo-3.jpg"
+   ],
+   "brochure": {
+    "href": "/official/brochures/liugong-4215d.pdf",
+    "kb": 854,
+    "sheet": "/official/liugong/4215d/sheet.jpg",
+    "sheetSize": [
+     1800,
+     2443
+    ]
+   }
+  },
+  "liugong-425": {
+   "brand": "LiuGong",
+   "source": "https://mea.liugong.com/product/425/",
+   "studio": [
+    {
+     "src": "/official/liugong/425/studio.webp",
+     "w": 1182,
+     "h": 632
+    }
+   ],
+   "banner": "/official/liugong/425/banner.jpg",
+   "gallery": [
+    "/official/liugong/425/photo-1.jpg",
+    "/official/liugong/425/photo-2.jpg"
+   ],
+   "brochure": {
+    "href": "/official/brochures/liugong-425.pdf",
+    "kb": 1818,
+    "sheet": "/official/liugong/425/sheet.jpg",
+    "sheetSize": [
+     1800,
+     2443
+    ]
+   }
+  },
+  "liugong-365a": {
+   "brand": "LiuGong",
+   "source": "https://mea.liugong.com/product/365a/",
+   "studio": [
+    {
+     "src": "/official/liugong/365a/studio.webp",
+     "w": 932,
+     "h": 752
+    }
+   ],
+   "banner": "/official/liugong/365a/banner.jpg",
+   "gallery": [
+    "/official/liugong/365a/photo-1.jpg",
+    "/official/liugong/365a/photo-2.jpg",
+    "/official/liugong/365a/photo-3.jpg"
+   ],
+   "brochure": {
+    "href": "/official/brochures/liugong-365a.pdf",
+    "kb": 1544,
+    "sheet": "/official/liugong/365a/sheet.jpg",
+    "sheetSize": [
+     1800,
+     2426
+    ]
+   }
+  },
+  "liugong-375a": {
+   "brand": "LiuGong",
+   "source": "https://mea.liugong.com/product/375a/",
+   "studio": [
+    {
+     "src": "/official/liugong/375a/studio.webp",
+     "w": 1182,
+     "h": 692
+    }
+   ],
+   "banner": "/official/liugong/375a/banner.jpg",
+   "gallery": [
+    "/official/liugong/375a/photo-1.jpg",
+    "/official/liugong/375a/photo-2.jpg",
+    "/official/liugong/375a/photo-3.jpg",
+    "/official/liugong/375a/photo-4.jpg"
+   ],
+   "brochure": {
+    "href": "/official/brochures/liugong-375a.pdf",
+    "kb": 1569,
+    "sheet": "/official/liugong/375a/sheet.jpg",
+    "sheetSize": [
+     1800,
+     2526
+    ]
+   }
+  },
+  "liugong-777a": {
+   "brand": "LiuGong",
+   "source": "https://mea.liugong.com/product/777a/",
+   "studio": [
+    {
+     "src": "/official/liugong/777a/studio.webp",
+     "w": 1296,
+     "h": 508
+    }
+   ],
+   "banner": "/official/liugong/777a/banner.jpg",
+   "gallery": [
+    "/official/liugong/777a/photo-1.jpg",
+    "/official/liugong/777a/photo-2.jpg",
+    "/official/liugong/777a/photo-3.jpg",
+    "/official/liugong/777a/photo-4.jpg",
+    "/official/liugong/777a/photo-5.jpg"
+   ],
+   "brochure": {
+    "href": "/official/brochures/liugong-777a.pdf",
+    "kb": 1685,
+    "sheet": "/official/liugong/777a/sheet.jpg",
+    "sheetSize": [
+     1800,
+     2443
+    ]
+   }
+  },
+  "liugong-6114e": {
+   "brand": "LiuGong",
+   "source": "https://mea.liugong.com/product/6114e/",
+   "studio": [
+    {
+     "src": "/official/liugong/6114e/studio.webp",
+     "w": 1058,
+     "h": 638
+    }
+   ],
+   "banner": "/official/liugong/6114e/banner.jpg",
+   "gallery": [
+    "/official/liugong/6114e/photo-1.jpg",
+    "/official/liugong/6114e/photo-2.jpg",
+    "/official/liugong/6114e/photo-3.jpg"
+   ],
+   "brochure": {
+    "href": "/official/brochures/liugong-6114e.pdf",
+    "kb": 985,
+    "sheet": "/official/liugong/6114e/sheet.jpg",
+    "sheetSize": [
+     1800,
+     2426
+    ]
+   }
+  },
+  "liugong-6120e": {
+   "brand": "LiuGong",
+   "source": "https://mea.liugong.com/product/6120e/",
+   "studio": [
+    {
+     "src": "/official/liugong/6120e/studio.webp",
+     "w": 1040,
+     "h": 706
+    }
+   ],
+   "banner": "/official/liugong/6120e/banner.jpg",
+   "gallery": [],
+   "brochure": {
+    "href": "/official/brochures/liugong-6120e.pdf",
+    "kb": 271,
+    "sheet": "/official/liugong/6120e/sheet.jpg",
+    "sheetSize": [
+     1800,
+     2426
+    ]
+   }
+  },
+  "liugong-6212e": {
+   "brand": "LiuGong",
+   "source": "https://mea.liugong.com/product/6212e/",
+   "studio": [
+    {
+     "src": "/official/liugong/6212e/studio.webp",
+     "w": 922,
+     "h": 748
+    }
+   ],
+   "banner": "/official/liugong/6212e/banner.jpg",
+   "gallery": [
+    "/official/liugong/6212e/photo-1.jpg"
+   ],
+   "brochure": {
+    "href": "/official/brochures/liugong-6212e.pdf",
+    "kb": 128,
+    "sheet": "/official/liugong/6212e/sheet.jpg",
+    "sheetSize": [
+     1800,
+     2443
+    ]
+   }
+  },
+  "liugong-dw90a": {
+   "brand": "LiuGong",
+   "source": "https://mea.liugong.com/product/dw90a/",
+   "studio": [
+    {
+     "src": "/official/liugong/dw90a/studio.webp",
+     "w": 1082,
+     "h": 580
+    }
+   ],
+   "banner": "/official/liugong/dw90a/banner.jpg",
+   "gallery": [
+    "/official/liugong/dw90a/photo-1.jpg",
+    "/official/liugong/dw90a/photo-2.jpg",
+    "/official/liugong/dw90a/photo-3.jpg",
+    "/official/liugong/dw90a/photo-4.jpg"
+   ],
+   "brochure": {
+    "href": "/official/brochures/liugong-dw90a.pdf",
+    "kb": 2410,
+    "sheet": "/official/liugong/dw90a/sheet.jpg",
+    "sheetSize": [
+     1800,
+     2443
+    ]
+   }
+  },
+  "byd-ecb16": {
+   "brand": "BYD",
+   "source": "https://bydforklift.com/uk/model/counterbalance-forklift-ecb16/",
+   "studio": [
+    {
+     "src": "/official/byd/ecb16/view-1.webp",
+     "w": 560,
+     "h": 682
+    },
+    {
+     "src": "/official/byd/ecb16/view-2.webp",
+     "w": 774,
+     "h": 562
+    },
+    {
+     "src": "/official/byd/ecb16/view-3.webp",
+     "w": 740,
+     "h": 612
+    },
+    {
+     "src": "/official/byd/ecb16/view-4.webp",
+     "w": 810,
+     "h": 760
+    },
+    {
+     "src": "/official/byd/ecb16/view-5.webp",
+     "w": 494,
+     "h": 1054
+    },
+    {
+     "src": "/official/byd/ecb16/view-6.webp",
+     "w": 744,
+     "h": 522
+    }
+   ],
+   "gallery": [],
+   "brochure": {
+    "href": "/official/brochures/byd-ecb16-ecb18.pdf",
+    "kb": 1539,
+    "sheet": "/official/byd/ecb16/sheet.jpg",
+    "sheetSize": [
+     1800,
+     1273
+    ]
+   }
+  },
+  "byd-ecb18": {
+   "brand": "BYD",
+   "source": "https://bydforklift.com/uk/model/counterbalance-forklift-ecb18/",
+   "studio": [
+    {
+     "src": "/official/byd/ecb18/view-1.webp",
+     "w": 704,
+     "h": 626
+    },
+    {
+     "src": "/official/byd/ecb18/view-2.webp",
+     "w": 484,
+     "h": 1040
+    },
+    {
+     "src": "/official/byd/ecb18/view-3.webp",
+     "w": 770,
+     "h": 720
+    },
+    {
+     "src": "/official/byd/ecb18/view-4.webp",
+     "w": 566,
+     "h": 708
+    },
+    {
+     "src": "/official/byd/ecb18/view-5.webp",
+     "w": 728,
+     "h": 512
+    }
+   ],
+   "gallery": [],
+   "brochure": {
+    "href": "/official/brochures/byd-ecb16-ecb18.pdf",
+    "kb": 1539,
+    "sheet": "/official/byd/ecb16/sheet.jpg",
+    "sheetSize": [
+     1800,
+     1273
+    ]
+   }
+  },
+  "byd-ecb20s": {
+   "brand": "BYD",
+   "source": "https://bydforklift.com/uk/model/counterbalance-forklift-ecb20b-cs/",
+   "studio": [],
+   "gallery": [],
+   "brochure": {
+    "href": "/official/brochures/byd-ecb20s.pdf",
+    "kb": 1089,
+    "sheet": "/official/byd/ecb20s/sheet.jpg",
+    "sheetSize": [
+     1800,
+     1273
+    ]
+   }
+  },
+  "byd-ecb20": {
+   "brand": "BYD",
+   "source": "https://bydforklift.com/uk/model/counterbalance-forklift-ecb20-25-27/",
+   "studio": [
+    {
+     "src": "/official/byd/ecb20/view-1.webp",
+     "w": 724,
+     "h": 572
+    },
+    {
+     "src": "/official/byd/ecb20/view-2.webp",
+     "w": 798,
+     "h": 578
+    },
+    {
+     "src": "/official/byd/ecb20/view-3.webp",
+     "w": 696,
+     "h": 826
+    },
+    {
+     "src": "/official/byd/ecb20/view-4.webp",
+     "w": 630,
+     "h": 752
+    }
+   ],
+   "gallery": [],
+   "brochure": {
+    "href": "/official/brochures/byd-ecb20-ecb25-ecb27.pdf",
+    "kb": 2596,
+    "sheet": "/official/byd/ecb20/sheet.jpg",
+    "sheetSize": [
+     1800,
+     1273
+    ]
+   }
+  },
+  "byd-ecb25": {
+   "brand": "BYD",
+   "source": "https://bydforklift.com/uk/model/counterbalance-forklift-ecb20-25-27/",
+   "studio": [
+    {
+     "src": "/official/byd/ecb20/view-1.webp",
+     "w": 724,
+     "h": 572
+    },
+    {
+     "src": "/official/byd/ecb20/view-2.webp",
+     "w": 798,
+     "h": 578
+    },
+    {
+     "src": "/official/byd/ecb20/view-3.webp",
+     "w": 696,
+     "h": 826
+    },
+    {
+     "src": "/official/byd/ecb20/view-4.webp",
+     "w": 630,
+     "h": 752
+    }
+   ],
+   "gallery": [],
+   "brochure": {
+    "href": "/official/brochures/byd-ecb20-ecb25-ecb27.pdf",
+    "kb": 2596,
+    "sheet": "/official/byd/ecb20/sheet.jpg",
+    "sheetSize": [
+     1800,
+     1273
+    ]
+   }
+  },
+  "byd-ecb27": {
+   "brand": "BYD",
+   "source": "https://bydforklift.com/uk/model/counterbalance-forklift-ecb20-25-27/",
+   "studio": [
+    {
+     "src": "/official/byd/ecb20/view-1.webp",
+     "w": 724,
+     "h": 572
+    },
+    {
+     "src": "/official/byd/ecb20/view-2.webp",
+     "w": 798,
+     "h": 578
+    },
+    {
+     "src": "/official/byd/ecb20/view-3.webp",
+     "w": 696,
+     "h": 826
+    },
+    {
+     "src": "/official/byd/ecb20/view-4.webp",
+     "w": 630,
+     "h": 752
+    }
+   ],
+   "gallery": [],
+   "brochure": {
+    "href": "/official/brochures/byd-ecb20-ecb25-ecb27.pdf",
+    "kb": 2596,
+    "sheet": "/official/byd/ecb20/sheet.jpg",
+    "sheetSize": [
+     1800,
+     1273
+    ]
+   }
+  },
+  "byd-ecb30": {
+   "brand": "BYD",
+   "source": "https://bydforklift.com/uk/model/counterbalance-forklift-ecb30-35-45-50/",
+   "studio": [
+    {
+     "src": "/official/byd/ecb30/view-1.webp",
+     "w": 708,
+     "h": 650
+    }
+   ],
+   "gallery": [],
+   "brochure": {
+    "href": "/official/brochures/byd-ecb30-ecb35.pdf",
+    "kb": 3958,
+    "sheet": "/official/byd/ecb30/sheet.jpg",
+    "sheetSize": [
+     1800,
+     1273
+    ]
+   }
+  },
+  "byd-ecb35": {
+   "brand": "BYD",
+   "source": "https://bydforklift.com/uk/model/counterbalance-forklift-ecb30-35-45-50/",
+   "studio": [
+    {
+     "src": "/official/byd/ecb30/view-1.webp",
+     "w": 708,
+     "h": 650
+    }
+   ],
+   "gallery": [],
+   "brochure": {
+    "href": "/official/brochures/byd-ecb30-ecb35.pdf",
+    "kb": 3958,
+    "sheet": "/official/byd/ecb30/sheet.jpg",
+    "sheetSize": [
+     1800,
+     1273
+    ]
+   }
+  },
+  "byd-ecb40": {
+   "brand": "BYD",
+   "source": "https://bydforklift.com/uk/model/byd-ecb40-45-50/",
+   "studio": [],
+   "gallery": [],
+   "brochure": {
+    "href": "/official/brochures/byd-ecb40-ecb45-ecb50.pdf",
+    "kb": 1260,
+    "sheet": "/official/byd/ecb40/sheet.jpg",
+    "sheetSize": [
+     1800,
+     1273
+    ]
+   }
+  },
+  "byd-ecb45": {
+   "brand": "BYD",
+   "source": "https://bydforklift.com/uk/model/byd-ecb40-45-50/",
+   "studio": [],
+   "gallery": [],
+   "brochure": {
+    "href": "/official/brochures/byd-ecb40-ecb45-ecb50.pdf",
+    "kb": 1260,
+    "sheet": "/official/byd/ecb40/sheet.jpg",
+    "sheetSize": [
+     1800,
+     1273
+    ]
+   }
+  },
+  "byd-ecb50": {
+   "brand": "BYD",
+   "source": "https://bydforklift.com/uk/model/byd-ecb40-45-50/",
+   "studio": [],
+   "gallery": [],
+   "brochure": {
+    "href": "/official/brochures/byd-ecb40-ecb45-ecb50.pdf",
+    "kb": 1260,
+    "sheet": "/official/byd/ecb40/sheet.jpg",
+    "sheetSize": [
+     1800,
+     1273
+    ]
+   }
+  },
+  "byd-ecb60": {
+   "brand": "BYD",
+   "source": "https://bydforklift.com/uk/model/counterbalance-forklift-ecb70-80/",
+   "studio": [
+    {
+     "src": "/official/byd/ecb70/view-1.webp",
+     "w": 1800,
+     "h": 1573
+    },
+    {
+     "src": "/official/byd/ecb70/view-2.webp",
+     "w": 1800,
+     "h": 1505
+    },
+    {
+     "src": "/official/byd/ecb70/view-3.webp",
+     "w": 1800,
+     "h": 1067
+    },
+    {
+     "src": "/official/byd/ecb70/view-4.webp",
+     "w": 1800,
+     "h": 1574
+    }
+   ],
+   "gallery": [],
+   "brochure": {
+    "href": "/official/brochures/byd-ecb60-ecb70-ecb80.pdf",
+    "kb": 2892,
+    "sheet": "/official/byd/ecb70/sheet.jpg",
+    "sheetSize": [
+     1800,
+     1281
+    ]
+   }
+  },
+  "byd-ecb70": {
+   "brand": "BYD",
+   "source": "https://bydforklift.com/uk/model/counterbalance-forklift-ecb70-80/",
+   "studio": [
+    {
+     "src": "/official/byd/ecb70/view-1.webp",
+     "w": 1800,
+     "h": 1573
+    },
+    {
+     "src": "/official/byd/ecb70/view-2.webp",
+     "w": 1800,
+     "h": 1505
+    },
+    {
+     "src": "/official/byd/ecb70/view-3.webp",
+     "w": 1800,
+     "h": 1067
+    },
+    {
+     "src": "/official/byd/ecb70/view-4.webp",
+     "w": 1800,
+     "h": 1574
+    }
+   ],
+   "gallery": [],
+   "brochure": {
+    "href": "/official/brochures/byd-ecb60-ecb70-ecb80.pdf",
+    "kb": 2892,
+    "sheet": "/official/byd/ecb70/sheet.jpg",
+    "sheetSize": [
+     1800,
+     1281
+    ]
+   }
+  },
+  "byd-ecb80": {
+   "brand": "BYD",
+   "source": "https://bydforklift.com/uk/model/counterbalance-forklift-ecb70-80/",
+   "studio": [
+    {
+     "src": "/official/byd/ecb70/view-1.webp",
+     "w": 1800,
+     "h": 1573
+    },
+    {
+     "src": "/official/byd/ecb70/view-2.webp",
+     "w": 1800,
+     "h": 1505
+    },
+    {
+     "src": "/official/byd/ecb70/view-3.webp",
+     "w": 1800,
+     "h": 1067
+    },
+    {
+     "src": "/official/byd/ecb70/view-4.webp",
+     "w": 1800,
+     "h": 1574
+    }
+   ],
+   "gallery": [],
+   "brochure": {
+    "href": "/official/brochures/byd-ecb60-ecb70-ecb80.pdf",
+    "kb": 2892,
+    "sheet": "/official/byd/ecb70/sheet.jpg",
+    "sheetSize": [
+     1800,
+     1281
+    ]
+   }
+  },
+  "byd-ptw20si": {
+   "brand": "BYD",
+   "source": "https://bydforklift.com/uk/model/byd-ptw20si/",
+   "studio": [
+    {
+     "src": "/official/byd/ptw20si/view-1.webp",
+     "w": 582,
+     "h": 608
+    },
+    {
+     "src": "/official/byd/ptw20si/view-2.webp",
+     "w": 344,
+     "h": 636
+    },
+    {
+     "src": "/official/byd/ptw20si/view-3.webp",
+     "w": 854,
+     "h": 654
+    }
+   ],
+   "gallery": [],
+   "brochure": {
+    "href": "/official/brochures/byd-pallet-trucks.pdf",
+    "kb": 980,
+    "sheet": "/official/byd/ptw20si/sheet.jpg",
+    "sheetSize": [
+     1800,
+     1273
+    ]
+   }
+  },
+  "byd-ptp20p": {
+   "brand": "BYD",
+   "source": "https://bydforklift.com/uk/model/pallet-truck-ptp20p-2/",
+   "studio": [
+    {
+     "src": "/official/byd/ptp20p/view-1.webp",
+     "w": 632,
+     "h": 542
+    },
+    {
+     "src": "/official/byd/ptp20p/view-2.webp",
+     "w": 632,
+     "h": 364
+    },
+    {
+     "src": "/official/byd/ptp20p/view-3.webp",
+     "w": 522,
+     "h": 426
+    }
+   ],
+   "gallery": [],
+   "brochure": {
+    "href": "/official/brochures/byd-pallet-trucks.pdf",
+    "kb": 980,
+    "sheet": "/official/byd/ptw20si/sheet.jpg",
+    "sheetSize": [
+     1800,
+     1273
+    ]
+   }
+  },
+  "byd-eps14pi": {
+   "brand": "BYD",
+   "source": "https://bydforklift.com/uk/model/stacker-truck-eps14pi/",
+   "studio": [
+    {
+     "src": "/official/byd/eps14pi/view-1.webp",
+     "w": 774,
+     "h": 674
+    },
+    {
+     "src": "/official/byd/eps14pi/view-2.webp",
+     "w": 570,
+     "h": 766
+    },
+    {
+     "src": "/official/byd/eps14pi/view-3.webp",
+     "w": 862,
+     "h": 764
+    },
+    {
+     "src": "/official/byd/eps14pi/view-4.webp",
+     "w": 654,
+     "h": 678
+    },
+    {
+     "src": "/official/byd/eps14pi/view-5.webp",
+     "w": 386,
+     "h": 846
+    },
+    {
+     "src": "/official/byd/eps14pi/view-6.webp",
+     "w": 250,
+     "h": 722
+    },
+    {
+     "src": "/official/byd/eps14pi/view-7.webp",
+     "w": 488,
+     "h": 1012
+    },
+    {
+     "src": "/official/byd/eps14pi/view-8.webp",
+     "w": 754,
+     "h": 642
+    },
+    {
+     "src": "/official/byd/eps14pi/view-9.webp",
+     "w": 814,
+     "h": 694
+    },
+    {
+     "src": "/official/byd/eps14pi/view-10.webp",
+     "w": 718,
+     "h": 736
+    }
+   ],
+   "gallery": [],
+   "brochure": {
+    "href": "/official/brochures/byd-stacker-trucks.pdf",
+    "kb": 2576,
+    "sheet": "/official/byd/eps14pi/sheet.jpg",
+    "sheetSize": [
+     1800,
+     1273
+    ]
+   }
+  },
+  "byd-rtr16": {
+   "brand": "BYD",
+   "source": "https://bydforklift.com/uk/model/reach-truck-rtr16-20/",
+   "studio": [
+    {
+     "src": "/official/byd/rtr16/view-1.webp",
+     "w": 376,
+     "h": 530
+    }
+   ],
+   "gallery": []
+  },
+  "byd-rtr20": {
+   "brand": "BYD",
+   "source": "https://bydforklift.com/uk/model/reach-truck-rtr16-20/",
+   "studio": [
+    {
+     "src": "/official/byd/rtr16/view-1.webp",
+     "w": 376,
+     "h": 530
+    }
+   ],
+   "gallery": []
+  }
+ },
+ "types": {
+  "hydraulic-booster-compressors": {
+   "gallery": [
+    {
+     "src": "/official/sopan/booster-1.jpg",
+     "caption": "SOPAN hydraulic booster compressor in its enclosure",
+     "brand": "SOPAN"
+    },
+    {
+     "src": "/official/sopan/booster-2.jpg",
+     "caption": "SOPAN compressor packages on the factory floor",
+     "brand": "SOPAN"
+    }
+   ]
+  },
+  "reciprocating-compressors": {
+   "gallery": [
+    {
+     "src": "/official/sopan/recip-1.jpg",
+     "caption": "SOPAN compressor package with a storage cascade on top",
+     "brand": "SOPAN"
+    },
+    {
+     "src": "/official/sopan/recip-2.jpg",
+     "caption": "SOPAN compressor packages installed at a station",
+     "brand": "SOPAN"
+    },
+    {
+     "src": "/official/fornovo/recip-1.jpg",
+     "caption": "Fornovo Gas DA300 no-lube compressor",
+     "brand": "Fornovo Gas"
+    },
+    {
+     "src": "/official/fornovo/recip-2.jpg",
+     "caption": "Fornovo Gas DA500 no-lube compressor",
+     "brand": "Fornovo Gas"
+    }
+   ],
+   "brochures": [
+    {
+     "href": "/official/brochures/fornovo-gas-cng.pdf",
+     "kb": 9828,
+     "label": "Fornovo Gas CNG compressors"
+    }
+   ]
+  },
+  "cng-dispensers": {
+   "gallery": [
+    {
+     "src": "/official/sopan/dispenser-1.jpg",
+     "caption": "SOPAN CNG dispenser",
+     "brand": "SOPAN"
+    }
+   ]
+  },
+  "gas-utility-skids": {
+   "gallery": [
+    {
+     "src": "/official/sopan/skid-1.jpg",
+     "caption": "SOPAN metering skid on its delivery truck",
+     "brand": "SOPAN"
+    },
+    {
+     "src": "/official/sopan/skid-2.jpg",
+     "caption": "SOPAN skid: valves, gauges and filters",
+     "brand": "SOPAN"
+    }
+   ]
+  },
+  "cascades-storage": {
+   "gallery": [
+    {
+     "src": "/official/sopan/cascade-1.jpg",
+     "caption": "Storage cascade mounted above a SOPAN compressor package",
+     "brand": "SOPAN"
+    }
+   ]
+  }
+ },
+ "lines": {
+  "forklifts-material-handling": {
+   "films": [
+    {
+     "youtube": "Gl3F5I_Wkx0",
+     "poster": "/official/films/byd-case-study.jpg",
+     "title": "Case study: BYD emission-free trucks reduce a forklift fleet",
+     "by": "BYD Europe"
+    }
+   ],
+   "brochures": [
+    {
+     "href": "/official/brochures/byd-forklift-range.pdf",
+     "kb": 6081,
+     "label": "BYD forklift range"
+    }
+   ]
+  },
+  "cng-gas-equipment": {
+   "films": [
+    {
+     "mp4": "/official/films/fornovo-gas.mp4",
+     "poster": "/official/films/fornovo-gas.jpg",
+     "title": "Fornovo Gas: compressors built in Italy since 1969",
+     "by": "Fornovo Gas"
+    }
+   ],
+   "brochures": [
+    {
+     "href": "/official/brochures/fornovo-gas-cng.pdf",
+     "kb": 9828,
+     "label": "Fornovo Gas CNG compressors"
+    }
+   ]
+  }
+ }
+}

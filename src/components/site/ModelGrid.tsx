@@ -10,6 +10,7 @@ import { Icon } from "@/components/ui/Icon";
 import { askEnyo } from "./enyo-events";
 import { Framed } from "./FamilyPicture";
 import { fill, type Labels } from "./fill";
+import { isStudio } from "@/lib/official-media";
 import { srcSetFor } from "@/lib/responsive-image";
 
 export type ModelCard = {
@@ -115,9 +116,9 @@ export function ModelGrid({
 
             {active.images.length ? (
               <div className="flex snap-x gap-3 overflow-x-auto">
-                {active.images.map((src) => (
+                {active.images.slice(0, 6).map((src) => (
                   // eslint-disable-next-line @next/next/no-img-element
-                  <img key={src} src={src} srcSet={srcSetFor(src)} sizes="(min-width: 640px) 448px, 100vw" alt={active.name} className="aspect-[4/3] w-full max-w-md shrink-0 snap-start rounded object-cover" />
+                  <img key={src} src={src} srcSet={srcSetFor(src)} sizes="(min-width: 640px) 448px, 100vw" alt={active.name} className={`aspect-[4/3] w-full max-w-md shrink-0 snap-start rounded-lg ${isStudio(src) ? "bg-white object-contain p-4 ring-1 ring-line" : "object-cover"}`} />
                 ))}
               </div>
             ) : null}

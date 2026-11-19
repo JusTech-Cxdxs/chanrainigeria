@@ -1,3 +1,4 @@
+import { isStudio } from "@/lib/official-media";
 import { srcSetFor } from "@/lib/responsive-image";
 
 /**
@@ -33,6 +34,21 @@ export function Framed({
 }) {
   if (!src) {
     return fallback ? <span className={`grid ${ratio} w-full place-items-center overflow-hidden ${className}`}>{fallback}</span> : null;
+  }
+  if (isStudio(src)) {
+    // A manufacturer's studio picture: the whole machine on a white panel, never cropped or shaded.
+    return (
+      <span className={`relative block ${ratio} w-full overflow-hidden rounded-2xl bg-white ring-1 ring-line ${className}`}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={src}
+          alt={alt}
+          loading={eager ? "eager" : "lazy"}
+          decoding="async"
+          className={`absolute inset-0 h-full w-full object-contain p-[6%] ${zoom ? "transition-transform duration-700 group-hover:scale-105" : ""}`}
+        />
+      </span>
+    );
   }
   return (
     <span className={`relative block ${ratio} w-full overflow-hidden rounded-2xl bg-deep ${className}`}>

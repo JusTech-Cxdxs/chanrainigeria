@@ -5,12 +5,14 @@ import { Machine, machineForSlug } from "@/components/Machine";
 import { Framed } from "@/components/site/FamilyPicture";
 import { ModelGrid, type ModelCard } from "@/components/site/ModelGrid";
 import { PageHead } from "@/components/site/PageHead";
+import { PhotoGrid } from "@/components/site/Showroom";
 import { siteContent } from "@/components/site/site-content";
 import { Icon } from "@/components/ui/Icon";
 import { getFamily } from "@/lib/catalogue";
 import { renderMarkdown } from "@/lib/markdown";
+import { fileSize, isStudio, officialModel, officialType } from "@/lib/official-media";
 import { imageUrl, mediaUrl } from "@/lib/settings";
-import { familyImage, modelFallbackImage } from "@/lib/type-images";
+import { familyImage, modelPictures } from "@/lib/type-images";
 
 type P = { params: Promise<{ category: string; family: string }> };
 export const dynamic = "force-dynamic";
@@ -37,14 +39,18 @@ export default async function FamilyPage({ params }: P) {
     highlights: p.highlights,
     specs: p.specs,
     specsVerified: p.specsVerified,
-    images: p.imageIds.length ? p.imageIds.map((i) => mediaUrl(i)!) : [modelFallbackImage(f, p.slug)].filter((x): x is string => !!x),
-    brochure: mediaUrl(p.brochureId),
+    images: p.imageIds.length ? p.imageIds.map((i) => mediaUrl(i)!) : modelPictures(f, p.slug),
+    brochure: mediaUrl(p.brochureId) ?? officialModel(p.slug)?.brochure?.href ?? null,
     href: `/products/${c.slug}/${f.slug}/${p.slug}`,
   }));
 
+  const official = officialType(f.slug);
+  const gallery = (official?.gallery ?? []).map((g) => ({ src: g.src, caption: g.caption, studio: isStudio(g.src) }));
+  const stage = { turn: L.t("stageTurn"), full: L.t("stageFull"), close: L.t("stageClose"), prev: L.t("stagePrev"), next: L.t("stageNext"), count: L.t("stageCount"), play: "" };
   const m = f.maintenance;
   const sections = [
     { id: "how", label: L.t("navHow"), show: !!f.howItWorks },
+    { id: "gallery", label: L.t("navGallery"), show: gallery.length > 0 },
     { id: "models", label: L.t("navModels"), show: true },
     { id: "choosing", label: L.t("navChoosing"), show: f.choosingTips.length > 0 },
     { id: "care", label: L.t("navCare"), show: !!(m.dailyChecks?.length || m.intervals?.length) },
@@ -129,6 +135,30 @@ export default async function FamilyPage({ params }: P) {
                 </li>
               ))}
             </ul>
+          </section>
+        ) : null}
+
+        {gallery.length ? (
+          <section id="gallery" className="mt-16 scroll-mt-36">
+            <h2 className="heading text-3xl">{L.t("galleryTitle")}</h2>
+            <div className="mt-6">
+              <PhotoGrid shots={gallery} alt={f.name} labels={stage} />
+            </div>
+            {official?.brochures?.length ? (
+              <div className="mt-8">
+                <h3 className="heading text-lg">{L.t("downloadsTitle")}</h3>
+                <ul className="mt-3 flex flex-wrap gap-3">
+                  {official.brochures.map((b) => (
+                    <li key={b.href}>
+                      <a href={b.href} target="_blank" rel="noopener" className="btn btn-outline">
+                        <Icon name="download" />
+                        {L.f("downloadItem", { label: b.label ?? "", size: fileSize(b.kb) })}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
           </section>
         ) : null}
 

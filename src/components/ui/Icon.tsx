@@ -107,6 +107,8 @@ import {
   SquarePen,
   WandSparkles,
   type LucideIcon,
+  Maximize2,
+  Play,
 } from "lucide-react";
 
 const ICONS = {
@@ -183,6 +185,8 @@ const ICONS = {
   refresh: RefreshCw,
   replace: Replace,
   undo: RotateCcw,
+  play: Play,
+  expand: Maximize2,
   "undo-2": Undo2,
   save: Save,
   log: ScrollText,

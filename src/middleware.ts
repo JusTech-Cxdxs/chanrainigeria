@@ -31,7 +31,8 @@ export function middleware(req: NextRequest) {
     `img-src 'self' data: blob: ${google}`,
     "font-src 'self' data:",
     `connect-src 'self' ${google}${dev ? " ws:" : ""}`,
-    `frame-src ${google}`,
+    // Manufacturer films play from YouTube's no-cookie player, only after the visitor presses play.
+    `frame-src ${google} https://www.youtube-nocookie.com`,
     "frame-ancestors 'none'",
     "base-uri 'self'",
     "form-action 'self'",

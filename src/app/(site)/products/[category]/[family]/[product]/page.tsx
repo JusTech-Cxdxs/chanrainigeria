@@ -2,14 +2,15 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Machine, machineForSlug } from "@/components/Machine";
-import { Framed } from "@/components/site/FamilyPicture";
+import { ModelStage } from "@/components/site/Showroom";
 import { PageHead } from "@/components/site/PageHead";
 import { siteContent } from "@/components/site/site-content";
 import { SpecTable } from "@/components/site/SpecTable";
 import { Icon } from "@/components/ui/Icon";
 import { getFamily, getProduct } from "@/lib/catalogue";
+import { fileSize, isStudio, officialModel } from "@/lib/official-media";
 import { imageUrl, mediaUrl } from "@/lib/settings";
-import { modelFallbackImage } from "@/lib/type-images";
+import { familyImage, modelPictures } from "@/lib/type-images";
 
 type P = { params: Promise<{ category: string; family: string; product: string }> };
 export const dynamic = "force-dynamic";
@@ -26,9 +27,16 @@ export default async function ProductPage({ params }: P) {
   const [f, L, nav, prod] = await Promise.all([getFamily(family), siteContent("model"), siteContent("header"), siteContent("products")]);
   const c = p.family.category;
   const title = [p.brand?.name, p.name].filter(Boolean).join(" ");
+  // Uploaded photos come first; the manufacturer's studio pictures and working photos follow.
+  const official = officialModel(p.slug);
   const own = p.imageIds.map((id) => mediaUrl(id)!);
-  const borrowed = own.length ? null : modelFallbackImage(p.family, p.slug);
-  const [first, ...rest] = own.length ? own : borrowed ? [borrowed] : [];
+  const shipped = modelPictures(p.family, p.slug);
+  // With uploads in place the type's borrowed picture is not needed.
+  const borrowed = familyImage(p.family);
+  const shots = [...own, ...(own.length ? shipped.filter((x) => x !== borrowed) : shipped)].map((src) => ({ src, studio: isStudio(src) }));
+  const brochure = p.brochureId ? { href: mediaUrl(p.brochureId)!, size: null } : official?.brochure ? { href: official.brochure.href, size: fileSize(official.brochure.kb) } : null;
+  const sheet = !p.brochureId && official?.brochure?.sheet ? official.brochure : null;
+  const stage = { turn: L.t("stageTurn"), full: L.t("stageFull"), close: L.t("stageClose"), prev: L.t("stagePrev"), next: L.t("stageNext"), count: L.t("stageCount"), play: "" };
 
   return (
     <>
@@ -42,21 +50,15 @@ export default async function ProductPage({ params }: P) {
         ]}
         title={title}
         lead={p.summary}
-        image={imageUrl(L.settings, `category-${c.slug}`)}
+        image={official?.banner ?? imageUrl(L.settings, `category-${c.slug}`)}
       />
       <div className="wrap grid gap-12 py-14 lg:grid-cols-[1.2fr_1fr]">
         <div>
-          {first ? (
-            <div className="grid gap-3">
-              <Framed src={first} alt={title} ratio="aspect-[4/3]" shade="soft" zoom={false} eager />
-              {rest.length ? (
-                <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-                  {rest.map((src) => (
-                    <Framed key={src} src={src} alt={title} ratio="aspect-[4/3]" zoom={false} />
-                  ))}
-                </div>
-              ) : null}
-            </div>
+          {shots.length ? (
+            <>
+              <ModelStage shots={shots} alt={title} labels={stage} />
+              {official ? <p className="mt-2 text-xs text-ink-soft">{L.f("creditText", { brand: official.brand })}</p> : null}
+            </>
           ) : (
             <Machine kind={p.family.illustration || machineForSlug(p.family.slug, c.illustration)} className="w-full" />
           )}
@@ -85,10 +87,11 @@ export default async function ProductPage({ params }: P) {
               <Icon name="calendar" />
               {L.t("bookButton")}
             </Link>
-            {p.brochureId ? (
-              <a href={mediaUrl(p.brochureId)!} className="btn btn-outline" target="_blank" rel="noopener">
+            {brochure ? (
+              <a href={brochure.href} className="btn btn-outline" target="_blank" rel="noopener">
                 <Icon name="download" />
                 {L.t("brochureButton")}
+                {brochure.size ? <span className="num text-xs font-normal text-ink-soft">PDF · {brochure.size}</span> : null}
               </a>
             ) : null}
           </div>
@@ -100,6 +103,30 @@ export default async function ProductPage({ params }: P) {
           </p>
         </div>
       </div>
+      {sheet && official ? (
+        <section className="wrap pb-16" aria-labelledby="sheet-h">
+          <h2 id="sheet-h" className="heading text-2xl">
+            {L.t("sheetTitle")}
+          </h2>
+          <p className="mt-2 text-ink-soft">{L.f("sheetText", { brand: official.brand })}</p>
+          <a href={sheet.href} target="_blank" rel="noopener" className="group mt-5 block max-w-4xl overflow-hidden rounded-2xl bg-white ring-1 ring-line">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={sheet.sheet}
+              width={sheet.sheetSize?.[0]}
+              height={sheet.sheetSize?.[1]}
+              alt={`${title}: ${L.t("sheetTitle").toLowerCase()}`}
+              loading="lazy"
+              decoding="async"
+              className="h-auto w-full"
+            />
+          </a>
+          <a href={sheet.href} target="_blank" rel="noopener" className="btn btn-outline mt-5">
+            <Icon name="download" />
+            {L.f("sheetOpen", { size: fileSize(sheet.kb) })}
+          </a>
+        </section>
+      ) : null}
     </>
   );
 }
