@@ -98,8 +98,6 @@ export default async function Home() {
                     alt=""
                     loading="lazy"
                     decoding="async"
-                    // The supplied forklift picture keeps its BYD sign and tow tractor on the right; aim the card there.
-                    style={!cat.imageId && cat.slug === "forklifts-material-handling" ? { objectPosition: "78% 50%" } : undefined}
                     className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                   />
                   <span className="absolute inset-0 bg-gradient-to-t from-[#06120a]/95 via-[#06120a]/35 via-45% to-transparent" aria-hidden />

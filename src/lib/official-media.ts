@@ -23,13 +23,9 @@ export type OfficialLine = { films: Film[]; brochures?: Brochure[] };
 
 const d = data as unknown as { models: Record<string, OfficialModel>; types: Record<string, OfficialType>; lines: Record<string, OfficialLine> };
 
-/** Models whose studio pictures show a sister model of the same series (same truck, another capacity). */
-const SISTER = new Set(["byd-ecb25", "byd-ecb27", "byd-ecb35", "byd-ecb60", "byd-ecb80", "byd-rtr20"]);
-
 export const officialModel = (slug: string): OfficialModel | null => d.models[slug] ?? null;
 export const officialType = (slug: string): OfficialType | null => d.types[slug] ?? null;
 export const officialLine = (slug: string): OfficialLine | null => d.lines[slug] ?? null;
-export const showsSister = (slug: string) => SISTER.has(slug);
 
 /** A studio picture: shown whole on a white panel, never cropped. */
 export const isStudio = (src: string | null | undefined) => !!src && /^\/official\/[\w-]+\/[\w-]+\/(?:studio|view-\d+)\.webp$/.test(src);
