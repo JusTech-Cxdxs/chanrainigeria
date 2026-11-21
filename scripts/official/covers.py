@@ -1,3 +1,6 @@
+# Only pictures that come out at least as sharp as the site's own are made here; the rest of the site's
+# featured pictures (CNG, line cards, home slides, most banners) stay its own. Official photos also show in
+# model viewers and the CNG galleries.
 # Builds the site's featured pictures (machine types, product lines, page banners) from the official media.
 import os,sys
 import numpy as np, cv2
@@ -51,77 +54,23 @@ def save(img,dst,copies):
 O=lambda p:Image.open(P('official/'+p)).convert('RGB')
 TW,TH=1440,840
 T={
- 'excavators':('lg','liugong/950e/photo-8.jpg',.5,.45),
  'wheel-loaders':('lg','liugong/856h/photo-9.jpg',.5,.6),
  'bulldozers':('lg','liugong/b320/photo-3.jpg',.5,.6),
- 'motor-graders':('lg','liugong/4215d/photo-1.jpg',.5,.55),
- 'skid-steer-loaders':('lg','liugong/375a/photo-4.jpg',.5,.5),
  'backhoe-loaders':('lg','liugong/777a/photo-5.jpg',.5,.6),
  'rollers':('lg','liugong/6114e/photo-3.jpg',.5,.6),
- 'mining-trucks':('lg','liugong/dw90a/photo-4.jpg',.5,.55),
  'three-wheel-counterbalance-forklifts':('st','byd/ecb16/view-2.webp'),
  'four-wheel-counterbalance-forklifts':('st','byd/ecb20/view-2.webp'),
  'heavy-duty-counterbalance-forklifts':('st','byd/ecb70/view-4.webp'),
  'pallet-trucks':('st','byd/ptp20p/view-1.webp'),
  'stackers':('st','byd/eps14pi/view-1.webp'),
  'reach-trucks':('st','byd/rtr16/view-1.webp'),
- 'station-solutions':('lg','sopan/recip-2.jpg',.5,.45),
- 'hydraulic-booster-compressors':('lg','sopan/booster-1.jpg',.5,.5),
- 'reciprocating-compressors':('lg','sopan/booster-2.jpg',.5,.5),
- 'cng-dispensers':('bf','sopan/dispenser-1.jpg'),
- 'cascades-storage':('lg','sopan/recip-1.jpg',.5,.12),
- 'gas-utility-skids':('lg','sopan/skid-1.jpg',.5,.5),
 }
 for slug,spec in T.items():
     if spec[0]=='lg': img=cover(O(spec[1]),TW,TH,spec[2],spec[3])
     elif spec[0]=='st': img=studio(P('official/'+spec[1]),TW,TH)
     else: img=blurfill(P('official/'+spec[1]),TW,TH)
     save(img,P(f'images/types/{slug}.jpg'),[800,240]); print('type',slug)
-byd=Image.open(os.path.join(FI,'p02.jpg')).convert('RGB').crop((0,0,1654,2245))
-L={'construction-equipment':cover(O('liugong/936e/photo-6.jpg'),2400,1500,.5,.5),
-   'forklifts-material-handling':cover(byd,2400,1500,.5,.62),
-   'cng-gas-equipment':cover(O('sopan/cascade-1.jpg'),2400,1500,.5,.5)}
-for slug,img in L.items(): save(img,P(f'images/category-{slug}.jpg'),[800,1200,1600]); print('line',slug)
-PG={'page-products':cover(O('liugong/936e/banner.jpg'),2400,900,.5,.5),
-    'page-news':cover(O('liugong/890h/banner.jpg'),2400,900,.5,.5),
-    'page-services':cover(O('liugong/950e/photo-9.jpg'),2400,900,.5,.45),
-    'page-parts':cover(O('liugong/890h/photo-6.jpg'),2400,900,.5,.5),
-    'page-book-service':cover(O('liugong/835h/photo-6.jpg'),2400,900,.5,.35)}
+PG={'page-products':cover(O('liugong/936e/banner.jpg'),2400,900,.5,.5)}
 for k,img in PG.items(): save(img,P(f'images/{k}.jpg'),[800,1200,1600]); print('page',k)
-
-p14=Image.open(os.path.join(FI,'p14.jpg')).convert('RGB').crop((1390,440,3308,1940))
-AB={'about-1':(cover(O('sopan/booster-1.jpg'),2400,1400,.5,.5),[800,1200,1600]),
-    'about-2':(cover(O('liugong/862h/photo-3.jpg'),1600,1200,.5,.6),[800,1200,1600]),
-    'about-3':(cover(p14,1600,1200,.5,.5),[800,1200,1600])}
-for k,(img,c) in AB.items(): save(img,P(f'images/{k}.jpg'),c); print('about',k)
-og=Image.new('RGB',(1200,630))
-for i,src in enumerate([O('sopan/cascade-1.jpg'),O('liugong/936e/photo-6.jpg'),byd.crop((0,560,1654,2245))]):
-    og.paste(cover(src,400,630,.5,.6 if i==2 else .5),(i*400,0))
-og.save(P('images/og-image.jpg'),'JPEG',quality=86,optimize=True); print('og')
-N={'wheel-loader-daily-checks':cover(O('liugong/842h/photo-1.jpg'),1600,1000,.5,.55),
-   'electric-forklift-battery-care':cover(byd.crop((0,560,1654,2245)),1600,1000,.45,.55),
-   'planning-a-cng-station':cover(O('sopan/recip-2.jpg'),1600,1000,.5,.4),
-   'prepare-site-for-technician-visit':cover(O('liugong/835h/photo-6.jpg'),1600,1000,.5,.35)}
+N={'wheel-loader-daily-checks':cover(O('liugong/842h/photo-1.jpg'),1600,1000,.5,.55)}
 for k,img in N.items(): save(img,P(f'images/news/{k}.jpg'),[800,1200]); print('news',k)
-ab=Image.new('RGB',(2400,900))
-for i,(src,ay) in enumerate([(O('sopan/cascade-1.jpg'),.5),(O('liugong/936e/photo-6.jpg'),.5),(byd.crop((0,560,1654,2245)),.5),(O('liugong/835h/photo-6.jpg'),.35)]):
-    ab.paste(cover(src,600,900,.5,ay),(i*600,0))
-save(ab,P('images/page-about.jpg'),[800,1200,1600]); print('page-about')
-
-def right_hero(src,W,H):
-    """The machine on the right; the left is the photo's own edge, mirrored and softened, for the headline."""
-    s=H/src.size[1]; fg=src.resize((round(src.size[0]*s),H),Image.LANCZOS)
-    if fg.size[0]<W*0.9 and src.size[0]<fg.size[0]: fg=up2(src).resize(fg.size,Image.LANCZOS)
-    out=Image.new('RGB',(W,H)); left=W-fg.size[0]
-    # each row continues in the colour of the photo's left edge
-    edge=fg.crop((0,0,24,H)).resize((1,H),Image.BOX).filter(ImageFilter.GaussianBlur(6))
-    fill=edge.resize((left+160,H))
-    out.paste(fill,(0,0)); 
-    m=Image.linear_gradient('L').rotate(90).resize((160,H))  # 0 on the left, 255 on the right
-    out.paste(fg,(left,0)); out.paste(fg.crop((0,0,160,H)),(left,0),m)
-    out.paste(fill.crop((left,0,left+160,H)),(left,0),Image.eval(m,lambda v:255-v))
-    return out
-H1={'hero-1':cover(O('liugong/936e/photo-7.jpg'),2400,1350,.5,.5),
-    'hero-2':cover(O('sopan/cascade-1.jpg'),2400,1350,.5,.45),
-    'hero-3':right_hero(p14,2400,1350)}
-for k,img in H1.items(): save(img,P(f'images/{k}.jpg'),[800,1200,1600]); print('hero',k)
