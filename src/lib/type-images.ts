@@ -1,7 +1,8 @@
-// Pictures shipped with the site for machine types (public/images/types/<slug>.jpg), models
+// Pictures shipped with the site for machine types (public/images/types/<slug>.jpg, made from the
+// manufacturers' own photos, see docs/OFFICIAL-MEDIA.md), models
 // (public/images/models/<slug>.jpg) and the starter articles (public/images/news/<slug>.jpg).
 // An uploaded picture (Dashboard → Images, the model's page, or the article) always wins.
-import { officialModel, showsSister } from "./official-media";
+import { officialModel } from "./official-media";
 import { mediaUrl } from "./settings";
 
 const BUNDLED = new Set([
@@ -29,20 +30,8 @@ const BUNDLED = new Set([
   "tow-tractors",
 ]);
 
-/** Models with their own shipped photo; the model name is on the machine in the photo. */
-const MODEL_PHOTOS = new Set([
-  "liugong-365a",
-  "liugong-375a",
-  "liugong-777a",
-  "byd-ecb16",
-  "byd-ecb18",
-  "byd-ecb20s",
-  "byd-ecb25",
-  "byd-ecb27",
-  "byd-ecb60",
-  "byd-ecb70",
-  "byd-ecb80",
-]);
+/** Models with their own shipped photo (none now: the manufacturers' own pictures are used). */
+const MODEL_PHOTOS = new Set<string>([]);
 
 /** Starter articles with a shipped cover. */
 const NEWS_COVERS = new Set(["prepare-site-for-technician-visit", "wheel-loader-daily-checks", "electric-forklift-battery-care", "planning-a-cng-station"]);
@@ -69,16 +58,15 @@ export function modelFallbackImage(f: { slug: string; imageId?: string | null },
 }
 
 /**
- * Every shipped picture of a model, best first: the manufacturer's studio pictures, our own photo of the
- * model, then the manufacturer's working photos. Where the studio pictures show a sister model our own
- * photo leads. A model with none of these borrows its type's picture.
+ * Every shipped picture of a model: the manufacturer's studio pictures, then its working photos. A model
+ * the manufacturer shows none of uses our own photo of it, else borrows its type's picture.
  */
 export function modelPictures(f: { slug: string; imageId?: string | null }, modelSlug: string): string[] {
   const o = officialModel(modelSlug);
+  const official = [...(o?.studio.map((s) => s.src) ?? []), ...(o?.gallery ?? [])];
+  if (official.length) return official;
   const own = bundledModelImage(modelSlug);
-  const studio = o?.studio.map((s) => s.src) ?? [];
-  const all = [...(own && showsSister(modelSlug) ? [own, ...studio] : [...studio, ...(own ? [own] : [])]), ...(o?.gallery ?? [])];
-  if (all.length) return all;
+  if (own) return [own];
   const t = familyImage(f);
   return t ? [t] : [];
 }

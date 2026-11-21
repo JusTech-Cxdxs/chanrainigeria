@@ -21,6 +21,15 @@ manufacturers' own product pages. They live in `public/official/` and are listed
 Models that share one series on the manufacturer's site share its pictures (ECB20/25/27, ECB30/35,
 ECB60/70/80, RTR16/20). Models with no official page keep their type's picture until a photo is uploaded.
 
+## Featured pictures
+
+The site's own featured pictures are also made from this media by `scripts/official/covers.py`: machine type
+pictures (`public/images/types/`, used on cards and in the Products menu), the three product line pictures
+(home cards and line banners), the Products, Services, Parts, Book a technician and News banners, the About
+page photos, the starter article covers and the link preview. Forklift type pictures are BYD studio pictures
+set on a light backdrop. CNG tube trailer skids and tow tractors have no official picture yet and keep their
+earlier ones. The About banner is a strip of four of these photos. The three home slides are official photos too. The Contact banner (the group office) is unchanged.
+
 ## Rebuilding
 
 `scripts/official/` holds the three scripts used: `lg.py` and `dl.py` download, `build.py` resizes, writes

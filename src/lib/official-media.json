@@ -712,7 +712,9 @@
    "brand": "BYD",
    "source": "https://bydforklift.com/uk/model/counterbalance-forklift-ecb20b-cs/",
    "studio": [],
-   "gallery": [],
+   "gallery": [
+    "/official/byd/ecb20s/photo-1.jpg"
+   ],
    "brochure": {
     "href": "/official/brochures/byd-ecb20s.pdf",
     "kb": 1089,
