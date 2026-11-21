@@ -23,12 +23,12 @@ ECB60/70/80, RTR16/20). Models with no official page keep their type's picture u
 
 ## Featured pictures
 
-The site's own featured pictures are also made from this media by `scripts/official/covers.py`: machine type
-pictures (`public/images/types/`, used on cards and in the Products menu), the three product line pictures
-(home cards and line banners), the Products, Services, Parts, Book a technician and News banners, the About
-page photos, the starter article covers and the link preview. Forklift type pictures are BYD studio pictures
-set on a light backdrop. CNG tube trailer skids and tow tractors have no official picture yet and keep their
-earlier ones. The About banner is a strip of four of these photos. The three home slides are official photos too. The Contact banner (the group office) is unchanged.
+Where an official photo is at least as sharp as the site's own picture, it is used as the featured picture
+too (`scripts/official/covers.py`): the wheel loader, bulldozer, backhoe loader and roller type pictures, all
+six BYD forklift type pictures (studio pictures on a light backdrop), the Products banner and the wheel
+loader article cover. Everything else (CNG pictures, product line cards, home slides, the other banners,
+About photos, the link preview) keeps the site's own pictures, as the official web photos are too small to
+stay sharp at those sizes. Model cards and pages always lead with the official pictures.
 
 ## Rebuilding
 
