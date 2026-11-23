@@ -54,7 +54,7 @@ def save(img,dst,copies):
 O=lambda p:Image.open(P('official/'+p)).convert('RGB')
 TW,TH=1440,840
 T={
- 'wheel-loaders':('lg','liugong/856h/photo-9.jpg',.5,.6),
+ 'wheel-loaders':('lg','liugong/zl50cn/photo-1.jpg',.5,.75),
  'bulldozers':('lg','liugong/b320/photo-3.jpg',.5,.6),
  'backhoe-loaders':('lg','liugong/777a/photo-5.jpg',.5,.6),
  'rollers':('lg','liugong/6114e/photo-3.jpg',.5,.6),
@@ -72,5 +72,5 @@ for slug,spec in T.items():
     save(img,P(f'images/types/{slug}.jpg'),[800,240]); print('type',slug)
 PG={'page-products':cover(O('liugong/936e/banner.jpg'),2400,900,.5,.5)}
 for k,img in PG.items(): save(img,P(f'images/{k}.jpg'),[800,1200,1600]); print('page',k)
-N={'wheel-loader-daily-checks':cover(O('liugong/842h/photo-1.jpg'),1600,1000,.5,.55)}
+N={'wheel-loader-daily-checks':cover(O('liugong/890t/photo-1.jpg'),1600,1000,.5,.8)}
 for k,img in N.items(): save(img,P(f'images/news/{k}.jpg'),[800,1200]); print('news',k)

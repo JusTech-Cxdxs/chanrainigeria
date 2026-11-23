@@ -439,13 +439,49 @@
         { "key": "fuelTank", "label": "Fuel tank capacity", "unit": "L" }
       ],
       "faq": [
-        { "q": "What does the model number of a LiuGong wheel loader tell me?", "a": "Higher numbers mean larger machines in the range. For example, the 835H is a 10-tonne-class loader and the 890H is a 30-tonne-class loader. Always compare the actual operating weight, bucket size and tipping load rather than relying on the model number alone." },
+        { "q": "What does the model number of a LiuGong wheel loader tell me?", "a": "Higher numbers mean larger machines in the range. For example, the 835H is a 10-tonne-class loader and the 890T is a 31-tonne-class loader. The ZL50CN follows an older naming: the 50 stands for its 5-tonne rated load. Always compare the actual operating weight, bucket size and tipping load rather than relying on the model number alone." },
         { "q": "What is the difference between tipping load and rated load?", "a": "Tipping load is the weight in the bucket at which the machine would start to tip forward. The safe rated operating load is set well below that figure to leave a stability margin, so never plan work around the tipping load." },
         { "q": "Which bucket should I use for sand versus rock?", "a": "Use a larger general-purpose or light-material bucket for sand and other loose, light materials. For blasted rock, use a smaller, reinforced rock bucket with teeth and a protected edge, which limits stress and wear on the machine." },
         { "q": "How can I reduce tyre costs?", "a": "Keep the correct inflation pressure, clear rock spillage from loading areas, avoid wheel spin when entering the pile, and choose a tread pattern that suits the ground. Tyres are often one of the biggest running costs on a loader." },
         { "q": "Can you service a loader at our quarry or port?", "a": "Yes. Scheduled services and most repairs are done on site by our field technicians, so the machine stays close to where it works." }
       ],
       "models": [
+        {
+          "slug": "liugong-zl50cn",
+          "name": "ZL50CN",
+          "brand": "liugong",
+          "summary": "A proven 5-tonne-class loader with a 3.0 m³ bucket and a Cummins engine, built for quarries, aggregate yards and general construction.",
+          "highlights": [
+            "Cummins 6LT9.3 engine, 162 kW gross",
+            "3.0 m³ standard bucket, 11 t full-turn tipping load",
+            "167 kN breakout force",
+            "Simple planetary powershift transmission that is easy to maintain"
+          ],
+          "specs": {
+            "operatingWeight": 16700,
+            "enginePower": 162,
+            "netPower": 148,
+            "engineModel": "Cummins 6LT9.3",
+            "emissions": "Tier 2 / Stage II",
+            "bucketCapacity": 3.0,
+            "tippingLoadFullTurn": 11000,
+            "breakoutForce": 167,
+            "dumpClearance": 2970,
+            "dumpReach": 1200,
+            "totalCycleTime": 11.5,
+            "transmission": "Planetary powershift, 2F/1R",
+            "torqueConverter": "Double-stage, four-element",
+            "maxTravelSpeedForward": 37,
+            "articulationAngle": 35,
+            "tyres": "23.5-25",
+            "fuelTank": 300
+          },
+          "specsVerified": true,
+          "sources": [
+            "https://mea.liugong.com/product/zl50cn/",
+            "https://osmedia.liugong.com/wp-content/blogs.dir/4/files/2021/11/LiuGong-ZL50CN-Tier-2-GCIC-EN.pdf"
+          ]
+        },
         {
           "slug": "liugong-835h",
           "name": "835H",
@@ -483,126 +519,38 @@
           ]
         },
         {
-          "slug": "liugong-842h",
-          "name": "842H",
+          "slug": "liugong-890t",
+          "name": "890T",
           "brand": "liugong",
-          "summary": "A 13-tonne loader with a 2.3 m³ bucket that sits between the compact and 5-tonne-class machines.",
+          "summary": "A 31-tonne large loader from LiuGong's new T series, with a 5.4 m³ bucket for quarry face loading and mining support.",
           "highlights": [
-            "Cummins 6BTAA5.9 engine, 125 kW gross",
-            "124 kN breakout force",
-            "9.0 s total hydraulic cycle",
-            "Dump clearance of nearly 2.9 m"
+            "Cummins X12 engine, 262 kW rated",
+            "5.4 m³ standard bucket, 21.3 t full-turn tipping load",
+            "270 kN breakout force",
+            "Wet disc brakes and a front differential lock for heavy duty"
           ],
           "specs": {
-            "operatingWeight": 13000,
-            "enginePower": 125,
-            "netPower": 115,
-            "engineModel": "Cummins 6BTAA5.9-C170",
-            "emissions": "EPA Tier 2 / EU Stage II",
-            "bucketCapacity": 2.3,
-            "tippingLoadFullTurn": 8400,
-            "breakoutForce": 124,
-            "dumpClearance": 2889,
-            "dumpReach": 1110,
-            "totalCycleTime": 9.0
-          },
-          "specsVerified": true,
-          "sources": [
-            "http://mea.liugong.com/product/842h/"
-          ]
-        },
-        {
-          "slug": "liugong-856h",
-          "name": "856H",
-          "brand": "liugong",
-          "summary": "LiuGong's 17-tonne flagship loader in the popular 5-tonne class, the standard machine for quarries, plants and ports.",
-          "highlights": [
-            "Cummins 6LTAA9.3 engine, 162 kW gross",
-            "172 kN breakout force with a 3.0 m³ standard bucket",
-            "3.1 m dump clearance",
-            "Countershaft powershift, 4 forward and 3 reverse gears"
-          ],
-          "specs": {
-            "operatingWeight": 17000,
-            "enginePower": 162,
-            "netPower": 149,
-            "engineModel": "Cummins 6LTAA9.3",
-            "emissions": "EPA Tier 2 / EU Stage II",
-            "bucketCapacity": 3.0,
-            "tippingLoadFullTurn": 10800,
-            "breakoutForce": 172,
-            "dumpClearance": 3100,
-            "dumpReach": 1126,
-            "totalCycleTime": 10,
+            "operatingWeight": 31560,
+            "enginePower": 262,
+            "engineModel": "Cummins X12",
+            "emissions": "Tier 3 / Stage III",
+            "bucketCapacity": 5.4,
+            "tippingLoadFullTurn": 21350,
+            "breakoutForce": 270,
+            "dumpClearance": 3332,
+            "dumpReach": 1433,
+            "totalCycleTime": 11,
             "transmission": "Countershaft powershift, 4F/3R",
             "torqueConverter": "Single-stage, three-element",
-            "maxTravelSpeedForward": 40,
+            "maxTravelSpeedForward": 37,
             "articulationAngle": 38,
-            "tyres": "23.5-25",
-            "fuelTank": 300
+            "tyres": "29.5-25",
+            "fuelTank": 608
           },
           "specsVerified": true,
           "sources": [
-            "http://mea.liugong.com/product/856h/",
-            "https://osmedia.liugong.com/wp-content/blogs.dir/4/files/2021/11/LiuGong-856H-Tier2-EN.pdf"
-          ]
-        },
-        {
-          "slug": "liugong-862h",
-          "name": "862H",
-          "brand": "liugong",
-          "summary": "A 20-tonne loader with a 4.0 m³ bucket for high-volume aggregate and bulk handling.",
-          "highlights": [
-            "Cummins 6LTAA8.9 engine, 179 kW gross",
-            "4.0 m³ standard bucket",
-            "180 kN breakout force",
-            "3.4 m dump clearance for loading high-sided trucks"
-          ],
-          "specs": {
-            "operatingWeight": 20000,
-            "enginePower": 179,
-            "netPower": 168,
-            "engineModel": "Cummins 6LTAA8.9",
-            "emissions": "EPA Tier 2 / EU Stage II",
-            "bucketCapacity": 4.0,
-            "tippingLoadFullTurn": 14200,
-            "breakoutForce": 180,
-            "dumpClearance": 3402,
-            "dumpReach": 1052,
-            "totalCycleTime": 9.3
-          },
-          "specsVerified": true,
-          "sources": [
-            "http://mea.liugong.com/product/862h/"
-          ]
-        },
-        {
-          "slug": "liugong-890h",
-          "name": "890H",
-          "brand": "liugong",
-          "summary": "A 30-tonne large loader for quarry face loading and mining support.",
-          "highlights": [
-            "Cummins QSM11 engine, 287 kW gross",
-            "5.4 m³ standard bucket",
-            "245 kN breakout force",
-            "20.6 t full-turn tipping load"
-          ],
-          "specs": {
-            "operatingWeight": 30600,
-            "enginePower": 287,
-            "netPower": 273,
-            "engineModel": "Cummins QSM11",
-            "emissions": "EPA Tier 2 / EU Stage II",
-            "bucketCapacity": 5.4,
-            "tippingLoadFullTurn": 20600,
-            "breakoutForce": 245,
-            "dumpClearance": 3330,
-            "dumpReach": 1479,
-            "totalCycleTime": 11
-          },
-          "specsVerified": true,
-          "sources": [
-            "http://mea.liugong.com/product/890h/"
+            "https://www.liugong.com/en/product/890t/",
+            "https://www.liugong.com/storage/upload/2026-04-27/890T.pdf"
           ]
         }
       ]
