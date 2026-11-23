@@ -30,9 +30,9 @@ const home: PageDef = {
             { key: "href", label: "Goes to", type: "link", default: "/" },
           ],
           default: [
-            { title: "Book a technician", text: "On-site service for a machine, station or fleet", href: "/book-service" },
+            { title: "Book a technician", text: "On-site service for all your equipment", href: "/book-service" },
             { title: "Ask for a quote", text: "Tell us the job and we'll recommend a machine", href: "/contact?type=QUOTE" },
-            { title: "Order parts", text: "Genuine parts by serial or part number", href: "/parts" },
+            { title: "Order parts", text: "OEM and genuine parts, in stock", href: "/parts" },
           ],
         },
       ],
@@ -707,7 +707,7 @@ const about: PageDef = {
           fields: [text("title", "Title", ""), area("text", "Text", "")],
           default: [
             { title: "We come to the machine", text: "Our technicians work at the station, on the job site or in the warehouse, so your equipment stays where it earns." },
-            { title: "Genuine parts", text: "Parts from the manufacturers we represent, matched to your machine by serial number." },
+            { title: "OEM and genuine parts", text: "Parts from the manufacturers we represent, held in stock." },
             { title: "One team for the whole life of the machine", text: "Sales, field service and parts from people who know the equipment." },
           ],
         },
