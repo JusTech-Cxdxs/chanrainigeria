@@ -19,6 +19,8 @@ export type ModelCard = {
   name: string;
   brand: string | null;
   summary: string;
+  /** Size group, e.g. "Large excavators (over 40 tonnes)"; empty for none */
+  group?: string;
   highlights: string[];
   specs: Record<string, string | number>;
   specsVerified: boolean;
@@ -46,6 +48,18 @@ export function ModelGrid({
   // Two headline figures on each card, taken from the first fields the model actually has.
   const headline = (m: ModelCard) => fields.filter((f) => m.specs[f.key] !== undefined).slice(0, 2);
 
+  // Models sit under their size group, in the order the groups first appear.
+  const groups: { name: string; title: string; range: string; models: ModelCard[] }[] = [];
+  for (const m of models) {
+    const name = m.group?.trim() ?? "";
+    let g = groups.find((x) => x.name === name);
+    if (!g) {
+      const [, title = name, range = ""] = name.match(/^(.*?)\s*\((.*)\)\s*$/) ?? [];
+      groups.push((g = { name, title, range, models: [] }));
+    }
+    g.models.push(m);
+  }
+
   function open(m: ModelCard) {
     setActive(m);
     dialog.current?.showModal();
@@ -53,42 +67,54 @@ export function ModelGrid({
 
   return (
     <>
-      <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {models.map((m) => (
-          <li key={m.id}>
-            <button
-              type="button"
-              onClick={() => open(m)}
-              className="card card-hover group grid h-full w-full gap-3 p-5 text-left"
-              aria-haspopup="dialog"
-            >
-              <Framed src={m.images[0]} fallback={<Machine kind={illustration} className="w-full opacity-80" dimensions={false} />} />
-              <span className="flex items-baseline justify-between gap-2">
-                <span className="display text-2xl group-hover:text-brand-ink">{m.name}</span>
-                {m.brand ? <span className="text-sm text-ink-soft">{m.brand}</span> : null}
-              </span>
-              {headline(m).length ? (
-                <dl className="grid grid-cols-2 gap-3 border-t border-line-soft pt-3">
-                  {headline(m).map((f) => (
-                    <div key={f.key}>
-                      <dt className="text-xs text-ink-soft">{f.label}</dt>
-                      <dd className="num font-semibold">
-                        {specValue(m.specs[f.key], f.unit)}
-                      </dd>
-                    </div>
-                  ))}
-                </dl>
-              ) : (
-                <span className="text-sm text-ink-soft">{m.summary}</span>
-              )}
-              <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-ink">
-                {L.cardView}
-                <Icon name="arrow" size={15} className="transition-transform group-hover:translate-x-1" />
-              </span>
-            </button>
-          </li>
+      <div className="grid gap-10">
+        {groups.map((g) => (
+          <section key={g.name || "all"} aria-label={g.name || familyName}>
+            {g.name ? (
+              <h3 className="mb-4 flex items-baseline gap-3 border-b border-line pb-2">
+                <span className="heading text-xl">{g.title}</span>
+                {g.range ? <span className="text-sm text-ink-soft">{g.range}</span> : null}
+              </h3>
+            ) : null}
+            <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {g.models.map((m) => (
+                <li key={m.id}>
+                  <button
+                    type="button"
+                    onClick={() => open(m)}
+                    className="card card-hover group grid h-full w-full gap-3 p-5 text-left"
+                    aria-haspopup="dialog"
+                  >
+                    <Framed src={m.images[0]} fallback={<Machine kind={illustration} className="w-full opacity-80" dimensions={false} />} />
+                    <span className="flex items-baseline justify-between gap-2">
+                      <span className="display text-2xl group-hover:text-brand-ink">{m.name}</span>
+                      {m.brand ? <span className="text-sm text-ink-soft">{m.brand}</span> : null}
+                    </span>
+                    {headline(m).length ? (
+                      <dl className="grid grid-cols-2 gap-3 border-t border-line-soft pt-3">
+                        {headline(m).map((f) => (
+                          <div key={f.key}>
+                            <dt className="text-xs text-ink-soft">{f.label}</dt>
+                            <dd className="num font-semibold">
+                              {specValue(m.specs[f.key], f.unit)}
+                            </dd>
+                          </div>
+                        ))}
+                      </dl>
+                    ) : (
+                      <span className="text-sm text-ink-soft">{m.summary}</span>
+                    )}
+                    <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-ink">
+                      {L.cardView}
+                      <Icon name="arrow" size={15} className="transition-transform group-hover:translate-x-1" />
+                    </span>
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </section>
         ))}
-      </ul>
+      </div>
 
       <dialog
         ref={dialog}

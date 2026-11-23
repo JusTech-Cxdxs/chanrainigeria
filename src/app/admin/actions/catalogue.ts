@@ -268,6 +268,7 @@ export async function saveProduct(id: string, f: FormData) {
   const vals = {
     name,
     summary: s(f, "summary"),
+    sizeClass: s(f, "sizeClass").slice(0, 80),
     highlights: fromLines(s(f, "highlights")),
     specs,
     specsVerified: verified,

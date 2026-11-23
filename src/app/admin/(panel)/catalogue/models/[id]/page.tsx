@@ -82,6 +82,7 @@ export default async function EditModel({ params, searchParams }: { params: Prom
               <small>Where this model is listed.</small>
             </label>
             <Field label="Order" name="order" type="number" defaultValue={p?.order ?? 0} hint="Lower numbers show first. You can also use the arrows on the machine type." />
+            <Field label="Size group" name="sizeClass" defaultValue={p?.sizeClass} className="sm:col-span-2" hint="Models with the same size group sit together under that heading, e.g. Large excavators (over 40 tonnes). Leave empty for none." />
             <Field label="Summary" name="summary" defaultValue={p?.summary} textarea rows={2} className="sm:col-span-2" hint="One or two sentences on what it is best at. Shown on cards and at the top of the page." />
             <Field label="Highlights" name="highlights" defaultValue={toLines(p?.highlights)} textarea rows={4} className="sm:col-span-2" hint="One selling point per line, e.g. Cummins engine, Tier 3. Three to five works best." />
           </div>

@@ -36,6 +36,7 @@ export default async function FamilyPage({ params }: P) {
     name: p.name,
     brand: p.brand?.name ?? null,
     summary: p.summary,
+    group: p.sizeClass,
     highlights: p.highlights,
     specs: p.specs,
     specsVerified: p.specsVerified,

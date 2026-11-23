@@ -949,7 +949,7 @@ const machineType: PageDef = {
         text("navChoosing", "Choosing", "Choosing one"),
         text("navCare", "Maintenance", "Maintenance"),
         text("navSafety", "Safety", "Safety"),
-        text("navFaq", "Questions", "Questions"),
+        text("navFaq", "Questions", "FAQ"),
         text("navGallery", "Gallery", "Gallery"),
       ],
     },
@@ -977,7 +977,7 @@ const machineType: PageDef = {
         text("stageNext", "Next button, read aloud", "Next picture"),
         text("stageCount", "Picture counter", "{n} / {total}", "{n} is the picture number, {total} how many there are."),
         text("safetyTitle", "Safety", "Safety"),
-        text("faqTitle", "Questions", "Questions people ask"),
+        text("faqTitle", "Questions", "Frequently asked questions"),
       ],
     },
     {

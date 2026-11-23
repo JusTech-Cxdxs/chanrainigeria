@@ -134,6 +134,8 @@ export const products = pgTable("products", {
   specs: json<Record<string, string | number>>("specs", "{}"),
   /** Staff tick this once every figure has been checked against the official spec sheet */
   specsVerified: boolean("specs_verified").notNull().default(false),
+  /** Size group shown as a heading above the model on its type page, e.g. "Large excavators" */
+  sizeClass: text("size_class").notNull().default(""),
   sources: json<string[]>("sources", "[]"),
   imageIds: json<string[]>("image_ids", "[]"),
   brochureId: text("brochure_id"),
