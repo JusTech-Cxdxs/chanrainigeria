@@ -18,7 +18,7 @@ type SeedFile = {
   brand: { slug: string; name: string; website?: string; about: string; highlights: string[] };
   services: { slug: string; name: string; summary: string; includes: string[] }[];
   families: (Omit<typeof schema.families.$inferInsert, "categoryId" | "id"> & {
-    models: { slug: string; name: string; summary: string; highlights: string[]; specs: Record<string, string | number>; specsVerified?: boolean; sources: string[] }[];
+    models: { slug: string; name: string; summary: string; highlights: string[]; specs: Record<string, string | number>; specsVerified?: boolean; sizeClass?: string; sources: string[] }[];
   })[];
 };
 
@@ -135,6 +135,7 @@ async function main() {
         const mv = {
           name: m.name,
           summary: m.summary ?? "",
+          sizeClass: m.sizeClass ?? "",
           highlights: m.highlights ?? [],
           specs: m.specs ?? {},
           sources: m.sources ?? [],

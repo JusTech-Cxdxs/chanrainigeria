@@ -207,7 +207,7 @@ export default async function EditType({ params, searchParams }: { params: Promi
           </div>
         </Section>
 
-        <Section title="Questions people ask" icon="help" hint="Shown as a list of questions with answers. Write the answers you give customers on the phone.">
+        <Section title="Frequently asked questions" icon="help" hint="Shown as a list of questions with answers. Write the answers you give customers on the phone.">
           <RowsEditor
             name="faq"
             mode="faq"
