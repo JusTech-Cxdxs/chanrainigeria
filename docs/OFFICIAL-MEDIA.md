@@ -6,7 +6,7 @@ manufacturers' own product pages. They live in `public/official/` and are listed
 
 | Brand | Source | What is used |
 | --- | --- | --- |
-| LiuGong | `mea.liugong.com/product/<model>/` | Studio picture, banner, working photos, brochure (page 2 is shown as the specification sheet) for all 23 models |
+| LiuGong | `mea.liugong.com/product/<model>/` (890T: `www.liugong.com/en/product/890t/`) | Studio picture, banner, working photos, brochure (page 2 is shown as the specification sheet) for every model |
 | BYD | `bydforklift.com/uk/model/<model>/`, `sg.byd.com` | Studio angles (BYD blue), data sheets, range brochure, one BYD Europe film |
 | SOPAN | `sptlglobal.com` | Photos of compressors, dispensers, skids and cascades on the CNG type pages |
 | Fornovo Gas | `fornovogas.it` | Compressor pictures, CNG brochure, company film |
