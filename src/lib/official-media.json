@@ -253,23 +253,6 @@
     ]
    }
   },
-  "byd-ecb20s": {
-   "brand": "BYD",
-   "source": "https://bydforklift.com/uk/model/counterbalance-forklift-ecb20b-cs/",
-   "studio": [],
-   "gallery": [
-    "/official/byd/ecb20s/photo-1.jpg"
-   ],
-   "brochure": {
-    "href": "/official/brochures/byd-ecb20s.pdf",
-    "kb": 1089,
-    "sheet": "/official/byd/ecb20s/sheet.jpg",
-    "sheetSize": [
-     1800,
-     1273
-    ]
-   }
-  },
   "byd-ecb20": {
    "brand": "BYD",
    "source": "https://bydforklift.com/uk/model/counterbalance-forklift-ecb20-25-27/",
@@ -423,7 +406,13 @@
   "byd-ecb40": {
    "brand": "BYD",
    "source": "https://bydforklift.com/uk/model/byd-ecb40-45-50/",
-   "studio": [],
+   "studio": [
+    {
+     "src": "/official/byd/ecb40/studio.webp",
+     "w": 720,
+     "h": 720
+    }
+   ],
    "gallery": [],
    "brochure": {
     "href": "/official/brochures/byd-ecb40-ecb45-ecb50.pdf",
@@ -438,7 +427,13 @@
   "byd-ecb45": {
    "brand": "BYD",
    "source": "https://bydforklift.com/uk/model/byd-ecb40-45-50/",
-   "studio": [],
+   "studio": [
+    {
+     "src": "/official/byd/ecb45/studio.webp",
+     "w": 720,
+     "h": 720
+    }
+   ],
    "gallery": [],
    "brochure": {
     "href": "/official/brochures/byd-ecb40-ecb45-ecb50.pdf",
@@ -453,7 +448,13 @@
   "byd-ecb50": {
    "brand": "BYD",
    "source": "https://bydforklift.com/uk/model/byd-ecb40-45-50/",
-   "studio": [],
+   "studio": [
+    {
+     "src": "/official/byd/ecb50/studio.webp",
+     "w": 720,
+     "h": 720
+    }
+   ],
    "gallery": [],
    "brochure": {
     "href": "/official/brochures/byd-ecb40-ecb45-ecb50.pdf",
@@ -570,134 +571,6 @@
     "sheetSize": [
      1800,
      1281
-    ]
-   }
-  },
-  "byd-ptw20si": {
-   "brand": "BYD",
-   "source": "https://bydforklift.com/uk/model/byd-ptw20si/",
-   "studio": [
-    {
-     "src": "/official/byd/ptw20si/view-1.webp",
-     "w": 582,
-     "h": 608
-    },
-    {
-     "src": "/official/byd/ptw20si/view-2.webp",
-     "w": 344,
-     "h": 636
-    },
-    {
-     "src": "/official/byd/ptw20si/view-3.webp",
-     "w": 854,
-     "h": 654
-    }
-   ],
-   "gallery": [],
-   "brochure": {
-    "href": "/official/brochures/byd-pallet-trucks.pdf",
-    "kb": 980,
-    "sheet": "/official/byd/ptw20si/sheet.jpg",
-    "sheetSize": [
-     1800,
-     1273
-    ]
-   }
-  },
-  "byd-ptp20p": {
-   "brand": "BYD",
-   "source": "https://bydforklift.com/uk/model/pallet-truck-ptp20p-2/",
-   "studio": [
-    {
-     "src": "/official/byd/ptp20p/view-1.webp",
-     "w": 632,
-     "h": 542
-    },
-    {
-     "src": "/official/byd/ptp20p/view-2.webp",
-     "w": 632,
-     "h": 364
-    },
-    {
-     "src": "/official/byd/ptp20p/view-3.webp",
-     "w": 522,
-     "h": 426
-    }
-   ],
-   "gallery": [],
-   "brochure": {
-    "href": "/official/brochures/byd-pallet-trucks.pdf",
-    "kb": 980,
-    "sheet": "/official/byd/ptw20si/sheet.jpg",
-    "sheetSize": [
-     1800,
-     1273
-    ]
-   }
-  },
-  "byd-eps14pi": {
-   "brand": "BYD",
-   "source": "https://bydforklift.com/uk/model/stacker-truck-eps14pi/",
-   "studio": [
-    {
-     "src": "/official/byd/eps14pi/view-1.webp",
-     "w": 774,
-     "h": 674
-    },
-    {
-     "src": "/official/byd/eps14pi/view-2.webp",
-     "w": 570,
-     "h": 766
-    },
-    {
-     "src": "/official/byd/eps14pi/view-3.webp",
-     "w": 862,
-     "h": 764
-    },
-    {
-     "src": "/official/byd/eps14pi/view-4.webp",
-     "w": 654,
-     "h": 678
-    },
-    {
-     "src": "/official/byd/eps14pi/view-5.webp",
-     "w": 386,
-     "h": 846
-    },
-    {
-     "src": "/official/byd/eps14pi/view-6.webp",
-     "w": 250,
-     "h": 722
-    },
-    {
-     "src": "/official/byd/eps14pi/view-7.webp",
-     "w": 488,
-     "h": 1012
-    },
-    {
-     "src": "/official/byd/eps14pi/view-8.webp",
-     "w": 754,
-     "h": 642
-    },
-    {
-     "src": "/official/byd/eps14pi/view-9.webp",
-     "w": 814,
-     "h": 694
-    },
-    {
-     "src": "/official/byd/eps14pi/view-10.webp",
-     "w": 718,
-     "h": 736
-    }
-   ],
-   "gallery": [],
-   "brochure": {
-    "href": "/official/brochures/byd-stacker-trucks.pdf",
-    "kb": 2576,
-    "sheet": "/official/byd/eps14pi/sheet.jpg",
-    "sheetSize": [
-     1800,
-     1273
     ]
    }
   },
@@ -840,6 +713,318 @@
      "src": "/official/liugong/6118e/studio.webp",
      "w": 1632,
      "h": 1104
+    }
+   ],
+   "gallery": []
+  },
+  "byd-ecb16d": {
+   "brand": "BYD",
+   "source": "https://sg.byd.com/wp-content/uploads/2025/09/BYD-Forklift-Product-Brochure.pdf",
+   "studio": [
+    {
+     "src": "/official/byd/ecb16d/studio.webp",
+     "w": 720,
+     "h": 720
+    }
+   ],
+   "gallery": []
+  },
+  "byd-ecb18d": {
+   "brand": "BYD",
+   "source": "https://sg.byd.com/wp-content/uploads/2025/09/BYD-Forklift-Product-Brochure.pdf",
+   "studio": [
+    {
+     "src": "/official/byd/ecb18d/studio.webp",
+     "w": 720,
+     "h": 720
+    }
+   ],
+   "gallery": []
+  },
+  "byd-ecb20d": {
+   "brand": "BYD",
+   "source": "https://sg.byd.com/wp-content/uploads/2025/09/BYD-Forklift-Product-Brochure.pdf",
+   "studio": [
+    {
+     "src": "/official/byd/ecb20d/studio.webp",
+     "w": 720,
+     "h": 720
+    }
+   ],
+   "gallery": []
+  },
+  "byd-ecb25d": {
+   "brand": "BYD",
+   "source": "https://sg.byd.com/wp-content/uploads/2025/09/BYD-Forklift-Product-Brochure.pdf",
+   "studio": [
+    {
+     "src": "/official/byd/ecb25d/studio.webp",
+     "w": 720,
+     "h": 720
+    }
+   ],
+   "gallery": []
+  },
+  "byd-ecb30d": {
+   "brand": "BYD",
+   "source": "https://sg.byd.com/wp-content/uploads/2025/09/BYD-Forklift-Product-Brochure.pdf",
+   "studio": [
+    {
+     "src": "/official/byd/ecb30d/studio.webp",
+     "w": 720,
+     "h": 720
+    }
+   ],
+   "gallery": []
+  },
+  "byd-ecb35d": {
+   "brand": "BYD",
+   "source": "https://sg.byd.com/wp-content/uploads/2025/09/BYD-Forklift-Product-Brochure.pdf",
+   "studio": [
+    {
+     "src": "/official/byd/ecb35d/studio.webp",
+     "w": 720,
+     "h": 720
+    }
+   ],
+   "gallery": []
+  },
+  "byd-el20-pro": {
+   "brand": "BYD",
+   "source": "https://sg.byd.com/wp-content/uploads/2025/09/BYD-Forklift-Product-Brochure.pdf",
+   "studio": [
+    {
+     "src": "/official/byd/el20-pro/studio.webp",
+     "w": 720,
+     "h": 720
+    }
+   ],
+   "gallery": []
+  },
+  "byd-el25-pro": {
+   "brand": "BYD",
+   "source": "https://sg.byd.com/wp-content/uploads/2025/09/BYD-Forklift-Product-Brochure.pdf",
+   "studio": [
+    {
+     "src": "/official/byd/el25-pro/studio.webp",
+     "w": 720,
+     "h": 720
+    }
+   ],
+   "gallery": []
+  },
+  "byd-el30-pro": {
+   "brand": "BYD",
+   "source": "https://sg.byd.com/wp-content/uploads/2025/09/BYD-Forklift-Product-Brochure.pdf",
+   "studio": [
+    {
+     "src": "/official/byd/el30-pro/studio.webp",
+     "w": 720,
+     "h": 720
+    }
+   ],
+   "gallery": []
+  },
+  "byd-el35-pro": {
+   "brand": "BYD",
+   "source": "https://sg.byd.com/wp-content/uploads/2025/09/BYD-Forklift-Product-Brochure.pdf",
+   "studio": [
+    {
+     "src": "/official/byd/el35-pro/studio.webp",
+     "w": 720,
+     "h": 720
+    }
+   ],
+   "gallery": []
+  },
+  "byd-el38-pro": {
+   "brand": "BYD",
+   "source": "https://sg.byd.com/wp-content/uploads/2025/09/BYD-Forklift-Product-Brochure.pdf",
+   "studio": [
+    {
+     "src": "/official/byd/el38-pro/studio.webp",
+     "w": 720,
+     "h": 720
+    }
+   ],
+   "gallery": []
+  },
+  "byd-p20jw": {
+   "brand": "BYD",
+   "source": "https://sg.byd.com/wp-content/uploads/2025/09/BYD-Forklift-Product-Brochure.pdf",
+   "studio": [
+    {
+     "src": "/official/byd/p20jw/studio.webp",
+     "w": 720,
+     "h": 720
+    }
+   ],
+   "gallery": []
+  },
+  "byd-p20ps-b": {
+   "brand": "BYD",
+   "source": "https://sg.byd.com/wp-content/uploads/2025/09/BYD-Forklift-Product-Brochure.pdf",
+   "studio": [
+    {
+     "src": "/official/byd/p20ps-b/studio.webp",
+     "w": 720,
+     "h": 720
+    }
+   ],
+   "gallery": []
+  },
+  "byd-p20ps-u": {
+   "brand": "BYD",
+   "source": "https://sg.byd.com/wp-content/uploads/2025/09/BYD-Forklift-Product-Brochure.pdf",
+   "studio": [
+    {
+     "src": "/official/byd/p20ps-u/studio.webp",
+     "w": 720,
+     "h": 720
+    }
+   ],
+   "gallery": []
+  },
+  "byd-p20ps": {
+   "brand": "BYD",
+   "source": "https://sg.byd.com/wp-content/uploads/2025/09/BYD-Forklift-Product-Brochure.pdf",
+   "studio": [
+    {
+     "src": "/official/byd/p20ps/studio.webp",
+     "w": 720,
+     "h": 720
+    }
+   ],
+   "gallery": []
+  },
+  "byd-q250l-01": {
+   "brand": "BYD",
+   "source": "https://sg.byd.com/wp-content/uploads/2025/09/BYD-Forklift-Product-Brochure.pdf",
+   "studio": [
+    {
+     "src": "/official/byd/q250l-01/studio.webp",
+     "w": 720,
+     "h": 720
+    }
+   ],
+   "gallery": []
+  },
+  "byd-q250l": {
+   "brand": "BYD",
+   "source": "https://sg.byd.com/wp-content/uploads/2025/09/BYD-Forklift-Product-Brochure.pdf",
+   "studio": [
+    {
+     "src": "/official/byd/q250l/studio.webp",
+     "w": 720,
+     "h": 720
+    }
+   ],
+   "gallery": []
+  },
+  "byd-q250ls": {
+   "brand": "BYD",
+   "source": "https://sg.byd.com/wp-content/uploads/2025/09/BYD-Forklift-Product-Brochure.pdf",
+   "studio": [
+    {
+     "src": "/official/byd/q250ls/studio.webp",
+     "w": 720,
+     "h": 720
+    }
+   ],
+   "gallery": []
+  },
+  "byd-q30tjs": {
+   "brand": "BYD",
+   "source": "https://sg.byd.com/wp-content/uploads/2025/09/BYD-Forklift-Product-Brochure.pdf",
+   "studio": [
+    {
+     "src": "/official/byd/q30tjs/studio.webp",
+     "w": 720,
+     "h": 720
+    }
+   ],
+   "gallery": []
+  },
+  "byd-q50tps": {
+   "brand": "BYD",
+   "source": "https://sg.byd.com/wp-content/uploads/2025/09/BYD-Forklift-Product-Brochure.pdf",
+   "studio": [
+    {
+     "src": "/official/byd/q50tps/studio.webp",
+     "w": 720,
+     "h": 720
+    }
+   ],
+   "gallery": []
+  },
+  "byd-qd50": {
+   "brand": "BYD",
+   "source": "https://sg.byd.com/wp-content/uploads/2025/09/BYD-Forklift-Product-Brochure.pdf",
+   "studio": [
+    {
+     "src": "/official/byd/qd50/studio.webp",
+     "w": 720,
+     "h": 720
+    }
+   ],
+   "gallery": []
+  },
+  "byd-r15ps": {
+   "brand": "BYD",
+   "source": "https://sg.byd.com/wp-content/uploads/2025/09/BYD-Forklift-Product-Brochure.pdf",
+   "studio": [
+    {
+     "src": "/official/byd/r15ps/studio.webp",
+     "w": 720,
+     "h": 720
+    }
+   ],
+   "gallery": []
+  },
+  "byd-r18ps": {
+   "brand": "BYD",
+   "source": "https://sg.byd.com/wp-content/uploads/2025/09/BYD-Forklift-Product-Brochure.pdf",
+   "studio": [
+    {
+     "src": "/official/byd/r18ps/studio.webp",
+     "w": 720,
+     "h": 720
+    }
+   ],
+   "gallery": []
+  },
+  "byd-s14jw": {
+   "brand": "BYD",
+   "source": "https://sg.byd.com/wp-content/uploads/2025/09/BYD-Forklift-Product-Brochure.pdf",
+   "studio": [
+    {
+     "src": "/official/byd/s14jw/studio.webp",
+     "w": 720,
+     "h": 720
+    }
+   ],
+   "gallery": []
+  },
+  "byd-s14ps": {
+   "brand": "BYD",
+   "source": "https://sg.byd.com/wp-content/uploads/2025/09/BYD-Forklift-Product-Brochure.pdf",
+   "studio": [
+    {
+     "src": "/official/byd/s14ps/studio.webp",
+     "w": 720,
+     "h": 720
+    }
+   ],
+   "gallery": []
+  },
+  "byd-sz14ps-g": {
+   "brand": "BYD",
+   "source": "https://sg.byd.com/wp-content/uploads/2025/09/BYD-Forklift-Product-Brochure.pdf",
+   "studio": [
+    {
+     "src": "/official/byd/sz14ps-g/studio.webp",
+     "w": 720,
+     "h": 720
     }
    ],
    "gallery": []
