@@ -3,7 +3,7 @@
 
 export const PERMISSIONS = [
   // Desk
-  { key: "enquiries", label: "Enquiries", group: "Desk", help: "Read, assign, reply to and close enquiries and bookings." },
+  { key: "enquiries", label: "Enquiries", group: "Desk", help: "Read, assign, reply to and close enquiries and service requests." },
   { key: "chats", label: "Enyo chats", group: "Desk", help: "Read the website assistant's conversations." },
   { key: "testimonials", label: "Testimonials", group: "Desk", help: "Approve, edit, add and remove customer testimonials." },
   { key: "visitors", label: "Visitors", group: "Desk", help: "See website traffic figures." },
@@ -50,7 +50,7 @@ export const SYSTEM_ROLES: { name: string; description: string; permissions: Per
   },
   {
     name: "Service coordinator",
-    description: "Handles enquiries, bookings and Enyo chats.",
+    description: "Handles enquiries, service requests and Enyo chats.",
     permissions: ["enquiries", "chats", "testimonials", "assistant"],
     legacy: "COORDINATOR",
   },

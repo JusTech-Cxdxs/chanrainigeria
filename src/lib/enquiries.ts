@@ -13,7 +13,7 @@ import { deskFor, getSettings } from "./settings";
 export const TYPE_LABELS = {
   GENERAL: "General enquiry",
   QUOTE: "Quote request",
-  SERVICE_BOOKING: "Service booking",
+  SERVICE_BOOKING: "Service request",
   PARTS: "Parts request",
   CALLBACK: "Call-back request",
 } as const;

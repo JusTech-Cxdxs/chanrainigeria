@@ -15,7 +15,7 @@ external service it depends on except a PostgreSQL database, an SMTP mailbox and
 - Product lines → machine types → models. Each machine type explains how the machine works, its main
   components, where it's used, how to choose one, maintenance intervals, safety and FAQs. Models open in a
   quick-view with specifications and an **Ask for a quote** button. No prices are shown anywhere.
-- **Book a technician**: field-service bookings that capture the machine, serial number, hour meter, site
+- **Request a service**: field-service requests that capture the machine, serial number, hour meter, site
   location, state, urgency ("machine is down") and photos.
 - **Parts**, **Contact**, **Services**, **News**, **About**, locations, privacy and cookie notices.
 - Light and dark mode, logo loading animation, phone-first layout.

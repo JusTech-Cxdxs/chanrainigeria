@@ -77,7 +77,7 @@ export default async function FamilyPage({ params }: P) {
             <Icon name="file" />
             {L.t("quoteButton")}
           </Link>
-          <Link href={`/book-service?category=${c.slug}&machine=${encodeURIComponent(f.name)}`} className="btn btn-glass">
+          <Link href={`/request-service?category=${c.slug}&machine=${encodeURIComponent(f.name)}`} className="btn btn-glass">
             <Icon name="calendar" />
             {L.t("bookButton")}
           </Link>
@@ -228,7 +228,7 @@ export default async function FamilyPage({ params }: P) {
               ) : null}
             </div>
             {m.note ? <p className="mt-4 text-sm text-ink-soft measure">{m.note}</p> : null}
-            <Link href={`/book-service?category=${c.slug}&machine=${encodeURIComponent(f.name)}`} className="btn btn-outline mt-6">
+            <Link href={`/request-service?category=${c.slug}&machine=${encodeURIComponent(f.name)}`} className="btn btn-outline mt-6">
               <Icon name="calendar" />
               {L.t("careButton")}
             </Link>

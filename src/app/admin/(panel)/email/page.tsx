@@ -304,7 +304,7 @@ export default async function EmailPage({ searchParams }: { searchParams: Promis
                 <tbody className="align-top">
                   <tr className="border-b border-line-soft">
                     <td className="px-5 py-3 font-semibold sm:px-0 sm:pr-4">Customer confirmation</td>
-                    <td className="py-3 pr-4 text-ink-soft">Someone sends an enquiry, booking or parts request from the website or Enyo.</td>
+                    <td className="py-3 pr-4 text-ink-soft">Someone sends an enquiry, service request or parts request from the website or Enyo.</td>
                     <td className="py-3 pr-5 sm:pr-0">The customer. It gives their reference and the desk&apos;s phone and email, and never repeats what they typed.</td>
                   </tr>
                   <tr className="border-b border-line-soft">

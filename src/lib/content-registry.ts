@@ -14,8 +14,8 @@ const home: PageDef = {
     {
       label: "Under the slider",
       fields: [
-        { key: "sliderSecondaryLabel", label: "Second button on every slide", type: "text", default: "Book a technician" },
-        { key: "sliderSecondaryLink", label: "Second button goes to", type: "link", default: "/book-service" },
+        { key: "sliderSecondaryLabel", label: "Second button on every slide", type: "text", default: "Request a service" },
+        { key: "sliderSecondaryLink", label: "Second button goes to", type: "link", default: "/request-service" },
         {
           key: "quickActions",
           label: "Quick action cards",
@@ -30,7 +30,7 @@ const home: PageDef = {
             { key: "href", label: "Goes to", type: "link", default: "/" },
           ],
           default: [
-            { title: "Book a technician", text: "On-site service for all your equipment", href: "/book-service" },
+            { title: "Request a service", text: "On-site service for all your equipment", href: "/request-service" },
             { title: "Ask for a quote", text: "Tell us the job and we'll recommend a machine", href: "/contact?type=QUOTE" },
             { title: "Order parts", text: "OEM and genuine parts, in stock", href: "/parts" },
           ],
@@ -60,7 +60,7 @@ const home: PageDef = {
         { key: "matrixService", label: "Column 2 heading", type: "text", default: "On-site service" },
         { key: "matrixParts", label: "Column 3 heading", type: "text", default: "Parts" },
         { key: "matrixSalesCta", label: "Column 1 link", type: "text", default: "Ask for a quote" },
-        { key: "matrixServiceCta", label: "Column 2 link", type: "text", default: "Book a visit" },
+        { key: "matrixServiceCta", label: "Column 2 link", type: "text", default: "Request a service" },
         { key: "matrixPartsCta", label: "Column 3 link", type: "text", default: "Ask for parts" },
       ],
     },
@@ -74,9 +74,9 @@ const home: PageDef = {
           label: "Text",
           type: "textarea",
           default:
-            "Compressors don't leave the station and excavators don't drive to workshops. Book a visit and a technician comes to your site with the tools and parts the job needs.",
+            "Compressors don't leave the station and excavators don't drive to workshops. Request a service and a technician comes to your site with the tools and parts the job needs.",
         },
-        { key: "fieldButton", label: "Button", type: "text", default: "Book a technician" },
+        { key: "fieldButton", label: "Button", type: "text", default: "Request a service" },
         { key: "fieldCallPrefix", label: "Call button starts with", type: "text", default: "Call" },
         {
           key: "fieldSteps",
@@ -213,8 +213,8 @@ const header: PageDef = {
     {
       label: "Buttons",
       fields: [
-        text("bookLabel", "Button", "Book a technician"),
-        link("bookLink", "Button goes to", "/book-service"),
+        text("bookLabel", "Button", "Request a service"),
+        link("bookLink", "Button goes to", "/request-service"),
         text("searchLabel", "Search button", "Search"),
         text("searchAria", "Search button, read aloud by screen readers", "Search the site"),
       ],
@@ -242,7 +242,7 @@ const header: PageDef = {
           min: 1,
           max: 8,
           fields: [text("text", "Words", "")],
-          default: [{ text: "CNG compressor" }, { text: "Excavator" }, { text: "Forklift" }, { text: "Book a technician" }, { text: "Parts" }, { text: "Phone number" }],
+          default: [{ text: "CNG compressor" }, { text: "Excavator" }, { text: "Forklift" }, { text: "Request a service" }, { text: "Parts" }, { text: "Phone number" }],
         },
         text("searchEmpty", "When nothing matches", "Nothing matches “{q}”. Try a machine type, a model number or a service.", "{q} is what the visitor typed."),
         text("searchHelp", "Keyboard help at the bottom", "↑ ↓ to move, Enter to open, Esc to close"),
@@ -283,7 +283,7 @@ const footer: PageDef = {
           fields: [text("label", "Label", ""), link("href", "Goes to", "/")],
           default: [
             { label: "Services", href: "/services" },
-            { label: "Book a technician", href: "/book-service" },
+            { label: "Request a service", href: "/request-service" },
             { label: "Parts", href: "/parts" },
             { label: "News", href: "/news" },
             { label: "Testimonials", href: "/testimonials" },
@@ -402,7 +402,7 @@ const enyo: PageDef = {
           min: 0,
           max: 5,
           fields: [text("text", "Question", "")],
-          default: [{ text: "What does a CNG station need?" }, { text: "How do I book a technician?" }, { text: "Which forklift for a warehouse?" }, { text: "Where are you located?" }],
+          default: [{ text: "What does a CNG station need?" }, { text: "How do I request a service?" }, { text: "Which forklift for a warehouse?" }, { text: "Where are you located?" }],
         },
         text("leaveRequest", "Leave a request chip", "Leave a request"),
         text("talkPersonChip", "Talk to a person chip", "Talk to a person"),
@@ -435,8 +435,8 @@ const enyo: PageDef = {
         text("whatsappTitle", "WhatsApp card", "WhatsApp"),
         text("emailTitle", "Email card", "Email"),
         text("visitTitle", "Address card", "Visit us"),
-        text("bookButton", "Button", "Book a technician"),
-        link("bookLink", "Button goes to", "/book-service"),
+        text("bookButton", "Button", "Request a service"),
+        link("bookLink", "Button goes to", "/request-service"),
       ],
     },
   ],
@@ -470,7 +470,7 @@ const notFound: PageDef = {
           max: 4,
           fields: [text("label", "Label", ""), link("href", "Goes to", "/")],
           default: [
-            { label: "Book a technician", href: "/book-service" },
+            { label: "Request a service", href: "/request-service" },
             { label: "Order parts", href: "/parts" },
             { label: "Home page", href: "/" },
           ],
@@ -489,7 +489,7 @@ const forms: PageDef = {
   group: "Customer forms",
   icon: "inbox",
   description:
-    "Every label, hint, button and message in the contact, booking, parts and testimonial forms. Write {company} for the company name.",
+    "Every label, hint, button and message in the contact, service request, parts and testimonial forms. Write {company} for the company name.",
   sections: [
     {
       label: "Your details (all forms)",
@@ -531,7 +531,7 @@ const forms: PageDef = {
       ],
     },
     {
-      label: "Booking and parts forms: the machine",
+      label: "Service request and parts forms: the machine",
       fields: [
         text("machineLegend", "Heading", "The machine"),
         text("lineLabel", "Equipment line", "Equipment line"),
@@ -545,7 +545,7 @@ const forms: PageDef = {
       ],
     },
     {
-      label: "Booking form",
+      label: "Service request form",
       fields: [
         text("hoursLabel", "Hour meter", "Hour meter reading"),
         text("hoursPlaceholder", "Example inside the box", "e.g. 4,250"),
@@ -565,7 +565,7 @@ const forms: PageDef = {
         text("urgentPlannedText", "Urgency 3, small line", "Routine maintenance"),
         text("faultLabel", "Fault description", "What's wrong?"),
         text("faultPlaceholder", "Example inside the box", "Symptoms, warning lights or error codes, when it started"),
-        text("serviceSubmit", "Send button", "Book the visit"),
+        text("serviceSubmit", "Send button", "Send service request"),
       ],
     },
     {
@@ -835,12 +835,13 @@ const testimonials: PageDef = {
       slot: "page-about",
       crumb: "Testimonials",
       title: "What customers say",
-      lead: "Feedback from contractors, station operators and warehouse teams we work with. Every testimonial is checked by our team before it appears.",
+      lead: "Feedback from the customers we serve across Nigeria. Every testimonial comes from a real customer and is checked by our team before it appears.",
     }),
     {
       label: "List",
       fields: [
-        text("empty", "When there are none yet", "Be the first to share your experience."),
+        text("emptyTitle", "Heading when there are none yet", "Customer feedback will appear here"),
+        text("empty", "When there are none yet", "We publish only what our customers tell us themselves. As customers share their experience of our equipment and service, you will read it on this page. If you have worked with us, please tell us how it went using the form below."),
         text("exampleBadge", "Badge on example testimonials", "Example"),
       ],
     },
@@ -891,7 +892,7 @@ const productLine: PageDef = {
   sections: [
     {
       label: "Banner buttons",
-      fields: [text("quoteButton", "First button", "Ask for a quote"), text("bookButton", "Second button", "Book a technician")],
+      fields: [text("quoteButton", "First button", "Ask for a quote"), text("bookButton", "Second button", "Request a service")],
     },
     {
       label: "Machine types",
@@ -908,7 +909,7 @@ const productLine: PageDef = {
         text("salesTitle", "Column 1 heading", "Sales"),
         text("salesLink", "Column 1 link", "Ask for a quote"),
         text("serviceTitle", "Column 2 heading", "On-site service"),
-        text("serviceLink", "Column 2 link", "Book a technician"),
+        text("serviceLink", "Column 2 link", "Request a service"),
         text("partsTitle", "Column 3 heading", "Parts"),
         text("partsLink", "Column 3 link", "Ask for parts"),
       ],
@@ -938,7 +939,7 @@ const machineType: PageDef = {
   sections: [
     {
       label: "Banner buttons",
-      fields: [text("quoteButton", "First button", "Ask for a quote"), text("bookButton", "Second button", "Book a technician")],
+      fields: [text("quoteButton", "First button", "Ask for a quote"), text("bookButton", "Second button", "Request a service")],
     },
     {
       label: "Jump links under the banner",
@@ -966,7 +967,7 @@ const machineType: PageDef = {
         text("careTitle", "Maintenance", "Keeping it running"),
         text("dailyTitle", "Daily checks box", "Daily checks"),
         text("intervalHours", "Service interval", "{n} hours", "{n} is the hour count."),
-        text("careButton", "Maintenance button", "Book a service visit"),
+        text("careButton", "Maintenance button", "Request a service"),
         text("galleryTitle", "Gallery", "Gallery"),
         text("downloadsTitle", "Brochures", "Brochures"),
         text("downloadItem", "A brochure link", "{label} (PDF, {size})", "{label} is the brochure name, {size} the file size."),
@@ -1012,7 +1013,7 @@ const model: PageDef = {
         text("specsEmpty", "When there are no figures", "Specifications are available on request from our sales team."),
         text("specsIndicative", "Note when figures are not confirmed", "Figures are indicative and can vary by configuration. Our sales team will confirm them for your quote."),
         text("quoteButton", "Quote button", "Ask for a quote"),
-        text("bookButton", "Booking button", "Book a technician"),
+        text("bookButton", "Service button", "Request a service"),
         text("brochureButton", "Brochure button", "Download brochure"),
         text("learnText", "Line at the end", "Want to understand how it works first?"),
         text("learnLink", "Link after that", "Read about {type}", "{type} is the machine type."),
@@ -1048,13 +1049,13 @@ const services: PageDef = {
       slot: "page-services",
       crumb: "Services",
       title: "We come to the machine",
-      lead: "Compressors don't leave the station and excavators don't drive to workshops. Book a visit and a technician comes to your site with the tools and parts the job needs.",
+      lead: "Compressors don't leave the station and excavators don't drive to workshops. Request a service and a technician comes to your site with the tools and parts the job needs.",
     }),
     {
       label: "Banner buttons",
       fields: [
-        text("bookButton", "First button", "Book a technician"),
-        link("bookLink", "First button goes to", "/book-service"),
+        text("bookButton", "First button", "Request a service"),
+        link("bookLink", "First button goes to", "/request-service"),
         text("partsButton", "Second button", "Ask for parts"),
         link("partsLink", "Second button goes to", "/parts"),
       ],
@@ -1063,7 +1064,7 @@ const services: PageDef = {
       label: "List",
       fields: [
         text("generalTitle", "Heading for services that cover every line", "For every line"),
-        text("lineButton", "Button under each line", "Book a {line} technician", "{line} is the line name."),
+        text("lineButton", "Button under each line", "Request {line} service", "{line} is the line name."),
       ],
     },
     seo("Services", "CNG station installation and maintenance, on-site field service, maintenance contracts, parts and training."),
@@ -1090,16 +1091,16 @@ const parts: PageDef = {
 
 const bookService: PageDef = {
   key: "book-service",
-  label: "Book a technician",
-  path: "/book-service",
+  label: "Request a service",
+  path: "/request-service",
   group: "Products and services",
   icon: "calendar",
-  description: "The service booking page. Form wording is under Forms.",
+  description: "The service request page. Form wording is under Forms.",
   sections: [
     banner({
       slot: "page-book-service",
-      crumb: "Book a technician",
-      title: "Book a technician",
+      crumb: "Request a service",
+      title: "Request a service",
       lead: "Our technicians come to the machine: at the station, on the job site or in your warehouse. Tell us what it is, where it is and what's happening.",
     }),
     {
@@ -1110,7 +1111,7 @@ const bookService: PageDef = {
         text("downText", "Text", "Call the service desk on {phone}", "{phone} is the service desk number."),
       ],
     },
-    seo("Book a technician", "Book an on-site service visit for CNG refueling, compression, storage and dispensing equipment, construction equipment or forklifts anywhere in Nigeria."),
+    seo("Request a service", "Request on-site service for CNG refueling, compression, storage and dispensing equipment, construction equipment or forklifts anywhere in Nigeria."),
   ],
 };
 
@@ -1145,7 +1146,7 @@ const privacy: PageDef = {
 
 ## What we collect
 
-- **Enquiries and bookings:** your name, email, phone, company, message, and machine details such as serial number, hour meter, site location and photos you choose to upload.
+- **Enquiries and service requests:** your name, email, phone, company, message, and machine details such as serial number, hour meter, site location and photos you choose to upload.
 - **Conversations with {enyo}:** the messages you type into our website assistant, and any contact details you give it so that our team can follow up.
 - **Visit statistics (only if you accept):** which pages were viewed, the referring site and device type, linked to a random identifier. We do not store your IP address.
 

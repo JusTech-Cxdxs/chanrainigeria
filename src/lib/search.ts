@@ -10,7 +10,7 @@ const PAGES: { title: string; href: string; words: string }[] = [
   { title: "Home", href: "/", words: "home start welcome" },
   { title: "Products", href: "/products", words: "products equipment machines range catalogue" },
   { title: "Services", href: "/services", words: "services maintenance repair field service support training installation" },
-  { title: "Book a technician", href: "/book-service", words: "book technician service visit repair breakdown machine down site" },
+  { title: "Request a service", href: "/request-service", words: "book technician service visit repair breakdown machine down site" },
   { title: "Parts", href: "/parts", words: "parts spares filters genuine order" },
   { title: "News", href: "/news", words: "news updates stories" },
   { title: "About us", href: "/about", words: "about company history group kewalram chanrai" },

@@ -83,7 +83,7 @@ export default async function ProductPage({ params }: P) {
               <Icon name="file" />
               {L.t("quoteButton")}
             </Link>
-            <Link href={`/book-service?category=${c.slug}&machine=${encodeURIComponent(title)}`} className="btn btn-outline">
+            <Link href={`/request-service?category=${c.slug}&machine=${encodeURIComponent(title)}`} className="btn btn-outline">
               <Icon name="calendar" />
               {L.t("bookButton")}
             </Link>

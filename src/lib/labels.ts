@@ -2,7 +2,7 @@
 export const TYPE_LABEL: Record<string, string> = {
   GENERAL: "General enquiry",
   QUOTE: "Quote request",
-  SERVICE_BOOKING: "Service booking",
+  SERVICE_BOOKING: "Service request",
   PARTS: "Parts request",
   CALLBACK: "Call-back",
 };

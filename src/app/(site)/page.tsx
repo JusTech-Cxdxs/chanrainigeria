@@ -143,7 +143,7 @@ export default async function Home() {
                 </div>
                 {[
                   [c.t("matrixSales"), cat.salesBlurb, `/contact?type=QUOTE&category=${cat.slug}`, c.t("matrixSalesCta")],
-                  [c.t("matrixService"), cat.serviceBlurb, `/book-service?category=${cat.slug}`, c.t("matrixServiceCta")],
+                  [c.t("matrixService"), cat.serviceBlurb, `/request-service?category=${cat.slug}`, c.t("matrixServiceCta")],
                   [c.t("matrixParts"), cat.partsBlurb, `/parts?category=${cat.slug}`, c.t("matrixPartsCta")],
                 ].map(([label, text, href, cta]) => (
                   <div key={label} className="px-6 py-3 md:py-6">
@@ -167,7 +167,7 @@ export default async function Home() {
             <h2 className="heading text-3xl sm:text-5xl">{c.t("fieldTitle")}</h2>
             <p className="mt-5 max-w-[52ch] text-lg text-white/80">{c.t("fieldText")}</p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link href="/book-service" className="btn btn-primary">
+              <Link href="/request-service" className="btn btn-primary">
                 <Icon name="calendar" />
                 {c.t("fieldButton")}
               </Link>

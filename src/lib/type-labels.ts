@@ -8,8 +8,8 @@ const TYPE: Record<string, string> = {
   "cascades-storage": "Storage cascades",
   "gas-utility-skids": "PRS and metering skids",
   "cng-tube-trailer-skids": "Tube trailer skids",
-  "three-wheel-counterbalance-forklifts": "Three-wheel electric forklifts",
-  "four-wheel-counterbalance-forklifts": "Four-wheel electric forklifts",
+  "el-pro-counterbalance-forklifts": "EL-PRO series electric forklifts",
+  "g-series-counterbalance-forklifts": "G series electric forklifts",
   "heavy-duty-counterbalance-forklifts": "Heavy-duty electric forklifts",
 };
 const LINE: Record<string, string> = {

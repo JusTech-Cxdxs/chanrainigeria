@@ -24,7 +24,7 @@ collaborator only when maintenance is needed.
 - [ ] Model list trimmed to what Chanrai actually supplies; each model's specifications checked and ticked
 - [ ] Locations confirmed (Isolo is pre-filled from the business card; add Victoria Island or others if public)
 - [ ] Privacy notice reviewed by the Data Protection Officer; DPO contact entered in Settings
-- [ ] Test: a quote, a service booking with a photo and a parts request each reach the right desk, and the customer copy arrives
+- [ ] Test: a quote, a service request with a photo and a parts request each reach the right desk, and the customer copy arrives
 - [ ] Test: Enyo logs a request and the desk receives it
 - [ ] Backups scheduled and one restore tested
 

@@ -190,20 +190,6 @@ async function main() {
     .returning({ name: schema.brands.name });
   if (dealer.length) console.log(`brands: relationship set for ${dealer.map((b) => b.name).join(", ")}`);
 
-  // Example testimonials for the preview. They show an "Example" label on the site until the
-  // company replaces them with real ones (Dashboard → Testimonials).
-  const anyTestimonial = await db.query.testimonials.findFirst();
-  if (!anyTestimonial) {
-    const examples = [
-      { name: "Site manager", company: "Road construction contractor, Ogun", rating: 5, quote: "The technician came to our site the day after we called, found the hydraulic fault and had the loader working again before evening. That is the kind of support we need." },
-      { name: "Operations lead", company: "CNG station operator, Lagos", rating: 5, quote: "From the first site survey to commissioning, the team explained every step. Our booster compressor has run smoothly since handover." },
-      { name: "Warehouse supervisor", company: "FMCG distributor, Lagos", rating: 4, quote: "Moving to electric forklifts cut our noise and fumes inside the warehouse. Planned maintenance visits are on time and well recorded." },
-      { name: "Plant engineer", company: "Quarry operator, Abeokuta", rating: 5, quote: "Genuine parts arrived quickly and the advice on service intervals has already reduced our downtime." },
-    ];
-    await db.insert(schema.testimonials).values(examples.map((e, i) => ({ ...e, status: "APPROVED" as const, isExample: true, source: "staff", order: i })));
-    console.log("testimonials: added 4 examples");
-  }
-
   // Starter articles (practical guides, no company news is invented). Only when there are no posts yet.
   const anyPost = await db.query.posts.findFirst();
   if (!anyPost) {
