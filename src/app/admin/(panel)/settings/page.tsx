@@ -142,7 +142,7 @@ export default async function SettingsPage({ searchParams }: { searchParams: Pro
             id="contacts"
             icon="contact"
             title="Contacts and desks"
-            lead="Each enquiry goes to one desk. Quotes go to the product line's desk, service bookings to Field service, parts requests to Parts, and everything for CNG to the CNG desk. Desks with no contact details are hidden on the website."
+            lead="Each enquiry goes to one desk. Quotes go to the product line's desk, service requests to Field service, parts requests to Parts, and everything for CNG to the CNG desk. Desks with no contact details are hidden on the website."
           >
             <SubHead>Main contact</SubHead>
             <div className="grid gap-4 sm:grid-cols-2">

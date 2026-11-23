@@ -565,7 +565,7 @@ export function sampleEmails(ctx: EmailCtx): Record<EmailKind, { subject: string
   const e: EnquiryForMail = {
     ref: "CN-2026-000123",
     type: "SERVICE_BOOKING",
-    typeLabel: "Service booking",
+    typeLabel: "Service request",
     source: "FORM",
     name: "Adaeze Okafor",
     email: "adaeze@example.com",
@@ -599,7 +599,7 @@ export function sampleEmails(ctx: EmailCtx): Record<EmailKind, { subject: string
         ctx,
         desk?.label ?? "Field service",
         [
-          { ref: "CN-2026-000118", name: "Tunde Bakare", type: "Service booking", hours: 52, urgent: true, link: `${base}/admin/enquiries` },
+          { ref: "CN-2026-000118", name: "Tunde Bakare", type: "Service request", hours: 52, urgent: true, link: `${base}/admin/enquiries` },
           { ref: "CN-2026-000120", name: "Grace Eze", type: "Parts request", hours: 31, urgent: false, link: `${base}/admin/enquiries` },
           { ref: "CN-2026-000121", name: "Musa Bello", type: "Quote request", hours: 26, urgent: false, link: `${base}/admin/enquiries` },
         ],

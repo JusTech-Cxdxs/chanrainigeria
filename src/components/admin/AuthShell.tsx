@@ -5,7 +5,7 @@ import { ThemeToggle } from "@/components/site/ThemeToggle";
 import { PLATFORM } from "@/lib/platform";
 
 const MODULES: { title: string; text: string; d: string }[] = [
-  { title: "Enquiries and bookings", text: "Quotes, field-service visits and parts requests, each with a reference.", d: "M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" },
+  { title: "Enquiries and service requests", text: "Quotes, field-service visits and parts requests, each with a reference.", d: "M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" },
   { title: "Products", text: "Lines, machine types, models, specifications and photos.", d: "M21 8 12 3 3 8v8l9 5 9-5V8zM3 8l9 5 9-5M12 13v8" },
   { title: "Testimonials", text: "Visitors share; your team approves before anything shows.", d: "m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z" },
   { title: "News and pages", text: "Stories, banners, the home slider and every image.", d: "M4 4h16v16H4zM8 8h8M8 12h8M8 16h5" },

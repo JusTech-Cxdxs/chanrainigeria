@@ -9,7 +9,7 @@ export const IMAGE_SLOTS: ImageSlot[] = [
   { key: "hero-3", file: "hero-3.jpg", label: "Home slide 3", size: "2400 × 1350", usedOn: "Home page slider" },
   { key: "page-products", file: "page-products.jpg", label: "Products banner", size: "2400 × 900", usedOn: "Products pages" },
   { key: "page-services", file: "page-services.jpg", label: "Services banner", size: "2400 × 900", usedOn: "Services page" },
-  { key: "page-book-service", file: "page-book-service.jpg", label: "Book a technician banner", size: "2400 × 900", usedOn: "Book a technician page" },
+  { key: "page-book-service", file: "page-book-service.jpg", label: "Request a service banner", size: "2400 × 900", usedOn: "Request a service page" },
   { key: "page-parts", file: "page-parts.jpg", label: "Parts banner", size: "2400 × 900", usedOn: "Parts page" },
   { key: "page-contact", file: "page-contact.jpg", label: "Contact banner", size: "2400 × 900", usedOn: "Contact page" },
   { key: "page-about", file: "page-about.jpg", label: "About banner", size: "2400 × 900", usedOn: "About page" },

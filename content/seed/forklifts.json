@@ -108,63 +108,64 @@
   ],
   "families": [
     {
-      "slug": "three-wheel-counterbalance-forklifts",
-      "name": "Three-Wheel Electric Counterbalance Forklifts",
-      "summary": "Compact 1.6–2.0 t electric forklifts with a tight turning circle for congested warehouses, container stuffing and production lines.",
-      "howItWorks": "A **three-wheel electric counterbalance forklift** carries its load on forks out in front and balances it with the weight of the truck body and battery behind the front axle, like a see-saw pivoting on the front wheels. Using a single rear steer point (often a pair of close-set wheels) lets the rear swing almost on the spot, so the truck turns in a much tighter circle than a four-wheel machine of the same capacity.\n\n**Drive and lift.** The truck has no engine. An 80 V lithium iron phosphate (LFP) battery feeds electronic motor controllers. On BYD's 1.6–1.8 t models, two AC traction motors drive the front wheels, and the controller varies their speeds in a turn. A separate AC motor drives the hydraulic pump. Pump oil goes through a control valve to the lift cylinders, which raise the mast, and to the tilt cylinders, which angle it forward or back.\n\n**Mast.** A mast has two or three telescoping stages. Free lift lets the forks rise before the mast gets taller, which helps inside containers and under low ceilings.\n\n**Braking and energy.** When the operator lifts off the accelerator or reverses direction, the traction motors act as generators and slow the truck. This regenerative braking returns some energy to the battery and reduces brake wear.\n\n**Battery and BMS.** The battery management system (BMS) monitors cell voltage, current and temperature and controls charging. LFP packs can be topped up during breaks (opportunity charging) without the watering and equalising that lead-acid batteries need.\n\n**Stability.** The front wheels and the rear steer pivot form a stability triangle. The combined centre of gravity of truck and load must stay inside it. Lifting high, tilting forward, turning fast or carrying a load beyond the rated load centre all move it towards the edge.",
+      "slug": "el-pro-counterbalance-forklifts",
+      "name": "EL-PRO Series Counterbalance Forklifts",
+      "summary": "BYD's EL-PRO series of 2.0–3.8 t electric counterbalance forklifts for warehouses, docks and yards.",
+      "howItWorks": "An **electric counterbalance forklift** lifts loads on forks at the front and balances them with the mass of the chassis, counterweight and battery at the rear. It is the general-purpose forklift. With a wheel at each corner and a wider footprint than a three-wheel truck, it is steadier on ramps, outdoor yards and long runs.\n\n**Powertrain.** An 80 V lithium iron phosphate (LFP) battery supplies AC motor controllers. The rear wheels steer through a hydraulic or electric power-steering system. Lifting is handled by its own AC motor driving a hydraulic gear pump.\n\n**Hydraulics and mast.** A multi-spool valve sends pump oil to the lift cylinders, the tilt cylinders and any auxiliary functions, such as a side-shift or fork positioner. Two-stage (duplex) masts suit most loading work. Three-stage (triplex) full-free-lift masts reach higher racking while staying low enough to enter containers.\n\n**Regeneration.** When the truck slows or lowers a load, its traction motors act as generators and feed energy back to the battery. This extends running time and saves brake linings.\n\n**Battery, BMS and charging.** The BMS balances cells, monitors temperature and current, and talks to the matched charger. Because LFP tolerates partial charging, the truck can be topped up during breaks and shift changes rather than having its battery swapped.\n\n**Load centre and stability.** Capacity is rated at a set load centre, usually 500 mm on these models. Moving the load's centre further from the fork face, lifting higher or tilting forward reduces the safe load. The front axle and rear steer-axle pivot form the stability triangle, and the truck and load's centre of gravity must stay within it.",
       "keyComponents": [
         {
-          "name": "Dual front AC traction motors",
-          "role": "Drive the front wheels independently so the truck turns tightly and recovers energy when braking."
+          "name": "AC traction motor(s)",
+          "role": "Drive the front axle; dual-motor versions give stronger acceleration and gradeability."
         },
         {
-          "name": "Rear steer unit",
-          "role": "A single steering point at the rear that gives the three-wheel layout its small turning radius."
+          "name": "Hydraulic pump motor",
+          "role": "Drives the gear pump that powers lifting, tilting and attachments."
         },
         {
-          "name": "Hydraulic pump motor and control valve",
-          "role": "Generate and direct oil pressure to the lift, tilt and attachment cylinders."
+          "name": "Mast (duplex or triplex)",
+          "role": "Raises the fork carriage; full free lift keeps overall height low while lifting."
         },
         {
-          "name": "Mast and carriage",
-          "role": "Telescoping uprights that raise the forks; two- or three-stage with optional free lift."
+          "name": "80 V LFP battery and BMS",
+          "role": "Stores energy and manages cell balance, temperature and charge state."
         },
         {
-          "name": "80 V LFP battery with BMS",
-          "role": "Stores energy and monitors cell condition, temperature and charging."
+          "name": "Motor controllers",
+          "role": "Convert battery DC into variable AC to control motor speed and torque, including regeneration."
         },
         {
-          "name": "Counterweight",
-          "role": "Mass behind the front axle that balances the rated load."
+          "name": "Steer axle",
+          "role": "Rear axle that steers the truck and forms the rear pivot of the stability triangle."
         },
         {
-          "name": "Overhead guard",
-          "role": "Protects the operator from falling objects."
+          "name": "Matched charger",
+          "role": "External BYD charger, sized for the battery and the time available to charge."
         }
       ],
       "applications": [
-        "Loading and unloading trucks and containers at FMCG distribution centres",
-        "Feeding production lines in food, beverage and packaging factories",
-        "Pharmaceutical and retail warehouses with narrow aisles",
-        "Brewery and soft-drink bottling halls where diesel fumes are unwanted",
-        "Indoor stores on smooth concrete floors"
+        "Truck loading and pallet movement at FMCG and beverage distribution centres",
+        "Brewery and bottling plant warehouses handling crates and shrink-wrapped pallets",
+        "Manufacturing plants moving raw materials and finished goods",
+        "Covered port warehouses, bonded terminals and container freight stations",
+        "Cold-room entry and dock work, subject to BYD confirming the configuration"
       ],
       "choosingTips": [
-        "Check the rated capacity at your actual load centre. A 1.6 t rating at 500 mm falls when pallets are deeper or loads overhang.",
-        "Match the mast to your highest rack beam plus clearance, and check the residual capacity at that height on the load chart.",
-        "Measure aisle widths and dock areas. A three-wheel truck suits tight spaces but is less suited to rough or sloping yards.",
-        "For multi-shift work, plan where and when the truck can opportunity-charge during breaks.",
-        "Confirm the charger input supply (single- or three-phase) your site can provide from mains or generator before delivery."
+        "List your heaviest load and its centre of gravity, then choose capacity at that load centre plus a margin for attachments such as side-shifts, which reduce net capacity.",
+        "Pick mast height from the top beam level plus around 150–200 mm of clearance, and check the residual capacity at that height.",
+        "Measure aisles: a counterbalance truck needs an aisle wider than its turning radius plus pallet length and safety clearance.",
+        "For outdoor use in rain or on rough yards, ask about tyre type, protection rating and sealed components.",
+        "Choose battery capacity and charger rating together: a larger pack or faster charger lets a truck cover two shifts with only break-time charging.",
+        "Check that your mains or generator supply can carry the charger input. Unstable voltage can trip chargers or damage electronics, so plan surge protection and correct earthing."
       ],
       "maintenance": {
         "dailyChecks": [
-          "Walk-around for leaks, damaged forks, chains or tyres",
-          "Battery state of charge and any BMS warnings on the display",
-          "Charging plug and cable condition",
-          "Horn, lights, reversing alarm and blue/red zone lights (if fitted)",
-          "Service brake, parking brake and steering operation",
-          "Seatbelt and operator-presence switch",
-          "Lift, lower and tilt the mast through its full stroke without load"
+          "Visual inspection for oil leaks, damaged forks, chains, hoses and tyres",
+          "Battery charge level and BMS/fault messages on the display",
+          "Charger plug, cable and socket condition",
+          "Brakes, parking brake and steering response",
+          "Horn, lights, reversing alarm and warning lights",
+          "Seatbelt and operator-presence system",
+          "Mast lift, tilt and side-shift through full travel"
         ],
         "intervals": [
           {
@@ -212,12 +213,12 @@
         "note": "Indicative intervals based on general industry practice for electric forklifts, not a BYD-published schedule. Always follow the manufacturer's operation & maintenance manual and adjust for duty cycle, dust, heat and humidity."
       },
       "safety": [
-        "Never exceed the capacity shown on the truck's load plate for the mast height and load centre in use.",
-        "Travel with the load low and tilted back; slow down before turning, as three-wheel trucks are agile but can tip when turned sharply at speed.",
-        "Wear the seatbelt; in a tip-over stay in the seat and lean away from the fall.",
-        "Keep pedestrians out of the working area and use horns at blind corners.",
-        "Do not carry people on the forks or pallets.",
-        "Charge only with the approved charger, with cables kept out of traffic routes."
+        "Operate within the load chart; capacity reduces with height and longer load centres.",
+        "Keep the load uphill when travelling on ramps, and never turn on a slope.",
+        "Travel with forks 100–200 mm above the ground and the mast tilted back.",
+        "Always wear the seatbelt and keep limbs inside the overhead guard.",
+        "Use spotters and marked pedestrian walkways in busy loading bays.",
+        "Lower forks fully, set the parking brake and switch off before leaving the truck."
       ],
       "specFields": [
         {
@@ -298,16 +299,16 @@
       ],
       "faq": [
         {
-          "q": "When should I choose a three-wheel instead of a four-wheel forklift?",
-          "a": "Choose three-wheel for tight indoor spaces, container work and frequent turning on smooth floors. Choose four-wheel for heavier loads, higher lifts, outdoor yards, ramps and uneven surfaces, where its wider base gives more stability."
+          "q": "How long does a BYD forklift run on one charge?",
+          "a": "Runtime depends on load, travel distance, lift height and temperature. Most users top up during breaks rather than running the battery down. We estimate runtime for your duty cycle during a site assessment."
         },
         {
-          "q": "Can a lithium forklift be charged from a generator?",
-          "a": "Yes, as long as the generator is sized for the charger's input power and gives a stable voltage and frequency. We review your power supply as part of a site assessment and recommend charger rating, protection and a charging schedule."
+          "q": "Can electric forklifts work outdoors?",
+          "a": "Yes, on paved yards and in light rain when the truck is specified for it. Very rough ground, deep water and heavy loads outdoors may call for a heavy-duty model."
         },
         {
-          "q": "Does the battery need watering?",
-          "a": "No. BYD trucks use sealed lithium iron phosphate batteries that need no watering or equalising charges. Keep the connectors clean and use the matched charger."
+          "q": "Is lithium safer than lead-acid?",
+          "a": "LFP chemistry is thermally stable and emits no gas while charging, so no dedicated ventilated charging room is needed. As with any battery, safety depends on the approved charger, an intact pack and correct use."
         },
         {
           "q": "How should we look after the lithium battery?",
@@ -315,101 +316,122 @@
         },
         {
           "q": "What warranty applies?",
-          "a": "Warranty terms for BYD trucks and batteries vary by market and model. Ask us for the terms that apply to equipment supplied in Nigeria."
+          "a": "Warranty terms vary by market and model. Ask us for the terms that apply in Nigeria."
         }
       ],
       "models": [
         {
-          "slug": "byd-ecb16",
-          "name": "ECB16",
+          "slug": "byd-el25-pro",
+          "name": "EL25 PRO",
           "brand": "byd",
-          "summary": "1.6 t three-wheel electric counterbalance forklift on an 80 V LFP battery.",
+          "summary": "2.5 t EL-PRO series electric counterbalance forklift on an 80 V lithium iron phosphate battery.",
           "highlights": [
-            "Dual AC traction motors",
-            "80 V 270 Ah LFP battery",
-            "1,570 mm minimum turning radius",
-            "Lift heights of 3,000–5,000 mm listed by an Australian supplier"
+            "2.5 t rated load",
+            "80 V lithium iron phosphate battery, 270 or 540 Ah",
+            "2,110 mm turning radius",
+            "3,800 kg service weight"
           ],
           "specs": {
-            "ratedCapacity": 1600,
-            "loadCentre": 500,
-            "liftHeight": "3000–5000",
+            "ratedCapacity": 2500,
             "voltage": 80,
-            "batteryCapacity": 270,
-            "travelSpeed": "16 / 16",
-            "liftSpeed": "500 / 550",
-            "gradeability": "20 / 20",
-            "driveMotor": "2 × 5",
-            "liftMotor": 16,
-            "turningRadius": 1570,
-            "serviceWeight": 3100,
-            "charger": "80 V 100 A standard; 80 V 200 A optional",
-            "chargeTime": "approx. 2.5 h (100 A) / 1.2 h (200 A) for 270 Ah"
+            "batteryCapacity": "270 / 540",
+            "turningRadius": 2110,
+            "serviceWeight": 3800
           },
-          "specsVerified": false,
-          "sources": [
-            "https://sg.byd.com/wp-content/uploads/2022/03/Counterbalance-Forklift-Series.pdf",
-            "https://img0.medicalsearch.com.au/byd-lithium-counterbalance-forklift-ecb16-3-wheels/p/244928"
-          ]
+          "specsVerified": true,
+          "sources": []
         },
         {
-          "slug": "byd-ecb18",
-          "name": "ECB18",
+          "slug": "byd-el30-pro",
+          "name": "EL30 PRO",
           "brand": "byd",
-          "summary": "1.8 t three-wheel electric counterbalance forklift for tight warehouse and container work.",
+          "summary": "3 t EL-PRO series electric counterbalance forklift on an 80 V lithium iron phosphate battery.",
           "highlights": [
-            "Dual AC traction motors",
-            "80 V 270 Ah LFP battery",
-            "1,640 mm minimum turning radius",
-            "ECB18C was named IFOY test winner at CeMAT 2016"
+            "3 t rated load",
+            "80 V lithium iron phosphate battery, 270 or 540 Ah",
+            "2,440 mm turning radius",
+            "4,500 kg service weight"
           ],
           "specs": {
-            "ratedCapacity": 1800,
-            "loadCentre": 500,
+            "ratedCapacity": 3000,
             "voltage": 80,
-            "batteryCapacity": 270,
-            "travelSpeed": "16 / 16",
-            "liftSpeed": "500 / 550",
-            "gradeability": "18 / 20",
-            "driveMotor": "2 × 5",
-            "liftMotor": 16,
-            "turningRadius": 1640,
-            "serviceWeight": 3300,
-            "charger": "80 V 100 A standard; 80 V 200 A optional",
-            "chargeTime": "approx. 2.5 h (100 A) / 1.2 h (200 A) for 270 Ah"
+            "batteryCapacity": "270 / 540",
+            "turningRadius": 2440,
+            "serviceWeight": 4500
           },
-          "specsVerified": false,
-          "sources": [
-            "https://sg.byd.com/wp-content/uploads/2022/03/Counterbalance-Forklift-Series.pdf",
-            "https://www.masstransitmag.com/technology/press-release/12215763/ride-mobility-ifoy-test-winner-byd-electric-forklift-ecb18c-triumphs-at-cemat"
-          ]
+          "specsVerified": true,
+          "sources": []
         },
         {
-          "slug": "byd-ecb20s",
-          "name": "ECB20S",
+          "slug": "byd-el20-pro",
+          "name": "EL20 PRO",
           "brand": "byd",
-          "summary": "2 t three-wheel counterbalance truck introduced in BYD's European range.",
+          "summary": "2 t EL-PRO series electric counterbalance forklift on an 80 V lithium iron phosphate battery.",
           "highlights": [
-            "2,000 kg capacity",
-            "Three-wheel layout",
-            "BYD iron-phosphate battery"
+            "2 t rated load",
+            "80 V lithium iron phosphate battery, 270 or 540 Ah",
+            "2,110 mm turning radius",
+            "3,550 kg service weight"
           ],
           "specs": {
-            "ratedCapacity": 2000
+            "ratedCapacity": 2000,
+            "voltage": 80,
+            "batteryCapacity": "270 / 540",
+            "turningRadius": 2110,
+            "serviceWeight": 3550
           },
-          "specsVerified": false,
-          "sources": [
-            "https://bydeurope.com/article/423",
-            "https://logisticsbusiness.com/?p=43577"
-          ]
+          "specsVerified": true,
+          "sources": []
+        },
+        {
+          "slug": "byd-el35-pro",
+          "name": "EL35 PRO",
+          "brand": "byd",
+          "summary": "3.5 t EL-PRO series electric counterbalance forklift on an 80 V lithium iron phosphate battery.",
+          "highlights": [
+            "3.5 t rated load",
+            "80 V lithium iron phosphate battery, 270 or 540 Ah",
+            "2,440 mm turning radius",
+            "4,820 kg service weight"
+          ],
+          "specs": {
+            "ratedCapacity": 3500,
+            "voltage": 80,
+            "batteryCapacity": "270 / 540",
+            "turningRadius": 2440,
+            "serviceWeight": 4820
+          },
+          "specsVerified": true,
+          "sources": []
+        },
+        {
+          "slug": "byd-el38-pro",
+          "name": "EL38 PRO",
+          "brand": "byd",
+          "summary": "3.8 t EL-PRO series electric counterbalance forklift on an 80 V lithium iron phosphate battery.",
+          "highlights": [
+            "3.8 t rated load",
+            "80 V lithium iron phosphate battery, 270 or 540 Ah",
+            "2,540 mm turning radius",
+            "4,960 kg service weight"
+          ],
+          "specs": {
+            "ratedCapacity": 3800,
+            "voltage": 80,
+            "batteryCapacity": "270 / 540",
+            "turningRadius": 2540,
+            "serviceWeight": 4960
+          },
+          "specsVerified": true,
+          "sources": []
         }
       ]
     },
     {
-      "slug": "four-wheel-counterbalance-forklifts",
-      "name": "Four-Wheel Electric Counterbalance Forklifts",
-      "summary": "General-purpose 2.0–3.5 t electric forklifts for warehouses, docks and yards, with dual- or single-motor drive options.",
-      "howItWorks": "A **four-wheel electric counterbalance forklift** lifts loads on forks at the front and balances them with the mass of the chassis, counterweight and battery at the rear. It is the general-purpose forklift. With a wheel at each corner and a wider footprint than a three-wheel truck, it is steadier on ramps, outdoor yards and long runs.\n\n**Powertrain.** An 80 V lithium iron phosphate (LFP) battery supplies AC motor controllers. On BYD's 2.0–3.5 t trucks, \"B/C\" variants use two traction motors on the front drive axle, while \"D/E\" variants use a single drive motor. The rear wheels steer through a hydraulic or electric power-steering system. Lifting is handled by its own AC motor driving a hydraulic gear pump.\n\n**Hydraulics and mast.** A multi-spool valve sends pump oil to the lift cylinders, the tilt cylinders and any auxiliary functions, such as a side-shift or fork positioner. Two-stage (duplex) masts suit most loading work. Three-stage (triplex) full-free-lift masts reach higher racking while staying low enough to enter containers.\n\n**Regeneration.** When the truck slows or lowers a load, its traction motors act as generators and feed energy back to the battery. This extends running time and saves brake linings.\n\n**Battery, BMS and charging.** The BMS balances cells, monitors temperature and current, and talks to the matched charger. Because LFP tolerates partial charging, the truck can be topped up during breaks and shift changes rather than having its battery swapped.\n\n**Load centre and stability.** Capacity is rated at a set load centre, usually 500 mm on these models. Moving the load's centre further from the fork face, lifting higher or tilting forward reduces the safe load. The front axle and rear steer-axle pivot form the stability triangle, and the truck and load's centre of gravity must stay within it.",
+      "slug": "g-series-counterbalance-forklifts",
+      "name": "G Series Counterbalance Forklifts",
+      "summary": "BYD's G series of 1.6–5.0 t electric counterbalance forklifts, from compact trucks for tight aisles to 5-tonne trucks for heavier loads.",
+      "howItWorks": "An **electric counterbalance forklift** lifts loads on forks at the front and balances them with the mass of the chassis, counterweight and battery at the rear. It is the general-purpose forklift. With a wheel at each corner and a wider footprint than a three-wheel truck, it is steadier on ramps, outdoor yards and long runs.\n\n**Powertrain.** An 80 V lithium iron phosphate (LFP) battery supplies AC motor controllers. On BYD's G series trucks, \"B/C\" variants use two traction motors on the front drive axle, while \"D/E\" variants use a single drive motor. The rear wheels steer through a hydraulic or electric power-steering system. Lifting is handled by its own AC motor driving a hydraulic gear pump.\n\n**Hydraulics and mast.** A multi-spool valve sends pump oil to the lift cylinders, the tilt cylinders and any auxiliary functions, such as a side-shift or fork positioner. Two-stage (duplex) masts suit most loading work. Three-stage (triplex) full-free-lift masts reach higher racking while staying low enough to enter containers.\n\n**Regeneration.** When the truck slows or lowers a load, its traction motors act as generators and feed energy back to the battery. This extends running time and saves brake linings.\n\n**Battery, BMS and charging.** The BMS balances cells, monitors temperature and current, and talks to the matched charger. Because LFP tolerates partial charging, the truck can be topped up during breaks and shift changes rather than having its battery swapped.\n\n**Load centre and stability.** Capacity is rated at a set load centre, usually 500 mm on these models. Moving the load's centre further from the fork face, lifting higher or tilting forward reduces the safe load. The front axle and rear steer-axle pivot form the stability triangle, and the truck and load's centre of gravity must stay within it.",
       "keyComponents": [
         {
           "name": "AC traction motor(s)",
@@ -624,21 +646,111 @@
       ],
       "models": [
         {
-          "slug": "byd-ecb20",
-          "name": "ECB20",
+          "slug": "byd-ecb16",
+          "name": "ECB16S-B / ECB16S-C",
           "brand": "byd",
-          "summary": "2.0 t four-wheel electric counterbalance forklift with dual-motor (B/C) or single-motor (D/E) drive.",
+          "summary": "1.6 t G series electric counterbalance forklift on an 80 V lithium iron phosphate battery.",
           "highlights": [
-            "Dual 8 kW traction motors on B version",
-            "80 V LFP, 270 Ah (540 Ah listed as option)",
+            "1.6 t rated load",
+            "80 V lithium iron phosphate battery, 270 Ah",
+            "1,860 mm turning radius",
+            "3,340 kg service weight"
+          ],
+          "specs": {
+            "ratedCapacity": 1600,
+            "voltage": 80,
+            "batteryCapacity": 270,
+            "turningRadius": 1860,
+            "serviceWeight": 3340
+          },
+          "specsVerified": true,
+          "sources": [
+            "https://sg.byd.com/wp-content/uploads/2022/03/Counterbalance-Forklift-Series.pdf",
+            "https://img0.medicalsearch.com.au/byd-lithium-counterbalance-forklift-ecb16-3-wheels/p/244928"
+          ]
+        },
+        {
+          "slug": "byd-ecb18",
+          "name": "ECB18S-B / ECB18S-C",
+          "brand": "byd",
+          "summary": "1.8 t G series electric counterbalance forklift on an 80 V lithium iron phosphate battery.",
+          "highlights": [
+            "1.8 t rated load",
+            "80 V lithium iron phosphate battery, 270 Ah",
+            "1,860 mm turning radius",
+            "3,490 kg service weight"
+          ],
+          "specs": {
+            "ratedCapacity": 1800,
+            "voltage": 80,
+            "batteryCapacity": 270,
+            "turningRadius": 1860,
+            "serviceWeight": 3490
+          },
+          "specsVerified": true,
+          "sources": [
+            "https://sg.byd.com/wp-content/uploads/2022/03/Counterbalance-Forklift-Series.pdf",
+            "https://www.masstransitmag.com/technology/press-release/12215763/ride-mobility-ifoy-test-winner-byd-electric-forklift-ecb18c-triumphs-at-cemat"
+          ]
+        },
+        {
+          "slug": "byd-ecb16d",
+          "name": "ECB16D-B / ECB16D-C",
+          "brand": "byd",
+          "summary": "1.6 t G series electric counterbalance forklift on an 80 V lithium iron phosphate battery.",
+          "highlights": [
+            "1.6 t rated load",
+            "80 V lithium iron phosphate battery, 270 Ah",
+            "1,820 mm turning radius",
+            "3,150 kg service weight"
+          ],
+          "specs": {
+            "ratedCapacity": 1600,
+            "voltage": 80,
+            "batteryCapacity": 270,
+            "turningRadius": 1820,
+            "serviceWeight": 3150
+          },
+          "specsVerified": true,
+          "sources": []
+        },
+        {
+          "slug": "byd-ecb18d",
+          "name": "ECB18D-B / ECB18D-C",
+          "brand": "byd",
+          "summary": "1.8 t G series electric counterbalance forklift on an 80 V lithium iron phosphate battery.",
+          "highlights": [
+            "1.8 t rated load",
+            "80 V lithium iron phosphate battery, 270 Ah",
+            "1,820 mm turning radius",
+            "3,300 kg service weight"
+          ],
+          "specs": {
+            "ratedCapacity": 1800,
+            "voltage": 80,
+            "batteryCapacity": 270,
+            "turningRadius": 1820,
+            "serviceWeight": 3300
+          },
+          "specsVerified": true,
+          "sources": []
+        },
+        {
+          "slug": "byd-ecb20",
+          "name": "ECB20B / ECB20C",
+          "brand": "byd",
+          "summary": "2 t G series electric counterbalance forklift on an 80 V lithium iron phosphate battery.",
+          "highlights": [
+            "2 t rated load",
+            "80 V lithium iron phosphate battery, 270 Ah",
             "2,020 mm turning radius",
-            "Single-motor ECB20D/E variant available"
+            "3,600 kg service weight"
           ],
           "specs": {
             "ratedCapacity": 2000,
             "loadCentre": 500,
             "voltage": 80,
-            "batteryCapacity": "270 / 540",
+            "batteryCapacity": 270,
             "travelSpeed": "20 / 20",
             "liftSpeed": "420 / 450",
             "gradeability": "20 / 20",
@@ -646,10 +758,9 @@
             "liftMotor": 20.7,
             "turningRadius": 2020,
             "serviceWeight": 3600,
-            "charger": "80 V 100 A standard; 80 V 200 A optional",
-            "chargeTime": "approx. 2.5 h (100 A) / 1.2 h (200 A) for 270 Ah"
+            "charger": "80 V 100 A standard; 80 V 200 A optional"
           },
-          "specsVerified": false,
+          "specsVerified": true,
           "sources": [
             "https://sg.byd.com/wp-content/uploads/2025/09/BYD-Forklift-Product-Brochure.pdf",
             "https://sg.byd.com/wp-content/uploads/2022/03/Counterbalance-Forklift-Series.pdf"
@@ -657,20 +768,20 @@
         },
         {
           "slug": "byd-ecb25",
-          "name": "ECB25",
+          "name": "ECB25B / ECB25C",
           "brand": "byd",
-          "summary": "2.5 t four-wheel electric counterbalance forklift, the mid-range workhorse of the line-up.",
+          "summary": "2.5 t G series electric counterbalance forklift on an 80 V lithium iron phosphate battery.",
           "highlights": [
-            "Dual-motor B/C and single-motor D/E variants",
-            "80 V LFP, 270 Ah (540 Ah listed as option)",
+            "2.5 t rated load",
+            "80 V lithium iron phosphate battery, 270 Ah",
             "2,020 mm turning radius",
-            "20.7 kW lift motor"
+            "4,200 kg service weight"
           ],
           "specs": {
             "ratedCapacity": 2500,
             "loadCentre": 500,
             "voltage": 80,
-            "batteryCapacity": "270 / 540",
+            "batteryCapacity": 270,
             "travelSpeed": "20 / 20",
             "liftSpeed": "420 / 450",
             "gradeability": "20 / 20",
@@ -678,10 +789,9 @@
             "liftMotor": 20.7,
             "turningRadius": 2020,
             "serviceWeight": 4200,
-            "charger": "80 V 100 A standard; 80 V 200 A optional",
-            "chargeTime": "approx. 2.5 h (100 A) / 1.2 h (200 A) for 270 Ah"
+            "charger": "80 V 100 A standard; 80 V 200 A optional"
           },
-          "specsVerified": false,
+          "specsVerified": true,
           "sources": [
             "https://sg.byd.com/wp-content/uploads/2025/09/BYD-Forklift-Product-Brochure.pdf",
             "https://sg.byd.com/wp-content/uploads/2022/03/Counterbalance-Forklift-Series.pdf"
@@ -689,13 +799,14 @@
         },
         {
           "slug": "byd-ecb27",
-          "name": "ECB27",
+          "name": "ECB27B / ECB27C",
           "brand": "byd",
-          "summary": "2.7 t four-wheel counterbalance truck rated at a 600 mm load centre for deeper loads.",
+          "summary": "2.7 t G series electric counterbalance forklift on an 80 V lithium iron phosphate battery.",
           "highlights": [
-            "Rated at 600 mm load centre",
-            "80 V 270 Ah LFP battery",
-            "1,895 mm turning radius"
+            "2.7 t rated load",
+            "80 V lithium iron phosphate battery, 270 Ah",
+            "1,895 mm turning radius",
+            "4,460 kg service weight"
           ],
           "specs": {
             "ratedCapacity": 2700,
@@ -704,10 +815,9 @@
             "batteryCapacity": 270,
             "turningRadius": 1895,
             "serviceWeight": 4460,
-            "charger": "80 V 100 A standard; 80 V 200 A optional",
-            "chargeTime": "approx. 2.5 h (100 A) / 1.2 h (200 A) for 270 Ah"
+            "charger": "80 V 100 A standard; 80 V 200 A optional"
           },
-          "specsVerified": false,
+          "specsVerified": true,
           "sources": [
             "https://sg.byd.com/wp-content/uploads/2025/09/BYD-Forklift-Product-Brochure.pdf",
             "https://sg.byd.com/wp-content/uploads/2022/03/Counterbalance-Forklift-Series.pdf"
@@ -715,14 +825,14 @@
         },
         {
           "slug": "byd-ecb30",
-          "name": "ECB30",
+          "name": "ECB30B / ECB30C",
           "brand": "byd",
-          "summary": "3.0 t four-wheel electric counterbalance forklift for heavier pallets and dock work.",
+          "summary": "3 t G series electric counterbalance forklift on an 80 V lithium iron phosphate battery.",
           "highlights": [
-            "Dual 10 kW traction motors on B version",
-            "80 V 540 Ah LFP battery",
+            "3 t rated load",
+            "80 V lithium iron phosphate battery, 540 Ah",
             "2,210 mm turning radius",
-            "24 kW lift motor"
+            "5,180 kg service weight"
           ],
           "specs": {
             "ratedCapacity": 3000,
@@ -736,10 +846,9 @@
             "liftMotor": 24,
             "turningRadius": 2210,
             "serviceWeight": 5180,
-            "charger": "80 V 100 A standard; 80 V 200 A optional",
-            "chargeTime": "approx. 5 h (100 A) / 2.5 h (200 A) for 540 Ah"
+            "charger": "80 V 100 A standard; 80 V 200 A optional"
           },
-          "specsVerified": false,
+          "specsVerified": true,
           "sources": [
             "https://sg.byd.com/wp-content/uploads/2025/09/BYD-Forklift-Product-Brochure.pdf",
             "https://sg.byd.com/wp-content/uploads/2022/03/Counterbalance-Forklift-Series.pdf"
@@ -747,13 +856,14 @@
         },
         {
           "slug": "byd-ecb35",
-          "name": "ECB35",
+          "name": "ECB35B / ECB35C",
           "brand": "byd",
-          "summary": "3.5 t four-wheel electric counterbalance forklift, a direct electric alternative to mid-size diesel trucks.",
+          "summary": "3.5 t G series electric counterbalance forklift on an 80 V lithium iron phosphate battery.",
           "highlights": [
-            "Dual-motor B/C and single-motor D/E variants",
-            "80 V 540 Ah LFP battery",
-            "2,210 mm turning radius (B/C)"
+            "3.5 t rated load",
+            "80 V lithium iron phosphate battery, 540 Ah",
+            "2,210 mm turning radius",
+            "5,500 kg service weight"
           ],
           "specs": {
             "ratedCapacity": 3500,
@@ -767,51 +877,195 @@
             "liftMotor": 24,
             "turningRadius": 2210,
             "serviceWeight": 5500,
-            "charger": "80 V 100 A standard; 80 V 200 A optional",
-            "chargeTime": "approx. 5 h (100 A) / 2.5 h (200 A) for 540 Ah"
+            "charger": "80 V 100 A standard; 80 V 200 A optional"
           },
-          "specsVerified": false,
+          "specsVerified": true,
           "sources": [
             "https://sg.byd.com/wp-content/uploads/2025/09/BYD-Forklift-Product-Brochure.pdf",
             "https://sg.byd.com/wp-content/uploads/2022/03/Counterbalance-Forklift-Series.pdf"
           ]
         },
         {
-          "slug": "byd-el25-pro",
-          "name": "EL25-Pro",
+          "slug": "byd-ecb20d",
+          "name": "ECB20D / ECB20E",
           "brand": "byd",
-          "summary": "2.5 t electric counterbalance forklift, single drive.",
+          "summary": "2 t G series electric counterbalance forklift on an 80 V lithium iron phosphate battery.",
           "highlights": [
-            "Rated capacity 2.5 t",
-            "Single drive motor"
+            "2 t rated load",
+            "80 V lithium iron phosphate battery, 270 Ah",
+            "2,020 mm turning radius",
+            "3,620 kg service weight"
           ],
           "specs": {
-            "ratedCapacity": 2500
+            "ratedCapacity": 2000,
+            "voltage": 80,
+            "batteryCapacity": 270,
+            "turningRadius": 2020,
+            "serviceWeight": 3620
           },
-          "specsVerified": false,
+          "specsVerified": true,
           "sources": []
         },
         {
-          "slug": "byd-el30-pro",
-          "name": "EL30-Pro",
+          "slug": "byd-ecb25d",
+          "name": "ECB25D / ECB25E",
           "brand": "byd",
-          "summary": "3.0 t electric counterbalance forklift, single drive.",
+          "summary": "2.5 t G series electric counterbalance forklift on an 80 V lithium iron phosphate battery.",
           "highlights": [
-            "Rated capacity 3.0 t",
-            "Single drive motor"
+            "2.5 t rated load",
+            "80 V lithium iron phosphate battery, 270 Ah",
+            "2,020 mm turning radius",
+            "4,220 kg service weight"
           ],
           "specs": {
-            "ratedCapacity": 3000
+            "ratedCapacity": 2500,
+            "voltage": 80,
+            "batteryCapacity": 270,
+            "turningRadius": 2020,
+            "serviceWeight": 4220
           },
-          "specsVerified": false,
+          "specsVerified": true,
           "sources": []
+        },
+        {
+          "slug": "byd-ecb30d",
+          "name": "ECB30D / ECB30E",
+          "brand": "byd",
+          "summary": "3 t G series electric counterbalance forklift on an 80 V lithium iron phosphate battery.",
+          "highlights": [
+            "3 t rated load",
+            "80 V lithium iron phosphate battery, 540 Ah",
+            "2,270 mm turning radius",
+            "5,270 kg service weight"
+          ],
+          "specs": {
+            "ratedCapacity": 3000,
+            "voltage": 80,
+            "batteryCapacity": 540,
+            "turningRadius": 2270,
+            "serviceWeight": 5270
+          },
+          "specsVerified": true,
+          "sources": []
+        },
+        {
+          "slug": "byd-ecb35d",
+          "name": "ECB35D / ECB35E",
+          "brand": "byd",
+          "summary": "3.5 t G series electric counterbalance forklift on an 80 V lithium iron phosphate battery.",
+          "highlights": [
+            "3.5 t rated load",
+            "80 V lithium iron phosphate battery, 540 Ah",
+            "2,270 mm turning radius",
+            "5,600 kg service weight"
+          ],
+          "specs": {
+            "ratedCapacity": 3500,
+            "voltage": 80,
+            "batteryCapacity": 540,
+            "turningRadius": 2270,
+            "serviceWeight": 5600
+          },
+          "specsVerified": true,
+          "sources": []
+        },
+        {
+          "slug": "byd-ecb40",
+          "name": "ECB40B / ECB40C",
+          "brand": "byd",
+          "summary": "4 t G series electric counterbalance forklift on an 80 V lithium iron phosphate battery.",
+          "highlights": [
+            "4 t rated load",
+            "80 V lithium iron phosphate battery, 810 Ah",
+            "2,600 mm turning radius",
+            "6,750 kg service weight"
+          ],
+          "specs": {
+            "ratedCapacity": 4000,
+            "loadCentre": 500,
+            "voltage": 80,
+            "batteryCapacity": 810,
+            "travelSpeed": "18 / 18",
+            "liftSpeed": "350 / 450",
+            "gradeability": "20 / 20",
+            "driveMotor": "2 × 15",
+            "liftMotor": 25.4,
+            "turningRadius": 2600,
+            "serviceWeight": 6750
+          },
+          "specsVerified": true,
+          "sources": [
+            "https://sg.byd.com/wp-content/uploads/2025/09/BYD-Forklift-Product-Brochure.pdf",
+            "https://sg.byd.com/wp-content/uploads/2022/03/Counterbalance-Forklift-Series.pdf"
+          ]
+        },
+        {
+          "slug": "byd-ecb45",
+          "name": "ECB45B / ECB45C",
+          "brand": "byd",
+          "summary": "4.5 t G series electric counterbalance forklift on an 80 V lithium iron phosphate battery.",
+          "highlights": [
+            "4.5 t rated load",
+            "80 V lithium iron phosphate battery, 810 Ah",
+            "2,600 mm turning radius",
+            "7,030 kg service weight"
+          ],
+          "specs": {
+            "ratedCapacity": 4500,
+            "loadCentre": 500,
+            "voltage": 80,
+            "batteryCapacity": 810,
+            "travelSpeed": "18 / 18",
+            "liftSpeed": "350 / 450",
+            "gradeability": "20 / 20",
+            "driveMotor": "2 × 15",
+            "liftMotor": 25.4,
+            "turningRadius": 2600,
+            "serviceWeight": 7030
+          },
+          "specsVerified": true,
+          "sources": [
+            "https://sg.byd.com/wp-content/uploads/2025/09/BYD-Forklift-Product-Brochure.pdf",
+            "https://sg.byd.com/wp-content/uploads/2022/03/Counterbalance-Forklift-Series.pdf"
+          ]
+        },
+        {
+          "slug": "byd-ecb50",
+          "name": "ECB50B / ECB50C",
+          "brand": "byd",
+          "summary": "5 t G series electric counterbalance forklift on an 80 V lithium iron phosphate battery.",
+          "highlights": [
+            "5 t rated load",
+            "80 V lithium iron phosphate battery, 810 Ah",
+            "2,600 mm turning radius",
+            "7,350 kg service weight"
+          ],
+          "specs": {
+            "ratedCapacity": 5000,
+            "loadCentre": 500,
+            "voltage": 80,
+            "batteryCapacity": 810,
+            "travelSpeed": "18 / 18",
+            "liftSpeed": "350 / 450",
+            "gradeability": "20 / 20",
+            "driveMotor": "2 × 15",
+            "liftMotor": 25.4,
+            "turningRadius": 2600,
+            "serviceWeight": 7350
+          },
+          "specsVerified": true,
+          "sources": [
+            "https://sg.byd.com/wp-content/uploads/2025/09/BYD-Forklift-Product-Brochure.pdf",
+            "https://sg.byd.com/wp-content/uploads/2022/03/Counterbalance-Forklift-Series.pdf",
+            "https://warehousenews.co.uk/?p=68494"
+          ]
         }
       ]
     },
     {
       "slug": "heavy-duty-counterbalance-forklifts",
-      "name": "Heavy-Duty Electric Counterbalance Forklifts",
-      "summary": "4–8 t electric forklifts for heavy pallets, steel, ports and outdoor yards, replacing large diesel trucks without exhaust fumes.",
+      "name": "Heavy-Duty Counterbalance Trucks",
+      "summary": "6–8 t electric counterbalance trucks for heavy pallets, steel, ports and outdoor yards, replacing large diesel trucks without exhaust fumes.",
       "howItWorks": "A **heavy-duty electric counterbalance forklift** does the work of a large diesel truck: steel coils, bagged commodities, beverage pallets in pairs, machinery and container-yard tasks. The layout is the same as a standard counterbalance truck. Forks lift at the front, and the counterweight and battery at the rear keep it balanced. Every major part is scaled up for heavier loads and outdoor duty.\n\n**Power.** These trucks carry large 80 V lithium iron phosphate (LFP) packs. BYD offers 540 or 810 Ah on its 4–5 t trucks and 810 or 1,080 Ah on its 6–8 t trucks, which store far more energy than a light forklift. Two high-power AC traction motors drive the front axle, and a separate AC motor runs the hydraulic pump for lifting, tilting and attachments.\n\n**Brakes and regeneration.** Heavy loads need strong, durable braking. BYD's 6–8 t trucks use oil-immersed disc brakes, which run sealed in oil and resist dust and water. Regenerative braking on the traction motors puts energy back into the battery whenever the truck slows.\n\n**Mast and tyres.** Masts are heavier-section duplex or triplex designs, and they often carry attachments such as side-shifts, fork positioners or clamps. These trucks usually run on large pneumatic or solid tyres for yards, and BYD notes that its tallest masts on the 6–8 t trucks need widened tyres.\n\n**Charging.** Large packs need high-current chargers. BYD fits 200 A as standard on the 6–8 t trucks, with 400 A fast charging as an option. Planning the charger supply is therefore part of choosing the truck.\n\n**Stability.** Capacity is rated at the load centre shown on the data plate (600 mm for BYD's 6–8 t trucks). Long or bulky loads, attachments and high lifts all reduce the safe capacity.",
       "keyComponents": [
         {
@@ -1020,118 +1274,26 @@
       ],
       "models": [
         {
-          "slug": "byd-ecb40",
-          "name": "ECB40",
-          "brand": "byd",
-          "summary": "4.0 t heavy-duty electric counterbalance forklift with dual 15 kW drive.",
-          "highlights": [
-            "Dual 15 kW traction motors",
-            "80 V LFP, 540 or 810 Ah",
-            "25.4 kW lift motor",
-            "2,600 mm turning radius"
-          ],
-          "specs": {
-            "ratedCapacity": 4000,
-            "loadCentre": 500,
-            "voltage": 80,
-            "batteryCapacity": "540 / 810",
-            "travelSpeed": "18 / 18",
-            "liftSpeed": "350 / 450",
-            "gradeability": "20 / 20",
-            "driveMotor": "2 × 15",
-            "liftMotor": 25.4,
-            "turningRadius": 2600,
-            "serviceWeight": 6750
-          },
-          "specsVerified": false,
-          "sources": [
-            "https://sg.byd.com/wp-content/uploads/2025/09/BYD-Forklift-Product-Brochure.pdf",
-            "https://sg.byd.com/wp-content/uploads/2022/03/Counterbalance-Forklift-Series.pdf"
-          ]
-        },
-        {
-          "slug": "byd-ecb45",
-          "name": "ECB45",
-          "brand": "byd",
-          "summary": "4.5 t heavy-duty electric counterbalance forklift for industrial and yard work.",
-          "highlights": [
-            "Dual 15 kW traction motors",
-            "80 V LFP, 540 or 810 Ah",
-            "2,600 mm turning radius"
-          ],
-          "specs": {
-            "ratedCapacity": 4500,
-            "loadCentre": 500,
-            "voltage": 80,
-            "batteryCapacity": "540 / 810",
-            "travelSpeed": "18 / 18",
-            "liftSpeed": "350 / 450",
-            "gradeability": "20 / 20",
-            "driveMotor": "2 × 15",
-            "liftMotor": 25.4,
-            "turningRadius": 2600,
-            "serviceWeight": 7030
-          },
-          "specsVerified": false,
-          "sources": [
-            "https://sg.byd.com/wp-content/uploads/2025/09/BYD-Forklift-Product-Brochure.pdf",
-            "https://sg.byd.com/wp-content/uploads/2022/03/Counterbalance-Forklift-Series.pdf"
-          ]
-        },
-        {
-          "slug": "byd-ecb50",
-          "name": "ECB50",
-          "brand": "byd",
-          "summary": "5.0 t rugged electric counterbalance forklift positioned by BYD for outdoor work.",
-          "highlights": [
-            "Sealed components for outdoor duty",
-            "Dual 15 kW traction motors",
-            "80 V LFP, 540 or 810 Ah",
-            "Shortlisted for an IFOY award"
-          ],
-          "specs": {
-            "ratedCapacity": 5000,
-            "loadCentre": 500,
-            "voltage": 80,
-            "batteryCapacity": "540 / 810",
-            "travelSpeed": "18 / 18",
-            "liftSpeed": "350 / 450",
-            "gradeability": "20 / 20",
-            "driveMotor": "2 × 15",
-            "liftMotor": 25.4,
-            "turningRadius": 2600,
-            "serviceWeight": 7350
-          },
-          "specsVerified": false,
-          "sources": [
-            "https://sg.byd.com/wp-content/uploads/2025/09/BYD-Forklift-Product-Brochure.pdf",
-            "https://sg.byd.com/wp-content/uploads/2022/03/Counterbalance-Forklift-Series.pdf",
-            "https://warehousenews.co.uk/?p=68494"
-          ]
-        },
-        {
           "slug": "byd-ecb60",
-          "name": "ECB60",
+          "name": "ECB60C",
           "brand": "byd",
-          "summary": "6.0 t heavy-duty electric forklift with large LFP pack and oil-immersed brakes.",
+          "summary": "6 t heavy-duty electric counterbalance truck on an 80 V lithium iron phosphate battery.",
           "highlights": [
-            "Rated at 600 mm load centre",
-            "80 V LFP, 810 Ah (64.8 kWh) or 1,080 Ah (86.4 kWh)",
-            "Oil-immersed disc brakes with regeneration",
-            "200 A charger standard, 400 A optional",
-            "Optional cab"
+            "6 t rated load",
+            "80 V lithium iron phosphate battery, 1080 Ah",
+            "3,100 mm turning radius",
+            "11,800 kg service weight"
           ],
           "specs": {
             "ratedCapacity": 6000,
             "loadCentre": 600,
             "voltage": 80,
-            "batteryCapacity": "810 / 1080",
-            "batteryEnergy": "64.8 / 86.4",
+            "batteryCapacity": 1080,
             "turningRadius": 3100,
             "serviceWeight": 11800,
             "charger": "80 V 200 A standard; 80 V 400 A optional"
           },
-          "specsVerified": false,
+          "specsVerified": true,
           "sources": [
             "https://www.bydmhna.com/landing_page/assets/brochures/ECB607080.pdf",
             "https://sg.byd.com/wp-content/uploads/2025/09/BYD-Forklift-Product-Brochure.pdf"
@@ -1139,26 +1301,25 @@
         },
         {
           "slug": "byd-ecb70",
-          "name": "ECB70",
+          "name": "ECB70C",
           "brand": "byd",
-          "summary": "7.0 t heavy-duty electric forklift for ports, steel and beverage depots.",
+          "summary": "7 t heavy-duty electric counterbalance truck on an 80 V lithium iron phosphate battery.",
           "highlights": [
-            "Rated at 600 mm load centre",
-            "80 V LFP, 810 Ah or 1,080 Ah",
-            "BYD cites up to 9 h per charge; 1 h of charging adds 2–3 h",
-            "200 A charger standard, 400 A optional"
+            "7 t rated load",
+            "80 V lithium iron phosphate battery, 1080 Ah",
+            "3,100 mm turning radius",
+            "12,500 kg service weight"
           ],
           "specs": {
             "ratedCapacity": 7000,
             "loadCentre": 600,
             "voltage": 80,
-            "batteryCapacity": "810 / 1080",
-            "batteryEnergy": "64.8 / 86.4",
+            "batteryCapacity": 1080,
             "turningRadius": 3100,
             "serviceWeight": 12500,
             "charger": "80 V 200 A standard; 80 V 400 A optional"
           },
-          "specsVerified": false,
+          "specsVerified": true,
           "sources": [
             "https://www.bydmhna.com/landing_page/assets/brochures/ECB607080.pdf",
             "https://sg.byd.com/wp-content/uploads/2025/09/BYD-Forklift-Product-Brochure.pdf",
@@ -1167,26 +1328,25 @@
         },
         {
           "slug": "byd-ecb80",
-          "name": "ECB80",
+          "name": "ECB80C",
           "brand": "byd",
-          "summary": "8.0 t flagship heavy-duty electric counterbalance forklift.",
+          "summary": "8 t heavy-duty electric counterbalance truck on an 80 V lithium iron phosphate battery.",
           "highlights": [
-            "Rated at 600 mm load centre",
-            "80 V LFP, 810 Ah or 1,080 Ah",
-            "Oil-immersed disc brakes",
-            "Widened tyres required for masts above 6 m"
+            "8 t rated load",
+            "80 V lithium iron phosphate battery, 1080 Ah",
+            "3,100 mm turning radius",
+            "13,300 kg service weight"
           ],
           "specs": {
             "ratedCapacity": 8000,
             "loadCentre": 600,
             "voltage": 80,
-            "batteryCapacity": "810 / 1080",
-            "batteryEnergy": "64.8 / 86.4",
+            "batteryCapacity": 1080,
             "turningRadius": 3100,
             "serviceWeight": 13300,
             "charger": "80 V 200 A standard; 80 V 400 A optional"
           },
-          "specsVerified": false,
+          "specsVerified": true,
           "sources": [
             "https://www.bydmhna.com/landing_page/assets/brochures/ECB607080.pdf",
             "https://sg.byd.com/wp-content/uploads/2025/09/BYD-Forklift-Product-Brochure.pdf",
@@ -1196,8 +1356,509 @@
       ]
     },
     {
+      "slug": "reach-trucks",
+      "name": "Reach Trucks",
+      "summary": "Narrow-aisle electric trucks that reach into racking and lift high, packing more storage into the same warehouse floor.",
+      "howItWorks": "A **reach truck** is designed to store pallets high in narrow aisles. A counterbalance forklift carries its load in front of the front wheels and needs a wide aisle to turn. A reach truck instead has two **outrigger legs** with load wheels that stretch forward from the chassis. The mast moves forward along the legs (a **moving-mast** design) to pick or place a pallet, then pulls back so the load sits within the truck's wheelbase while it travels and turns.\n\n**Why it needs less space.** The load is carried inside the footprint and the truck pivots around a central drive wheel, so it can make a right-angle turn into racking in a much narrower aisle than a counterbalance truck. Lift heights are usually higher too, using three-stage masts.\n\n**Drive and hydraulics.** A single steered drive wheel under the operator compartment is powered by an AC traction motor. A separate pump motor supplies the hydraulic circuit for lift, reach, tilt and side-shift. The operator sits sideways or stands, depending on the model, so both travel directions are easy to see.\n\n**Battery.** BYD's reach trucks use lithium iron phosphate (LFP) batteries. The RTR series uses 80 V packs and the R15PS/R18PS models use 48 V packs. Because LFP accepts opportunity charging, operators can top up at breaks instead of changing batteries. The BMS manages cell balance and temperature.\n\n**Height and stability.** At height, the truck's capacity falls and the mast flexes more. Reach trucks therefore have load charts specific to each mast and height. Many also use speed and lift-height interlocks, and some offer height pre-selection or tilt-at-height limits.",
+      "keyComponents": [
+        {
+          "name": "Outrigger legs with load wheels",
+          "role": "Extend forward to support the load inside the truck's footprint."
+        },
+        {
+          "name": "Reach mechanism (moving mast)",
+          "role": "Moves the mast forward to pick or place pallets, then back for travel."
+        },
+        {
+          "name": "High-lift triplex mast",
+          "role": "Raises forks to upper rack levels."
+        },
+        {
+          "name": "Drive and steer unit",
+          "role": "Single steered drive wheel giving a tight turning circle."
+        },
+        {
+          "name": "LFP battery with BMS",
+          "role": "Supplies power and supports opportunity charging."
+        },
+        {
+          "name": "Operator compartment",
+          "role": "Seated or standing position with controls for travel, lift, reach, tilt and side-shift."
+        }
+      ],
+      "applications": [
+        "High-density racked FMCG and e-commerce warehouses",
+        "Pharmaceutical and medical distribution centres",
+        "3PL and bonded warehouses where floor space is costly",
+        "Spare-parts and finished-goods stores in factories",
+        "Cold stores where maximising cubic space matters (with cold-store specification)"
+      ],
+      "choosingTips": [
+        "Start from the racking: top beam height, aisle width and pallet size set the mast and chassis.",
+        "Check residual capacity at the top level, not just the nominal rating.",
+        "Floors must be flat and level; reach trucks are sensitive to floor unevenness at height.",
+        "Seated models suit long shifts and longer travel; standing models suit frequent getting on and off.",
+        "Plan charging points near the racking area to make opportunity charging easy."
+      ],
+      "maintenance": {
+        "dailyChecks": [
+          "Forks, chains and mast for damage or slack chains",
+          "Reach mechanism moves smoothly without noise",
+          "Load and drive wheels for wear or flat spots",
+          "Brakes, steering, horn, lights and emergency stop",
+          "Battery charge level and display warnings",
+          "Hydraulic leaks under the truck"
+        ],
+        "intervals": [
+          {
+            "hours": 250,
+            "tasks": [
+              "Inspect forks, heel wear, locking pins and carriage; check fork tips for cracks",
+              "Check mast chains for wear, elongation and lubrication; adjust tension evenly",
+              "Inspect hydraulic hoses, fittings and cylinders for leaks; check hydraulic oil level",
+              "Check tyres and wheel nuts; inspect steering axle and linkages",
+              "Test service and parking brakes, horn, lights, alarms and seat/operator-presence switch",
+              "Clean dust from motor and controller cooling areas; inspect cable insulation and battery connector",
+              "Read the display / diagnostic log for stored fault codes and battery warnings"
+            ]
+          },
+          {
+            "hours": 500,
+            "tasks": [
+              "All 250-hour tasks",
+              "Lubricate mast rollers, pivots, steering knuckles and tilt cylinder pins",
+              "Check drive axle / gearbox oil level",
+              "Inspect mast rollers, side-shift and fork carriage for play",
+              "Torque-check main electrical terminals and inspect contactors (where fitted)",
+              "Inspect reach carriage rollers, rails and reach cylinder"
+            ]
+          },
+          {
+            "hours": 1000,
+            "tasks": [
+              "All 500-hour tasks",
+              "Replace hydraulic return filter / breather as specified",
+              "Inspect brake components and wear",
+              "Check steering wheel bearings and steer-axle bearings",
+              "Verify charger output, cabling and plug condition"
+            ]
+          },
+          {
+            "hours": 2000,
+            "tasks": [
+              "All 1,000-hour tasks",
+              "Change hydraulic oil and drive-axle / gearbox oil",
+              "Measure mast chain elongation against the wear limit; replace if required",
+              "Full load test and inspection of overhead guard and structural welds"
+            ]
+          }
+        ],
+        "note": "Indicative intervals based on general industry practice for electric forklifts, not a BYD-published schedule. Always follow the manufacturer's operation & maintenance manual and adjust for duty cycle, dust, heat and humidity."
+      },
+      "safety": [
+        "Only lift and lower when stationary; never travel with a load raised.",
+        "Follow the load chart for each level; capacity reduces with height.",
+        "Retract the reach before travelling.",
+        "Keep pedestrians out of narrow aisles while the truck is working.",
+        "Inspect racking regularly and report damage; trucks and racking work as a system."
+      ],
+      "specFields": [
+        {
+          "key": "ratedCapacity",
+          "label": "Rated capacity",
+          "unit": "kg"
+        },
+        {
+          "key": "loadCentre",
+          "label": "Load centre",
+          "unit": "mm"
+        },
+        {
+          "key": "operatorPosition",
+          "label": "Operator position",
+          "unit": ""
+        },
+        {
+          "key": "liftHeight",
+          "label": "Max. lift height",
+          "unit": "mm"
+        },
+        {
+          "key": "voltage",
+          "label": "Battery voltage",
+          "unit": "V"
+        },
+        {
+          "key": "batteryCapacity",
+          "label": "Battery capacity",
+          "unit": "Ah"
+        },
+        {
+          "key": "turningRadius",
+          "label": "Turning radius",
+          "unit": "mm"
+        },
+        {
+          "key": "serviceWeight",
+          "label": "Service weight",
+          "unit": "kg"
+        }
+      ],
+      "faq": [
+        {
+          "q": "How much narrower are reach-truck aisles?",
+          "a": "It depends on pallet size and truck model. Reach trucks typically work in clearly narrower aisles than counterbalance forklifts. We calculate the required aisle from the model data and your pallets."
+        },
+        {
+          "q": "Can a reach truck load lorries?",
+          "a": "Not normally. Reach trucks are designed for smooth indoor floors and racking. Use a counterbalance forklift for trailers and outdoor docks."
+        },
+        {
+          "q": "How should we look after the lithium battery?",
+          "a": "LFP batteries need no watering or equalising, but care still matters: charge only with the matched BYD charger for the battery; mismatched chargers bypass the BMS logic; opportunity-charge at breaks rather than running the pack until the truck limits performance; keep the charging plug, connector pins and cables clean, dry and undamaged; if a truck will stand idle for weeks, leave it at a partial state of charge and switch off per the manual; record BMS warnings shown on the display and have them diagnosed promptly."
+        },
+        {
+          "q": "What warranty applies?",
+          "a": "Warranty terms vary by market and model. Ask us for the terms that apply in Nigeria."
+        }
+      ],
+      "models": [
+        {
+          "slug": "byd-rtr16",
+          "name": "RTR16",
+          "brand": "byd",
+          "summary": "1.6 t seated reach truck, described by BYD Singapore as a sitting reach truck.",
+          "highlights": [
+            "Seated operator position",
+            "1,600 kg at 500 mm load centre",
+            "LFP battery, 270 / 340 Ah listed",
+            "1,758 mm turning radius"
+          ],
+          "specs": {
+            "ratedCapacity": 1600,
+            "loadCentre": 500,
+            "operatorPosition": "Seated",
+            "voltage": 80,
+            "batteryCapacity": "270 / 340",
+            "turningRadius": 1758,
+            "serviceWeight": 4070
+          },
+          "specsVerified": true,
+          "sources": [
+            "https://sg.byd.com/wp-content/uploads/2025/09/BYD-Forklift-Product-Brochure.pdf",
+            "https://sg.byd.com/reach-truck/",
+            "https://antbuildz.com/buy/equipment/69e9b3ea8a8fcd07d90cea9a"
+          ]
+        },
+        {
+          "slug": "byd-rtr20",
+          "name": "RTR20",
+          "brand": "byd",
+          "summary": "2.0 t seated reach truck for heavier pallets in racked warehouses.",
+          "highlights": [
+            "2,000 kg capacity",
+            "LFP battery, 270 / 340 Ah listed",
+            "1,758 mm turning radius"
+          ],
+          "specs": {
+            "ratedCapacity": 2000,
+            "voltage": 80,
+            "batteryCapacity": "270 / 340",
+            "turningRadius": 1758,
+            "serviceWeight": 4170
+          },
+          "specsVerified": true,
+          "sources": [
+            "https://sg.byd.com/wp-content/uploads/2025/09/BYD-Forklift-Product-Brochure.pdf"
+          ]
+        },
+        {
+          "slug": "byd-r18ps",
+          "name": "R18PS",
+          "brand": "byd",
+          "summary": "1.8 t compact reach truck on a 48 V LFP battery.",
+          "highlights": [
+            "1,800 kg capacity",
+            "48 V LFP, 210 / 420 Ah",
+            "1,750 mm turning radius"
+          ],
+          "specs": {
+            "ratedCapacity": 1800,
+            "voltage": 48,
+            "batteryCapacity": "210 / 420",
+            "turningRadius": 1750,
+            "serviceWeight": 2515
+          },
+          "specsVerified": true,
+          "sources": [
+            "https://sg.byd.com/wp-content/uploads/2025/09/BYD-Forklift-Product-Brochure.pdf"
+          ]
+        },
+        {
+          "slug": "byd-r15ps",
+          "name": "R15PS",
+          "brand": "byd",
+          "summary": "Compact 1.5 t reach truck on a 48 V LFP battery.",
+          "highlights": [
+            "1,500 kg capacity",
+            "48 V LFP, 210 / 420 Ah",
+            "1,600 mm turning radius",
+            "Lighter 2,375 kg chassis"
+          ],
+          "specs": {
+            "ratedCapacity": 1500,
+            "voltage": 48,
+            "batteryCapacity": "210 / 420",
+            "turningRadius": 1600,
+            "serviceWeight": 2375
+          },
+          "specsVerified": true,
+          "sources": [
+            "https://sg.byd.com/wp-content/uploads/2025/09/BYD-Forklift-Product-Brochure.pdf"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "stackers",
+      "name": "Pallet Stackers",
+      "summary": "Compact 1.4 t electric stackers that lift pallets onto racking where a full forklift is too big or not justified.",
+      "howItWorks": "An **electric pallet stacker** sits between a pallet truck and a forklift. Like a pallet truck, it uses a tiller and a single steered drive wheel. It also has a **mast**, so it can lift pallets onto racking, mezzanines and truck beds.\n\n**Stability without a counterweight.** Most stackers do not balance the load with a heavy counterweight. They use **straddle legs** or base arms with load wheels under or around the pallet. The load sits inside the truck's wheelbase, which keeps the stacker short and light. Because of this, the pallet type and rack bottom beam must suit the leg design.\n\n**Lift system.** An AC or DC pump motor drives a hydraulic pump. The pump feeds the lift cylinder or cylinders, which extend a two- or three-stage mast through chains and pulleys. A proportional valve controls the lowering speed. Some models have an **initial lift**: the base arms rise a little on their own, so the truck can carry two pallets at once (one on the arms, one on the forks) or clear uneven dock plates.\n\n**Drive and braking.** An AC traction motor drives the steered wheel, and the controller provides regenerative slowing. An electromagnetic brake applies when the tiller is released or moved to its upper or lower position.\n\n**Battery and charging.** BYD's stackers run on 24 V lithium iron phosphate (LFP) batteries with a BMS. An on-board charger is standard on its European EPS14 series, and a faster external charger is an option. Short charges during breaks keep the truck working through a shift.\n\n**Operator position.** Pedestrian stackers suit occasional lifting. Stand-on models with fold-down platforms and side guards cover longer distances at higher speed.",
+      "keyComponents": [
+        {
+          "name": "Mast (2- or 3-stage)",
+          "role": "Lifts the forks to rack height through hydraulic cylinders and chains."
+        },
+        {
+          "name": "Base arms / straddle legs",
+          "role": "Carry load wheels beneath or around the pallet to keep the truck stable without a counterweight."
+        },
+        {
+          "name": "Tiller head",
+          "role": "Steering arm with travel, lift and safety controls."
+        },
+        {
+          "name": "Hydraulic power unit",
+          "role": "Electric pump and valves that raise and lower the forks."
+        },
+        {
+          "name": "24 V LFP battery with BMS",
+          "role": "Maintenance-free energy store that can be opportunity charged."
+        },
+        {
+          "name": "Operator platform and side guards (stand-on models)",
+          "role": "Lets the operator ride for longer runs with protection."
+        }
+      ],
+      "applications": [
+        "Small and medium warehouses with low to medium racking",
+        "Retail back-stores and distributor depots in Lagos and other cities",
+        "Production cells needing occasional pallet lifting",
+        "Loading pallets onto truck beds from dock level",
+        "Sites with limited floor loading where a full forklift is too heavy"
+      ],
+      "choosingTips": [
+        "Confirm the residual capacity at your top beam height, as stacker capacity falls as lift height rises.",
+        "Check the pallet type (open or closed bottom) and rack bottom beam clearance against the base arm design.",
+        "Choose an initial-lift model if you want to move two pallets at a time or cross uneven dock plates.",
+        "Choose stand-on models for longer travel and higher throughput.",
+        "Floors must be level and smooth: stackers have small wheels and low ground clearance."
+      ],
+      "maintenance": {
+        "dailyChecks": [
+          "Wheels and castors free of debris",
+          "Mast chains, rollers and forks visibly undamaged",
+          "Emergency stop, belly-button reverse and horn function",
+          "Brake applies on tiller release",
+          "Battery charge level and any BMS warnings",
+          "No hydraulic leaks"
+        ],
+        "intervals": [
+          {
+            "hours": 250,
+            "tasks": [
+              "Inspect load wheels, drive wheel and stabiliser castors for wear and debris",
+              "Check fork arms, linkages and push rods for damage",
+              "Check hydraulic unit for leaks and oil level",
+              "Test tiller head controls, belly-button reverse switch, horn and emergency stop",
+              "Check brake operation and electromagnetic brake gap",
+              "Inspect battery connector, charger lead and cables",
+              "Read stored fault codes",
+              "Check mast chains for wear and lubrication; inspect mast rollers"
+            ]
+          },
+          {
+            "hours": 500,
+            "tasks": [
+              "All 250-hour tasks",
+              "Lubricate pivots, linkages and wheel bearings",
+              "Check drive gearbox oil",
+              "Check tiller return spring and steering bearing"
+            ]
+          },
+          {
+            "hours": 1000,
+            "tasks": [
+              "All 500-hour tasks",
+              "Replace hydraulic oil and filter as specified",
+              "Replace worn load or drive wheels",
+              "Inspect contactor and motor connections"
+            ]
+          }
+        ],
+        "note": "Indicative intervals based on general industry practice for electric forklifts, not a BYD-published schedule. Always follow the manufacturer's operation & maintenance manual and adjust for duty cycle, dust, heat and humidity."
+      },
+      "safety": [
+        "Never travel with a load raised; lower it before moving.",
+        "Do not exceed capacity shown on the load chart for the lift height in use.",
+        "Keep hands and feet clear of the mast and moving parts.",
+        "Only use on firm, level floors suitable for the truck's point loads.",
+        "Ensure nobody stands under raised forks."
+      ],
+      "specFields": [
+        {
+          "key": "ratedCapacity",
+          "label": "Rated capacity",
+          "unit": "kg"
+        },
+        {
+          "key": "operatorPosition",
+          "label": "Operator position",
+          "unit": ""
+        },
+        {
+          "key": "liftHeight",
+          "label": "Max. lift height",
+          "unit": "mm"
+        },
+        {
+          "key": "voltage",
+          "label": "Battery voltage",
+          "unit": "V"
+        },
+        {
+          "key": "batteryCapacity",
+          "label": "Battery capacity",
+          "unit": "Ah"
+        },
+        {
+          "key": "travelSpeed",
+          "label": "Travel speed",
+          "unit": "km/h"
+        },
+        {
+          "key": "turningRadius",
+          "label": "Turning radius",
+          "unit": "mm"
+        },
+        {
+          "key": "serviceWeight",
+          "label": "Service weight",
+          "unit": "kg"
+        },
+        {
+          "key": "charger",
+          "label": "Charger",
+          "unit": ""
+        },
+        {
+          "key": "chargeTime",
+          "label": "Charge time",
+          "unit": "h"
+        }
+      ],
+      "faq": [
+        {
+          "q": "Stacker or forklift?",
+          "a": "A stacker is lighter, more compact and lower-cost to run for moderate lifting volumes and indoor floors. A counterbalance forklift is better for loading trucks from ground level, outdoor use and heavier or more frequent lifting."
+        },
+        {
+          "q": "Can a stacker carry two pallets?",
+          "a": "Models with initial lift, such as BYD's EPS14Pi, can carry one pallet on the base arms and one on the forks."
+        },
+        {
+          "q": "How should we look after the lithium battery?",
+          "a": "LFP batteries need no watering or equalising, but care still matters: charge only with the matched BYD charger for the battery; mismatched chargers bypass the BMS logic; opportunity-charge at breaks rather than running the pack until the truck limits performance; keep the charging plug, connector pins and cables clean, dry and undamaged; if a truck will stand idle for weeks, leave it at a partial state of charge and switch off per the manual; record BMS warnings shown on the display and have them diagnosed promptly."
+        },
+        {
+          "q": "What warranty applies?",
+          "a": "Warranty terms vary by market and model. Ask us for the terms that apply in Nigeria."
+        }
+      ],
+      "models": [
+        {
+          "slug": "byd-sz14ps-g",
+          "name": "SZ14PS-G",
+          "brand": "byd",
+          "summary": "1.4 t electric pallet stacker on a 24 V lithium iron phosphate battery.",
+          "highlights": [
+            "1.4 t rated load",
+            "24 V lithium iron phosphate battery, 210 Ah",
+            "1,802 mm turning radius",
+            "1,220 kg service weight"
+          ],
+          "specs": {
+            "ratedCapacity": 1400,
+            "voltage": 24,
+            "batteryCapacity": 210,
+            "turningRadius": 1802,
+            "serviceWeight": 1220
+          },
+          "specsVerified": true,
+          "sources": []
+        },
+        {
+          "slug": "byd-s14ps",
+          "name": "S14PS",
+          "brand": "byd",
+          "summary": "1.4 t stand-on electric stacker on a 24 V LFP battery.",
+          "highlights": [
+            "1,400 kg capacity",
+            "24 V 210 Ah LFP battery",
+            "1,490 mm turning radius"
+          ],
+          "specs": {
+            "ratedCapacity": 1400,
+            "operatorPosition": "Stand-on platform",
+            "voltage": 24,
+            "batteryCapacity": 210,
+            "turningRadius": 1490,
+            "serviceWeight": 1180
+          },
+          "specsVerified": true,
+          "sources": [
+            "https://sg.byd.com/wp-content/uploads/2025/09/BYD-Forklift-Product-Brochure.pdf",
+            "https://sg.byd.com/stacker/"
+          ]
+        },
+        {
+          "slug": "byd-s14jw",
+          "name": "S14JW",
+          "brand": "byd",
+          "summary": "1.4 t walk-behind electric stacker for occasional lifting in compact stores.",
+          "highlights": [
+            "1,400 kg capacity",
+            "24 V 210 Ah LFP battery",
+            "1,456 mm turning radius"
+          ],
+          "specs": {
+            "ratedCapacity": 1400,
+            "operatorPosition": "Pedestrian (walkie)",
+            "voltage": 24,
+            "batteryCapacity": 210,
+            "turningRadius": 1456,
+            "serviceWeight": 1200
+          },
+          "specsVerified": true,
+          "sources": [
+            "https://sg.byd.com/wp-content/uploads/2025/09/BYD-Forklift-Product-Brochure.pdf"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "pallet-trucks",
-      "name": "Electric Pallet Trucks",
+      "name": "Pallet Trucks",
       "summary": "Powered 2 t pallet trucks, walk-behind or stand-on, for moving pallets quickly across warehouse floors and loading docks.",
       "howItWorks": "An **electric pallet truck** (powered pallet jack) moves pallets across the floor. It lifts a pallet only a short way, just enough to clear the ground, and is not built for stacking. The operator walks behind it or stands on a platform and steers with a **tiller arm** that holds all the controls: travel direction and speed, lift and lower, horn, and a belly-button reversing switch for safety.\n\n**Drive.** A single drive wheel under the power unit is driven by an AC traction motor and steered by the tiller. Two load wheels under the fork tips carry the pallet. Releasing the tiller or pushing it to the upper or lower position applies an electromagnetic brake. Lifting off the throttle gives regenerative slowing.\n\n**Lift.** A small electric hydraulic power pack pushes a cylinder that raises the fork frame. Linkage rods running along each fork push the load wheels down at the same time, so the whole pallet lifts evenly.\n\n**Battery.** BYD pallet trucks run on 24 V lithium iron phosphate (LFP) batteries. Many have an on-board charger that plugs into a normal socket, so the truck can be charged anywhere during a break. The battery management system (BMS) protects the cells from over-charge, over-discharge and overheating.\n\n**Variants.** Walkie (pedestrian) trucks suit short runs and tight spaces. Stand-on platform trucks are faster and suit longer distances, such as dock-to-store runs in large distribution centres. BYD also offers pallet trucks with higher lift for working at waist height in retail stores.",
       "keyComponents": [
@@ -1385,7 +2046,7 @@
             "turningRadius": 1515,
             "serviceWeight": 490
           },
-          "specsVerified": false,
+          "specsVerified": true,
           "sources": [
             "https://sg.byd.com/wp-content/uploads/2025/09/BYD-Forklift-Product-Brochure.pdf"
           ]
@@ -1409,565 +2070,60 @@
             "turningRadius": 1750,
             "serviceWeight": 650
           },
-          "specsVerified": false,
+          "specsVerified": true,
           "sources": [
             "https://sg.byd.com/wp-content/uploads/2025/09/BYD-Forklift-Product-Brochure.pdf",
             "https://sg.byd.com/pallet-truck/"
           ]
         },
         {
-          "slug": "byd-ptw20si",
-          "name": "PTW20Si",
+          "slug": "byd-p20ps-u",
+          "name": "P20PS-U",
           "brand": "byd",
-          "summary": "Compact 2 t walk-behind pallet truck from BYD's European range with a high lift for retail use.",
+          "summary": "2.0 t electric pallet truck on a 24 V lithium iron phosphate battery.",
           "highlights": [
-            "Up to 2,000 kg capacity",
-            "Lifts up to 750 mm for working at waist height",
-            "Aimed at retail and stores"
+            "2 t rated load",
+            "24 V lithium iron phosphate battery, 210 Ah",
+            "1,680 mm turning radius",
+            "1,650 kg service weight"
           ],
           "specs": {
             "ratedCapacity": 2000,
-            "operatorPosition": "Pedestrian (walkie)",
-            "liftHeight": 750
-          },
-          "specsVerified": false,
-          "sources": [
-            "https://bydeurope.com/article/423"
-          ]
-        },
-        {
-          "slug": "byd-ptp20p",
-          "name": "PTP20P",
-          "brand": "byd",
-          "summary": "2 t stand-on pallet truck with a fixed ride-on platform from BYD's European range.",
-          "highlights": [
-            "Up to 2,000 kg capacity",
-            "Fixed operator platform",
-            "Foldable-platform sister model PTP20S"
-          ],
-          "specs": {
-            "ratedCapacity": 2000,
-            "operatorPosition": "Stand-on (fixed platform)"
-          },
-          "specsVerified": false,
-          "sources": [
-            "https://bydeurope.com/article/423",
-            "https://logisticsbusiness.com/?p=43577"
-          ]
-        }
-      ]
-    },
-    {
-      "slug": "stackers",
-      "name": "Electric Stackers",
-      "summary": "Compact 1.4 t electric stackers that lift pallets onto racking where a full forklift is too big or not justified.",
-      "howItWorks": "An **electric pallet stacker** sits between a pallet truck and a forklift. Like a pallet truck, it uses a tiller and a single steered drive wheel. It also has a **mast**, so it can lift pallets onto racking, mezzanines and truck beds.\n\n**Stability without a counterweight.** Most stackers do not balance the load with a heavy counterweight. They use **straddle legs** or base arms with load wheels under or around the pallet. The load sits inside the truck's wheelbase, which keeps the stacker short and light. Because of this, the pallet type and rack bottom beam must suit the leg design.\n\n**Lift system.** An AC or DC pump motor drives a hydraulic pump. The pump feeds the lift cylinder or cylinders, which extend a two- or three-stage mast through chains and pulleys. A proportional valve controls the lowering speed. Some models have an **initial lift**: the base arms rise a little on their own, so the truck can carry two pallets at once (one on the arms, one on the forks) or clear uneven dock plates.\n\n**Drive and braking.** An AC traction motor drives the steered wheel, and the controller provides regenerative slowing. An electromagnetic brake applies when the tiller is released or moved to its upper or lower position.\n\n**Battery and charging.** BYD's stackers run on 24 V lithium iron phosphate (LFP) batteries with a BMS. An on-board charger is standard on its European EPS14 series, and a faster external charger is an option. Short charges during breaks keep the truck working through a shift.\n\n**Operator position.** Pedestrian stackers suit occasional lifting. Stand-on models with fold-down platforms and side guards cover longer distances at higher speed.",
-      "keyComponents": [
-        {
-          "name": "Mast (2- or 3-stage)",
-          "role": "Lifts the forks to rack height through hydraulic cylinders and chains."
-        },
-        {
-          "name": "Base arms / straddle legs",
-          "role": "Carry load wheels beneath or around the pallet to keep the truck stable without a counterweight."
-        },
-        {
-          "name": "Tiller head",
-          "role": "Steering arm with travel, lift and safety controls."
-        },
-        {
-          "name": "Hydraulic power unit",
-          "role": "Electric pump and valves that raise and lower the forks."
-        },
-        {
-          "name": "24 V LFP battery with BMS",
-          "role": "Maintenance-free energy store that can be opportunity charged."
-        },
-        {
-          "name": "Operator platform and side guards (stand-on models)",
-          "role": "Lets the operator ride for longer runs with protection."
-        }
-      ],
-      "applications": [
-        "Small and medium warehouses with low to medium racking",
-        "Retail back-stores and distributor depots in Lagos and other cities",
-        "Production cells needing occasional pallet lifting",
-        "Loading pallets onto truck beds from dock level",
-        "Sites with limited floor loading where a full forklift is too heavy"
-      ],
-      "choosingTips": [
-        "Confirm the residual capacity at your top beam height, as stacker capacity falls as lift height rises.",
-        "Check the pallet type (open or closed bottom) and rack bottom beam clearance against the base arm design.",
-        "Choose an initial-lift model if you want to move two pallets at a time or cross uneven dock plates.",
-        "Choose stand-on models for longer travel and higher throughput.",
-        "Floors must be level and smooth: stackers have small wheels and low ground clearance."
-      ],
-      "maintenance": {
-        "dailyChecks": [
-          "Wheels and castors free of debris",
-          "Mast chains, rollers and forks visibly undamaged",
-          "Emergency stop, belly-button reverse and horn function",
-          "Brake applies on tiller release",
-          "Battery charge level and any BMS warnings",
-          "No hydraulic leaks"
-        ],
-        "intervals": [
-          {
-            "hours": 250,
-            "tasks": [
-              "Inspect load wheels, drive wheel and stabiliser castors for wear and debris",
-              "Check fork arms, linkages and push rods for damage",
-              "Check hydraulic unit for leaks and oil level",
-              "Test tiller head controls, belly-button reverse switch, horn and emergency stop",
-              "Check brake operation and electromagnetic brake gap",
-              "Inspect battery connector, charger lead and cables",
-              "Read stored fault codes",
-              "Check mast chains for wear and lubrication; inspect mast rollers"
-            ]
-          },
-          {
-            "hours": 500,
-            "tasks": [
-              "All 250-hour tasks",
-              "Lubricate pivots, linkages and wheel bearings",
-              "Check drive gearbox oil",
-              "Check tiller return spring and steering bearing"
-            ]
-          },
-          {
-            "hours": 1000,
-            "tasks": [
-              "All 500-hour tasks",
-              "Replace hydraulic oil and filter as specified",
-              "Replace worn load or drive wheels",
-              "Inspect contactor and motor connections"
-            ]
-          }
-        ],
-        "note": "Indicative intervals based on general industry practice for electric forklifts, not a BYD-published schedule. Always follow the manufacturer's operation & maintenance manual and adjust for duty cycle, dust, heat and humidity."
-      },
-      "safety": [
-        "Never travel with a load raised; lower it before moving.",
-        "Do not exceed capacity shown on the load chart for the lift height in use.",
-        "Keep hands and feet clear of the mast and moving parts.",
-        "Only use on firm, level floors suitable for the truck's point loads.",
-        "Ensure nobody stands under raised forks."
-      ],
-      "specFields": [
-        {
-          "key": "ratedCapacity",
-          "label": "Rated capacity",
-          "unit": "kg"
-        },
-        {
-          "key": "operatorPosition",
-          "label": "Operator position",
-          "unit": ""
-        },
-        {
-          "key": "liftHeight",
-          "label": "Max. lift height",
-          "unit": "mm"
-        },
-        {
-          "key": "voltage",
-          "label": "Battery voltage",
-          "unit": "V"
-        },
-        {
-          "key": "batteryCapacity",
-          "label": "Battery capacity",
-          "unit": "Ah"
-        },
-        {
-          "key": "travelSpeed",
-          "label": "Travel speed",
-          "unit": "km/h"
-        },
-        {
-          "key": "turningRadius",
-          "label": "Turning radius",
-          "unit": "mm"
-        },
-        {
-          "key": "serviceWeight",
-          "label": "Service weight",
-          "unit": "kg"
-        },
-        {
-          "key": "charger",
-          "label": "Charger",
-          "unit": ""
-        },
-        {
-          "key": "chargeTime",
-          "label": "Charge time",
-          "unit": "h"
-        }
-      ],
-      "faq": [
-        {
-          "q": "Stacker or forklift?",
-          "a": "A stacker is lighter, more compact and lower-cost to run for moderate lifting volumes and indoor floors. A counterbalance forklift is better for loading trucks from ground level, outdoor use and heavier or more frequent lifting."
-        },
-        {
-          "q": "Can a stacker carry two pallets?",
-          "a": "Models with initial lift, such as BYD's EPS14Pi, can carry one pallet on the base arms and one on the forks."
-        },
-        {
-          "q": "How should we look after the lithium battery?",
-          "a": "LFP batteries need no watering or equalising, but care still matters: charge only with the matched BYD charger for the battery; mismatched chargers bypass the BMS logic; opportunity-charge at breaks rather than running the pack until the truck limits performance; keep the charging plug, connector pins and cables clean, dry and undamaged; if a truck will stand idle for weeks, leave it at a partial state of charge and switch off per the manual; record BMS warnings shown on the display and have them diagnosed promptly."
-        },
-        {
-          "q": "What warranty applies?",
-          "a": "Warranty terms vary by market and model. Ask us for the terms that apply in Nigeria."
-        }
-      ],
-      "models": [
-        {
-          "slug": "byd-eps14pi",
-          "name": "EPS14Pi",
-          "brand": "byd",
-          "summary": "1.4 t stand-on stacker with initial lift for handling two pallets at once (European range).",
-          "highlights": [
-            "Lift heights up to 5,400 mm",
-            "Initial lift for double-pallet handling",
-            "24 V LFP battery, 130 Ah standard / 270 Ah optional",
-            "On-board 24 V 30 A charger standard"
-          ],
-          "specs": {
-            "ratedCapacity": 1400,
-            "operatorPosition": "Stand-on platform (foldable)",
-            "liftHeight": 5400,
-            "voltage": 24,
-            "batteryCapacity": "130 / 270",
-            "travelSpeed": "8 / 9",
-            "charger": "24 V 30 A on-board standard; 24 V 100 A optional",
-            "chargeTime": "approx. 3 h standard; approx. 1 h with fast-charge option"
-          },
-          "specsVerified": false,
-          "sources": [
-            "https://pdf.directindustry.com/pdf/byd-europe-bv/eps14pi-eps14p-eps14/4597463-1102428.html",
-            "https://bydeurope.com/article/423"
-          ]
-        },
-        {
-          "slug": "byd-s14ps",
-          "name": "S14PS",
-          "brand": "byd",
-          "summary": "1.4 t stand-on electric stacker on a 24 V LFP battery.",
-          "highlights": [
-            "1,400 kg capacity",
-            "24 V 210 Ah LFP battery",
-            "1,490 mm turning radius"
-          ],
-          "specs": {
-            "ratedCapacity": 1400,
-            "operatorPosition": "Stand-on platform",
             "voltage": 24,
             "batteryCapacity": 210,
-            "turningRadius": 1490,
-            "serviceWeight": 1180
+            "turningRadius": 1680,
+            "serviceWeight": 1650
           },
-          "specsVerified": false,
-          "sources": [
-            "https://sg.byd.com/wp-content/uploads/2025/09/BYD-Forklift-Product-Brochure.pdf",
-            "https://sg.byd.com/stacker/"
-          ]
+          "specsVerified": true,
+          "sources": []
         },
         {
-          "slug": "byd-s14jw",
-          "name": "S14JW",
+          "slug": "byd-p20ps-b",
+          "name": "P20PS-B",
           "brand": "byd",
-          "summary": "1.4 t walk-behind electric stacker for occasional lifting in compact stores.",
+          "summary": "2.0 t electric pallet truck on a 24 V lithium iron phosphate battery.",
           "highlights": [
-            "1,400 kg capacity",
-            "24 V 210 Ah LFP battery",
-            "1,456 mm turning radius"
-          ],
-          "specs": {
-            "ratedCapacity": 1400,
-            "operatorPosition": "Pedestrian (walkie)",
-            "voltage": 24,
-            "batteryCapacity": 210,
-            "turningRadius": 1456,
-            "serviceWeight": 1200
-          },
-          "specsVerified": false,
-          "sources": [
-            "https://sg.byd.com/wp-content/uploads/2025/09/BYD-Forklift-Product-Brochure.pdf"
-          ]
-        }
-      ]
-    },
-    {
-      "slug": "reach-trucks",
-      "name": "Electric Reach Trucks",
-      "summary": "Narrow-aisle electric trucks that reach into racking and lift high, packing more storage into the same warehouse floor.",
-      "howItWorks": "A **reach truck** is designed to store pallets high in narrow aisles. A counterbalance forklift carries its load in front of the front wheels and needs a wide aisle to turn. A reach truck instead has two **outrigger legs** with load wheels that stretch forward from the chassis. The mast moves forward along the legs (a **moving-mast** design) to pick or place a pallet, then pulls back so the load sits within the truck's wheelbase while it travels and turns.\n\n**Why it needs less space.** The load is carried inside the footprint and the truck pivots around a central drive wheel, so it can make a right-angle turn into racking in a much narrower aisle than a counterbalance truck. Lift heights are usually higher too, using three-stage masts.\n\n**Drive and hydraulics.** A single steered drive wheel under the operator compartment is powered by an AC traction motor. A separate pump motor supplies the hydraulic circuit for lift, reach, tilt and side-shift. The operator sits sideways or stands, depending on the model, so both travel directions are easy to see.\n\n**Battery.** BYD's reach trucks use lithium iron phosphate (LFP) batteries. The RTR series uses 80 V packs and the R15PS/R18PS models use 48 V packs. Because LFP accepts opportunity charging, operators can top up at breaks instead of changing batteries. The BMS manages cell balance and temperature.\n\n**Height and stability.** At height, the truck's capacity falls and the mast flexes more. Reach trucks therefore have load charts specific to each mast and height. Many also use speed and lift-height interlocks, and some offer height pre-selection or tilt-at-height limits.",
-      "keyComponents": [
-        {
-          "name": "Outrigger legs with load wheels",
-          "role": "Extend forward to support the load inside the truck's footprint."
-        },
-        {
-          "name": "Reach mechanism (moving mast)",
-          "role": "Moves the mast forward to pick or place pallets, then back for travel."
-        },
-        {
-          "name": "High-lift triplex mast",
-          "role": "Raises forks to upper rack levels."
-        },
-        {
-          "name": "Drive and steer unit",
-          "role": "Single steered drive wheel giving a tight turning circle."
-        },
-        {
-          "name": "LFP battery with BMS",
-          "role": "Supplies power and supports opportunity charging."
-        },
-        {
-          "name": "Operator compartment",
-          "role": "Seated or standing position with controls for travel, lift, reach, tilt and side-shift."
-        }
-      ],
-      "applications": [
-        "High-density racked FMCG and e-commerce warehouses",
-        "Pharmaceutical and medical distribution centres",
-        "3PL and bonded warehouses where floor space is costly",
-        "Spare-parts and finished-goods stores in factories",
-        "Cold stores where maximising cubic space matters (with cold-store specification)"
-      ],
-      "choosingTips": [
-        "Start from the racking: top beam height, aisle width and pallet size set the mast and chassis.",
-        "Check residual capacity at the top level, not just the nominal rating.",
-        "Floors must be flat and level; reach trucks are sensitive to floor unevenness at height.",
-        "Seated models suit long shifts and longer travel; standing models suit frequent getting on and off.",
-        "Plan charging points near the racking area to make opportunity charging easy."
-      ],
-      "maintenance": {
-        "dailyChecks": [
-          "Forks, chains and mast for damage or slack chains",
-          "Reach mechanism moves smoothly without noise",
-          "Load and drive wheels for wear or flat spots",
-          "Brakes, steering, horn, lights and emergency stop",
-          "Battery charge level and display warnings",
-          "Hydraulic leaks under the truck"
-        ],
-        "intervals": [
-          {
-            "hours": 250,
-            "tasks": [
-              "Inspect forks, heel wear, locking pins and carriage; check fork tips for cracks",
-              "Check mast chains for wear, elongation and lubrication; adjust tension evenly",
-              "Inspect hydraulic hoses, fittings and cylinders for leaks; check hydraulic oil level",
-              "Check tyres and wheel nuts; inspect steering axle and linkages",
-              "Test service and parking brakes, horn, lights, alarms and seat/operator-presence switch",
-              "Clean dust from motor and controller cooling areas; inspect cable insulation and battery connector",
-              "Read the display / diagnostic log for stored fault codes and battery warnings"
-            ]
-          },
-          {
-            "hours": 500,
-            "tasks": [
-              "All 250-hour tasks",
-              "Lubricate mast rollers, pivots, steering knuckles and tilt cylinder pins",
-              "Check drive axle / gearbox oil level",
-              "Inspect mast rollers, side-shift and fork carriage for play",
-              "Torque-check main electrical terminals and inspect contactors (where fitted)",
-              "Inspect reach carriage rollers, rails and reach cylinder"
-            ]
-          },
-          {
-            "hours": 1000,
-            "tasks": [
-              "All 500-hour tasks",
-              "Replace hydraulic return filter / breather as specified",
-              "Inspect brake components and wear",
-              "Check steering wheel bearings and steer-axle bearings",
-              "Verify charger output, cabling and plug condition"
-            ]
-          },
-          {
-            "hours": 2000,
-            "tasks": [
-              "All 1,000-hour tasks",
-              "Change hydraulic oil and drive-axle / gearbox oil",
-              "Measure mast chain elongation against the wear limit; replace if required",
-              "Full load test and inspection of overhead guard and structural welds"
-            ]
-          }
-        ],
-        "note": "Indicative intervals based on general industry practice for electric forklifts, not a BYD-published schedule. Always follow the manufacturer's operation & maintenance manual and adjust for duty cycle, dust, heat and humidity."
-      },
-      "safety": [
-        "Only lift and lower when stationary; never travel with a load raised.",
-        "Follow the load chart for each level; capacity reduces with height.",
-        "Retract the reach before travelling.",
-        "Keep pedestrians out of narrow aisles while the truck is working.",
-        "Inspect racking regularly and report damage; trucks and racking work as a system."
-      ],
-      "specFields": [
-        {
-          "key": "ratedCapacity",
-          "label": "Rated capacity",
-          "unit": "kg"
-        },
-        {
-          "key": "loadCentre",
-          "label": "Load centre",
-          "unit": "mm"
-        },
-        {
-          "key": "operatorPosition",
-          "label": "Operator position",
-          "unit": ""
-        },
-        {
-          "key": "liftHeight",
-          "label": "Max. lift height",
-          "unit": "mm"
-        },
-        {
-          "key": "voltage",
-          "label": "Battery voltage",
-          "unit": "V"
-        },
-        {
-          "key": "batteryCapacity",
-          "label": "Battery capacity",
-          "unit": "Ah"
-        },
-        {
-          "key": "turningRadius",
-          "label": "Turning radius",
-          "unit": "mm"
-        },
-        {
-          "key": "serviceWeight",
-          "label": "Service weight",
-          "unit": "kg"
-        }
-      ],
-      "faq": [
-        {
-          "q": "How much narrower are reach-truck aisles?",
-          "a": "It depends on pallet size and truck model. Reach trucks typically work in clearly narrower aisles than counterbalance forklifts. We calculate the required aisle from the model data and your pallets."
-        },
-        {
-          "q": "Can a reach truck load lorries?",
-          "a": "Not normally. Reach trucks are designed for smooth indoor floors and racking. Use a counterbalance forklift for trailers and outdoor docks."
-        },
-        {
-          "q": "How should we look after the lithium battery?",
-          "a": "LFP batteries need no watering or equalising, but care still matters: charge only with the matched BYD charger for the battery; mismatched chargers bypass the BMS logic; opportunity-charge at breaks rather than running the pack until the truck limits performance; keep the charging plug, connector pins and cables clean, dry and undamaged; if a truck will stand idle for weeks, leave it at a partial state of charge and switch off per the manual; record BMS warnings shown on the display and have them diagnosed promptly."
-        },
-        {
-          "q": "What warranty applies?",
-          "a": "Warranty terms vary by market and model. Ask us for the terms that apply in Nigeria."
-        }
-      ],
-      "models": [
-        {
-          "slug": "byd-rtr16",
-          "name": "RTR16",
-          "brand": "byd",
-          "summary": "1.6 t seated reach truck, described by BYD Singapore as a sitting reach truck.",
-          "highlights": [
-            "Seated operator position",
-            "1,600 kg at 500 mm load centre",
-            "LFP battery, 270 / 340 Ah listed",
-            "1,758 mm turning radius"
-          ],
-          "specs": {
-            "ratedCapacity": 1600,
-            "loadCentre": 500,
-            "operatorPosition": "Seated",
-            "voltage": 80,
-            "batteryCapacity": "270 / 340",
-            "turningRadius": 1758,
-            "serviceWeight": 4070
-          },
-          "specsVerified": false,
-          "sources": [
-            "https://sg.byd.com/wp-content/uploads/2025/09/BYD-Forklift-Product-Brochure.pdf",
-            "https://sg.byd.com/reach-truck/",
-            "https://antbuildz.com/buy/equipment/69e9b3ea8a8fcd07d90cea9a"
-          ]
-        },
-        {
-          "slug": "byd-rtr20",
-          "name": "RTR20",
-          "brand": "byd",
-          "summary": "2.0 t seated reach truck for heavier pallets in racked warehouses.",
-          "highlights": [
-            "2,000 kg capacity",
-            "LFP battery, 270 / 340 Ah listed",
-            "1,758 mm turning radius"
+            "2 t rated load",
+            "24 V lithium iron phosphate battery, 210 Ah",
+            "2,200 mm turning radius",
+            "880 kg service weight"
           ],
           "specs": {
             "ratedCapacity": 2000,
-            "voltage": 80,
-            "batteryCapacity": "270 / 340",
-            "turningRadius": 1758,
-            "serviceWeight": 4170
+            "voltage": 24,
+            "batteryCapacity": 210,
+            "turningRadius": 2200,
+            "serviceWeight": 880
           },
-          "specsVerified": false,
-          "sources": [
-            "https://sg.byd.com/wp-content/uploads/2025/09/BYD-Forklift-Product-Brochure.pdf"
-          ]
-        },
-        {
-          "slug": "byd-r15ps",
-          "name": "R15PS",
-          "brand": "byd",
-          "summary": "Compact 1.5 t reach truck on a 48 V LFP battery.",
-          "highlights": [
-            "1,500 kg capacity",
-            "48 V LFP, 210 / 420 Ah",
-            "1,600 mm turning radius",
-            "Lighter 2,375 kg chassis"
-          ],
-          "specs": {
-            "ratedCapacity": 1500,
-            "voltage": 48,
-            "batteryCapacity": "210 / 420",
-            "turningRadius": 1600,
-            "serviceWeight": 2375
-          },
-          "specsVerified": false,
-          "sources": [
-            "https://sg.byd.com/wp-content/uploads/2025/09/BYD-Forklift-Product-Brochure.pdf"
-          ]
-        },
-        {
-          "slug": "byd-r18ps",
-          "name": "R18PS",
-          "brand": "byd",
-          "summary": "1.8 t compact reach truck on a 48 V LFP battery.",
-          "highlights": [
-            "1,800 kg capacity",
-            "48 V LFP, 210 / 420 Ah",
-            "1,750 mm turning radius"
-          ],
-          "specs": {
-            "ratedCapacity": 1800,
-            "voltage": 48,
-            "batteryCapacity": "210 / 420",
-            "turningRadius": 1750,
-            "serviceWeight": 2515
-          },
-          "specsVerified": false,
-          "sources": [
-            "https://sg.byd.com/wp-content/uploads/2025/09/BYD-Forklift-Product-Brochure.pdf"
-          ]
+          "specsVerified": true,
+          "sources": []
         }
       ]
     },
     {
       "slug": "tow-tractors",
-      "name": "Electric Tow Tractors",
-      "summary": "Battery-electric tugs from 3 t to over 30 t towing capacity for moving trains of trailers in factories, ports and logistics hubs.",
+      "name": "Towing Tractors",
+      "summary": "Battery-electric tugs from 3 t to 25 t towing capacity for moving trains of trailers in factories, ports and logistics hubs.",
       "howItWorks": "An **electric tow tractor** (tug) pulls loads on trailers or carts instead of lifting them. One tractor can move a train of several trailers, so it can replace many forklift trips over long internal routes: between production halls, from warehouse to dispatch, or across port and airport aprons.\n\n**Drawbar pull, not lift.** A tractor is rated by the **towed load** it can pull on level ground. It works by putting traction through its drive wheels, which needs weight on those wheels. Tractors are therefore heavy for their size, and the towing rating drops on slopes and slippery surfaces. A tow coupling at the rear connects the trailers, and a pin or automatic hitch is common.\n\n**Drive.** An AC traction motor drives the wheels through a reduction gearbox and differential, with the speed controlled electronically. When the operator eases off, regenerative braking slows the tractor and train and puts energy back into the battery. Mechanical service and parking brakes hold the train. The larger tractors have hill-hold and slope protection.\n\n**Sizes.** Compact pedestrian or stand-on tugs (around 3–5 t towed) move carts in assembly plants and hospitals. Seated and cab tractors (25 t and above) haul heavy trailer trains outdoors.\n\n**Battery.** BYD's tractors use lithium iron phosphate (LFP) batteries: 24–48 V on the small tugs and 80 V on the large tractors. Long routes make tractors good candidates for opportunity charging at the end of each loop. The BMS keeps the pack within safe limits.",
       "keyComponents": [
         {
@@ -2104,6 +2260,27 @@
       ],
       "models": [
         {
+          "slug": "byd-q30tjs",
+          "name": "Q30TJS",
+          "brand": "byd",
+          "summary": "3 t electric towing tractor on a 24 V lithium iron phosphate battery.",
+          "highlights": [
+            "3 t towing load",
+            "24 V lithium iron phosphate battery, 210 Ah",
+            "1,013 mm turning radius",
+            "606 kg service weight"
+          ],
+          "specs": {
+            "towingCapacity": 3000,
+            "voltage": 24,
+            "batteryCapacity": 210,
+            "turningRadius": 1013,
+            "serviceWeight": 606
+          },
+          "specsVerified": true,
+          "sources": []
+        },
+        {
           "slug": "byd-qd50",
           "name": "QD50",
           "brand": "byd",
@@ -2120,10 +2297,52 @@
             "turningRadius": 1580,
             "serviceWeight": 980
           },
-          "specsVerified": false,
+          "specsVerified": true,
           "sources": [
             "https://sg.byd.com/wp-content/uploads/2025/09/BYD-Forklift-Product-Brochure.pdf"
           ]
+        },
+        {
+          "slug": "byd-q50tps",
+          "name": "Q50TPS",
+          "brand": "byd",
+          "summary": "5 t electric towing tractor on a 24 V lithium iron phosphate battery.",
+          "highlights": [
+            "5 t towing load",
+            "24 V lithium iron phosphate battery, 210 Ah",
+            "1,164 mm turning radius",
+            "1,065 kg service weight"
+          ],
+          "specs": {
+            "towingCapacity": 5000,
+            "voltage": 24,
+            "batteryCapacity": 210,
+            "turningRadius": 1164,
+            "serviceWeight": 1065
+          },
+          "specsVerified": true,
+          "sources": []
+        },
+        {
+          "slug": "byd-q250ls",
+          "name": "Q250LS",
+          "brand": "byd",
+          "summary": "25 t electric towing tractor on a 80 V lithium iron phosphate battery.",
+          "highlights": [
+            "25 t towing load",
+            "80 V lithium iron phosphate battery, 540 Ah",
+            "3,665 mm turning radius",
+            "3,750 kg service weight"
+          ],
+          "specs": {
+            "towingCapacity": 25000,
+            "voltage": 80,
+            "batteryCapacity": 540,
+            "turningRadius": 3665,
+            "serviceWeight": 3750
+          },
+          "specsVerified": true,
+          "sources": []
         },
         {
           "slug": "byd-q250l",
@@ -2143,28 +2362,31 @@
             "turningRadius": 3530,
             "serviceWeight": 3750
           },
-          "specsVerified": false,
+          "specsVerified": true,
           "sources": [
             "https://sg.byd.com/wp-content/uploads/2025/09/BYD-Forklift-Product-Brochure.pdf"
           ]
         },
         {
-          "slug": "byd-q1m",
-          "name": "Q1M",
+          "slug": "byd-q250l-01",
+          "name": "Q250L-01",
           "brand": "byd",
-          "summary": "BYD's 37 t heavy tow tractor, launched in Europe for heavy-haul internal logistics.",
+          "summary": "25 t electric towing tractor on a 80 V lithium iron phosphate battery.",
           "highlights": [
-            "37,000 kg towing capacity",
-            "More than 10 hours of operation per charge",
-            "BYD iron-phosphate battery"
+            "25 t towing load",
+            "80 V lithium iron phosphate battery, 540 Ah",
+            "3,530 mm turning radius",
+            "4,230 kg service weight"
           ],
           "specs": {
-            "towingCapacity": 37000
+            "towingCapacity": 25000,
+            "voltage": 80,
+            "batteryCapacity": 540,
+            "turningRadius": 3530,
+            "serviceWeight": 4230
           },
-          "specsVerified": false,
-          "sources": [
-            "https://warehousenews.co.uk/?p=68494"
-          ]
+          "specsVerified": true,
+          "sources": []
         }
       ]
     }

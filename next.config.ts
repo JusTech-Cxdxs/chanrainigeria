@@ -19,7 +19,10 @@ const nextConfig: NextConfig = {
   },
   // The old slider page now lives under Images.
   async redirects() {
-    return [{ source: "/admin/appearance", destination: "/admin/images", permanent: true }];
+    return [
+      { source: "/admin/appearance", destination: "/admin/images", permanent: true },
+      { source: "/book-service", destination: "/request-service", permanent: true },
+    ];
   },
   async headers() {
     return [{ source: "/:path*", headers: securityHeaders }];

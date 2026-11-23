@@ -70,7 +70,7 @@ export function Header({
   // Every public page opens on a dark image banner, so the bar starts see-through with white text.
   const glass = !scrolled && !mega;
   const productsOn = isActive(path, "/products");
-  const bookOn = isActive(path, L.bookLink || "/book-service");
+  const bookOn = isActive(path, L.bookLink || "/request-service");
 
   /** Desktop link: green when current, with a short bar under it; mint on the see-through bar. */
   const linkCls = (on: boolean) =>
@@ -210,7 +210,7 @@ export function Header({
             {translate ? <LanguagePicker languages={languages} note={L.translateNote} /> : null}
             <ThemeToggle className="hidden sm:inline-flex" labels={{ system: L.themeAuto, light: L.themeLight, dark: L.themeDark }} />
             <Link
-              href={L.bookLink || "/book-service"}
+              href={L.bookLink || "/request-service"}
               aria-current={bookOn ? "page" : undefined}
               className={`btn btn-primary ml-2 hidden !min-h-10 !px-4 text-[0.92rem] md:inline-flex ${bookOn ? "ring-2 ring-offset-2 ring-offset-transparent " + (glass ? "ring-mint" : "ring-brand/40") : ""}`}
             >
@@ -272,7 +272,7 @@ export function Header({
               ))}
             </div>
             <div className="grid gap-3 border-t border-line p-5">
-              <Link href={L.bookLink || "/book-service"} className="btn btn-primary w-full">
+              <Link href={L.bookLink || "/request-service"} className="btn btn-primary w-full">
                 <Icon name="calendar" size={16} />
                 {L.bookLabel}
               </Link>

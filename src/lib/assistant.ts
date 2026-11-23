@@ -36,7 +36,7 @@ export const GUIDE: GuideEntry[] = [
     href: "/admin/enquiries",
     label: "Enquiries",
     perm: "enquiries",
-    summary: "Everything sent through the website forms and Enyo (quotes, service bookings, parts requests, call-backs), newest first, each with a reference like CN-2026-000123.",
+    summary: "Everything sent through the website forms and Enyo (quotes, service requests, parts requests, call-backs), newest first, each with a reference like CN-2026-000123.",
     steps: [
       "Open Enquiries and filter by status, desk or type, or search by reference, name or email.",
       "Open an enquiry to see the request, the customer and any photos.",

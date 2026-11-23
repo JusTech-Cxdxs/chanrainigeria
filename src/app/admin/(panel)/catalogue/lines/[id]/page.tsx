@@ -112,7 +112,7 @@ export default async function EditLine({ params, searchParams }: { params: Promi
                   </option>
                 ))}
               </select>
-              <small>Quotes and general questions for this line. Service bookings and parts go to their own desks unless this is the CNG desk.</small>
+              <small>Quotes and general questions for this line. Service requests and parts go to their own desks unless this is the CNG desk.</small>
             </label>
             <Field label="Order on the site" name="order" type="number" defaultValue={c.order} hint="Lower numbers show first. You can also use the arrows on the Products page." />
           </div>

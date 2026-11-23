@@ -29,7 +29,7 @@ export default async function CategoryPage({ params }: P) {
 
   const trio = [
     { icon: "file", title: c.t("salesTitle"), text: cat.salesBlurb, href: `/contact?type=QUOTE&category=${cat.slug}`, cta: c.t("salesLink") },
-    { icon: "tool", title: c.t("serviceTitle"), text: cat.serviceBlurb, href: `/book-service?category=${cat.slug}`, cta: c.t("serviceLink") },
+    { icon: "tool", title: c.t("serviceTitle"), text: cat.serviceBlurb, href: `/request-service?category=${cat.slug}`, cta: c.t("serviceLink") },
     { icon: "package", title: c.t("partsTitle"), text: cat.partsBlurb, href: `/parts?category=${cat.slug}`, cta: c.t("partsLink") },
   ];
 
@@ -46,7 +46,7 @@ export default async function CategoryPage({ params }: P) {
             <Icon name="file" />
             {c.t("quoteButton")}
           </Link>
-          <Link href={`/book-service?category=${cat.slug}`} className="btn btn-glass">
+          <Link href={`/request-service?category=${cat.slug}`} className="btn btn-glass">
             <Icon name="calendar" />
             {c.t("bookButton")}
           </Link>

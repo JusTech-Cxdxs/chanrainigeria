@@ -20,4 +20,4 @@ Electric forklifts with lithium iron phosphate (LFP) batteries are clean, quiet 
 
 ## Planned maintenance
 
-Book planned maintenance at the intervals in the operator's manual. Our technicians check the battery management system, cables, connectors and charger as part of each visit.
+Request planned maintenance at the intervals in the operator's manual. Our technicians check the battery management system, cables, connectors and charger as part of each visit.

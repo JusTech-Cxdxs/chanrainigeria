@@ -191,7 +191,7 @@ export const defaultSettings: Settings = {
     heroText: "CNG refueling, compression, storage and dispensing equipment, construction equipment and electric forklifts, with sales, genuine parts and technicians who come to your site.",
     fieldServiceTitle: "We come to the machine",
     fieldServiceText:
-      "Compressors don't leave the station and excavators don't drive to workshops. Book a visit and a technician comes to your site with the tools and parts the job needs.",
+      "Compressors don't leave the station and excavators don't drive to workshops. Request a service and a technician comes to your site with the tools and parts the job needs.",
     showTestimonials: true,
   },
   images: {},
@@ -213,7 +213,7 @@ export const defaultSettings: Settings = {
   enyo: {
     enabled: true,
     name: "Enyo",
-    greeting: "Hello, I'm Enyo, Chanrai Nigeria's assistant. Ask me about our machines, booking a technician, parts, or where to find us.",
+    greeting: "Hello, I'm Enyo, Chanrai Nigeria's assistant. Ask me about our machines, requesting a service, parts, or where to find us.",
     tone: "Warm, clear and professional. Short answers. Nigerian English is welcome.",
     /** Empty = the server's ENYO_LLM_MODEL (or Groq's default). */
     model: "",

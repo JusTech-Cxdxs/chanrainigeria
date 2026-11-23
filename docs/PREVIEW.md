@@ -57,7 +57,7 @@ by itself. This is safe to repeat on every deploy.
 ## 5. Check it, then share
 
 - Open the site on your phone and computer, and try light and dark mode (the half-moon icon).
-- Book a technician, send a quote request and leave a testimonial, then watch them arrive under
+- Request a service, send a quote request and leave a testimonial, then watch them arrive under
   **Enquiries** and **Testimonials** in the dashboard.
 - Share `https://YOUR-PROJECT.vercel.app` for the website and `/admin` for the dashboard.
 

@@ -54,7 +54,7 @@ export default async function Services() {
               ))}
             </ul>
             {cat ? (
-              <Link href={`/book-service?category=${cat.slug}`} className="btn btn-outline mt-8">
+              <Link href={`/request-service?category=${cat.slug}`} className="btn btn-outline mt-8">
                 <Icon name="calendar" />
                 {c.f("lineButton", { line: cat.name.toLowerCase() })}
               </Link>

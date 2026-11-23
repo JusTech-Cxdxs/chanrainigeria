@@ -23,4 +23,4 @@ When a machine stops on site, every hour counts. These simple steps help our tec
 
 You receive a service record listing what was found, what was done and when the next service is due. Keep it with the machine's papers.
 
-Book a visit any time from the **Book a technician** page.
+Request a service any time from the **Request a service** page.

@@ -15,7 +15,7 @@ const KEY = "cn_enyo";
 const tel = (p: string) => `tel:${p.replace(/[^\d+]/g, "").replace(/^0/, "+234")}`;
 const wa = (p: string) => `https://wa.me/${p.replace(/\D/g, "").replace(/^0/, "234")}`;
 
-/** Turns site paths (/book-service) and emails in replies into links. */
+/** Turns site paths (/request-service) and emails in replies into links. */
 export function Enyo({
   name,
   greeting,
@@ -250,7 +250,7 @@ export function Enyo({
                 <p className="font-semibold">{contact.legalName}</p>
                 {contact.hours ? <p className="mt-1 text-ink-soft">{contact.hours}</p> : null}
               </div>
-              <Link href={L.bookLink || "/book-service"} className="btn btn-primary w-full">
+              <Link href={L.bookLink || "/request-service"} className="btn btn-primary w-full">
                 <Icon name="calendar" size={16} />
                 {L.bookButton}
               </Link>

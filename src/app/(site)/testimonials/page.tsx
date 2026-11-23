@@ -13,7 +13,12 @@ export default async function Testimonials() {
     <>
       <PageHead crumbs={[{ href: "/", label: nav.t("crumbHome") }, { label: c.t("crumb") }]} title={c.t("title")} lead={c.t("lead")} image={c.img("image")} />
       <div className="wrap grid grid-cols-1 gap-16 py-16">
-        {items.length ? <TestimonialGrid items={items} exampleLabel={c.t("exampleBadge")} /> : <p className="text-ink-soft">{c.t("empty")}</p>}
+        {items.length ? <TestimonialGrid items={items} exampleLabel={c.t("exampleBadge")} /> : (
+          <div className="rounded-2xl border border-line bg-surface p-8 sm:p-10">
+            <h2 className="heading text-2xl">{c.t("emptyTitle")}</h2>
+            <p className="mt-3 text-ink-soft measure">{c.t("empty")}</p>
+          </div>
+        )}
         <section id="share" className="grid scroll-mt-28 grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)]">
           <div>
             <h2 className="heading text-3xl">{c.t("shareTitle")}</h2>
