@@ -1,8 +1,12 @@
-# For building and testing from source (JusTech only).
-# Customers receive a prebuilt image instead: see deploy/docker-compose.yml and docs/DELIVERY.md.
-#   cp .env.example .env    and fill it in
+# Chanrai Nigeria website: the whole site on one server, built from this source code.
+# Needs Docker with the Compose plugin. Full steps: INSTALL.md.
+#
+#   cp .env.example .env      and fill it in
 #   docker compose up -d --build
-#   open http://localhost:3000/admin/setup
+#   open https://YOUR-DOMAIN/admin/setup
+#
+# Services: db (PostgreSQL), web (the site and dashboard), cron (daily reminder), backup (nightly),
+# and caddy (HTTPS on ports 80/443; on when COMPOSE_PROFILES=https is in .env).
 services:
   db:
     image: postgres:16-alpine
@@ -21,6 +25,7 @@ services:
 
   web:
     build: { context: ., target: runner }
+    image: chanrai-web:local
     restart: unless-stopped
     depends_on:
       db: { condition: service_healthy }
@@ -28,8 +33,61 @@ services:
     environment:
       DATABASE_URL: postgresql://chanrai:${POSTGRES_PASSWORD}@db:5432/chanrai
       DIRECT_URL: postgresql://chanrai:${POSTGRES_PASSWORD}@db:5432/chanrai
+      # The proxy below (or your own) passes the visitor's real address in this header.
+      TRUSTED_IP_HEADER: ${TRUSTED_IP_HEADER:-x-real-ip}
     ports:
-      - "${WEB_PORT:-3000}:3000"
+      # Only reachable from the server itself; visitors come in through the HTTPS proxy.
+      - "${WEB_BIND:-127.0.0.1}:${WEB_PORT:-3000}:3000"
+
+  # HTTPS for the domain(s) in SITE_DOMAINS. Gets and renews the certificate by itself.
+  # Leave COMPOSE_PROFILES empty in .env if the server already has its own proxy (Nginx, IIS, Apache).
+  caddy:
+    profiles: ["https"]
+    image: caddy:2-alpine
+    restart: unless-stopped
+    depends_on: [web]
+    environment:
+      SITE_DOMAINS: ${SITE_DOMAINS:-localhost}
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./deploy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+
+  # Daily overdue-enquiry reminder at 08:00 Lagos time (07:00 UTC).
+  cron:
+    image: alpine:3.20
+    restart: unless-stopped
+    depends_on: [web]
+    environment:
+      CRON_SECRET: ${CRON_SECRET:-}
+    command:
+      - sh
+      - -c
+      - |
+        echo "0 7 * * * wget -qO- --header='Authorization: Bearer $${CRON_SECRET}' http://web:3000/api/cron/overdue >/dev/null 2>&1" | crontab -
+        exec crond -f -l 8
+
+  # Nightly database backup at 02:30 Lagos time, kept 14 days in ./backups (includes uploaded pictures).
+  backup:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    depends_on:
+      db: { condition: service_healthy }
+    environment:
+      PGPASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - ./backups:/backups
+    entrypoint:
+      - sh
+      - -c
+      - |
+        echo "30 1 * * * PGPASSWORD='$${PGPASSWORD}' pg_dump -h db -U chanrai -Fc chanrai > /backups/chanrai-\$$(date +\\%F).dump && find /backups -name '*.dump' -mtime +14 -delete" | crontab -
+        exec crond -f -l 8
 
 volumes:
   db-data:
+  caddy-data:
+  caddy-config:

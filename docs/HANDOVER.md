@@ -10,7 +10,7 @@ collaborator only when maintenance is needed.
 | Domain `chanrainigeria.com` | Chanrai Nigeria | Already registered. Change only `A`/`CNAME` records, never `MX` |
 | Hosting (server or Vercel) | Chanrai Nigeria | |
 | Database (Docker volume, Supabase or Neon) | Chanrai Nigeria | Nightly backups, see RUNBOOK |
-| GitHub organisation + this repository | Chanrai Nigeria | Make the repository **private** |
+| Source code (the handover zip, or a private repository) | Chanrai Nigeria | Keep it private, as `LICENSE` requires |
 | Sending mailbox (SMTP) | Chanrai Nigeria IT | e.g. `website@chanrainigeria.com`; add SPF/DKIM for it |
 | AI key (Groq or other) | Chanrai Nigeria | Optional. The free tier is enough to start |
 | First dashboard administrator | Named staff member | Created at `/admin/setup` |

@@ -1,34 +1,51 @@
-PROPRIETARY SOFTWARE LICENCE
+SOFTWARE LICENCE (SOURCE CODE DELIVERY)
 
 Copyright (c) 2026 Just Technologies (JusTech). All rights reserved.
 
-This software, including the EJO 100 content management and dashboard platform it is built on, its
-source code, compiled code, designs, database structure and documentation (together, "the Software"),
-is the property of Just Technologies and is protected by copyright and other intellectual property laws.
+This software is the Chanrai Nigeria website and staff dashboard, including the EJO 100 content
+management and dashboard platform it is built on, its source code, compiled code, designs, database
+structure and documentation (together, "the Software"). The Software is the property of Just
+Technologies and is protected by copyright and other intellectual property laws. It is licensed, not
+sold.
 
-1. Licence. Just Technologies grants the customer named in the signed agreement ("the Customer") a
-   non-exclusive, non-transferable licence to install and use the Software to operate the Customer's
-   own website and staff dashboard, on servers the Customer controls or chooses, for as long as the
-   agreement is in force.
+1. Licence. Just Technologies grants Chanrai Nigeria Limited ("the Customer") a perpetual,
+   non-exclusive, non-transferable licence to:
+   (a) install and run the Software, on servers the Customer controls or chooses, to operate the
+       Customer's own website and staff dashboard;
+   (b) keep copies of the source code, including backups; and
+   (c) read, maintain and modify the source code, itself or through staff and contractors working
+       for the Customer, for the Customer's own website and dashboard only.
 
 2. The Customer's data. All content, pictures, product information, enquiries, customer details and
-   other data the Customer puts into the Software belong to the Customer. The Customer may export it at
-   any time and keeps it if the agreement ends.
+   other data the Customer puts into the Software belong to the Customer. The Customer may export
+   them at any time and keeps them in all cases.
 
 3. Restrictions. Except where the law allows it regardless of this licence, the Customer must not:
-   (a) copy, modify, adapt or create works based on the Software, other than through the dashboard as
-       intended;
-   (b) decompile, disassemble or reverse engineer the Software, or try to obtain its source code;
-   (c) sell, sublicense, rent, lend, publish or give the Software to anyone else, or use it to provide
-       a website, content management or similar service to any other organisation;
-   (d) remove or hide copyright notices, licence terms or the "Powered by" notice in the dashboard.
+   (a) sell, sublicense, rent, lend, publish or give the Software or its source code, in whole or in
+       part, changed or unchanged, to anyone else, other than to contractors bound to keep it
+       confidential and working only for the Customer;
+   (b) use the Software, or any part of it, to build or provide a website, content management or
+       similar product or service for any other organisation, including other companies in the
+       same group, without the written agreement of Just Technologies;
+   (c) remove copyright notices or this licence from the source code.
 
-4. Support and updates are provided under the agreement between Just Technologies and the Customer.
+4. Ownership. Just Technologies keeps all rights in the Software and in the EJO 100 platform, and
+   may reuse them for other customers. Changes the Customer makes belong to the Customer, but give
+   the Customer no rights in the Software beyond this licence.
 
-5. No warranty beyond the agreement. Except as stated in the agreement, the Software is provided as is,
-   and Just Technologies' liability is limited as set out there.
+5. Third-party material. Open-source components keep their own licences. Manufacturer names, logos,
+   pictures, brochures and films (LiuGong, BYD, SOPAN, Fornovo Gas and others) belong to their
+   owners. They are included for the Customer's use as a supplier of those brands, and the Customer
+   is responsible for having each manufacturer's permission to use them.
 
-6. This licence ends automatically if the Customer breaks it. On ending, the Customer must stop using
-   and delete the Software, keeping its own data.
+6. Support and updates are provided only under a separate agreement between Just Technologies and
+   the Customer. Just Technologies is not responsible for changes made to the Software by anyone
+   else.
+
+7. No warranty beyond the agreement. Except as stated in a signed agreement, the Software is
+   provided as is, and Just Technologies' liability is limited as set out there.
+
+8. Ending. This licence ends if the Customer seriously breaks clause 3 and does not put it right
+   within 30 days of written notice. The Customer then stops using the Software and keeps its data.
 
 Contact: Just Technologies, https://justech-dev.vercel.app

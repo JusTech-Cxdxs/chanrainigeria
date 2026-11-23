@@ -3,7 +3,8 @@
 The public website, enquiry desk and **Enyo** assistant for Chanrai Nigeria Limited (Kewalram Chanrai Group):
 CNG refueling, compression, storage & dispensing equipment, construction equipment and forklifts, with sales, on-site field service and parts.
 
-Built by JusTech. This repository is everything needed to run, change and host the site. There is no
+Built by Just Technologies (JusTech) and licensed to Chanrai Nigeria Limited under [`LICENSE`](LICENSE).
+**To install it on a server, follow [`INSTALL.md`](INSTALL.md).** This repository is everything needed to run, change and host the site. There is no
 external service it depends on except a PostgreSQL database, an SMTP mailbox and (optionally) an AI key.
 
 ---
@@ -56,7 +57,7 @@ notices. Have the company's Data Protection Officer review `/privacy` before lau
 ## Run it locally
 
 ```bash
-cp .env.example .env          # fill in DATABASE_URL and AUTH_SECRET at least
+cp .env.example .env          # uncomment and fill in DATABASE_URL and DIRECT_URL, and set AUTH_SECRET
 npm install
 npm run db:setup              # create tables + load the catalogue
 npm run dev                   # http://localhost:3000, then /admin/setup
@@ -74,11 +75,10 @@ any server. You only need it if the company hosts the site on its own machine (o
 
 **A. Their own server (VPS or cloud VM) with Docker.** This is the recommended route for full ownership.
 ```bash
-cp .env.example .env          # set POSTGRES_PASSWORD, AUTH_SECRET, SITE_URL, SMTP_*
-docker compose up -d --build   # first start also loads the catalogue
+cp .env.example .env          # set SITE_URL, SITE_DOMAINS, POSTGRES_PASSWORD, AUTH_SECRET, SETUP_TOKEN, CRON_SECRET
+docker compose up -d --build   # website, database, HTTPS, nightly backups and the daily reminder
 ```
-Put a reverse proxy (Caddy or Nginx) in front for HTTPS on `chanrainigeria.com`, and set `TRUSTED_IP_HEADER`
-to the header it sets (`x-real-ip` for Caddy/Nginx as configured in the runbook) so rate limits see real visitors.
+Step by step, including DNS and the mail server: [`INSTALL.md`](INSTALL.md).
 
 **B. Managed hosting**: Vercel (or any Node host) for the app, plus Supabase or Neon for PostgreSQL. Set the
 environment variables, run `npm run db:setup` once against the database, and point the domain's DNS at the host.
