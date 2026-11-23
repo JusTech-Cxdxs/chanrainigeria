@@ -3,7 +3,7 @@
     "slug": "construction-equipment",
     "name": "Construction Equipment",
     "tagline": "LiuGong earthmoving, roadbuilding and quarry machines, supported where they work",
-    "intro": "Excavators, wheel loaders, bulldozers, motor graders, backhoe loaders, rollers and wide-body trucks for Nigerian road, building, quarry, port and farm projects. Chanrai Nigeria supplies LiuGong equipment from its base in Isolo, Lagos, and sends its technicians to the machine, so most service work is done on the customer's own site.",
+    "intro": "Excavators, wheel loaders, bulldozers, motor graders, backhoe loaders, rollers and mining trucks for Nigerian road, building, quarry, port and farm projects. Chanrai Nigeria supplies LiuGong equipment from its base in Isolo, Lagos, and sends its technicians to the machine, so most service work is done on the customer's own site.",
     "salesBlurb": "Sales helps you match a machine to the job. We look at material, haul distances, the ground and your daily output, then quote a LiuGong model and configuration that fits, along with the attachments and support plan it needs.",
     "serviceBlurb": "Field technicians travel to your site with diagnostic tools and service kits. They carry out scheduled maintenance, fault-finding and repairs where the machine is working, so you are not paying to move it to a workshop.",
     "partsBlurb": "We stock genuine LiuGong OEM parts: filters, wear parts, undercarriage, ground-engaging tools and major components."
@@ -183,7 +183,7 @@
           "name": "922E",
           "brand": "liugong",
           "summary": "A 22-tonne general-purpose excavator, the most common size class on Nigerian road and building sites.",
-          "sizeClass": "Medium excavators (20 to 40 tonnes)",
+          "sizeClass": "Medium excavators (10 to 40 tonnes)",
           "highlights": [
             "22 t operating weight with a 1.0 m³ standard bucket",
             "Cummins 6BTA5.9 engine rated at 112 kW",
@@ -220,7 +220,7 @@
           "name": "936E",
           "brand": "liugong",
           "summary": "A 35-tonne production excavator for mass excavation, truck loading and quarry work.",
-          "sizeClass": "Medium excavators (20 to 40 tonnes)",
+          "sizeClass": "Medium excavators (10 to 40 tonnes)",
           "highlights": [
             "35 t operating weight with a 1.6 m³ standard bucket",
             "Cummins 6C-8.3 engine rated at 186 kW",
@@ -419,7 +419,7 @@
           "name": "ZL50CN",
           "brand": "liugong",
           "summary": "A proven 5-tonne-class loader with a 3.0 m³ bucket and a Cummins engine, built for quarries, aggregate yards and general construction.",
-          "sizeClass": "Medium wheel loaders (5 tonne rated load)",
+          "sizeClass": "Medium wheel loaders (3 to 7 tonnes)",
           "highlights": [
             "Cummins 6LT9.3 engine, 162 kW gross",
             "3.0 m³ standard bucket, 11 t full-turn tipping load",
@@ -456,7 +456,7 @@
           "name": "890T",
           "brand": "liugong",
           "summary": "A 31-tonne large loader from LiuGong's new T series, with a 5.4 m³ bucket for quarry face loading and mining support.",
-          "sizeClass": "Large wheel loaders (9.5 tonne rated load)",
+          "sizeClass": "Large wheel loaders (8 to 12 tonnes)",
           "highlights": [
             "Cummins X12 engine, 262 kW rated",
             "5.4 m³ standard bucket, 21.3 t full-turn tipping load",
@@ -574,7 +574,7 @@
           "name": "B230",
           "brand": "liugong",
           "summary": "A 24.5-tonne crawler dozer for land clearing, road formation and general earthmoving.",
-          "sizeClass": "Medium bulldozers (230 hp class)",
+          "sizeClass": "Medium bulldozers (160 to 300 hp)",
           "highlights": [
             "Chongqing Cummins NT855 engine, 179 kW gross",
             "7.8 m³ straight blade",
@@ -609,7 +609,7 @@
           "name": "LD36D",
           "brand": "liugong",
           "summary": "A 40-tonne heavy crawler dozer with a 10 m³ blade for mass earthmoving, quarry overburden and mine work.",
-          "sizeClass": "Large bulldozers (375 hp class)",
+          "sizeClass": "Large bulldozers (over 300 hp)",
           "highlights": [
             "40 t machine weight",
             "280 kW Chongqing Cummins (CCEC) engine",
@@ -718,7 +718,7 @@
           "name": "4215D",
           "brand": "liugong",
           "summary": "A 16.5-tonne grader with a 4.27 m blade, built for highway construction and heavier cutting.",
-          "sizeClass": "Motor graders (215 hp class)",
+          "sizeClass": "Medium motor graders (160 to 250 hp)",
           "highlights": [
             "Cummins 6LTAA9.3 engine, 162 kW",
             "4,270 mm moldboard",
@@ -829,7 +829,7 @@
           "name": "777A",
           "brand": "liugong",
           "summary": "An 8.4-tonne backhoe loader with a 1.0 m³ front bucket and a 4.4 m backhoe dig depth, for utility, municipal and small-site work.",
-          "sizeClass": "Backhoe loaders (8 tonne class)",
+          "sizeClass": "Side-shifting backhoe loaders",
           "highlights": [
             "Weichai engine, 70 kW gross",
             "1.0 m³ loader bucket and 0.2 m³ backhoe bucket",
@@ -968,8 +968,8 @@
     },
     {
       "slug": "mining-trucks",
-      "name": "Wide-Body Trucks",
-      "summary": "Wide-body off-highway dump trucks for hauling rock, ore and overburden in quarries and mines.",
+      "name": "Mining Trucks",
+      "summary": "Wide-body mining trucks for hauling rock, ore and overburden in quarries and mines.",
       "howItWorks": "An off-highway mining truck is a heavy hauler built for short, repeated trips between a loading face and a crusher, stockpile or waste dump. These routes are often steep and rough. Its frame, axles and suspension are far heavier than a road tipper's, and it is sized to be filled in a few passes by a large excavator or wheel loader.\n\nThe diesel engine drives through an **automatic or powershift transmission** with a torque converter, so the truck can climb loaded up ramps and start smoothly on grades. Power goes through a drive shaft to **rear drive axles**, which use heavy reduction gearing to turn high engine speed into strong wheel torque. A **6x4** layout, with three axles of which two are driven, spreads the load over more tyres.\n\nThe **body** is a thick steel box, usually with a sloped floor and no tailgate, so blasted rock slides out cleanly. Large **hoist cylinders** tip it. Spec sheets give two capacities: **struck** (level full) and **heaped** (with a natural mound on top). Along with **rated payload**, these tell you how many loader or excavator passes fill the truck.\n\nSlowing a loaded truck on a downhill ramp is as important as climbing it. Mining trucks use heavy-duty service brakes and often an engine or exhaust brake or a retarder to control speed without overheating the brakes.",
       "keyComponents": [
         { "name": "Dump body", "role": "Thick steel box that carries rock and ore and tips it out at the dump point." },
@@ -1041,7 +1041,7 @@
           "name": "DW90A",
           "brand": "liugong",
           "summary": "A 6x4 wide-body dump truck with a 60-tonne payload for quarry and mine haulage.",
-          "sizeClass": "Wide-body trucks (60 tonne payload)",
+          "sizeClass": "Wide-body trucks",
           "highlights": [
             "60,000 kg payload",
             "38 m³ heaped body",
