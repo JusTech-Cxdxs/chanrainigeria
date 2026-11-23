@@ -12,7 +12,7 @@
     "slug": "liugong",
     "name": "LiuGong",
     "website": "https://www.liugong.com",
-    "about": "LiuGong is a Chinese maker of construction machinery. It was founded in 1958 in Liuzhou, in Guangxi, where it still has its headquarters, and it is listed on the Shenzhen Stock Exchange. The company is best known for wheel loaders and now builds a full range: excavators, dozers, graders, rollers, skid steers, backhoe loaders and mining trucks, among others. In Africa it supports dealers through a Middle East and Africa regional organisation that also handles parts and training.",
+    "about": "LiuGong is a Chinese maker of construction machinery. It was founded in 1958 in Liuzhou, in Guangxi, where it still has its headquarters, and it is listed on the Shenzhen Stock Exchange. The company is best known for wheel loaders and now builds a full range: excavators, dozers, graders, rollers, backhoe loaders and mining trucks, among others. In Africa it supports dealers through a Middle East and Africa regional organisation that also handles parts and training.",
     "highlights": [
       "Founded in 1958 in Liuzhou, China; listed on the Shenzhen Stock Exchange (000528)",
       "One of the world's leading wheel loader manufacturers",
@@ -825,7 +825,6 @@
         { "key": "fuelTank", "label": "Fuel tank capacity", "unit": "L" }
       ],
       "faq": [
-        { "q": "Backhoe loader or mini excavator: which should I choose?", "a": "A backhoe loader can load as well as dig and can drive between sites, which suits varied municipal and utility work. A mini excavator digs more efficiently, rotates a full 360° and fits tighter spaces, but it needs a trailer between sites." },
         { "q": "Why use the stabilisers?", "a": "They take load off the tyres and form a firm base, so the machine does not bounce or slide while digging. That improves both safety and digging accuracy." },
         { "q": "Is 4WD necessary?", "a": "On paved or dry, firm ground 2WD is often enough. On wet, sandy or uneven sites, which are common in the rainy season, 4WD gives much better traction for loading." },
         { "q": "Can a backhoe loader run a hydraulic breaker?", "a": "Yes, if the backhoe has auxiliary hydraulic piping and the breaker is matched to the machine's flow and weight. It is a common setup for road repair and small demolition jobs." }

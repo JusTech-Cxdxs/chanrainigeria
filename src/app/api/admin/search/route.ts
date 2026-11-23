@@ -12,7 +12,7 @@ const PAGES: [string, string, string][] = [
   ["Overview", "/admin", "home dashboard summary overdue"],
   ["Notifications", "/admin/notifications", "notifications bell alerts sound mute"],
   ["Images", "/admin/images", "images pictures photos slider slides banners logos forklift excavator model upload"],
-  ["Enquiries", "/admin/enquiries", "enquiries tickets requests bookings quotes"],
+  ["Enquiries", "/admin/enquiries", "enquiries tickets service requests quotes"],
   ["Machines down", "/admin/enquiries?urgency=machine_down", "urgent machine down breakdown"],
   ["Enyo chats", "/admin/chats", "chat enyo conversations ai"],
   ["Testimonials", "/admin/testimonials", "testimonials reviews approve ratings"],

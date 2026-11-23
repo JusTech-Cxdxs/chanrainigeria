@@ -57,7 +57,7 @@ export default async function EditModel({ params, searchParams }: { params: Prom
       <form action={saveProduct.bind(null, id)} className="grid gap-6">
         <Section title="Basics" icon="forklift">
           <div className="grid items-start gap-4 sm:grid-cols-2">
-            <Field label="Model name" name="name" defaultValue={p?.name} required placeholder="e.g. 856H or ECB25" hint="As the manufacturer writes it, without the brand name." />
+            <Field label="Model name" name="name" defaultValue={p?.name} required placeholder="e.g. 936E or EL25 PRO" hint="As the manufacturer writes it, without the brand name." />
             <label className="field">
               <span>Brand</span>
               <select name="brandId" defaultValue={brandId} className="input">
@@ -68,7 +68,7 @@ export default async function EditModel({ params, searchParams }: { params: Prom
                   </option>
                 ))}
               </select>
-              <small>Shown before the model name, e.g. LiuGong 856H.</small>
+              <small>Shown before the model name, e.g. LiuGong 936E.</small>
             </label>
             <label className="field">
               <span>Machine type</span>

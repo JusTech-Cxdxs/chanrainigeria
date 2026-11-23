@@ -43,7 +43,7 @@ Optional (emails). Without these, enquiries are still saved in the dashboard but
    Vercel adds `DATABASE_URL` and the related variables automatically.
 4. Go to **Deployments**, open the latest one, and click **Redeploy**.
 
-During the build, the site creates its tables and loads the catalogue, services and example testimonials
+During the build, the site creates its tables and loads the catalogue and services
 by itself. This is safe to repeat on every deploy.
 
 ## 4. Create your account

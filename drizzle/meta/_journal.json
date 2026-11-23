@@ -155,6 +155,13 @@
       "when": 1795520000000,
       "tag": "0021_services_trim",
       "breakpoints": true
+    },
+    {
+      "idx": 22,
+      "version": "7",
+      "when": 1795530000000,
+      "tag": "0022_consistency_sweep",
+      "breakpoints": true
     }
   ]
 }
