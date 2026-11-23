@@ -127,6 +127,13 @@
       "when": 1795480000000,
       "tag": "0017_supplied_models_only",
       "breakpoints": true
+    },
+    {
+      "idx": 18,
+      "version": "7",
+      "when": 1795490000000,
+      "tag": "0018_brochure_size_groups",
+      "breakpoints": true
     }
   ]
 }
