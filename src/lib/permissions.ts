@@ -12,7 +12,7 @@ export const PERMISSIONS = [
   { key: "products", label: "Products", group: "Website", help: "Product lines, machine types, models, specifications and brochures." },
   { key: "brands", label: "Brands", group: "Website", help: "Manufacturer logos shown on the site and in emails." },
   { key: "services", label: "Services", group: "Website", help: "The services list." },
-  { key: "news", label: "News", group: "Website", help: "News posts and their categories." },
+  { key: "news", label: "Blog", group: "Website", help: "Blog posts and their categories." },
   { key: "locations", label: "Locations", group: "Website", help: "Offices, branches and depots." },
   { key: "media", label: "Media library", group: "Website", help: "Upload, organise, replace and remove images and files." },
   // Administration
@@ -44,7 +44,7 @@ export const SYSTEM_ROLES: { name: string; description: string; permissions: Per
   },
   {
     name: "Content editor",
-    description: "Keeps the website up to date: pages, products, news, pictures and testimonials.",
+    description: "Keeps the website up to date: pages, products, blog posts, pictures and testimonials.",
     permissions: ["testimonials", "pages", "products", "brands", "services", "news", "locations", "media", "assistant"],
     legacy: "EDITOR",
   },

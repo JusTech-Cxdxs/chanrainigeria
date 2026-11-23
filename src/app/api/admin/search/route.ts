@@ -21,7 +21,7 @@ const PAGES: [string, string, string][] = [
   ["Specifications to check", "/admin/catalogue?unverified=1", "specs verify check"],
   ["Manufacturers", "/admin/catalogue/brands", "brands manufacturers logos trusted"],
   ["Services", "/admin/services", "services"],
-  ["News", "/admin/news", "news posts stories"],
+  ["Blog", "/admin/news", "blog news posts stories"],
   ["Locations", "/admin/branches", "locations branches address offices"],
   ["Media library", "/admin/media", "media files uploads"],
   ["Settings", "/admin/settings", "settings company contact phone email colours logo desks enyo privacy"],
@@ -82,7 +82,7 @@ export async function GET(req: Request) {
     { label: "Enyo chats", hits: chats.map((c) => ({ title: c.content.slice(0, 80), href: `/admin/chats/${c.id}` })) },
     { label: "Testimonials", hits: tms.map((t) => ({ title: t.name, text: `${t.status === "PENDING" ? "Waiting for approval. " : ""}${t.quote}`, href: `/admin/testimonials?focus=${t.id}` })) },
     { label: "Products", hits: models.map((p) => ({ title: p.name, text: p.summary, href: `/admin/catalogue/models/${p.id}` })) },
-    { label: "News", hits: news.map((p) => ({ title: p.title, href: `/admin/news/${p.id}` })) },
+    { label: "Blog", hits: news.map((p) => ({ title: p.title, href: `/admin/news/${p.id}` })) },
     { label: "Team", hits: team.map((u) => ({ title: u.name, text: u.email, href: "/admin/team" })) },
     { label: "Dashboard pages", hits: PAGES.filter(([t, , w]) => t.toLowerCase().includes(lower) || w.includes(lower)).slice(0, 6).map(([title, href]) => ({ title, href })) },
   ].filter((g) => g.hits.length);

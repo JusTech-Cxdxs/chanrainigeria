@@ -52,7 +52,7 @@ export async function savePost(id: string, f: FormData) {
   if (!existing) {
     const [row] = await db.insert(schema.posts).values(vals).returning();
     postId = row.id;
-    await audit(user.id, "create", "post", `Wrote news post “${title}”`, row.id);
+    await audit(user.id, "create", "post", `Wrote blog post “${title}”`, row.id);
   } else {
     await snapshot("post", id, existing.title, "update", user.id);
     await db.update(schema.posts).set(vals).where(eq(schema.posts.id, id));
@@ -69,7 +69,7 @@ export async function deletePost(id: string) {
   if (p) {
     await snapshot("post", id, p.title, "delete", user.id);
     await db.delete(schema.posts).where(eq(schema.posts.id, id));
-    await audit(user.id, "delete", "post", `Deleted news post “${p.title}”`, id);
+    await audit(user.id, "delete", "post", `Deleted blog post “${p.title}”`, id);
   }
   revalidateTag("posts");
   revalidatePath("/", "layout");
