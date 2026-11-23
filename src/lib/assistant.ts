@@ -45,7 +45,7 @@ export const GUIDE: GuideEntry[] = [
       "Use Notes and history for internal notes the customer never sees.",
       "An enquiry is overdue when it is still open after the response target set in Company settings. Machines down are always flagged.",
     ],
-    keywords: "quote booking service parts callback reply assign status overdue customer request reference respond",
+    keywords: "quote service request parts callback reply assign status overdue customer request reference respond",
   },
   {
     href: "/admin/chats",
@@ -64,7 +64,6 @@ export const GUIDE: GuideEntry[] = [
       "Open Testimonials. Ones waiting for approval are at the top.",
       "Press Approve to publish one, or edit the wording first and Save.",
       "To add one you received another way, use Add a testimonial at the bottom.",
-      "Example testimonials carry an Example label on the site. Remove them once you have real ones.",
     ],
     keywords: "review approve reject quote rating customer feedback publish",
   },
