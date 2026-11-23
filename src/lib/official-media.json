@@ -56,36 +56,6 @@
     ]
    }
   },
-  "liugong-835h": {
-   "brand": "LiuGong",
-   "source": "https://mea.liugong.com/product/835h/",
-   "studio": [
-    {
-     "src": "/official/liugong/835h/studio.webp",
-     "w": 1156,
-     "h": 674
-    }
-   ],
-   "banner": "/official/liugong/835h/banner.jpg",
-   "gallery": [
-    "/official/liugong/835h/photo-1.jpg",
-    "/official/liugong/835h/photo-2.jpg",
-    "/official/liugong/835h/photo-3.jpg",
-    "/official/liugong/835h/photo-4.jpg",
-    "/official/liugong/835h/photo-5.jpg",
-    "/official/liugong/835h/photo-6.jpg",
-    "/official/liugong/835h/photo-7.jpg"
-   ],
-   "brochure": {
-    "href": "/official/brochures/liugong-835h.pdf",
-    "kb": 255,
-    "sheet": "/official/liugong/835h/sheet.jpg",
-    "sheetSize": [
-     1800,
-     2443
-    ]
-   }
-  },
   "liugong-b230": {
    "brand": "LiuGong",
    "source": "https://mea.liugong.com/product/b230/",
@@ -109,85 +79,6 @@
     "href": "/official/brochures/liugong-b230.pdf",
     "kb": 1081,
     "sheet": "/official/liugong/b230/sheet.jpg",
-    "sheetSize": [
-     1800,
-     2443
-    ]
-   }
-  },
-  "liugong-b230s": {
-   "brand": "LiuGong",
-   "source": "https://mea.liugong.com/product/b230s/",
-   "studio": [
-    {
-     "src": "/official/liugong/b230s/studio.webp",
-     "w": 948,
-     "h": 752
-    }
-   ],
-   "banner": "/official/liugong/b230s/banner.jpg",
-   "gallery": [
-    "/official/liugong/b230s/photo-1.jpg",
-    "/official/liugong/b230s/photo-2.jpg",
-    "/official/liugong/b230s/photo-3.jpg",
-    "/official/liugong/b230s/photo-4.jpg",
-    "/official/liugong/b230s/photo-5.jpg",
-    "/official/liugong/b230s/photo-6.jpg"
-   ],
-   "brochure": {
-    "href": "/official/brochures/liugong-b230s.pdf",
-    "kb": 2292,
-    "sheet": "/official/liugong/b230s/sheet.jpg",
-    "sheetSize": [
-     1800,
-     2443
-    ]
-   }
-  },
-  "liugong-b320": {
-   "brand": "LiuGong",
-   "source": "https://mea.liugong.com/product/b320/",
-   "studio": [
-    {
-     "src": "/official/liugong/b320/studio.webp",
-     "w": 894,
-     "h": 784
-    }
-   ],
-   "banner": "/official/liugong/b320/banner.jpg",
-   "gallery": [
-    "/official/liugong/b320/photo-1.jpg",
-    "/official/liugong/b320/photo-2.jpg",
-    "/official/liugong/b320/photo-3.jpg"
-   ],
-   "brochure": {
-    "href": "/official/brochures/liugong-b320.pdf",
-    "kb": 121,
-    "sheet": "/official/liugong/b320/sheet.jpg",
-    "sheetSize": [
-     1800,
-     2443
-    ]
-   }
-  },
-  "liugong-4180d": {
-   "brand": "LiuGong",
-   "source": "https://mea.liugong.com/product/4180d/",
-   "studio": [
-    {
-     "src": "/official/liugong/4180d/studio.webp",
-     "w": 1234,
-     "h": 672
-    }
-   ],
-   "banner": "/official/liugong/4180d/banner.jpg",
-   "gallery": [
-    "/official/liugong/4180d/photo-1.jpg"
-   ],
-   "brochure": {
-    "href": "/official/brochures/liugong-4180d.pdf",
-    "kb": 1454,
-    "sheet": "/official/liugong/4180d/sheet.jpg",
     "sheetSize": [
      1800,
      2443
@@ -220,84 +111,6 @@
     ]
    }
   },
-  "liugong-425": {
-   "brand": "LiuGong",
-   "source": "https://mea.liugong.com/product/425/",
-   "studio": [
-    {
-     "src": "/official/liugong/425/studio.webp",
-     "w": 1182,
-     "h": 632
-    }
-   ],
-   "banner": "/official/liugong/425/banner.jpg",
-   "gallery": [
-    "/official/liugong/425/photo-1.jpg",
-    "/official/liugong/425/photo-2.jpg"
-   ],
-   "brochure": {
-    "href": "/official/brochures/liugong-425.pdf",
-    "kb": 1818,
-    "sheet": "/official/liugong/425/sheet.jpg",
-    "sheetSize": [
-     1800,
-     2443
-    ]
-   }
-  },
-  "liugong-365a": {
-   "brand": "LiuGong",
-   "source": "https://mea.liugong.com/product/365a/",
-   "studio": [
-    {
-     "src": "/official/liugong/365a/studio.webp",
-     "w": 932,
-     "h": 752
-    }
-   ],
-   "banner": "/official/liugong/365a/banner.jpg",
-   "gallery": [
-    "/official/liugong/365a/photo-1.jpg",
-    "/official/liugong/365a/photo-2.jpg",
-    "/official/liugong/365a/photo-3.jpg"
-   ],
-   "brochure": {
-    "href": "/official/brochures/liugong-365a.pdf",
-    "kb": 1544,
-    "sheet": "/official/liugong/365a/sheet.jpg",
-    "sheetSize": [
-     1800,
-     2426
-    ]
-   }
-  },
-  "liugong-375a": {
-   "brand": "LiuGong",
-   "source": "https://mea.liugong.com/product/375a/",
-   "studio": [
-    {
-     "src": "/official/liugong/375a/studio.webp",
-     "w": 1182,
-     "h": 692
-    }
-   ],
-   "banner": "/official/liugong/375a/banner.jpg",
-   "gallery": [
-    "/official/liugong/375a/photo-1.jpg",
-    "/official/liugong/375a/photo-2.jpg",
-    "/official/liugong/375a/photo-3.jpg",
-    "/official/liugong/375a/photo-4.jpg"
-   ],
-   "brochure": {
-    "href": "/official/brochures/liugong-375a.pdf",
-    "kb": 1569,
-    "sheet": "/official/liugong/375a/sheet.jpg",
-    "sheetSize": [
-     1800,
-     2526
-    ]
-   }
-  },
   "liugong-777a": {
    "brand": "LiuGong",
    "source": "https://mea.liugong.com/product/777a/",
@@ -326,81 +139,9 @@
     ]
    }
   },
-  "liugong-6114e": {
-   "brand": "LiuGong",
-   "source": "https://mea.liugong.com/product/6114e/",
-   "studio": [
-    {
-     "src": "/official/liugong/6114e/studio.webp",
-     "w": 1058,
-     "h": 638
-    }
-   ],
-   "banner": "/official/liugong/6114e/banner.jpg",
-   "gallery": [
-    "/official/liugong/6114e/photo-1.jpg",
-    "/official/liugong/6114e/photo-2.jpg",
-    "/official/liugong/6114e/photo-3.jpg"
-   ],
-   "brochure": {
-    "href": "/official/brochures/liugong-6114e.pdf",
-    "kb": 985,
-    "sheet": "/official/liugong/6114e/sheet.jpg",
-    "sheetSize": [
-     1800,
-     2426
-    ]
-   }
-  },
-  "liugong-6120e": {
-   "brand": "LiuGong",
-   "source": "https://mea.liugong.com/product/6120e/",
-   "studio": [
-    {
-     "src": "/official/liugong/6120e/studio.webp",
-     "w": 1040,
-     "h": 706
-    }
-   ],
-   "banner": "/official/liugong/6120e/banner.jpg",
-   "gallery": [],
-   "brochure": {
-    "href": "/official/brochures/liugong-6120e.pdf",
-    "kb": 271,
-    "sheet": "/official/liugong/6120e/sheet.jpg",
-    "sheetSize": [
-     1800,
-     2426
-    ]
-   }
-  },
-  "liugong-6212e": {
-   "brand": "LiuGong",
-   "source": "https://mea.liugong.com/product/6212e/",
-   "studio": [
-    {
-     "src": "/official/liugong/6212e/studio.webp",
-     "w": 922,
-     "h": 748
-    }
-   ],
-   "banner": "/official/liugong/6212e/banner.jpg",
-   "gallery": [
-    "/official/liugong/6212e/photo-1.jpg"
-   ],
-   "brochure": {
-    "href": "/official/brochures/liugong-6212e.pdf",
-    "kb": 128,
-    "sheet": "/official/liugong/6212e/sheet.jpg",
-    "sheetSize": [
-     1800,
-     2443
-    ]
-   }
-  },
   "liugong-dw90a": {
    "brand": "LiuGong",
-   "source": "https://mea.liugong.com/product/dw90a/",
+   "source": "https://www.liugong.com/en/product/dw90a/",
    "studio": [
     {
      "src": "/official/liugong/dw90a/studio.webp",
@@ -417,7 +158,7 @@
    ],
    "brochure": {
     "href": "/official/brochures/liugong-dw90a.pdf",
-    "kb": 2410,
+    "kb": 1261,
     "sheet": "/official/liugong/dw90a/sheet.jpg",
     "sheetSize": [
      1800,
@@ -1078,6 +819,30 @@
      2443
     ]
    }
+  },
+  "liugong-ld36d": {
+   "brand": "LiuGong",
+   "source": "https://www.liugong.com/en/product/ld36d/",
+   "studio": [
+    {
+     "src": "/official/liugong/ld36d/studio.webp",
+     "w": 1150,
+     "h": 768
+    }
+   ],
+   "gallery": []
+  },
+  "liugong-6118e": {
+   "brand": "LiuGong",
+   "source": "https://www.liugong.com/en/product/6118e/",
+   "studio": [
+    {
+     "src": "/official/liugong/6118e/studio.webp",
+     "w": 1632,
+     "h": 1104
+    }
+   ],
+   "gallery": []
   }
  },
  "types": {

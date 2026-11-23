@@ -17,7 +17,6 @@ const BUNDLED = new Set([
   "wheel-loaders",
   "bulldozers",
   "motor-graders",
-  "skid-steer-loaders",
   "backhoe-loaders",
   "rollers",
   "mining-trucks",

@@ -55,9 +55,8 @@ O=lambda p:Image.open(P('official/'+p)).convert('RGB')
 TW,TH=1440,840
 T={
  'wheel-loaders':('lg','liugong/zl50cn/photo-1.jpg',.5,.75),
- 'bulldozers':('lg','liugong/b320/photo-3.jpg',.5,.6),
+ 'bulldozers':('lg','liugong/b230/photo-3.jpg',.5,.5),
  'backhoe-loaders':('lg','liugong/777a/photo-5.jpg',.5,.6),
- 'rollers':('lg','liugong/6114e/photo-3.jpg',.5,.6),
  'three-wheel-counterbalance-forklifts':('st','byd/ecb16/view-2.webp'),
  'four-wheel-counterbalance-forklifts':('st','byd/ecb20/view-2.webp'),
  'heavy-duty-counterbalance-forklifts':('st','byd/ecb70/view-4.webp'),

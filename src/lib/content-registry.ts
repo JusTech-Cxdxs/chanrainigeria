@@ -537,7 +537,7 @@ const forms: PageDef = {
         text("lineLabel", "Equipment line", "Equipment line"),
         text("linePlaceholder", "Before a line is chosen", "Choose one"),
         text("modelLabel", "Make and model", "Make and model"),
-        text("modelPlaceholder", "Example inside the box", "e.g. LiuGong 835H"),
+        text("modelPlaceholder", "Example inside the box", "e.g. LiuGong 922E"),
         text("serialLabel", "Serial number", "Serial number"),
         text("serialHelp", "Help under serial number", "On the data plate, usually near the operator's seat or on the frame."),
         text("photosLabel", "Photos", "Photos (optional)"),
