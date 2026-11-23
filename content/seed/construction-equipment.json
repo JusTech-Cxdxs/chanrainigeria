@@ -93,7 +93,7 @@
     {
       "slug": "excavators",
       "name": "Excavators",
-      "summary": "Tracked hydraulic excavators from 22 to 77 tonnes for digging, trenching, loading trucks, quarry and mining work.",
+      "summary": "Tracked hydraulic excavators from 22 to 81 tonnes for digging, trenching, loading trucks, quarry and mining work.",
       "howItWorks": "A crawler excavator has two main parts: a **lower undercarriage** of steel tracks driven by hydraulic travel motors, and an **upper structure** that turns a full 360° on a large slewing bearing. The upper structure carries the cab, the engine, the hydraulic pumps and the digging equipment.\n\nThe diesel engine does not drive the tracks or the bucket directly. It turns **variable-displacement hydraulic pumps**, which turn engine power into a flow of oil under pressure. A **main control valve** sends that oil to whichever function the operator selects: boom, arm (stick) and bucket cylinders, the swing motor or the travel motors. The joysticks are low-pressure **pilot controls**. They move spools in the main valve, so the operator can meter flow smoothly and run several functions together, such as swinging while raising the boom.\n\nDigging force comes from hydraulic pressure acting on cylinder area. The bucket cylinder curls the bucket into the material, and the arm cylinder pulls it towards the machine. Spec sheets quote both as separate ISO **bucket** and **arm digging forces**. Many machines have a short-term **power boost**, which raises relief pressure for hard digging. **Working modes** match engine speed and pump output to the task. A power mode suits heavy production, an economy mode suits general digging, and a fine mode gives slow, precise moves for lifting or trimming.\n\nThe **counterweight** at the rear balances the load in the bucket. **Track width and length** spread the machine's weight, so an excavator can work on soft or uneven ground where a wheeled machine would sink.",
       "keyComponents": [
         { "name": "Boom", "role": "The main lifting arm, pinned to the upper structure and raised and lowered by one or two hydraulic cylinders." },
@@ -194,7 +194,7 @@
             "operatingWeight": 22000,
             "enginePower": 112,
             "engineModel": "Cummins 6BTA5.9-C",
-            "emissions": "Tier 2 / Stage II",
+            "emissions": "Stage II",
             "bucketCapacity": 1.0,
             "maxDigDepth": 6562,
             "maxReach": 9870,
@@ -219,18 +219,18 @@
           "slug": "liugong-936e",
           "name": "936E",
           "brand": "liugong",
-          "summary": "A 35-tonne production excavator for mass excavation, truck loading and quarry work.",
+          "summary": "A 35 to 37-tonne production excavator for mass excavation, truck loading and quarry work.",
           "sizeClass": "Medium excavators (10 to 40 tonnes)",
           "highlights": [
-            "35 t operating weight with a 1.6 m³ standard bucket",
-            "Cummins 6C-8.3 engine rated at 186 kW",
+            "35 to 37 t operating weight with a 1.6 m³ standard bucket",
+            "Cummins engine rated at 241 kW (323 hp)",
             "252 kN bucket digging force",
             "Over 11 m digging reach"
           ],
           "specs": {
-            "operatingWeight": 35000,
-            "enginePower": 186,
-            "engineModel": "Cummins 6C-8.3",
+            "operatingWeight": "35,000 to 37,000",
+            "enginePower": 241,
+            "engineModel": "Cummins",
             "emissions": "Tier 2 / Stage II",
             "bucketCapacity": 1.6,
             "maxDigDepth": 7340,
@@ -258,16 +258,16 @@
           "summary": "A 50-tonne heavy-duty excavator with a reinforced undercarriage and a 3.2 m³ bucket, built for quarry and mining work.",
           "sizeClass": "Large excavators (over 40 tonnes)",
           "highlights": [
-            "49.5 t operating weight with a 3.2 m³ standard bucket",
-            "Cummins QSM11 engine rated at 280 kW",
+            "49.5 to 51 t operating weight with a 3.2 m³ standard bucket",
+            "Cummins QSM11 engine rated at 280 kW (375 hp)",
             "290 kN bucket digging force",
             "Heavy-duty undercarriage with full track guards"
           ],
           "specs": {
-            "operatingWeight": 49500,
+            "operatingWeight": "49,500 to 51,000",
             "enginePower": 280,
             "engineModel": "Cummins QSM11",
-            "emissions": "Tier 3 / Stage IIIA",
+            "emissions": "Stage III",
             "bucketCapacity": 3.2,
             "maxDigDepth": 6521,
             "maxReach": 10625,
@@ -292,19 +292,19 @@
           "slug": "liugong-975f",
           "name": "975F",
           "brand": "liugong",
-          "summary": "A 75-tonne mining-class excavator with a 5.0 m³ bucket for large-scale earthmoving, quarry faces and mine loading.",
+          "summary": "An 81-tonne mining-class excavator with a 5.0 m³ bucket for large-scale earthmoving, quarry faces and mine loading.",
           "sizeClass": "Large excavators (over 40 tonnes)",
           "highlights": [
-            "75 to 77 t operating weight with a 5.0 m³ standard bucket",
-            "Cummins X15 engine, 391 kW",
+            "81 t operating weight with a 5.0 m³ standard bucket",
+            "Cummins engine rated at 563 kW (755 hp)",
             "438 kN bucket digging force",
             "Reinforced frame and work equipment for mining duty"
           ],
           "specs": {
-            "operatingWeight": 75000,
-            "enginePower": 391,
-            "engineModel": "Cummins X15",
-            "emissions": "EU Stage V",
+            "operatingWeight": 81000,
+            "enginePower": 563,
+            "engineModel": "Cummins",
+            "emissions": "Stage III / Stage V",
             "bucketCapacity": 5.0,
             "maxDigDepth": 7680,
             "maxReach": 12160,
@@ -389,11 +389,13 @@
       ],
       "specFields": [
         { "key": "operatingWeight", "label": "Operating weight", "unit": "kg" },
-        { "key": "enginePower", "label": "Gross engine power", "unit": "kW" },
+        { "key": "enginePower", "label": "Rated engine power", "unit": "kW" },
         { "key": "netPower", "label": "Net engine power", "unit": "kW" },
         { "key": "engineModel", "label": "Engine model", "unit": "" },
         { "key": "emissions", "label": "Emission standard", "unit": "" },
+        { "key": "ratedPayload", "label": "Rated payload", "unit": "t" },
         { "key": "bucketCapacity", "label": "Standard bucket capacity", "unit": "m³" },
+        { "key": "bucketRange", "label": "Bucket capacity range", "unit": "m³" },
         { "key": "tippingLoadFullTurn", "label": "Tipping load, full turn (ISO 14397-1)", "unit": "kg" },
         { "key": "breakoutForce", "label": "Bucket breakout force", "unit": "kN" },
         { "key": "dumpClearance", "label": "Dump clearance at full height", "unit": "mm" },
@@ -418,11 +420,11 @@
           "slug": "liugong-zl50cn",
           "name": "ZL50CN",
           "brand": "liugong",
-          "summary": "A proven 5-tonne-class loader with a 3.0 m³ bucket and a Cummins engine, built for quarries, aggregate yards and general construction.",
+          "summary": "A proven loader with a 5.3-tonne rated payload and a Cummins engine, built for quarries, aggregate yards and general construction.",
           "sizeClass": "Medium wheel loaders (3 to 7 tonnes)",
           "highlights": [
-            "Cummins 6LT9.3 engine, 162 kW gross",
-            "3.0 m³ standard bucket, 11 t full-turn tipping load",
+            "Cummins 6LT9.3 engine, 162 kW (217 hp) rated",
+            "5.3 t rated payload, with buckets from 2.7 to 5.0 m³",
             "167 kN breakout force",
             "Simple planetary powershift transmission that is easy to maintain"
           ],
@@ -443,7 +445,9 @@
             "maxTravelSpeedForward": 37,
             "articulationAngle": 35,
             "tyres": "23.5-25",
-            "fuelTank": 300
+            "fuelTank": 300,
+            "ratedPayload": 5.3,
+            "bucketRange": "2.7 to 5.0"
           },
           "specsVerified": true,
           "sources": [
@@ -455,11 +459,11 @@
           "slug": "liugong-890t",
           "name": "890T",
           "brand": "liugong",
-          "summary": "A 31-tonne large loader from LiuGong's new T series, with a 5.4 m³ bucket for quarry face loading and mining support.",
+          "summary": "A large loader from LiuGong's new T series with a 9.5-tonne rated payload, for quarry face loading and mining support.",
           "sizeClass": "Large wheel loaders (8 to 12 tonnes)",
           "highlights": [
-            "Cummins X12 engine, 262 kW rated",
-            "5.4 m³ standard bucket, 21.3 t full-turn tipping load",
+            "Cummins X12 engine, 262 kW (351 hp) rated",
+            "9.5 t rated payload, with buckets from 4.0 to 9.0 m³",
             "270 kN breakout force",
             "Wet disc brakes and a front differential lock for heavy duty"
           ],
@@ -479,7 +483,9 @@
             "maxTravelSpeedForward": 37,
             "articulationAngle": 38,
             "tyres": "29.5-25",
-            "fuelTank": 608
+            "fuelTank": 608,
+            "ratedPayload": 9.5,
+            "bucketRange": "4.0 to 9.0"
           },
           "specsVerified": true,
           "sources": [
@@ -576,22 +582,22 @@
           "summary": "A 24.5-tonne crawler dozer for land clearing, road formation and general earthmoving.",
           "sizeClass": "Medium bulldozers (160 to 300 hp)",
           "highlights": [
-            "Chongqing Cummins NT855 engine, 179 kW gross",
-            "7.8 m³ straight blade",
+            "Chongqing Cummins NT855 engine, 179 kW (240 hp) gross",
+            "5.2 m³ straight blade as standard",
             "76 kPa ground pressure",
             "Choice of straight, semi-U and full-U blades, plus single- or three-shank rippers"
           ],
           "specs": {
-            "operatingWeight": 24500,
+            "operatingWeight": 24540,
             "enginePower": 179,
             "netPower": 169,
             "engineModel": "Chongqing Cummins NT855C280S10",
             "emissions": "Stage I",
-            "bladeCapacity": 7.8,
+            "bladeCapacity": 5.2,
             "bladeWidth": 3725,
             "bladeHeight": 1395,
             "bladeOptions": "Straight, semi-U, full-U, wetland/landfill",
-            "ripperOptions": "Single-shank or triple-shank",
+            "ripperOptions": "Single-shank or three-shank",
             "groundPressure": 76,
             "trackShoeWidth": 560,
             "maxTravelSpeedForward": 12,
@@ -609,21 +615,21 @@
           "name": "LD36D",
           "brand": "liugong",
           "summary": "A 40-tonne heavy crawler dozer with a 10 m³ blade for mass earthmoving, quarry overburden and mine work.",
-          "sizeClass": "Large bulldozers (over 300 hp)",
+          "sizeClass": "Large bulldozers (300 hp and above)",
           "highlights": [
-            "40 t machine weight",
-            "280 kW Chongqing Cummins (CCEC) engine",
-            "10 m³ semi-U blade with a single-shank ripper",
+            "40 t operating weight with ripper",
+            "280 kW (375 hp) Chongqing Cummins (CCEC) engine",
+            "10 m³ semi-U blade with a single-shank or three-shank ripper",
             "Seven rollers a side on a heavy-duty undercarriage"
           ],
           "specs": {
-            "operatingWeight": 40000,
+            "operatingWeight": "40,000 (with ripper)",
             "enginePower": 280,
             "engineModel": "Chongqing Cummins (CCEC), 14 L",
             "emissions": "Tier 2",
             "bladeCapacity": 10,
             "bladeOptions": "Semi-U",
-            "ripperOptions": "Single-shank",
+            "ripperOptions": "Single-shank or three-shank",
             "groundPressure": 85.2,
             "trackShoeWidth": 560,
             "maxTravelSpeedForward": 11,
@@ -698,7 +704,7 @@
         { "key": "emissions", "label": "Emission standard", "unit": "" },
         { "key": "bladeWidth", "label": "Moldboard width", "unit": "mm" },
         { "key": "bladeHeight", "label": "Moldboard height", "unit": "mm" },
-        { "key": "bladePull", "label": "Blade pull", "unit": "kN" },
+        { "key": "bladePull", "label": "Drawbar pull", "unit": "kN" },
         { "key": "transmission", "label": "Transmission", "unit": "" },
         { "key": "maxTravelSpeedForward", "label": "Max. travel speed, forward", "unit": "km/h" },
         { "key": "tyres", "label": "Tyre size", "unit": "" },
@@ -717,22 +723,22 @@
           "slug": "liugong-4215d",
           "name": "4215D",
           "brand": "liugong",
-          "summary": "A 16.5-tonne grader with a 4.27 m blade, built for highway construction and heavier cutting.",
+          "summary": "A 17.2-tonne grader with a 4.27 m blade, built for highway construction and heavier cutting.",
           "sizeClass": "Medium motor graders (160 to 250 hp)",
           "highlights": [
-            "Cummins 6LTAA9.3 engine, 162 kW",
+            "Cummins 6LTAA9.3 engine, 162 kW (217 hp)",
             "4,270 mm moldboard",
             "Wet axle with a no-spin differential",
             "Top forward speed of 42 km/h"
           ],
           "specs": {
-            "operatingWeight": 16500,
+            "operatingWeight": 17200,
             "enginePower": 162,
             "engineModel": "Cummins 6LTAA9.3",
             "emissions": "Tier 2 / Stage II",
             "bladeWidth": 4270,
             "bladeHeight": 645,
-            "bladePull": 85,
+            "bladePull": "88 or more",
             "transmission": "Powershift, 6F/3R",
             "maxTravelSpeedForward": 42,
             "tyres": "17.5-25",
@@ -803,13 +809,14 @@
       ],
       "specFields": [
         { "key": "operatingWeight", "label": "Operating weight", "unit": "kg" },
-        { "key": "enginePower", "label": "Gross engine power", "unit": "kW" },
+        { "key": "enginePower", "label": "Rated engine power", "unit": "kW" },
         { "key": "engineModel", "label": "Engine model", "unit": "" },
         { "key": "emissions", "label": "Emission standard", "unit": "" },
         { "key": "loaderBucketCapacity", "label": "Loader bucket capacity", "unit": "m³" },
         { "key": "loaderBreakoutForce", "label": "Loader bucket breakout force", "unit": "kN" },
         { "key": "backhoeBucketCapacity", "label": "Backhoe bucket capacity", "unit": "m³" },
         { "key": "maxDigDepth", "label": "Backhoe max. digging depth", "unit": "mm" },
+        { "key": "loaderDumpHeight", "label": "Loader max. dump height", "unit": "mm" },
         { "key": "backhoeBucketDiggingForce", "label": "Backhoe bucket digging force", "unit": "kN" },
         { "key": "dipperDiggingForce", "label": "Dipper digging force", "unit": "kN" },
         { "key": "transmission", "label": "Transmission", "unit": "" },
@@ -831,7 +838,7 @@
           "summary": "An 8.4-tonne backhoe loader with a 1.0 m³ front bucket and a 4.4 m backhoe dig depth, for utility, municipal and small-site work.",
           "sizeClass": "Side-shifting backhoe loaders",
           "highlights": [
-            "Weichai engine, 70 kW gross",
+            "Weichai engine, 70 kW (94 hp)",
             "1.0 m³ loader bucket and 0.2 m³ backhoe bucket",
             "Carraro transmission and axles; 4x4 optional",
             "Top travel speed of 36 km/h for driving between sites"
@@ -840,7 +847,7 @@
             "operatingWeight": 8400,
             "enginePower": 70,
             "engineModel": "Weichai WP4G95E221",
-            "emissions": "Tier 2 / Stage II",
+            "emissions": "Stage II",
             "loaderBucketCapacity": 1.0,
             "loaderBreakoutForce": 59.3,
             "backhoeBucketCapacity": 0.2,
@@ -850,7 +857,8 @@
             "transmission": "Carraro, 4F/4R",
             "driveOptions": "4x2 standard; 4x4 optional",
             "maxTravelSpeed": 36,
-            "fuelTank": 130
+            "fuelTank": 130,
+            "loaderDumpHeight": 2691
           },
           "specsVerified": true,
           "sources": [
@@ -940,7 +948,7 @@
           "name": "6118E",
           "brand": "liugong",
           "summary": "A 19-tonne single-drum vibratory roller for compacting soil, fill and sub-base on road and earthwork projects.",
-          "sizeClass": "Single-drum soil compactors (19 tonne class)",
+          "sizeClass": "Mechanical single drum vibratory rollers",
           "highlights": [
             "19 t operating weight, 9.5 t on the drum",
             "Up to 360 kN centrifugal force",
@@ -1017,6 +1025,7 @@
       ],
       "specFields": [
         { "key": "ratedPayload", "label": "Rated payload", "unit": "kg" },
+        { "key": "bodyCapacity", "label": "Body capacity", "unit": "m³" },
         { "key": "heapedCapacity", "label": "Heaped body capacity", "unit": "m³" },
         { "key": "struckCapacity", "label": "Struck body capacity", "unit": "m³" },
         { "key": "enginePower", "label": "Rated engine power", "unit": "kW" },
@@ -1025,7 +1034,7 @@
         { "key": "transmission", "label": "Transmission model", "unit": "" },
         { "key": "maxTravelSpeed", "label": "Max. travel speed", "unit": "km/h" },
         { "key": "emptyWeight", "label": "Truck (empty) weight", "unit": "kg" },
-        { "key": "maxOperatingWeight", "label": "Max. operating weight", "unit": "kg" },
+        { "key": "maxOperatingWeight", "label": "Gross machine weight", "unit": "kg" },
         { "key": "driveConfiguration", "label": "Drive configuration", "unit": "" },
         { "key": "tyres", "label": "Tyre size", "unit": "" }
       ],
@@ -1044,14 +1053,12 @@
           "sizeClass": "Wide-body trucks",
           "highlights": [
             "60,000 kg payload",
-            "38 m³ heaped body",
-            "Yuchai YC6K480 engine, 353 kW (480 hp)",
+            "30 to 38 m³ body",
+            "Yuchai YC6K480 engine, 353 kW (473 hp)",
             "7-speed manual gearbox, top speed of 36 km/h"
           ],
           "specs": {
             "ratedPayload": 60000,
-            "heapedCapacity": 38,
-            "struckCapacity": 32,
             "enginePower": 353,
             "engineModel": "Yuchai YC6K480",
             "emissions": "Tier 3 / Stage III",
@@ -1060,7 +1067,8 @@
             "emptyWeight": 31000,
             "maxOperatingWeight": 91000,
             "driveConfiguration": "6x4",
-            "tyres": "14.00R25"
+            "tyres": "14.00R25",
+            "bodyCapacity": "30 to 38"
           },
           "specsVerified": true,
           "sources": [

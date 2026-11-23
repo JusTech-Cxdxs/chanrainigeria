@@ -134,6 +134,13 @@
       "when": 1795490000000,
       "tag": "0018_brochure_size_groups",
       "breakpoints": true
+    },
+    {
+      "idx": 19,
+      "version": "7",
+      "when": 1795500000000,
+      "tag": "0019_catalogue_figures",
+      "breakpoints": true
     }
   ]
 }
