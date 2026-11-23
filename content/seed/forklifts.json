@@ -53,7 +53,7 @@
         "Hour-based service visits tailored to each truck's duty cycle",
         "Lubrication, oil and filter changes as specified",
         "Brake, steering, mast and fork safety inspections",
-        "Service history records for every truck in your fleet",
+        "Service history records for every truck you run",
         "Advance notice of parts likely to need replacement"
       ]
     },
@@ -72,13 +72,13 @@
     {
       "slug": "genuine-parts",
       "name": "Genuine Parts Supply",
-      "summary": "Supply of BYD replacement parts and consumables for counterbalance forklifts and warehouse equipment, identified by model and serial number to get the correct part first time.",
+      "summary": "We stock genuine BYD OEM parts and consumables for counterbalance forklifts and warehouse equipment.",
       "includes": [
-        "Parts identification from model and serial number",
+        "OEM and genuine parts held in stock",
         "Wear parts: tyres, wheels, forks, chains, filters, brake parts",
         "Electrical items: switches, sensors, contactors, charger plugs",
         "Hydraulic seals, hoses and fittings",
-        "Recommended stock lists for fleets that need parts on hand"
+        "Recommended stock lists for sites that need parts on hand"
       ]
     },
     {
@@ -95,14 +95,14 @@
     },
     {
       "slug": "fleet-assessment",
-      "name": "Fleet & Site Assessment",
+      "name": "Site Assessment",
       "summary": "A review of your loads, racking, aisles, floors, shifts and power supply to recommend the right mix, size and number of electric trucks and chargers.",
       "includes": [
         "Load weight, pallet size and load-centre survey",
         "Lift height, aisle width and floor/ramp assessment",
         "Shift pattern and duty-cycle analysis",
         "Charger location and power-supply review (grid and generator)",
-        "Comparison against existing diesel, LPG or lead-acid fleet"
+        "Comparison against existing diesel, LPG or lead-acid trucks"
       ]
     }
   ],

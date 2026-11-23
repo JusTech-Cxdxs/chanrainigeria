@@ -11,6 +11,7 @@ import { getSettings } from "@/lib/settings";
 
 const DETAIL: Record<string, string> = {
   category: "Equipment line",
+  equipment: "Equipment",
   machine: "Machine",
   serialNumber: "Serial number",
   hourMeter: "Hour meter",

@@ -344,6 +344,7 @@ export type EnquiryForMail = {
 
 const detailLabels: Record<string, string> = {
   category: "Equipment line",
+  equipment: "Equipment",
   machine: "Machine",
   serialNumber: "Serial number",
   hourMeter: "Hour meter",

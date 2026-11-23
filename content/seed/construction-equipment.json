@@ -49,19 +49,19 @@
         "Filter, fluid and lubrication services carried out on site",
         "Inspection checklists covering undercarriage, ground-engaging tools, hoses, structures and safety devices",
         "Optional oil sampling to watch engine, hydraulic and transmission wear",
-        "Fleet service records and reminders for upcoming intervals"
+        "Service records and reminders for upcoming intervals"
       ]
     },
     {
       "slug": "genuine-parts-supply",
       "name": "Genuine Parts Supply",
-      "summary": "We supply genuine LiuGong parts identified from your machine's model and serial number, from routine filter kits to major components.",
+      "summary": "We stock genuine LiuGong OEM parts, from routine filter kits to major components.",
       "includes": [
         "Service kits (filters, seals and gaskets) for scheduled maintenance",
         "Wear parts: bucket teeth, adapters, cutting edges, end bits and grader blades",
         "Undercarriage: track chains, shoes, rollers, idlers and sprockets",
         "Hydraulic, electrical and powertrain components",
-        "Parts lookup by part number, model or serial number"
+        "OEM and genuine parts held in stock"
       ]
     },
     {
