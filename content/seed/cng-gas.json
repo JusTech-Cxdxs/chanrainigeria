@@ -96,35 +96,6 @@
       "sources": []
     },
     {
-      "slug": "srv-testing",
-      "name": "Safety Relief Valve (SRV) Testing",
-      "summary": "Bench testing of safety relief valves on compressors, storage and pipework to confirm they lift at their set pressure and reseat cleanly.",
-      "includes": [
-        "Set-pressure verification and seat-tightness check",
-        "Reporting of results and identification of valves needing service or replacement",
-        "Scheduling within a wider asset-integrity plan"
-      ],
-      "sources": [
-        "https://sopan.co.in"
-      ]
-    },
-    {
-      "slug": "equipment-leasing",
-      "name": "Equipment Leasing (Wet Lease)",
-      "summary": "Lease compressors, boosters, dispensers and cascades with trained operators and maintenance included, so you can open a station without buying all the capital equipment.",
-      "includes": [
-        "Natural gas compressors and hydraulic booster compressors",
-        "CNG dispensers",
-        "Mobile and stationary cascade storage",
-        "Operating personnel, routine maintenance and technical support",
-        "Lease terms and service packages matched to the project timeline"
-      ],
-      "sources": [
-        "https://sptlglobal.com/equipment-leasing/",
-        "https://sptlglobal.com/city-gas-distribution/"
-      ]
-    },
-    {
       "slug": "remote-monitoring",
       "name": "Remote Monitoring & Service Ticketing",
       "summary": "Connected monitoring of compressor and station data, with a digital ticketing channel for raising and tracking service requests.",
@@ -911,10 +882,6 @@
         {
           "q": "How much gas does a cascade hold?",
           "a": "It depends on water volume, working pressure and how far it can be emptied. Ask us to calculate usable gas for your booster and delivery pattern."
-        },
-        {
-          "q": "Can cascades be leased?",
-          "a": "Yes. Mobile and stationary cascades are available on wet lease. Contact us to discuss options in Nigeria."
         },
         {
           "q": "How often must cylinders be retested?",
