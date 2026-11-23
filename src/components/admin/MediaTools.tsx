@@ -94,7 +94,7 @@ export function MediaUploader({ folders, folder }: { folders: string[]; folder: 
         </label>
         <label className="field content-start">
           <span>Description (alt text)</span>
-          <input value={alt} onChange={(e) => setAlt(e.target.value)} className="input" placeholder="e.g. LiuGong 835H loader on a quarry site" maxLength={200} />
+          <input value={alt} onChange={(e) => setAlt(e.target.value)} className="input" placeholder="e.g. LiuGong 922E loader on a quarry site" maxLength={200} />
           <small>Read aloud to blind visitors and shown if the picture can&apos;t load. You can change it per file later.</small>
         </label>
       </div>
