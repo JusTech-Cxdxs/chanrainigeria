@@ -6,6 +6,7 @@ import { Icon } from "@/components/ui/Icon";
 import { NG_STATES } from "@/lib/ng-states";
 import { fill, withNode, type Labels } from "./fill";
 import { SearchableSelect, type SelectOption } from "./SearchableSelect";
+import { shortLineName, shortTypeName, TYPE_PREFIX } from "@/lib/type-labels";
 
 type ProductOption = { slug: string; name: string; brand: string | null; family: string; category: string; categorySlug: string };
 type CategoryOption = { slug: string; name: string };
@@ -25,6 +26,7 @@ export function EnquiryForm({
   mode,
   labels: L,
   products = [],
+  types = [],
   categories = [],
   defaults = {},
 }: {
@@ -32,6 +34,8 @@ export function EnquiryForm({
   /** The "forms" page text, filled (see siteContent().labels()) */
   labels: Labels;
   products?: ProductOption[];
+  /** Every equipment type, in site order, for the quote list */
+  types?: { slug: string; name: string; line: string; lineSlug: string }[];
   categories?: CategoryOption[];
   /** Presets from the address bar, e.g. /contact?type=QUOTE&product=x. Nothing is chosen otherwise. */
   defaults?: { type?: string; product?: string; category?: string; machine?: string };
@@ -89,11 +93,13 @@ export function EnquiryForm({
     );
   }
 
-  const productOptions: SelectOption[] = products.map((p) => ({
-    value: p.slug,
-    label: [p.brand, p.name].filter(Boolean).join(" "),
-    group: `${p.category}: ${p.family}`,
-  }));
+  // The quote list shows equipment types in plain words, grouped by line, instead of every model.
+  // A model reached from its own page ("Ask for a quote") stays on top as the chosen one.
+  const chosen = products.find((p) => p.slug === val("product", defaults.product ?? ""));
+  const productOptions: SelectOption[] = [
+    ...(chosen ? [{ value: chosen.slug, label: [chosen.brand, chosen.name].filter(Boolean).join(" "), group: L.productChosenGroup }] : []),
+    ...types.map((t) => ({ value: `${TYPE_PREFIX}${t.slug}`, label: shortTypeName(t.slug, t.name), group: shortLineName(t.lineSlug, t.line) })),
+  ];
   const lineOptions: SelectOption[] = categories.map((c) => ({ value: c.slug, label: c.name }));
   const stateOptions: SelectOption[] = NG_STATES.map((s) => ({ value: s, label: s }));
   const pick = { searchPlaceholder: L.searchPlaceholder, noMatches: L.noMatches, clearLabel: L.clearLabel };
@@ -189,11 +195,13 @@ export function EnquiryForm({
               <span>{L.modelLabel}</span>
               <input name="machine" defaultValue={val("machine", defaults.machine)} className="input" placeholder={L.modelPlaceholder} />
             </label>
-            <label className="field">
-              <span>{L.serialLabel}</span>
-              <input name="serialNumber" defaultValue={val("serialNumber")} className="input" autoComplete="off" />
-              <small>{L.serialHelp}</small>
-            </label>
+            {mode === "service" ? (
+              <label className="field">
+                <span>{L.serialLabel}</span>
+                <input name="serialNumber" defaultValue={val("serialNumber")} className="input" autoComplete="off" />
+                <small>{L.serialHelp}</small>
+              </label>
+            ) : null}
             {mode === "service" ? (
               <label className="field">
                 <span>{L.hoursLabel}</span>

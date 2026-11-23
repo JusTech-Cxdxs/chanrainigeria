@@ -3,7 +3,7 @@
     "slug": "cng-gas-equipment",
     "name": "CNG Refueling, Compression, Storage & Dispensing Equipment",
     "tagline": "Compressors, dispensers and gas skids for Nigeria's CNG stations and gas users",
-    "intro": "Chanrai Nigeria supplies the station-side equipment that turns pipeline or trucked natural gas into vehicle fuel and dependable industrial supply: online and booster compressors, CNG dispensers and gas utility skids. We back it with installation, commissioning and on-site operation and maintenance so stations stay available. The range is aimed at developers, fleet operators and industrial users taking part in Nigeria's shift to compressed natural gas.",
+    "intro": "Chanrai Nigeria supplies the station-side equipment that turns pipeline or trucked natural gas into vehicle fuel and dependable industrial supply: online and booster compressors, CNG dispensers and gas utility skids. We back it with installation, commissioning and on-site operation and maintenance so stations stay available. The range is aimed at CNG retailers and gas distribution companies taking part in Nigeria's shift to compressed natural gas.",
     "salesBlurb": "Our sales engineers help size and configure complete CNG stations or single items, including mother, online and daughter station compressors, hydraulic boosters for cascade offloading, dispensers, and metering, pressure-regulating and decompression skids for gas users.",
     "serviceBlurb": "Field engineers install and commission equipment on your site and can then run and maintain it under a planned O&M arrangement, covering preventive maintenance, breakdown response and safety-valve checks.",
     "partsBlurb": "We stock OEM and genuine consumables and wear parts for compressors and dispensers, such as valves, seals, filters, piston rings, breakaways and nozzles, so maintenance can be planned rather than improvised."
@@ -182,7 +182,7 @@
       "applications": [
         "Mother stations on gas pipelines filling mobile cascades for daughter stations",
         "Online CNG stations at pipeline-connected forecourts",
-        "Large fleet depots with a pipeline gas supply",
+        "Large bus and truck depots with a pipeline gas supply",
         "Natural gas pipeline boosting",
         "Compressed biogas (CBG), bio-LNG pre-compression and gas-grid injection"
       ],
@@ -360,7 +360,7 @@
       "applications": [
         "Daughter stations under Nigeria's Presidential CNG programme fed by trucked cascades",
         "Converting existing petrol/diesel forecourts to add CNG without a pipeline",
-        "Fleet depots refuelling buses, taxis, tricycles or trucks from delivered CNG",
+        "Depots refuelling buses, taxis, tricycles or trucks from delivered CNG",
         "Temporary or seasonal fuelling points",
         "Compressed biogas (CBG) offloading"
       ],
@@ -538,14 +538,14 @@
         "Pipeline-connected mother stations filling cascades for a network of daughter stations",
         "Online forecourt stations near gas pipelines",
         "Daughter stations at existing fuel retail sites fed by trucked cascades",
-        "Captive fleet depots for buses, taxis, tricycles and logistics trucks",
+        "Captive depots for buses, taxis, tricycles and logistics trucks",
         "Industrial sites receiving trucked CNG"
       ],
       "choosingTips": [
         "Start from gas supply: pipeline pressure and the volume your gas supplier will commit decide whether a mother, online or daughter set-up is possible.",
         "Estimate demand as vehicles per day multiplied by typical fill size (kg or SCM) and allow for peak hours. Peak demand usually sizes storage and dispensers; daily demand sizes the compressor.",
         "For daughter stations, compare the cascade water capacity against daily sales to plan delivery frequency, and check the booster can handle the full range of cascade pressures.",
-        "Choose the dispenser mix (car/tricycle versus bus nozzles) to match your fleet. Bus fills are larger and need higher flow.",
+        "Choose the dispenser mix (car/tricycle versus bus nozzles) to match your vehicles. Bus fills are larger and need higher flow.",
         "Plan site space, separation distances and power supply (grid or gas-engine/generator) early. They often limit what can be installed."
       ],
       "maintenance": {
@@ -676,9 +676,9 @@
       ],
       "applications": [
         "Forecourt dispensing for cars and tricycles (keke)",
-        "High-flow bus and truck lanes at fleet depots",
+        "High-flow bus and truck lanes at depots",
         "Daughter stations supplied by booster compressors",
-        "Mixed-fleet stations with car and bus nozzles"
+        "Stations serving cars and buses, with both nozzle types"
       ],
       "choosingTips": [
         "Choose 1, 2 or 3 bank to match the storage design. Multi-bank dispensers fill faster from cascade storage.",

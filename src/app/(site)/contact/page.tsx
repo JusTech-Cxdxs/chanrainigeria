@@ -2,7 +2,7 @@ import { EnquiryForm } from "@/components/site/EnquiryForm";
 import { PageHead } from "@/components/site/PageHead";
 import { pageMetadata, siteContent } from "@/components/site/site-content";
 import { Icon } from "@/components/ui/Icon";
-import { getBranches, getProductIndex } from "@/lib/catalogue";
+import { getBranches, getCategories, getProductIndex } from "@/lib/catalogue";
 import { telHref, waHref } from "@/lib/format";
 
 export const generateMetadata = () => pageMetadata("contact");
@@ -12,7 +12,8 @@ type P = { searchParams: Promise<Record<string, string | undefined>> };
 
 export default async function Contact({ searchParams }: P) {
   const q = await searchParams;
-  const [c, forms, nav, products, branches] = await Promise.all([siteContent("contact"), siteContent("forms"), siteContent("header"), getProductIndex(), getBranches()]);
+  const [c, forms, nav, products, branches, lines] = await Promise.all([siteContent("contact"), siteContent("forms"), siteContent("header"), getProductIndex(), getBranches(), getCategories()]);
+  const types = lines.flatMap((l) => l.families.map((f) => ({ slug: f.slug, name: f.name, line: l.name, lineSlug: l.slug })));
   const s = c.settings;
   const desks = Object.entries(s.desks).filter(([, d]) => d.email || d.phone || d.whatsapp);
   // Presets from links such as "Ask for a quote" on a model page. Without them nothing is chosen.
@@ -22,7 +23,7 @@ export default async function Contact({ searchParams }: P) {
     <>
       <PageHead image={c.img("image")} crumbs={[{ href: "/", label: nav.t("crumbHome") }, { label: c.t("crumb") }]} title={c.t("title")} lead={c.t("lead")} />
       <div className="wrap grid gap-14 py-14 lg:grid-cols-[1.5fr_1fr]">
-        <EnquiryForm mode="contact" labels={forms.labels()} products={products} defaults={{ type, product: q.product, category: q.category }} />
+        <EnquiryForm mode="contact" labels={forms.labels()} products={products} types={types} defaults={{ type, product: q.product, category: q.category }} />
         <aside className="space-y-10">
           {desks.length ? (
             <section aria-labelledby="desks-h">

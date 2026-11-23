@@ -1,4 +1,5 @@
 import "server-only";
+import { shortTypeName, TYPE_PREFIX } from "./type-labels";
 import { createHash } from "node:crypto";
 import { rateLimit } from "@/lib/guard";
 import { siteUrl } from "@/lib/site-url";
@@ -89,7 +90,17 @@ export async function createEnquiry(
   let deskKey = DEFAULT_DESK[input.type];
   let categoryName: string | undefined;
 
-  if (input.productSlug) {
+  let equipment: string | undefined;
+  if (input.productSlug?.startsWith(TYPE_PREFIX)) {
+    // An equipment type from the quote form, not a single model.
+    const f = await db.query.families.findFirst({ where: eq(schema.families.slug, input.productSlug.slice(TYPE_PREFIX.length)), with: { category: true } });
+    if (f) {
+      equipment = shortTypeName(f.slug, f.name);
+      productName = equipment;
+      categoryName = f.category.name;
+      if (input.type === "QUOTE" || input.type === "GENERAL" || f.category.desk === "cng") deskKey = f.category.desk;
+    }
+  } else if (input.productSlug) {
     const p = await db.query.products.findFirst({
       where: eq(schema.products.slug, input.productSlug),
       with: { brand: true, family: { with: { category: true } } },
@@ -101,7 +112,7 @@ export async function createEnquiry(
       if (input.type === "QUOTE" || input.type === "GENERAL" || p.family.category.desk === "cng") deskKey = p.family.category.desk;
     }
   }
-  if (!productId && input.categorySlug) {
+  if (!productId && !equipment && input.categorySlug) {
     const c = await db.query.categories.findFirst({ where: eq(schema.categories.slug, input.categorySlug) });
     if (c) {
       categoryName = c.name;
@@ -112,7 +123,7 @@ export async function createEnquiry(
   const desk = deskFor(settings, deskKey);
 
   const ref = await nextRef();
-  const details = { ...input.details, ...(categoryName ? { category: categoryName } : {}) };
+  const details = { ...input.details, ...(categoryName ? { category: categoryName } : {}), ...(equipment ? { equipment } : {}) };
   const [row] = await db
     .insert(schema.enquiries)
     .values({
