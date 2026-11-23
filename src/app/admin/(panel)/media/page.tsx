@@ -274,7 +274,7 @@ export default async function MediaLibrary({ searchParams }: { searchParams: Pro
               </dl>
               <div className="flex flex-wrap gap-x-5 gap-y-2 rounded-2xl border border-line bg-surface p-4">
                 <CopyButton text={`/media/${selected.id}`}>Copy link</CopyButton>
-                {isImg ? <CopyButton text={`![${selected.alt || selected.filename}](/media/${selected.id})`}>Copy for a news story</CopyButton> : null}
+                {isImg ? <CopyButton text={`![${selected.alt || selected.filename}](/media/${selected.id})`}>Copy for a blog post</CopyButton> : null}
                 <a href={`/media/${selected.id}`} target="_blank" className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand">
                   <Icon name="external" size={15} /> Open full size
                 </a>

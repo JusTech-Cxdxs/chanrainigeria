@@ -56,7 +56,7 @@ export default async function Images({ searchParams }: { searchParams: Promise<R
     ...(can.pages ? [{ id: "slides", label: "Home page slides", icon: "images" }, { id: "banners", label: "Page banners", icon: "pages" }] : []),
     ...(can.products ? lines.map((l) => ({ id: `line-${l.slug}`, label: l.name, icon: l.slug.includes("fork") ? "forklift" : l.slug.includes("cng") ? "fuel" : "hardhat" })) : []),
     ...(can.brands ? [{ id: "brands", label: "Brand logos", icon: "verified" }] : []),
-    ...(can.news ? [{ id: "news", label: "News pictures", icon: "news" }] : []),
+    ...(can.news ? [{ id: "news", label: "Blog pictures", icon: "news" }] : []),
     ...(can.settings ? [{ id: "company", label: "Logo and icons", icon: "building" }] : []),
   ];
 
@@ -222,7 +222,7 @@ export default async function Images({ searchParams }: { searchParams: Promise<R
           ) : null}
 
           {can.news ? (
-            <Section id="news" icon="news" title="News pictures" lead="The cover picture of each news post. Posts without one use the News banner.">
+            <Section id="news" icon="news" title="Blog pictures" lead="The cover picture of each blog post. Posts without one use the News banner.">
               {posts.length ? (
                 <ul className="grid gap-4 md:grid-cols-2">
                   {posts.map((p) => (
@@ -239,7 +239,7 @@ export default async function Images({ searchParams }: { searchParams: Promise<R
                   ))}
                 </ul>
               ) : (
-                <p className="text-ink-soft">No news posts yet.</p>
+                <p className="text-ink-soft">No blog posts yet.</p>
               )}
             </Section>
           ) : null}

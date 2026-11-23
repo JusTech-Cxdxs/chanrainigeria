@@ -8,7 +8,7 @@ const MODULES: { title: string; text: string; d: string }[] = [
   { title: "Enquiries and service requests", text: "Quotes, field-service visits and parts requests, each with a reference.", d: "M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" },
   { title: "Products", text: "Lines, machine types, models, specifications and photos.", d: "M21 8 12 3 3 8v8l9 5 9-5V8zM3 8l9 5 9-5M12 13v8" },
   { title: "Testimonials", text: "Visitors share; your team approves before anything shows.", d: "m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z" },
-  { title: "News and pages", text: "Stories, banners, the home slider and every image.", d: "M4 4h16v16H4zM8 8h8M8 12h8M8 16h5" },
+  { title: "Blog and pages", text: "Stories, banners, the home slider and every image.", d: "M4 4h16v16H4zM8 8h8M8 12h8M8 16h5" },
   { title: "Visitors", text: "Who comes, from where and what they read, with consent.", d: "M3 3v18h18M7 15l4-4 3 3 5-6" },
   { title: "Enyo, the assistant", text: "Answers customers, logs requests and hands over to people.", d: "M12 3l1.9 4.6L18.5 9l-4.6 1.9L12 15.5l-1.9-4.6L5.5 9l4.6-1.4zM19 15l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z" },
 ];

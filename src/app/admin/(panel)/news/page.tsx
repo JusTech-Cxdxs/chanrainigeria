@@ -33,8 +33,8 @@ export default async function NewsAdmin({ searchParams }: { searchParams: Promis
   return (
     <>
       <AdminHead
-        title="News"
-        lead="Deliveries, handovers, new models and events. Published posts appear on the News page and the latest three on the home page. Drafts stay here until you tick Published."
+        title="Blog"
+        lead="Deliveries, handovers, new models and events. Published posts appear on the website's News page and the latest three on the home page. Drafts stay here until you tick Published."
         actions={
           <Link href="/admin/news/new" className="btn btn-primary">
             <Icon name="plus" size={17} /> Write a post

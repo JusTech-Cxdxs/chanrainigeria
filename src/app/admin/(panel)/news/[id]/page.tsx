@@ -26,7 +26,7 @@ export default async function EditPost({ params, searchParams }: { params: Promi
 
   return (
     <>
-      <Crumbs items={[{ href: "/admin/news", label: "News" }, { label: p?.title ?? "New post" }]} />
+      <Crumbs items={[{ href: "/admin/news", label: "Blog" }, { label: p?.title ?? "New post" }]} />
       <AdminHead
         title={p?.title ?? "Write a post"}
         lead={p ? (p.published ? `Published. On the website at /news/${p.slug}` : "Draft. Only staff can see it until you tick Published.") : "Write it here and save as a draft. Tick Published when it is ready."}
@@ -63,11 +63,11 @@ export default async function EditPost({ params, searchParams }: { params: Promi
               defaultValue={p?.body}
               textarea
               rows={16}
-              hint="Leave a blank line between paragraphs. ## makes a heading, **text** makes bold, - starts a bullet, [text](https://link) makes a link. To add a picture, copy it from the Media library with Copy for a news story."
+              hint="Leave a blank line between paragraphs. ## makes a heading, **text** makes bold, - starts a bullet, [text](https://link) makes a link. To add a picture, copy it from the Media library with Copy for a blog post."
             />
           </div>
         </Section>
-        <Section title="Cover photo" icon="image" hint="Shown at the top of the post and on news cards. A landscape photo, at least 1600 pixels wide.">
+        <Section title="Cover photo" icon="image" hint="Shown at the top of the post and on blog cards. A landscape photo, at least 1600 pixels wide.">
           <MediaPicker name="coverId" defaultValue={p?.coverId ?? ""} folder="News" />
         </Section>
         <Section title="Web address" icon="link">

@@ -88,7 +88,7 @@ export const GUIDE: GuideEntry[] = [
     label: "Images",
     perm: "pages",
     summary: "The photo slides at the top of the home page, and every named picture on the site.",
-    steps: ["Open Images. Every picture on the site is there: home slides, page banners, each product line, machine type and model, brand logos, news pictures and the company logo.", "For a picture, choose Change to pick from the library or upload a new one. It saves straight away and the website updates.", "For the home slides, set each slide's picture, headline, text and button, then Save slides.", "Use the original, or History and undo, to put a picture back."],
+    steps: ["Open Images. Every picture on the site is there: home slides, page banners, each product line, machine type and model, brand logos, blog pictures and the company logo.", "For a picture, choose Change to pick from the library or upload a new one. It saves straight away and the website updates.", "For the home slides, set each slide's picture, headline, text and button, then Save slides.", "Use the original, or History and undo, to put a picture back."],
     keywords: "slider slides banner hero photo picture image home",
   },
   {
@@ -122,11 +122,11 @@ export const GUIDE: GuideEntry[] = [
   },
   {
     href: "/admin/news",
-    label: "News",
+    label: "Blog",
     perm: "news",
-    summary: "News posts: deliveries, handovers, new models and events. Published posts appear on the home page and the News page.",
+    summary: "Blog posts: deliveries, handovers, new models and events. Published posts appear on the home page and the News page.",
     steps: [
-      "Open News and start a new post, or open an existing one.",
+      "Open Blog and start a new post, or open an existing one.",
       "Write the title, a short summary and the story. Add a cover photo.",
       "Tick Published and Save. Untick Published to take a post down.",
     ],
@@ -145,7 +145,7 @@ export const GUIDE: GuideEntry[] = [
     label: "Media library",
     perm: "media",
     summary: "Images and PDFs used on the site, in folders.",
-    steps: ["Open Media library and use Upload.", "Copy an image's link to use it inside a news post.", "Deleted files can be restored from History and undo for 30 days."],
+    steps: ["Open Media library and use Upload.", "Copy an image's link to use it inside a blog post.", "Deleted files can be restored from History and undo for 30 days."],
     keywords: "image photo picture pdf file upload folder library",
   },
   {
@@ -191,7 +191,7 @@ export const GUIDE: GuideEntry[] = [
     href: "/admin/history",
     label: "History and undo",
     perm: "history",
-    summary: "Earlier versions of settings, pages, products, news, testimonials and files, ready to restore.",
+    summary: "Earlier versions of settings, pages, products, blog posts, testimonials and files, ready to restore.",
     steps: ["Open History and undo, find the item and press Restore on the version you want. Restoring can itself be undone."],
     keywords: "undo restore revert version previous mistake deleted",
   },
@@ -417,8 +417,8 @@ export const TOOLS: ToolDef[] = [
   {
     name: "recent_news",
     perm: "news",
-    label: "Looked at news posts",
-    description: "The latest news posts, published or draft.",
+    label: "Looked at blog posts",
+    description: "The latest blog posts, published or draft.",
     parameters: { type: "object", properties: {} },
     run: async () => {
       const rows = await db.query.posts.findMany({ orderBy: [desc(schema.posts.createdAt)], limit: 8, columns: { id: true, title: true, category: true, published: true, publishedAt: true, excerpt: true } });
@@ -489,8 +489,8 @@ function systemPrompt(u: AssistantUser, s: Settings, path?: string) {
 
 WHAT YOU DO
 1. Explain how to do things in this dashboard, using only the GUIDE below. Link to sections with markdown links to their /admin paths, e.g. [Enquiries](/admin/enquiries).
-2. Draft text on request: news posts, product summaries, replies to customers, page copy, email wording. Write in the company's voice: ${s.enyo.tone} Use facts from company_facts and the look-ups; never invent prices, delivery times, stock, specifications, certifications or warranty terms. Leave [square-bracket placeholders] for anything you don't know. Start a draft with a short heading line, then the text ready to copy.
-3. Answer questions about enquiries, products, testimonials, visitors and news with the look-up tools. Give numbers and references exactly as returned.
+2. Draft text on request: blog posts, product summaries, replies to customers, page copy, email wording. Write in the company's voice: ${s.enyo.tone} Use facts from company_facts and the look-ups; never invent prices, delivery times, stock, specifications, certifications or warranty terms. Leave [square-bracket placeholders] for anything you don't know. Start a draft with a short heading line, then the text ready to copy.
+3. Answer questions about enquiries, products, testimonials, visitors and blog posts with the look-up tools. Give numbers and references exactly as returned.
 
 RULES
 - You can't change anything. You only read. If asked to change, send, approve, delete or publish, explain where and how the person does it themselves.
@@ -651,7 +651,7 @@ export async function basicAnswer(u: AssistantUser, s: Settings, q: string): Pro
   return {
     mode: "basic",
     used: [],
-    reply: `I couldn't match that to a part of the dashboard. Try naming what you want to do, for example "reply to an enquiry" or "add a news post". Your sections:\n\n${mine.map((g) => `- [${g.label}](${g.href})`).join("\n")}`,
+    reply: `I couldn't match that to a part of the dashboard. Try naming what you want to do, for example "reply to an enquiry" or "add a blog post". Your sections:\n\n${mine.map((g) => `- [${g.label}](${g.href})`).join("\n")}`,
   };
 }
 
@@ -660,10 +660,10 @@ export function starterPrompts(u: AssistantUser, ai = assistantAiReady()) {
   const out: string[] = [];
   if (can(u, "enquiries")) out.push("Which enquiries are overdue?");
   if (can(u, "testimonials")) out.push("Any testimonials waiting for approval?");
-  if (ai && can(u, "news")) out.push("Draft a news post about a new excavator delivery to a customer in Abuja");
+  if (ai && can(u, "news")) out.push("Draft a blog post about a new excavator delivery to a customer in Abuja");
   if (ai && can(u, "enquiries")) out.push("Draft a polite reply asking a customer for their machine's serial number");
   if (ai && can(u, "products")) out.push("Write a short product summary for an electric forklift");
-  if (!ai && can(u, "news")) out.push("How do I publish a news post?");
+  if (!ai && can(u, "news")) out.push("How do I publish a blog post?");
   if (!ai && can(u, "products")) out.push("How do I add a new model?");
   if (can(u, "visitors")) out.push("How many visitors did the website get this week?");
   if (can(u, "team")) out.push("How do I give someone enquiry emails?");
