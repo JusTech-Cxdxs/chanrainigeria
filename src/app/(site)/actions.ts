@@ -78,9 +78,9 @@ export async function submitEnquiry(_: FormState, form: FormData): Promise<FormS
     }
   }
   if (kind === "contact" && !["QUOTE", "GENERAL", "CALLBACK"].includes(payload.type)) errors.type = [L.t("typeError")];
+  if (!filled("phone")) errors.phone = [L.t("phoneRequiredError")];
   if (kind === "service" || kind === "parts") {
     if (!filled("category")) errors.category = [L.t("lineError")];
-    if (!filled("phone") && !errors.phone) errors.phone = [L.t("phoneRequiredError")];
   }
   if (kind === "service") {
     if (!filled("siteLocation")) errors.siteLocation = [L.t("siteError")];

@@ -311,14 +311,14 @@ export function EnquiryForm({
           {err("email") ? <FieldError id="e-email" text={err("email")} /> : <small>{L.emailHelp}</small>}
         </label>
         <label className="field">
-          <span>{mode === "contact" ? L.phoneOptionalLabel : L.phoneLabel}</span>
+          <span>{L.phoneLabel}</span>
           <input
             type="tel"
             name="phone"
             defaultValue={val("phone")}
             className={`input ${err("phone") ? "!border-danger" : ""}`}
             autoComplete="tel"
-            required={mode !== "contact"}
+            required
             {...invalid("phone")}
           />
           <FieldError id="e-phone" text={err("phone")} />

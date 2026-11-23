@@ -321,7 +321,7 @@ export function Enyo({
                     <p className="text-sm font-semibold">{L.handoffIntro}</p>
                     <input name="name" required placeholder={L.handoffName} aria-label={L.handoffName} className="input" autoComplete="name" maxLength={120} />
                     <input name="email" type="email" required placeholder={L.handoffEmail} aria-label={L.handoffEmail} className="input" autoComplete="email" maxLength={200} />
-                    <input name="phone" type="tel" placeholder={L.handoffPhone} aria-label={L.handoffPhone} className="input" autoComplete="tel" maxLength={40} />
+                    <input name="phone" type="tel" required placeholder={L.handoffPhone} aria-label={L.handoffPhone} className="input" autoComplete="tel" maxLength={40} />
                     <textarea name="message" required placeholder={L.handoffMessage} aria-label={L.handoffMessage} className="input min-h-20" maxLength={2000} />
                     <p className="text-xs text-ink-soft">{L.handoffConsent}</p>
                     <div className="flex gap-2">

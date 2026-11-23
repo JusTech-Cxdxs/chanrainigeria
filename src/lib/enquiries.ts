@@ -43,10 +43,9 @@ export const enquiryInput = z.object({
   phone: z
     .string()
     .trim()
+    .min(1, "Enter a phone number so we can reach you")
     .max(40)
-    .optional()
-    .transform((v) => (v ? v : undefined))
-    .refine((v) => !v || /^[+\d][\d\s()-]{6,}$/.test(v), "Enter a valid phone number"),
+    .refine((v) => /^[+\d][\d\s()-]{6,}$/.test(v), "Enter a valid phone number"),
   company: opt(160),
   message: z.string().trim().min(5, "Tell us a little about what you need").max(5000),
   productSlug: opt(160),
