@@ -1,0 +1,8 @@
+# HTTPS in front of the website. SITE_DOMAINS comes from .env,
+# e.g. "chanrainigeria.com, www.chanrainigeria.com". Use ":80" for plain HTTP while testing.
+{$SITE_DOMAINS} {
+	encode zstd gzip
+	reverse_proxy web:3000 {
+		header_up X-Real-IP {remote_host}
+	}
+}

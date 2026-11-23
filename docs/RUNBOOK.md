@@ -5,35 +5,8 @@ a step says otherwise.
 
 ## First deployment (Docker on a server)
 
-1. Install Docker and the Compose plugin on an Ubuntu 22.04+ server (2 GB RAM is enough).
-2. Clone the repository from the company's GitHub organisation, then `cd` into it.
-3. `cp .env.example .env`, then set:
-   - `POSTGRES_PASSWORD`: a long random password.
-   - `AUTH_SECRET`: from `openssl rand -base64 48`.
-   - `SITE_URL=https://www.chanrainigeria.com`
-   - `SMTP_*`: the mailbox the site sends from (e.g. `website@chanrainigeria.com`).
-   - `ENYO_LLM_BASE_URL`, `ENYO_LLM_API_KEY`, `ENYO_LLM_MODEL`, `ENYO_LLM_FAST_MODEL`: optional, the same as EJO 100.
-   - `SETUP_TOKEN`: a private code of 12+ characters, typed once at `/admin/setup`.
-   - `CRON_SECRET`: random, 16+ characters. Call `GET /api/cron/overdue` with
-     `Authorization: Bearer <CRON_SECRET>` once a day (a server cron job) for overdue-enquiry reminders.
-   - `TRUSTED_IP_HEADER=x-real-ip` (matches the Caddyfile below).
-4. `docker compose up -d --build`
-5. The first start creates the tables and loads the catalogue by itself (safe on every start).
-   For the customer's own server, use the prebuilt release instead: see `docs/DELIVERY.md`.
-6. HTTPS: install Caddy and use this as `/etc/caddy/Caddyfile`:
-   ```
-   chanrainigeria.com, www.chanrainigeria.com {
-     reverse_proxy localhost:3000 {
-       header_up X-Real-IP {remote_host}
-     }
-   }
-   ```
-7. DNS: point the domain's `A` records (`@` and `www`) at the server's IP. **Leave the `MX` records alone**,
-   so company email keeps working.
-8. Open `https://www.chanrainigeria.com/admin/setup`, enter the `SETUP_TOKEN` and create the platform
-   account. Then add the company's administrator under **Team**.
-9. In **Settings**, fill in the desk emails and phones, upload the logo, and set the sender address.
-   Then send a test enquiry from the site.
+Follow [`INSTALL.md`](../INSTALL.md) in the top folder. One `docker compose up -d --build` starts the
+website, the database, HTTPS (Caddy), nightly backups and the daily overdue-enquiry reminder.
 
 ## First deployment (Vercel + Supabase)
 
@@ -56,33 +29,31 @@ first if the change includes a new file in `drizzle/`.
 
 ## Backups
 
-The database holds everything, including uploaded photos and brochures.
-
-```bash
-./scripts/backup.sh                  # writes backups/chanrai-YYYYMMDD-HHMM.sql.gz
-```
-Schedule it nightly with cron (`0 2 * * * cd /srv/chanrainigeria && ./scripts/backup.sh`) and copy the
-`backups/` folder off the server, e.g. to the company's cloud storage. Keep at least 14 days.
+The database holds everything, including uploaded photos and brochures. With Docker, the `backup`
+service writes `backups/chanrai-YYYY-MM-DD.dump` every night at 02:30 Lagos time and keeps 14 days.
+Copy the `backups/` folder off the server, e.g. to the company's cloud storage.
 
 **Restore**
 ```bash
-gunzip -c backups/chanrai-....sql.gz | docker compose exec -T db psql -U chanrai -d chanrai
+docker compose exec -T db pg_restore -U chanrai -d chanrai --clean --if-exists < backups/chanrai-YYYY-MM-DD.dump
 ```
+An extra backup at any moment: `./scripts/backup.sh` (writes a `.sql.gz`; restore it with
+`gunzip -c backups/chanrai-....sql.gz | docker compose exec -T db psql -U chanrai -d chanrai`).
 
 ## Rotating secrets
 
 | Secret | How | Effect |
 |---|---|---|
-| `AUTH_SECRET` | Change it in `.env`, then `docker compose up -d` | Everyone is signed out |
+| `AUTH_SECRET` | Change it in `.env`, then `docker compose up -d` | Everyone is signed out; retype the mail password under Email and alerts |
 | `POSTGRES_PASSWORD` | `ALTER USER chanrai PASSWORD '…'` in psql, then update `.env` and restart | none |
-| SMTP password | Update `.env`, restart | none |
+| SMTP password | Dashboard → Email and alerts → Mail server (or `.env` if set there, then restart) | none |
 | AI key | Update `.env`, restart | none |
 
 ## Troubleshooting
 
 | Symptom | Check |
 |---|---|
-| Customers say they got no email | Settings shows "Mail server not connected" → set `SMTP_*`. Otherwise check the enquiry's "Emails sent" line and the container logs: `docker compose logs web` |
+| Customers say they got no email | Email and alerts shows "Not connected" → set the mail server there and press Send a test email. Otherwise check the enquiry's "Emails sent" line and the container logs: `docker compose logs web` |
 | A desk receives nothing | That desk's email in **Settings → Desks** |
 | Enyo only gives short pointers | The `ENYO_LLM_*` settings are missing, or the AI provider is down. Company settings → Enyo → Test connection says which |
 | Changes made directly in the database don't show | **Settings → Refresh the website** |

@@ -1,10 +1,9 @@
 # Chanrai Nigeria website: production image.
 #
-# The final image contains only the compiled application, never the source code:
+# Built by `docker compose up -d --build` (see INSTALL.md). The final image contains the compiled application:
 #   - .next/standalone   the compiled server (minified)
 #   - dist/*.mjs         database migrations and first-run content, bundled into single files
 #   - drizzle/, content/ SQL migrations and the starter catalogue
-# Build and ship it with scripts/release.sh. Customers install it with deploy/docker-compose.yml.
 
 # ---- dependencies ----
 FROM node:20-alpine AS deps
@@ -26,7 +25,7 @@ WORKDIR /app
 ARG VERSION=dev
 LABEL org.opencontainers.image.title="Chanrai Nigeria website" \
       org.opencontainers.image.version="${VERSION}" \
-      org.opencontainers.image.licenses="LicenseRef-JusTech-Proprietary"
+      org.opencontainers.image.licenses="LicenseRef-JusTech-Source-Licence"
 ENV NODE_ENV=production NEXT_TELEMETRY_DISABLED=1 PORT=3000 HOSTNAME=0.0.0.0 APP_VERSION=${VERSION}
 RUN addgroup -S app && adduser -S app -G app
 COPY --from=build --chown=app:app /app/.next/standalone ./

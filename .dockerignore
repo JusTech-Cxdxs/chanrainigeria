@@ -13,3 +13,7 @@ release
 docs
 *.md
 !content/**/*.md
+
+backups
+deploy
+release

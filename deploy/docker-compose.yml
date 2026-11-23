@@ -39,9 +39,14 @@ services:
     image: alpine:3.20
     restart: unless-stopped
     depends_on: [web]
-    env_file: .env
-    command: >
-      sh -c "echo '0 7 * * * wget -qO- --header=\"Authorization: Bearer $$CRON_SECRET\" http://web:3000/api/cron/overdue >/dev/null 2>&1' | crontab - && crond -f -l 8"
+    environment:
+      CRON_SECRET: ${CRON_SECRET:-}
+    command:
+      - sh
+      - -c
+      - |
+        echo "0 7 * * * wget -qO- --header='Authorization: Bearer $${CRON_SECRET}' http://web:3000/api/cron/overdue >/dev/null 2>&1" | crontab -
+        exec crond -f -l 8
 
   # Nightly database backup kept for 14 days in ./backups (includes all uploaded pictures).
   backup:
@@ -53,8 +58,12 @@ services:
       PGPASSWORD: ${POSTGRES_PASSWORD}
     volumes:
       - ./backups:/backups
-    entrypoint: >
-      sh -c "echo '30 1 * * * pg_dump -h db -U chanrai -Fc chanrai > /backups/chanrai-\$$(date +\\%F).dump && find /backups -name \"*.dump\" -mtime +14 -delete' | crontab - && crond -f -l 8"
+    entrypoint:
+      - sh
+      - -c
+      - |
+        echo "30 1 * * * PGPASSWORD='$${PGPASSWORD}' pg_dump -h db -U chanrai -Fc chanrai > /backups/chanrai-\$$(date +\\%F).dump && find /backups -name '*.dump' -mtime +14 -delete" | crontab -
+        exec crond -f -l 8
 
 volumes:
   db-data:

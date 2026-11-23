@@ -1,50 +1,48 @@
-# Delivering the site to Chanrai (and protecting the platform)
+# Delivering the site to Chanrai
 
-The website runs on JusTech's EJO 100 platform. Chanrai gets full control of their **site and data**.
-JusTech keeps ownership of the **software**. In practice that means:
+Chanrai receives the **full source code** and runs the site on its own server. Just Technologies keeps
+ownership of the software and the EJO 100 platform, and licenses it to Chanrai (see `LICENSE`).
 
-| Chanrai gets | JusTech keeps |
+| Chanrai gets | Just Technologies keeps |
 |---|---|
-| A ready-to-run Docker image of the compiled site | The source code and this repository |
-| Install guide, compose file, licence | The CMS and dashboard platform (EJO 100) |
-| Full dashboard control: pages, pictures, products, brands, team, roles, email | The right to reuse the platform for other clients |
-| Their content and database, exportable any time | Support and updates under the agreement |
+| The complete source code, to run, keep and modify for its own site | Ownership of the software and the EJO 100 platform |
+| Docker setup, install guide, runbook and licence | The right to reuse the platform for other customers |
+| Full dashboard control: pages, pictures, products, brands, team, roles, email | |
+| Its content and database, exportable at any time | |
 
-## How to deliver
+Chanrai may not resell the software, pass the source code on, or use it for another organisation.
+Have a lawyer review `LICENSE` and attach it to the signed agreement.
 
-1. Keep this GitHub repository **private**.
-2. On a machine with Docker, run `npm run release`. It builds the image for Linux servers, checks that
-   no source files are inside, and writes `release/chanrai-web-<version>.zip` containing:
-   - `chanrai-web-<version>.tar.gz` (the image)
-   - `docker-compose.yml` (website, database, nightly backups and the daily reminder)
-   - `.env.example`, `INSTALL.md`, `LICENSE`, `SHA256SUMS`
-3. Send the zip to Chanrai's IT team with the signed agreement. They follow `INSTALL.md`.
-4. For updates, build a new version and send the new zip. Their content is kept.
+## The handover package
 
-Alternatively, push a version tag (`git tag v1.0.0 && git push --tags`). GitHub Actions then builds the
-image and publishes it as a **private** package on GitHub Container Registry. Give Chanrai a read-only
-token and they pull updates with `docker compose pull && docker compose up -d`. This needs GitHub
-Actions billing to be active on the account.
+`chanrai-nigeria-website-<version>.zip` holds the source code as it is on the `main` branch, without the
+Git history. Its top folder contains:
 
-## What protects the platform
+- `INSTALL.md`: step-by-step installation on a server with Docker
+- `docker-compose.yml`, `Dockerfile`, `.env.example`, `deploy/Caddyfile`
+- `LICENSE`, `README.md`, `docs/` (runbook, handover checklist, official media notes)
 
-- **No source in the image.** The image holds the compiled, minified server and two bundled scripts
-  (database migrations and first-run content). The release script refuses to finish if source files
-  are found.
-- **Licence.** `LICENSE` grants use for Chanrai's own site only, and forbids copying, reverse
-  engineering, reselling or building other services from it. Have a lawyer review it and attach it to
-  the signed agreement.
-- **Platform account.** The hidden platform support account (created with `SETUP_TOKEN`) lets JusTech
-  support them, see history and undo changes. Chanrai's staff never see it.
-- **"Powered by"** appears only on the dashboard sign-in, dashboard footer and dashboard loader, from
-  one place (`src/lib/platform.ts`). Never in emails or on the public site.
+Make it with:
 
-To be honest about the limits: compiled JavaScript can still be read by a determined expert. The real
-protection is the combination of not handing over the source, the licence, and the support
-relationship. That is the same approach commercial self-hosted software uses.
+```bash
+git archive --format=zip --prefix=chanrai-nigeria-website-1.0.0/ -o chanrai-nigeria-website-1.0.0.zip main
+```
 
-## Their data, if the relationship ends
+## At handover
 
-Everything Chanrai created lives in their PostgreSQL database, including uploaded pictures. The
-nightly backups in `backups/` are standard PostgreSQL dumps they can keep and open with any PostgreSQL
-tools.
+1. Give the zip and the signed agreement to Chanrai's IT team.
+2. Install with them by following `INSTALL.md`.
+3. At `/admin/setup`, create the first account, then add Chanrai's administrator under **Team**.
+4. Set the mail server under **Email and alerts** and send a test email and a test enquiry.
+5. Hand over the `.env` values. Chanrai owns every account and secret (see `HANDOVER.md`).
+6. Agree in writing who supports and updates the site afterwards.
+
+## Their data
+
+Everything Chanrai creates lives in its PostgreSQL database, including uploaded pictures. The nightly
+backups in `backups/` are standard PostgreSQL dumps that open with any PostgreSQL tools.
+
+## Alternative: a prebuilt image without source
+
+`npm run release` still builds a compiled image and an install folder (`deploy/`) for customers who
+should not receive source code. It is not used for Chanrai.
