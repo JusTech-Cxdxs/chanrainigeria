@@ -20,6 +20,11 @@ export function Wordmark({
   tone?: "default" | "onDark";
 }) {
   const box = { sm: "h-8", md: "h-10", lg: "h-12", xl: "h-16" }[size];
+  // The company's own lockup, drawn to the group's logo standard, is used unless a logo is uploaded.
+  if (!logoUrl && name.trim().toLowerCase() === "chanrai nigeria") {
+    logoUrl = "/brand/chanrai-nigeria-lockup.png";
+    logoDarkUrl = "/brand/chanrai-nigeria-lockup-white.png";
+  }
   if (logoUrl) {
     return logoDarkUrl ? (
       <span className="inline-flex">
