@@ -2,8 +2,8 @@ import { Leaf } from "./Leaf";
 
 /**
  * The company lockup, the same family as the group's own stationery: the leaf, the first word of
- * the name large and heavy, and the rest of the name beneath, pushed to the right-hand end by a thin
- * rule in the logo green. "Chanrai Nigeria" gives Chanrai above ——— NIGERIA.
+ * the name large and heavy, and the rest of the name beneath it in regular letters, with no rule,
+ * as on the group's own logo. "Chanrai Nigeria" gives Chanrai above Nigeria.
  * If an uploaded logo is set in the dashboard, that image is used instead.
  */
 export function Wordmark({
@@ -43,10 +43,10 @@ export function Wordmark({
   const top = words[0] ?? name;
   const bottom = words.slice(1).join(" ");
   const t = {
-    sm: { leaf: "h-8", top: "text-[19px]", bottom: "text-[9px] tracking-[0.32em]", gap: "mt-[3px]", rule: 1 },
-    md: { leaf: "h-10", top: "text-[24px]", bottom: "text-[10px] tracking-[0.34em]", gap: "mt-1", rule: 1.25 },
-    lg: { leaf: "h-12", top: "text-[30px]", bottom: "text-[12px] tracking-[0.36em]", gap: "mt-1.5", rule: 1.5 },
-    xl: { leaf: "h-16", top: "text-[40px]", bottom: "text-[15px] tracking-[0.38em]", gap: "mt-2", rule: 2 },
+    sm: { leaf: "h-8", top: "text-[19px]", bottom: "text-[11px]", gap: "mt-[3px]", rule: 1 },
+    md: { leaf: "h-10", top: "text-[24px]", bottom: "text-[13px]", gap: "mt-1", rule: 1.25 },
+    lg: { leaf: "h-12", top: "text-[30px]", bottom: "text-[16px]", gap: "mt-1.5", rule: 1.5 },
+    xl: { leaf: "h-16", top: "text-[40px]", bottom: "text-[21px]", gap: "mt-2", rule: 2 },
   }[size];
   const topColour = tone === "onDark" ? "text-white" : "text-ink";
   const bottomColour = tone === "onDark" ? "text-white/80" : "text-ink-soft";
@@ -58,12 +58,7 @@ export function Wordmark({
           {top}
         </span>
         {bottom ? (
-          <span className={`flex items-center ${t.gap}`}>
-            <span className="mr-1.5 min-w-[10px] flex-1" style={{ borderBottom: `${t.rule}px solid var(--leaf)` }} />
-            <span className={`font-semibold uppercase leading-none ${bottomColour} ${t.bottom}`} style={{ marginRight: "-0.34em" }}>
-              {bottom}
-            </span>
-          </span>
+          <span className={`font-normal leading-none ${bottomColour} ${t.bottom} ${t.gap}`}>{bottom}</span>
         ) : null}
       </span>
     </span>

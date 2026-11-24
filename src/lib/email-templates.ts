@@ -124,22 +124,21 @@ function button(s: Settings, label: string, url: string) {
 
 // ---------- Letterhead ----------
 
-/** The company's uploaded logo, or the Chanrai lockup: leaf, first word large, the rest after a green rule. */
+/** The company's uploaded logo, or the Chanrai lockup: leaf, first word large, the rest beneath in regular letters. */
 function letterhead(s: Settings, logoUrl: string | null) {
   if (logoUrl) {
     return html`<img src="${logoUrl}" alt="${s.company.shortName}" height="44" style="display:block;height:44px;width:auto;max-width:240px;border:0;outline:none;text-decoration:none;font-family:${raw(FONT)};font-size:18px;font-weight:800;color:${raw(C.ink)};">`;
   }
   const words = s.company.shortName.trim().split(/\s+/);
   const top = words[0] ?? s.company.shortName;
-  const bottom = words.slice(1).join(" ").toUpperCase();
+  const bottom = words.slice(1).join(" ");
   return html`<table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr>
 <td valign="middle" style="padding:0 10px 0 0;"><img src="${siteUrl()}/brand/leaf-email.png" width="38" height="46" alt="" style="display:block;width:38px;height:46px;border:0;outline:none;"></td>
 <td valign="middle"><table role="presentation" cellpadding="0" cellspacing="0" border="0">
 <tr><td colspan="2" class="em-strong" style="font-family:${raw(FONT)};font-size:26px;line-height:26px;font-weight:800;letter-spacing:0.01em;color:${raw(C.ink)};white-space:nowrap;mso-line-height-rule:exactly;">${top}</td></tr>
 ${
   bottom
-    ? html`<tr><td valign="middle" style="padding:7px 6px 0 0;"><div style="min-width:14px;height:0;border-top:2px solid ${raw(C.leaf)};font-size:0;line-height:0;mso-line-height-rule:exactly;">&nbsp;</div></td>
-<td valign="middle" width="1" class="em-muted" style="padding:7px 0 0 0;font-family:${raw(FONT)};font-size:10.5px;line-height:11px;font-weight:600;letter-spacing:0.32em;color:${raw(C.muted)};white-space:nowrap;mso-line-height-rule:exactly;">${bottom}</td></tr>`
+    ? html`<tr><td colspan="2" class="em-muted" style="padding:4px 0 0 0;font-family:${raw(FONT)};font-size:14px;line-height:15px;font-weight:400;color:${raw(C.muted)};white-space:nowrap;mso-line-height-rule:exactly;">${bottom}</td></tr>`
     : ""
 }
 </table></td></tr></table>`;
