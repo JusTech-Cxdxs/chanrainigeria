@@ -137,7 +137,7 @@ export const defaultSettings: Settings = {
     about:
       "Chanrai Nigeria Limited is the equipment business of the Kewalram Chanrai Group in Nigeria. We bring three lines of proven equipment to the businesses that keep the country moving: CNG refueling, compression, storage and dispensing equipment from SOPAN and Fornovo Gas, LiuGong construction equipment, and BYD electric forklifts.\n\nWe are one partner for the whole life of the equipment. We help you choose the right machine for the job, supply and install it, and keep it working with field service, service agreements and genuine parts. Our desk is open 24 hours a day, 7 days a week, for every product we supply.\n\nOur customers are CNG station operators, gas distributors, contractors, warehouses and manufacturers across Nigeria.",
     groupName: "Kewalram Chanrai Group",
-    groupUrl: "https://www.kewalramchanrai.com",
+    groupUrl: "https://kewalramchanrai.com/",
     heritage: "Behind us stands the Kewalram Chanrai Group, in Nigeria since 1900: more than 125 years of doing business in the country.",
     groupLine: "A business of the Kewalram Chanrai Group",
   },

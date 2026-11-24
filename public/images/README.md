@@ -1,6 +1,6 @@
 # Site images
 
-The home slides, the three product-line pictures and the link preview now use the supplied equipment images (October 2026). The page banners are still drawn placeholders. Each one should be replaced with a real photo using the **same file name**. The code finds images by file name, so nothing else needs to change.
+Every picture here shows the equipment the company supplies (November 2026). The CNG pictures are the OEM's photographs; the construction and forklift pictures are made from the manufacturers' own pictures of each model. To change one, replace it with a picture of the **same file name**. The code finds images by file name, so nothing else needs to change.
 
 | File | Size (px) | Where it is used | Note |
 | --- | --- | --- | --- |
@@ -9,7 +9,7 @@ The home slides, the three product-line pictures and the link preview now use th
 | hero-3.jpg | 2400 × 1350 | Home page slider, slide 3 (warehouse / forklifts) | Replace with a real photo of the same name and aspect ratio (JPG, at least this resolution). |
 | page-products.jpg | 2400 × 900 | Products index page banner | Replace with a real photo of the same name and aspect ratio (JPG, at least this resolution). |
 | page-services.jpg | 2400 × 900 | Services page banner | Replace with a real photo of the same name and aspect ratio (JPG, at least this resolution). |
-| page-book-service.jpg | 2400 × 900 | Book a technician page banner | Replace with a real photo of the same name and aspect ratio (JPG, at least this resolution). |
+| page-book-service.jpg | 2400 × 900 | Request a service page banner | Replace with a real photo of the same name and aspect ratio (JPG, at least this resolution). |
 | page-parts.jpg | 2400 × 900 | Parts page banner | Replace with a real photo of the same name and aspect ratio (JPG, at least this resolution). |
 | page-contact.jpg | 2400 × 900 | Contact page banner | Replace with a real photo of the same name and aspect ratio (JPG, at least this resolution). |
 | page-about.jpg | 2400 × 900 | About page banner (also used on the Testimonials page) | Replace with a real photo of the same name and aspect ratio (JPG, at least this resolution). |

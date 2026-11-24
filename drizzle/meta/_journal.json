@@ -162,6 +162,13 @@
       "when": 1795530000000,
       "tag": "0022_consistency_sweep",
       "breakpoints": true
+    },
+    {
+      "idx": 23,
+      "version": "7",
+      "when": 1795600000000,
+      "tag": "0023_group_website",
+      "breakpoints": true
     }
   ]
 }
